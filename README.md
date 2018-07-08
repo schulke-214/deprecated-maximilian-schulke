@@ -1,2 +1,2 @@
-# max-schulke
+# maximilian-schulke
 Personal Portfolio Website
