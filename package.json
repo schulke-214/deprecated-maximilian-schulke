@@ -1,0 +1,24 @@
+{
+  "name": "maximilian-schulke",
+  "version": "1.0.0",
+  "description": "a personal portfolio website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schulke-214/maximilian-schulke.git"
+  },
+  "author": "schulke-214",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/schulke-214/maximilian-schulke/issues"
+  },
+  "homepage": "https://github.com/schulke-214/maximilian-schulke#readme",
+  "dependencies": {
+    "next": "^6.1.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  }
+}
