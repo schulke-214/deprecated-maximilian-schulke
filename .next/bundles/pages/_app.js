@@ -1,7 +1,7 @@
 module.exports =
 __NEXT_REGISTER_PAGE('/_app', function() {
           var comp =
-      webpackJsonp([1],{
+      webpackJsonp([2],{
 
 /***/ "./node_modules/@babel/runtime/helpers/extends.js":
 /***/ (function(module, exports, __webpack_require__) {
