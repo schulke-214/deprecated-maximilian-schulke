@@ -1,9 +1,9 @@
 import React from 'react';
 
 const zwanzigGrad = () => (
-    <div>
+    <a>
         this is my project zwanzig-grad
-    </div>
+    </a>
 )
 
 export default zwanzigGrad

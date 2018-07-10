@@ -6,17 +6,17 @@ import Head from 'next/head';
 
 import Layout from '../frontend/layout/layout';
 
-
 // UTILITIES
 import { capitalize } from '../frontend/utility/stringHelper'
 
+
 class Application extends App {
     constructor( props ) {
-        super(props);
+        super( props );
     }
 
     componentDidMount() {
-        console.log('hi')
+
     }
 
     dynamicPageTitle() {
@@ -53,9 +53,7 @@ class Application extends App {
         }
         
         return (
-            <Head>
-                <title>{pageTitle}</title>
-            </Head>
+            <title>{pageTitle}</title>
         )
     }
 
@@ -64,7 +62,9 @@ class Application extends App {
         
         return (
             <Container >
-                { this.dynamicPageTitle() }
+                <Head>
+                    { this.dynamicPageTitle() }
+                </Head>
                 <Layout>
                     <Component {...pageProps} />
                 </Layout>

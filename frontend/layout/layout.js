@@ -18,6 +18,13 @@ class Layout extends Component {
                 <main>
                     { this.props.children }
                 </main>
+
+                { /* GLOBAL STYLES */}
+                <style jsx global>{`
+                    body {
+                        background: #FFF7F2
+                    }
+                `}</style>
             </React.Fragment>
         )    
     }
