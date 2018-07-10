@@ -4,7 +4,7 @@ import Link from 'next/link';
 const home = props => {
     console.log(props)
     return (
-        <Link href="work/zwanzig-grad">
+        <Link href="project/zwanzig-grad">
             <a>my work</a>
         </Link>
     )

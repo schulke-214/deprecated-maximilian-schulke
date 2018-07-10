@@ -67,7 +67,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -88,7 +88,7 @@ var _jsxFileName = "/Users/max/Desktop/maximilian-schulke/pages/index.js";
 var home = function home(props) {
   console.log(props);
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_link___default.a, {
-    href: "work/zwanzig-grad",
+    href: "project/zwanzig-grad",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 7
@@ -105,7 +105,7 @@ var home = function home(props) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 6:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/index.js");

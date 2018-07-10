@@ -1,7 +1,7 @@
 module.exports =
 __NEXT_REGISTER_PAGE('/', function() {
           var comp =
-      webpackJsonp([5],{
+      webpackJsonp([7],{
 
 /***/ "./node_modules/@babel/runtime/core-js/json/stringify.js":
 /***/ (function(module, exports, __webpack_require__) {
@@ -948,7 +948,7 @@ var _jsxFileName = "/Users/max/Desktop/maximilian-schulke/pages/index.js";
 var home = function home(props) {
   console.log(props);
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_link___default.a, {
-    href: "work/zwanzig-grad",
+    href: "project/zwanzig-grad",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 7
@@ -984,7 +984,7 @@ var home = function home(props) {
 
 /***/ }),
 
-/***/ 4:
+/***/ 7:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__("./pages/index.js");
@@ -992,7 +992,7 @@ module.exports = __webpack_require__("./pages/index.js");
 
 /***/ })
 
-},[4])
+},[7])
           return { page: comp.default }
         })
       ;

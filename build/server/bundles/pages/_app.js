@@ -142,6 +142,19 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./frontend/utility/stringHelper.js":
+/***/ (function(module, exports) {
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+module.exports = {
+  capitalize: capitalize
+};
+
+/***/ }),
+
 /***/ "./pages/_app.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -151,7 +164,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_app__ = __webpack_require__("next/app");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_app__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__frontend_layout_layout__ = __webpack_require__("./frontend/layout/layout.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_next_head__ = __webpack_require__("next/head");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_next_head___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_next_head__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__frontend_layout_layout__ = __webpack_require__("./frontend/layout/layout.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__frontend_utility_stringHelper__ = __webpack_require__("./frontend/utility/stringHelper.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__frontend_utility_stringHelper___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__frontend_utility_stringHelper__);
 var _jsxFileName = "/Users/max/Desktop/maximilian-schulke/pages/_app.js";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -170,7 +187,11 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+ // NEXT IMPORTS
 
+
+
+ // UTILITIES
 
 
 
@@ -191,6 +212,53 @@ function (_App) {
       console.log('hi');
     }
   }, {
+    key: "dynamicPageTitle",
+    value: function dynamicPageTitle() {
+      var url = this.props.router.pathname;
+      url = url.slice(1, url.length);
+      url = url.split('/', 2);
+
+      if (url.length === 2) {
+        var projectName = url[1];
+        projectName = projectName.split('-', 3);
+
+        for (var i = 0; i < projectName.length; i++) {
+          projectName[i] = Object(__WEBPACK_IMPORTED_MODULE_4__frontend_utility_stringHelper__["capitalize"])(projectName[i]);
+        }
+
+        url[1] = projectName.join(' ');
+      }
+
+      if (url[0] === "") url.shift();
+      var pageTitle;
+
+      switch (url.length) {
+        case 1:
+          pageTitle = Object(__WEBPACK_IMPORTED_MODULE_4__frontend_utility_stringHelper__["capitalize"])(url[0]);
+          break;
+
+        case 2:
+          pageTitle = Object(__WEBPACK_IMPORTED_MODULE_4__frontend_utility_stringHelper__["capitalize"])(url[0]) + " - " + url[1];
+          break;
+
+        default:
+          pageTitle = "Maximilian Schulke - Creative Developer";
+          break;
+      }
+
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_next_head___default.a, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 56
+        }
+      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("title", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 57
+        }
+      }, pageTitle));
+    }
+  }, {
     key: "render",
     value: function render() {
       var _props = this.props,
@@ -199,17 +267,17 @@ function (_App) {
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_app__["Container"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 19
+          lineNumber: 66
         }
-      }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__frontend_layout_layout__["a" /* default */], {
+      }, this.dynamicPageTitle(), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__frontend_layout_layout__["a" /* default */], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 20
+          lineNumber: 68
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Component, _extends({}, pageProps, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21
+          lineNumber: 69
         }
       }))));
     }
@@ -234,6 +302,13 @@ module.exports = __webpack_require__("./pages/_app.js");
 /***/ (function(module, exports) {
 
 module.exports = require("next/app");
+
+/***/ }),
+
+/***/ "next/head":
+/***/ (function(module, exports) {
+
+module.exports = require("next/head");
 
 /***/ }),
 
