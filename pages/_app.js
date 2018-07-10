@@ -1,6 +1,7 @@
-import App, {Container} from 'next/app'
 import React from 'react';
+import App, {Container} from 'next/app'
 
+import Layout from '../frontend/layout/layout';
 
 class Application extends App {
     constructor( props ) {
@@ -13,9 +14,12 @@ class Application extends App {
 
     render() {
         const { Component, pageProps } = this.props;
+        
         return (
             <Container>
-                <Component {...pageProps} />
+                <Layout>
+                    <Component {...pageProps} />
+                </Layout>
             </Container>
         )
     }
