@@ -11,8 +11,12 @@ import PageLoader from '../frontend/components/pageLoader/pageLoader';
 // UTILITY IMPORTS
 import { capitalize } from '../frontend/utility/stringHelper';
 
+// GSAP IMPORTS
+import '../frontend/utility/gsap';
+
 // STYLE IMPORTS
 import styles from '../frontend/styles/common/index';
+
 
 class Application extends App {
     constructor( props ) {
@@ -28,16 +32,8 @@ class Application extends App {
         this.removePageLoader = this.removePageLoader.bind(this);
     }
 
-    componentWillMount() {
-        // this.initPageLoader();
-    }
-
     componentDidMount() {
         document.getElementsByTagName('body')[0].style.display = "block";
-    }
-
-    initPageLoader() {
-
     }
 
     removePageLoader() {

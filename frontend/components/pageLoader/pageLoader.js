@@ -15,15 +15,15 @@ class pageLoader extends Component {
     componentDidMount(){
         let progress = {
             value: 1,
-            ease: SteppedEase.config(30)
+            ease: "basic"
         };
         let updateEl = () => document.getElementById('pageloader-counter').textContent = Math.floor(progress.value);
         updateEl();
 
-        let loader = new TimelineMax({ paused: true, onComplete: this.props.finished })
-            .to( progress, 2.5, { value: 99, delay: 0.25, ease: progress.ease, onUpdate: updateEl })
+        let loader = new TimelineLite({ paused: true, onComplete: this.props.finished })
+            .to( progress, 2, { value: 99, delay: 0.25, ease: progress.ease, onUpdate: updateEl })
             .to( progress, 1, { value: 100, ease: progress.ease, onUpdate: updateEl })
-            .to( "#pageloader", 2, { opacity: 0 } )
+            .to( "#pageloader", 2, { opacity: 0, ease: progress.ease} )
             .play();
     }
 
