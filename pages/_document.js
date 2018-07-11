@@ -1,6 +1,8 @@
 import Document, { Head, Main, NextScript } from 'next/document';
 import variables from '../frontend/styles/var';
 
+import PageLoader from '../frontend/components/pageLoader/pageLoader';
+
 class AppDocument extends Document {
     render() {
         return (
