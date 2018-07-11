@@ -12,7 +12,7 @@ import PageLoader from '../frontend/components/pageLoader/pageLoader';
 import { capitalize } from '../frontend/utility/stringHelper';
 
 // STYLE IMPORTS
-import styles from '../frontend/styles/common/global';
+import styles from '../frontend/styles/common/index';
 
 class Application extends App {
     constructor( props ) {
@@ -20,9 +20,12 @@ class Application extends App {
 
         this.state = {
             pageLoader: {
+                // JUST FOR COMMENTED OUT JUST FOR DEVELOPMENT
                 isOpen: true
             }
         }
+
+        this.removePageLoader = this.removePageLoader.bind(this);
     }
 
     componentWillMount() {
@@ -38,7 +41,8 @@ class Application extends App {
     }
 
     removePageLoader() {
-        console.log('removed page loader')
+        console.log('removed page loader');
+
         this.setState({
             pageLoader: {
                 isOpen: false
@@ -97,7 +101,7 @@ class Application extends App {
                 <style jsx global>{styles}</style>
 
                 {/* PAGELOADER */}
-                { this.state.pageLoader.isOpen ? <PageLoader finished={ this.removePageLoader } /> : none }
+                { this.state.pageLoader.isOpen ? <PageLoader finished={ this.removePageLoader } /> : null }
 
 
                 <Layout>

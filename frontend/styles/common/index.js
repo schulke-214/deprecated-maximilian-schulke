@@ -1,9 +1,12 @@
 import css from 'styled-jsx/css';
 import variables from '../var';
 
+// IMPORTS FROM OTHER CSS STRINGS
+
 export default css`
     /* FONT IMPORTS */
     @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700');
+    @import url('https://fonts.googleapis.com/css?family=Spectral:400,600');
 
     * {
         margin: 0;
@@ -26,6 +29,44 @@ export default css`
         background-color: ${ variables.colors.main };
     }
 
+    body {
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+    }
+
+    /* LOGO CLASSES */
+    
+    .logo {
+        
+    }
+
+    .logo-small {
+
+    }
+
+    .logo-medium {
+
+    }
+
+    .logo-big {
+
+    }
+
+    .logo-pageloader {
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        top: 50px;
+        left: 50px;
+    }
+
+
+    img {
+        object-fit: cover;
+        display: block;
+    }
+
     /* HIDE SCROLLBAR */
     html::-webkit-scrollbar {
         width: 0px;
@@ -34,4 +75,6 @@ export default css`
     html::-webkit-scrollbar-thumb {
         background-color: rgba(255,255,255,0);
     }
+
+
 `
