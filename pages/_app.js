@@ -4,8 +4,9 @@ import React from 'react';
 import App, { Container } from 'next/app';
 import Head from 'next/head';
 
+// COMPONENT IMPORTS
 import Layout from '../frontend/layout/layout';
-
+import PageLoader from '../frontend/components/pageLoader/pageLoader'
 // UTILITY IMPORTS
 import { capitalize } from '../frontend/utility/stringHelper'
 
@@ -17,8 +18,16 @@ class Application extends App {
         super( props );
     }
 
-    componentDidMount() {
-        console.log('rendered serverside')
+    componentWillMount() {
+        this.initPageLoader();
+    }
+
+    initPageLoader() {
+        console.log('initialized pageloader')
+    }
+
+    removePageLoader() {
+
     }
 
     dynamicPageTitle() {
@@ -67,12 +76,13 @@ class Application extends App {
                 <Head>
                     { this.dynamicPageTitle() }
                 </Head>
+                { /* GLOBAL STYLES */ }
+                <Styles />
+
+                <PageLoader finished={ this.removePageLoader } />
                 <Layout>
                     <Component {...pageProps} />
                 </Layout>
-                
-                { /* GLOBAL STYLES */ }
-                <Styles />
             </Container>
         )
     }

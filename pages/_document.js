@@ -1,5 +1,5 @@
 import Document, { Head, Main, NextScript } from 'next/document';
-
+import variables from '../frontend/styles/var';
 
 class AppDocument extends Document {
     render() {
@@ -15,7 +15,7 @@ class AppDocument extends Document {
                         <meta http-equiv="Refresh" content="0; URL=https://domain.com/lightweight/" /* REMINDER FOR FUTURE ME: CHANGE THIS*/ />
                     </noscript>
                 </Head>
-                <body>
+                <body style={{ backgroundColor: variables.colors.main }} >
                     <Main />
                     <NextScript />
                 </body>
