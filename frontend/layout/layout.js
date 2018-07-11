@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 class Layout extends Component {
     constructor( props ) {
         super( props )
@@ -8,9 +9,7 @@ class Layout extends Component {
             isLayout: true
         }
     }
-
     render() {
-
         return (
             <React.Fragment>
                 <p>This is My Layout</p>
@@ -19,12 +18,7 @@ class Layout extends Component {
                     { this.props.children }
                 </main>
 
-                { /* GLOBAL STYLES */}
-                <style jsx global>{`
-                    body {
-                        background: #FFF7F2
-                    }
-                `}</style>
+                { /* LAYOUT STYLES */}
             </React.Fragment>
         )    
     }

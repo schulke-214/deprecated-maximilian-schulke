@@ -6,9 +6,11 @@ import Head from 'next/head';
 
 import Layout from '../frontend/layout/layout';
 
-// UTILITIES
+// UTILITY IMPORTS
 import { capitalize } from '../frontend/utility/stringHelper'
 
+// STYLE IMPORTS
+import Styles from '../frontend/styles/common/global';
 
 class Application extends App {
     constructor( props ) {
@@ -16,7 +18,7 @@ class Application extends App {
     }
 
     componentDidMount() {
-
+        console.log('rendered serverside')
     }
 
     dynamicPageTitle() {
@@ -68,6 +70,9 @@ class Application extends App {
                 <Layout>
                     <Component {...pageProps} />
                 </Layout>
+                
+                { /* GLOBAL STYLES */ }
+                <Styles />
             </Container>
         )
     }
