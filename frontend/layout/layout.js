@@ -13,12 +13,9 @@ class Layout extends Component {
         return (
             <React.Fragment>
                 <p>This is My Layout</p>
-
                 <main>
                     { this.props.children }
                 </main>
-
-                { /* LAYOUT STYLES */}
             </React.Fragment>
         )    
     }

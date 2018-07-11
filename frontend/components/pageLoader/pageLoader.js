@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TweenMax } from 'gsap';
 
-import Styles from '../../styles/components/pageLoader'
+import styles from '../../styles/components/pageLoader'
 
 
 class pageLoader extends Component {
@@ -10,15 +10,16 @@ class pageLoader extends Component {
     }
 
     componentDidMount(){
-        TweenMax.to(document.getElementById('div'), 0.5, { backgroundColor: "orange" });
+        TweenMax.from(document.getElementById('__next'), 0.5, { delay: 2, y: -window.innerHeight});
+        TweenMax.to(document.getElementById('div'), 0.5, { delay: 2, opacity: 0 });
         console.log('pageloader mounted')
     }
 
     render() {
         return (
             <React.Fragment>
+                <style jsx>{styles}</style>
                 <div id="div"></div>
-                <Styles />
             </React.Fragment>
         )
     }

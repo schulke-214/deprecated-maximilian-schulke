@@ -1,5 +1,5 @@
 const colors = {
-    main: '#FFF7F2'
+    main: '#121212'
 }
 
 module.exports = {

@@ -11,7 +11,7 @@ import PageLoader from '../frontend/components/pageLoader/pageLoader'
 import { capitalize } from '../frontend/utility/stringHelper'
 
 // STYLE IMPORTS
-import Styles from '../frontend/styles/common/global';
+import styles from '../frontend/styles/common/global';
 
 class Application extends App {
     constructor( props ) {
@@ -19,7 +19,11 @@ class Application extends App {
     }
 
     componentWillMount() {
-        this.initPageLoader();
+        // this.initPageLoader();
+    }
+
+    componentDidMount() {
+        document.getElementsByTagName('body')[0].style.display = "block";
     }
 
     initPageLoader() {
@@ -76,8 +80,7 @@ class Application extends App {
                 <Head>
                     { this.dynamicPageTitle() }
                 </Head>
-                { /* GLOBAL STYLES */ }
-                <Styles />
+                <style jsx global>{styles}</style>
 
                 <PageLoader finished={ this.removePageLoader } />
                 <Layout>

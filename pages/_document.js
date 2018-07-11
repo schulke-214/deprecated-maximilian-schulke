@@ -15,7 +15,7 @@ class AppDocument extends Document {
                         <meta http-equiv="Refresh" content="0; URL=https://domain.com/lightweight/" /* REMINDER FOR FUTURE ME: CHANGE THIS*/ />
                     </noscript>
                 </Head>
-                <body style={{ backgroundColor: variables.colors.main }} >
+                <body style={{ display: "none", backgroundColor: variables.colors.main }} >
                     <Main />
                     <NextScript />
                 </body>
