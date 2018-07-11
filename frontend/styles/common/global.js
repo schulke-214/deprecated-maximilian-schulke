@@ -9,14 +9,15 @@ export default css`
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: 'Noto Sans';
+
+        font-family: 'Noto Sans', 'Helvetica', 'Montserrat', 'Arial';
         font-weight: 400;
         outline: none;
-        color: white;
 
+        color: ${ variables.colors.highlight };
+        
+        font-smoothing: antialiased;
         tap-highlight-color: rgba(0,0,0,0);
-
-
         -webkit-font-smoothing: antialiased;
         -webkit-tap-highlight-color: rgba(0,0,0,0);
     } 
@@ -25,11 +26,12 @@ export default css`
         background-color: ${ variables.colors.main };
     }
 
-    ::-webkit-scrollbar {
+    /* HIDE SCROLLBAR */
+    html::-webkit-scrollbar {
         width: 0px;
     }
 
-    ::-webkit-scrollbar-thumb {
-        background-color: rgba(255,255,255,0.5);
+    html::-webkit-scrollbar-thumb {
+        background-color: rgba(255,255,255,0);
     }
 `

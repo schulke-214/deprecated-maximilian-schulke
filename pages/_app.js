@@ -6,9 +6,10 @@ import Head from 'next/head';
 
 // COMPONENT IMPORTS
 import Layout from '../frontend/layout/layout';
-import PageLoader from '../frontend/components/pageLoader/pageLoader'
+import PageLoader from '../frontend/components/pageLoader/pageLoader';
+
 // UTILITY IMPORTS
-import { capitalize } from '../frontend/utility/stringHelper'
+import { capitalize } from '../frontend/utility/stringHelper';
 
 // STYLE IMPORTS
 import styles from '../frontend/styles/common/global';
@@ -16,6 +17,12 @@ import styles from '../frontend/styles/common/global';
 class Application extends App {
     constructor( props ) {
         super( props );
+
+        this.state = {
+            pageLoader: {
+                isOpen: true
+            }
+        }
     }
 
     componentWillMount() {
@@ -27,11 +34,16 @@ class Application extends App {
     }
 
     initPageLoader() {
-        console.log('initialized pageloader')
+
     }
 
     removePageLoader() {
-
+        console.log('removed page loader')
+        this.setState({
+            pageLoader: {
+                isOpen: false
+            }
+        })
     }
 
     dynamicPageTitle() {
@@ -80,9 +92,14 @@ class Application extends App {
                 <Head>
                     { this.dynamicPageTitle() }
                 </Head>
+
+                {/* ADDING GLOBAL STYLES */}
                 <style jsx global>{styles}</style>
 
-                <PageLoader finished={ this.removePageLoader } />
+                {/* PAGELOADER */}
+                { this.state.pageLoader.isOpen ? <PageLoader finished={ this.removePageLoader } /> : none }
+
+
                 <Layout>
                     <Component {...pageProps} />
                 </Layout>
