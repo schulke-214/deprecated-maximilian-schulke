@@ -11,9 +11,6 @@ import PageLoader from '../frontend/components/pageLoader/pageLoader';
 // UTILITY IMPORTS
 import { capitalize } from '../frontend/utility/stringHelper';
 
-// GSAP IMPORTS
-import '../frontend/utility/gsap';
-
 // STYLE IMPORTS
 import styles from '../frontend/styles/common/index';
 
@@ -24,8 +21,8 @@ class Application extends App {
 
         this.state = {
             pageLoader: {
-                // JUST FOR COMMENTED OUT JUST FOR DEVELOPMENT
-                isOpen: true
+                // COMMENTED OUT FOR JUST FOR DEVELOPMENT
+                isOpen: false
             }
         }
 

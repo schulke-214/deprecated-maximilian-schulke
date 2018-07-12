@@ -1,0 +1,21 @@
+{
+    "zwanzigGrad": {
+        "meta": {
+            "title": "Zwanzig Grad",
+            "category": "Web Design",
+            "year": 2017,
+            "roles": [
+                "ui",
+                "ux",
+                "art direction"
+            ],
+            "projectImg": "static/projects/zwanzig-grad/main.jpg"
+        },
+        "images": [
+            "static/projects/zwanzig-grad/page-images/",
+            "static/projects/zwanzig-grad/page-images/",
+            "static/projects/zwanzig-grad/page-images/",
+            "static/projects/zwanzig-grad/page-images/"
+        ]
+    }
+}
