@@ -22,14 +22,16 @@ class Layout extends Component {
                 <div id="layout-layer">
                     <div id="gui-layer">
                         <div id="gui-wrapper-top" >
-                            <Logo className="logo" />
+                            <Link href="/">
+                                <a><Logo className="logo" /></a>
+                            </Link>
                             <span> creative developer </span>
                             <Link href="/project">
                                 <a>all</a>
                             </Link>
                         </div>
                         <div id="gui-wrapper-mid">
-                            <a href="https://github.com/schulke-214/maximilian-schulke">github</a>
+                            <a href="https://github.com/schulke-214/" target="_blank" >github</a>
                             {/* UP & DOWN ARROW */}
                             <div></div>
                         </div>
