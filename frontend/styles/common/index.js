@@ -42,6 +42,10 @@ export default css`
         text-decoration: none;
     }
 
+    a {
+        text-transform: lowercase;
+    }
+
     /* LOGO CLASSES */
     
     .logo {

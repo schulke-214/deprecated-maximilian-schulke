@@ -29,12 +29,15 @@ class Layout extends Component {
                             </Link>
                         </div>
                         <div id="gui-wrapper-mid">
-                            <a href="https://github.com/schulke-214/maximilian-schulke"></a>
+                            <a href="https://github.com/schulke-214/maximilian-schulke">github</a>
                             {/* UP & DOWN ARROW */}
                             <div></div>
                         </div>
                         <div id="gui-wrapper-low">
-
+                            <Link href="/about">
+                                <a>about</a>
+                            </Link>
+                            <a href="mailto:info@domain.de">contact</a>
                         </div>
                     </div>
                 </div>

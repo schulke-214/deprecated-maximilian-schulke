@@ -12,16 +12,11 @@ export default css`
         background-color: ${ variables.colors.main };
     }
 
-    img {
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-
     #pageloader-counter {
         display: block;
         width: 25px;
         height: 25px;
+        z-index: 1000;
         position: absolute;
         top: calc( 50vh - 12.5px );
         left: calc( 50vw - 12.5px );

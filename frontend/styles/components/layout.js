@@ -29,6 +29,7 @@ export default css`
         width: 100%;
         justify-content: space-between;
         align-items: center;
+        height: min-content;
     }
 
     #gui-wrapper-top {
@@ -42,7 +43,15 @@ export default css`
         white-space: nowrap;
     }
 
-    #gui-wrapper-mid {
-        
+    #gui-wrapper-mid > a {
+        position: relative;
+        display: block;
+        transform-origin: center;
+        transform: rotate( -90deg );
+        heigth: 15px;
+        width: 50px;
+        text-align: center;
+        /* - Half Width + Half Height */
+        left: ${-25 + 7.5}px;
     }
 `;

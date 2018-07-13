@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 import Logo from '../logo/logo';
 
 // STYLE IMPORTS
-import styles from '../../styles/components/pageLoader'
+import layoutStyles from '../../styles/components/layout';
+import styles from '../../styles/components/pageLoader';
 
 
 class pageLoader extends Component {
@@ -32,9 +33,18 @@ class pageLoader extends Component {
     render() {
         return (
             <React.Fragment>
+                <style jsx>{layoutStyles}</style>
                 <style jsx>{styles}</style>
                 <div id="pageloader">
-                    <Logo className="logo-pageloader" />
+
+                    <div id="layout-layer">
+                        <div id="gui-layer">
+                            <div id="gui-wrapper-top" >
+                                <Logo className="logo" />
+                            </div>
+                        </div>
+                    </div>
+                
                     <span id="pageloader-counter"></span>
                 </div>
             </React.Fragment>
