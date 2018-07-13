@@ -1,7 +1,7 @@
 const font = {
     sizes: {
-        small: '10px',
-        medium: '12.5px'
+        small: '12.5px',
+        medium: '14px'
     }
 }
 

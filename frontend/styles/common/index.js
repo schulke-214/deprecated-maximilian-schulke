@@ -37,23 +37,16 @@ export default css`
 
     h1, h2, h3, h4, h5, h6, a, p, span, div {
         user-select: none;
+        font-size: ${ variables.font.sizes.medium };
+        line-height: 80%;
+        text-decoration: none;
     }
+
     /* LOGO CLASSES */
     
     .logo {
-        
-    }
-
-    .logo-small {
-
-    }
-
-    .logo-medium {
-
-    }
-
-    .logo-big {
-
+        width: 20px;
+        height: 10px;
     }
 
     .logo-pageloader {
@@ -63,7 +56,6 @@ export default css`
         top: 50px;
         left: 50px;
     }
-
 
     img {
         object-fit: cover;
