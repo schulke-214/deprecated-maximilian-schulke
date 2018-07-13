@@ -14,7 +14,6 @@ import { capitalize } from '../frontend/utility/stringHelper';
 // STYLE IMPORTS
 import styles from '../frontend/styles/common/index';
 
-
 class Application extends App {
     constructor( props ) {
         super( props );
@@ -25,7 +24,6 @@ class Application extends App {
                 isOpen: false
             }
         }
-
         this.removePageLoader = this.removePageLoader.bind(this);
     }
 
