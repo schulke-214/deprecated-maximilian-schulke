@@ -21,7 +21,7 @@ class Application extends App {
         this.state = {
             pageLoader: {
                 // COMMENTED OUT FOR JUST FOR DEVELOPMENT
-                isOpen: true
+                isOpen: false
             }
         }
         this.removePageLoader = this.removePageLoader.bind(this);

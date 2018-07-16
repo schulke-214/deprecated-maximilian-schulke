@@ -39,6 +39,7 @@ export default css`
         user-select: none;
         font-size: ${ variables.font.sizes.medium };
         line-height: 80%;
+        font-weight: 400;
         text-decoration: none;
     }
 
