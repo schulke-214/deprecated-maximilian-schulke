@@ -26,8 +26,6 @@ class pageLoader extends Component {
             .to( progress, 1, { value: 100, ease: progress.ease, onUpdate: updateEl })
             .to( "#pageloader", 2, { opacity: 0, ease: progress.ease} )
             .play();
-
-        console.log( Power4.easeInOut );
     }
 
     render() {

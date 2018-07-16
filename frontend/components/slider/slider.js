@@ -6,24 +6,52 @@ class Slider extends Component {
     constructor( props ) {
         super( props );
 
+        this.canvas;
+
         this.state = {
-
+            current: 0,
+            length: 4
         }
+
+        this.next = this.next.bind(this);
+        this.prev = this.prev.bind(this);
     }
 
-    next() {
+    next( callback ) {
+        if( this.state.current < this.state.length ) {
+            this.setState( prevState => ({
+                current: prevState.current + 1
+            }))
+        }
 
+        else {
+            this.setState({
+                current: 0
+            })
+        }
+
+        TweenLite.to( this.canvas, 0.5, { opacity: this.state.length / this.state.current, onComplete: callback} )
     }
 
-    prev() {
+    prev( callback ) {
+        if( this.state.current > 0 )
+            this.setState( prevState => ({
+                current: prevState.current - 1
+            }))
 
+        else
+            this.setState( prevState => ({
+                current: prevState.length
+            }))
     }
+
+
 
     render() {
         return (
             <React.Fragment>
                 <style jsx>{ styles }</style>
-                <div>slider</div>
+                <div ref={ instance => this.canvas = instance } >{ this.state.current }</div>
             </React.Fragment>
         )
     }
