@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
 
+// COMPONENT IMPORTS
+
+import Slider from '../frontend/components/slider/slider';
+
 class Home extends Component {
     constructor( props ) {
         super( props );
@@ -19,21 +23,31 @@ class Home extends Component {
         // REMOVE LISTENERS
     }
 
+    nextProject() {
+        this.slider.next()
+    }
+
+    prevProject() {
+
+    }
+
+    getProjectData() {
+
+    }
+
     render() {
         return (
             <React.Fragment>
                 <div id="home-wrapper">
                     <div id="home-overlay">
+                        <Slider ref={ instance => this.slider = instance } />
                         <span> 1 / 6 </span>
-                    </div>
-                    <div id="home-slider">
-                        <Slider />
                     </div>
                 </div>
 
-                <Link href="project/zwanzig-grad">
+                {/* <Link href="project/zwanzig-grad">
                     <a>my work</a>
-                </Link>
+                </Link> */}
             </React.Fragment>
         )
     }
