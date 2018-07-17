@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 
 // UTILITY IMPORTS
-import { Median } from '../frontend/utility/math';
+// import { Median } from '../frontend/utility/math';
 
 // COMPONENT IMPORTS
 import Slider from '../frontend/components/slider/slider';
@@ -20,7 +20,7 @@ class Home extends Component {
         // VARIABLES
         this.threshold = 30;
         this.animating = false;
-        this.deltaValues = [];
+        this.running = false;
 
         // MAP JSON TO ARRAY
         const projects = [];
@@ -35,7 +35,6 @@ class Home extends Component {
         this.nextProject = this.nextProject.bind(this);
         this.prevProject = this.prevProject.bind(this);
         this.getProjectData = this.getProjectData.bind(this);
-        this.addDeltaValue = this.addDeltaValue.bind(this);
     }
 
     componentDidMount() {
@@ -49,32 +48,27 @@ class Home extends Component {
     }
 
     nextProject() {
+        this.running = true;
         this.animating = true;
 
-        this.slider.next(() => {
-            console.log('next image')
-            this.animating = false;
-        })
+        this.slider.next(() => this.animating = false )
     }
 
     prevProject() {
+        this.running = true;
         this.animating = true;
 
-        this.slider.prev(() => {
-            this.animating = false;
-        })
+        this.slider.prev(() => this.animating = false )
+
+        //console.log(this.running, "runs")
+        //console.log(this.animating, "animating")
     }
 
     getProjectData() {
         this.state.projects[ this.slider.state.current ];
     }
 
-    addDeltaValue( val ) {
-        this.deltaValues.push( val )
 
-        if( this.deltaValues.length > 25 )
-            this.deltaValues.slice(0,1);
-    }
 
     // SLIDER FUNCTIONALITY
 
@@ -82,17 +76,18 @@ class Home extends Component {
         // CONFIGURE OUT IF UP OR DOWN
         let delta = ev.deltaY;
 
-        this.addDeltaValue( delta );
-        console.log( 'median:', Median(this.deltaValues) )
+        if( Math.abs( delta ) < this.threshold ) {
+            this.running = false;
+        }
 
-        if( Math.abs( delta ) >= this.threshold && !this.animating) {
-            if( delta >= 0 )
+        //console.log(this.running, this.animating)
+
+        if( Math.abs( delta ) >= this.threshold && !this.animating && !this.running ) {
+            if( delta >= 0 ) {
                 this.prevProject();
-            else {
-                this.nextProject();
-                console.log('next image called')
-
             }
+            else
+                this.nextProject();
         }
     }
 

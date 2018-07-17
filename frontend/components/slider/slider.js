@@ -30,19 +30,22 @@ class Slider extends Component {
             })
         }
 
-        TweenLite.to( this.canvas, 0.5, { opacity: this.state.length / this.state.current, onComplete: callback} )
+        TweenLite.to( this.canvas, 0.5, { opacity: this.state.current / this.state.length, onComplete: callback} )
     }
 
     prev( callback ) {
-        if( this.state.current > 0 )
+        if( this.state.current > 0 ) {
             this.setState( prevState => ({
                 current: prevState.current - 1
             }))
-
-        else
+        }
+        else {
             this.setState( prevState => ({
                 current: prevState.length
             }))
+        }
+
+        TweenLite.to( this.canvas, 0.5, { opacity: this.state.current / this.state.length, onComplete: callback} )
     }
 
 
