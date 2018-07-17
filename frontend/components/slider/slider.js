@@ -13,6 +13,8 @@ class Slider extends Component {
             length: 4
         }
 
+        this.zIndex = 0;
+
         this.next = this.next.bind(this);
         this.prev = this.prev.bind(this);
     }
@@ -26,15 +28,19 @@ class Slider extends Component {
 
         else {
             this.setState({
-                current: 0
+                current: 1
             })
         }
 
-        TweenLite.to( this.canvas, 0.5, { opacity: this.state.current / this.state.length, onComplete: callback} )
+
+        this.zIndex++;
+        document.getElementById(this.state.current).style.zIndex = this.zIndex;
+
+        TweenLite.from( document.getElementById( this.state.current ) , 0.5, { y: "100%", onComplete: callback} )
     }
 
     prev( callback ) {
-        if( this.state.current > 0 ) {
+        if( this.state.current > 1 ) {
             this.setState( prevState => ({
                 current: prevState.current - 1
             }))
@@ -45,7 +51,10 @@ class Slider extends Component {
             }))
         }
 
-        TweenLite.to( this.canvas, 0.5, { opacity: this.state.current / this.state.length, onComplete: callback} )
+        this.zIndex++;
+        document.getElementById(this.state.current).style.zIndex = this.zIndex;
+
+        TweenLite.from( document.getElementById( this.state.current ) , 0.5, { y: "-100%", onComplete: callback} )
     }
 
 
@@ -54,7 +63,13 @@ class Slider extends Component {
         return (
             <React.Fragment>
                 <style jsx>{ styles }</style>
-                <div ref={ instance => this.canvas = instance } >{ this.state.current }</div>
+                <div ref={ instance => this.canvas = instance } >
+                    { this.state.current }
+                    <img id="1" src="/static/slider/1.jpg" />
+                    <img id="2" src="/static/slider/2.jpg" />
+                    <img id="3" src="/static/slider/3.jpg" />
+                    <img id="4" src="/static/slider/4.jpg" />
+                </div>
             </React.Fragment>
         )
     }

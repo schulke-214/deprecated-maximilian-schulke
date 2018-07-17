@@ -9,5 +9,19 @@ export default css`
         width: 320px;
         height: 540px;
         background-color: salmon;
+        overflow: hidden;
+    }
+
+    img {
+        display: block;
+        height: 540px;
+
+        width: 320px;
+        
+        object-fit: cover;
+
+        position: absolute;
+        top: 0;
+        left: 0;
     }
 `;

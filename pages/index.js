@@ -18,7 +18,7 @@ class Home extends Component {
         this.slider = React.createRef();
 
         // VARIABLES
-        this.threshold = 30;
+        this.threshold = 50;
         this.animating = false;
         this.running = false;
 
@@ -83,19 +83,16 @@ class Home extends Component {
         //console.log(this.running, this.animating)
 
         if( Math.abs( delta ) >= this.threshold && !this.animating && !this.running ) {
-            if( delta >= 0 ) {
-                this.prevProject();
-            }
-            else
+            if( delta >= 0 )
                 this.nextProject();
+            else
+                this.prevProject();
         }
     }
 
     // ADD TOUCHSUPPORT LATER
     // ADD KEY SUPPORT LATER
     // ADD DRAG SUPPORT LATER
-
-
 
     render() {
         return (
