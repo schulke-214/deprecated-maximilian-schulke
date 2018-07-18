@@ -30,14 +30,21 @@ class Home extends Component {
         Object.keys(projectsJson).map( key => projects.push(projectsJson[key]) )
 
         this.state = {
-            projects
+            projects,
+            slider: {
+                current: 0,
+                length: 4
+            }
         };
+
+        console.log(this.state)
 
         // THIS FIXES
         this.handleScroll = this.handleScroll.bind(this);
         this.nextProject = this.nextProject.bind(this);
         this.prevProject = this.prevProject.bind(this);
         this.getProjectData = this.getProjectData.bind(this);
+        this.updateCurrent = this.updateCurrent.bind(this);
     }
 
     componentDidMount() {
@@ -48,6 +55,52 @@ class Home extends Component {
     componentWillUnmount() {
         // REMOVE LISTENERS
         window.removeEventListener('wheel', this.handleScroll );
+    }
+
+    updateCurrent( dir ) {
+        const setTo = newCurrent => this.setState({
+            slider: {
+                current: newCurrent,
+                length: 4
+            }
+        })
+
+        const byPrev = int => this.setState( prevState => ({
+            slider: {
+                current: prevState.slider.current + int,
+                length: 4
+            }
+        }))
+
+
+        switch( dir ) {
+            case '+': 
+
+                if( this.state.slider.current < this.state.slider.length ) {
+                    byPrev(1);
+                    console.log('byprev');
+
+                }
+                else {
+                    setTo(1);
+                    console.log('set', this.state.slider)
+                }
+                
+                console.log(this.state.slider.current, 'curr')
+
+                break;
+
+            case '-':
+                if( this.state.slider.current > 1 )
+                    byPrev(-1);
+                else 
+                    setTo( this.state.slider.length );
+                
+                break;
+
+            default:
+                return;
+        }
     }
 
     nextProject() {
@@ -70,6 +123,8 @@ class Home extends Component {
     getProjectData() {
         this.state.projects[ this.slider.state.current ];
     }
+
+    
 
 
     // SLIDER FUNCTIONALITY
@@ -109,7 +164,7 @@ class Home extends Component {
                             </Link>
                         </div>
 
-                        <Slider ref={ instance => this.slider = instance } />
+                        <Slider ref={ instance => this.slider = instance } current={this.state.slider.current} length={this.state.slider.length} updateCurrent={this.updateCurrent}/>
                         <div id="projecttitle" >zwanzig grad</div>
                         <div id="home-project-info">
                             <span>1/6</span>

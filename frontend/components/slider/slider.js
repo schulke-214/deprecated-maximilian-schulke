@@ -6,55 +6,31 @@ class Slider extends Component {
     constructor( props ) {
         super( props );
 
-        this.canvas;
-
-        this.state = {
-            current: 0,
-            length: 4
-        }
-
+        this.canvas = React.createRef();
         this.zIndex = 0;
 
         this.next = this.next.bind(this);
         this.prev = this.prev.bind(this);
+
     }
 
     next( callback ) {
-        if( this.state.current < this.state.length ) {
-            this.setState( prevState => ({
-                current: prevState.current + 1
-            }))
-        }
-
-        else {
-            this.setState({
-                current: 1
-            })
-        }
+        this.props.updateCurrent('+');
 
 
         this.zIndex++;
-        document.getElementById(this.state.current).style.zIndex = this.zIndex;
+        document.getElementById(this.props.current).style.zIndex = this.zIndex;
 
-        TweenLite.from( document.getElementById( this.state.current ) , 0.5, { y: "100%", ease: Power4.easeInOut, onComplete: callback} )
+        TweenLite.from( document.getElementById( this.props.current ) , 0.5, { y: "100%", ease: Power4.easeInOut, onComplete: callback} )
     }
 
     prev( callback ) {
-        if( this.state.current > 1 ) {
-            this.setState( prevState => ({
-                current: prevState.current - 1
-            }))
-        }
-        else {
-            this.setState( prevState => ({
-                current: prevState.length
-            }))
-        }
+        this.props.updateCurrent('-');
 
         this.zIndex++;
-        document.getElementById(this.state.current).style.zIndex = this.zIndex;
+        document.getElementById(this.props.current).style.zIndex = this.zIndex;
 
-        TweenLite.from( document.getElementById( this.state.current ) , 0.5, { y: "-100%", ease: Power4.easeInOut, onComplete: callback} )
+        TweenLite.from( document.getElementById( this.props.current ) , 0.5, { y: "-100%", ease: Power4.easeInOut, onComplete: callback} )
     }
 
 
@@ -64,7 +40,7 @@ class Slider extends Component {
             <React.Fragment>
                 <style jsx>{ styles }</style>
                 <div ref={ instance => this.canvas = instance } >
-                    { this.state.current }
+                    { this.props.current }
                     <img id="1" src="/static/slider/1.jpg" />
                     <img id="2" src="/static/slider/2.jpg" />
                     <img id="3" src="/static/slider/3.jpg" />
