@@ -32,12 +32,10 @@ class Home extends Component {
         this.state = {
             projects,
             slider: {
-                current: 0,
-                length: 4
+                current: 1,
+                length: projects.length
             }
         };
-
-        console.log(this.state)
 
         // THIS FIXES
         this.handleScroll = this.handleScroll.bind(this);
@@ -58,7 +56,7 @@ class Home extends Component {
     }
 
     updateCurrent( dir ) {
-        
+
         const setTo = newCurrent => this.setState(prevState => ({
             slider: {
                 ...prevState.slider,
@@ -106,16 +104,10 @@ class Home extends Component {
 
         this.slider.prev(() => this.animating = false )
 
-        //console.log(this.running, "runs")
-        //console.log(this.animating, "animating")
     }
 
-    getProjectData() {
-        this.state.projects[ this.slider.state.current ];
-    }
-
+    getProjectData = () => this.state.projects[ this.state.slider.current - 1 ];
     
-
 
     // SLIDER FUNCTIONALITY
 
@@ -126,8 +118,6 @@ class Home extends Component {
         if( Math.abs( delta ) < this.threshold ) {
             this.running = false;
         }
-
-        //console.log(this.running, this.animating)
 
         if( Math.abs( delta ) >= this.threshold && !this.animating && !this.running ) {
             if( delta >= 0 )
@@ -155,12 +145,12 @@ class Home extends Component {
                         </div>
 
                         <Slider ref={ instance => this.slider = instance } current={this.state.slider.current} length={this.state.slider.length} updateCurrent={this.updateCurrent}/>
-                        <div id="projecttitle" >zwanzig grad</div>
+                        <div id="projecttitle" >{this.getProjectData().meta.title}</div>
                         <div id="home-project-info">
-                            <span>1/6</span>
+                            <span>{this.state.slider.current}/{this.state.slider.length}</span>
                             <div>
-                                <span>2017</span>
-                                <span>webdesign</span>
+                                <span>{this.getProjectData().meta.year}</span>
+                                <span>{this.getProjectData().meta.category}</span>
                             </div>
                         </div>
                     </div>

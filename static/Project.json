@@ -19,6 +19,16 @@
         ]
     },
     "imSad": { 
-
+        "meta": {
+            "title": "im sad",
+            "category": "code",
+            "year": 2018,
+            "roles": [
+                "fullstack dev",
+                "organisation",
+                "creative leading"
+            ],
+            "projectImg": "static/projects/zwanzig-grad/main.jpg"
+        }
     }
 }

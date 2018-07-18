@@ -46,6 +46,7 @@ export default css`
         white-space: nowrap;
         height: 75px;
         width: min-content;
+        text-transform: lowercase;
     }
 
     #home-project-info {
