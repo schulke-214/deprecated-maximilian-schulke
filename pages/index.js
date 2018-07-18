@@ -58,35 +58,28 @@ class Home extends Component {
     }
 
     updateCurrent( dir ) {
-        const setTo = newCurrent => this.setState({
+        
+        const setTo = newCurrent => this.setState(prevState => ({
             slider: {
-                current: newCurrent,
-                length: 4
+                ...prevState.slider,
+                current: newCurrent
             }
-        })
+        }))
 
         const byPrev = int => this.setState( prevState => ({
             slider: {
-                current: prevState.slider.current + int,
-                length: 4
+                ...prevState.slider,
+                current: prevState.slider.current + int
             }
         }))
 
 
         switch( dir ) {
             case '+': 
-
-                if( this.state.slider.current < this.state.slider.length ) {
+                if( this.state.slider.current < this.state.slider.length )
                     byPrev(1);
-                    console.log('byprev');
-
-                }
-                else {
+                else
                     setTo(1);
-                    console.log('set', this.state.slider)
-                }
-                
-                console.log(this.state.slider.current, 'curr')
 
                 break;
 
@@ -97,9 +90,6 @@ class Home extends Component {
                     setTo( this.state.slider.length );
                 
                 break;
-
-            default:
-                return;
         }
     }
 
