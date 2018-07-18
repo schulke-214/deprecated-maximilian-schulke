@@ -3,20 +3,20 @@ import css from 'styled-jsx/css';
 
 export default css`
     div {
+        z-index: -1;
         position: absolute;
-        top: calc( 50vh - 270px);
-        left: calc( 50vw - 160px );
-        width: 320px;
-        height: 540px;
+        left: calc( 50% - 12.5% );
+        width: 25%;
+        height: 100%;
         background-color: salmon;
         overflow: hidden;
     }
 
     img {
         display: block;
-        height: 540px;
+        height: 100%;
 
-        width: 320px;
+        width: 100%;
         
         object-fit: cover;
 

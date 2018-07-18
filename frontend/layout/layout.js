@@ -14,12 +14,24 @@ class Layout extends Component {
         this.state = {
             isLayout: true
         }
+
+        this.initCursor = this.initCursor.bind(this);
     }
+
+    componentDidMount() {
+        this.initCursor();
+    }
+
+    initCursor() {
+
+    }
+
     render() {
         return (
             <React.Fragment>
                 <style jsx>{styles}</style>
                 <div id="layout-layer">
+                    <div id="mouse-layer"></div>
                     <div id="gui-layer">
                         <div id="gui-wrapper-top" >
                             <Link href="/">

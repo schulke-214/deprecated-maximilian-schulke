@@ -36,7 +36,7 @@ class Slider extends Component {
         this.zIndex++;
         document.getElementById(this.state.current).style.zIndex = this.zIndex;
 
-        TweenLite.from( document.getElementById( this.state.current ) , 0.5, { y: "100%", onComplete: callback} )
+        TweenLite.from( document.getElementById( this.state.current ) , 0.5, { y: "100%", ease: Power4.easeInOut, onComplete: callback} )
     }
 
     prev( callback ) {
@@ -54,7 +54,7 @@ class Slider extends Component {
         this.zIndex++;
         document.getElementById(this.state.current).style.zIndex = this.zIndex;
 
-        TweenLite.from( document.getElementById( this.state.current ) , 0.5, { y: "-100%", onComplete: callback} )
+        TweenLite.from( document.getElementById( this.state.current ) , 0.5, { y: "-100%", ease: Power4.easeInOut, onComplete: callback} )
     }
 
 

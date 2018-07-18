@@ -11,6 +11,8 @@ export default css`
 
         top: ${variables.spacing.layout.marginOut + 'vw' };
         left: ${variables.spacing.layout.marginOut + 'vw' };
+
+        z-index: 1000;
     }
 
     #gui-layer {

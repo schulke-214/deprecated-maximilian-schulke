@@ -10,6 +10,9 @@ import Slider from '../frontend/components/slider/slider';
 // JSON IMPORT
 import projectsJson from '../static/Project.json';
 
+// STYLE IMPRTS
+import styles from '../frontend/styles/pages/home'
+
 class Home extends Component {
     constructor( props ) {
         super( props );
@@ -69,7 +72,6 @@ class Home extends Component {
     }
 
 
-
     // SLIDER FUNCTIONALITY
 
     handleScroll( ev ) {
@@ -97,15 +99,27 @@ class Home extends Component {
     render() {
         return (
             <React.Fragment>
+                <style jsx>{styles}</style>
                 <div id="home-wrapper">
-                    <div id="home-overlay">
+                    <div id="home-inner">
+                        <div id="home-display">
+                            <span>circle</span>
+                            <Link href="project/zwanzig-grad">
+                                <a>view project</a>
+                            </Link>
+                        </div>
+
                         <Slider ref={ instance => this.slider = instance } />
+                        <div id="projecttitle" >zwanzig grad</div>
+                        <div id="home-project-info">
+                            <span>1/6</span>
+                            <div>
+                                <span>2017</span>
+                                <span>webdesign</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                {/* <Link href="project/zwanzig-grad">
-                    <a>my work</a>
-                </Link> */}
             </React.Fragment>
         )
     }
