@@ -56,4 +56,24 @@ export default css`
         /* - Half Width + Half Height */
         left: ${-25 + 7.5}px;
     }
+
+    @media screen and ( max-width: ${ variables.breakpoints.tablet }px ) {
+        #layout-layer {
+            width: calc( 100vw - 100px );
+            height: calc( 100vh - 100px );
+    
+            top: 50px;
+            left: 50px;
+        }
+    }
+
+    @media screen and ( max-width:  ${ variables.breakpoints.phone }px ) {
+        #layout-layer {
+            width: calc( 100vw - 50px );
+            height: calc( 100vh - 50px );
+    
+            top: 25px;
+            left: 25px;
+        }
+    }
 `;

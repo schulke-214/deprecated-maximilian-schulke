@@ -140,15 +140,15 @@ class Home extends Component {
                         <div id="home-display">
                             <span>circle</span>
                             <Link href="project/zwanzig-grad">
-                                <a>view project</a>
+                                <a id="home-view-project" >view project</a>
                             </Link>
                         </div>
 
                         <Slider ref={ instance => this.slider = instance } current={this.state.slider.current} length={this.state.slider.length} updateCurrent={this.updateCurrent}/>
-                        <div id="projecttitle" >{this.getProjectData().meta.title}</div>
+                        <div id="projectTitle" >{this.getProjectData().meta.title}</div>
                         <div id="home-project-info">
                             <span>{this.state.slider.current}/{this.state.slider.length}</span>
-                            <div>
+                            <div id="home-date-topic" >
                                 <span>{this.getProjectData().meta.year}</span>
                                 <span>{this.getProjectData().meta.category}</span>
                             </div>

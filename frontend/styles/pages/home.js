@@ -35,8 +35,13 @@ export default css`
         justify-content: space-between;
     }
 
+    #home-view-project {
+        position: absolute;
+        top: calc( 100% - 75px);
+    }
 
-    #projecttitle {
+
+    #projectTitle {
         position: absolute;
         top: calc(50% - 37.5px);
         left: 50%;
@@ -56,11 +61,21 @@ export default css`
 
         /* OFFSET BY LAYOUT WIDTH / 4 */
         left: calc( 50% + 12.5% + 5%);
-        display: flex;
+        
+        /*display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-between;*/
     }
 
+    #home-date-topic {
+        position: absolute;
+        top: calc( 100% - 75px);
+        display: flex;
+        flex-direction: column;
+    }
 
+    #home-date-topic > span:first-child {
+        margin-bottom: 15px;
+    }
 
 `;

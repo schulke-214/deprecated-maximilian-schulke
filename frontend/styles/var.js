@@ -7,7 +7,7 @@ const font = {
 
 const colors = {
     main: '#121212',
-    highlight: '#fff'
+    highlight: '#fff' 
 }
 
 const spacing = {
@@ -16,8 +16,14 @@ const spacing = {
     }
 }
 
+const breakpoints = {
+    tablet: 1024,
+    phone: 620
+}
+
 module.exports = {
     font,
     colors,
-    spacing
+    spacing,
+    breakpoints
 }

@@ -30,5 +30,18 @@
             ],
             "projectImg": "static/projects/zwanzig-grad/main.jpg"
         }
+    },
+    "reciper": { 
+        "meta": {
+            "title": "reciper",
+            "category": "code",
+            "year": 2018,
+            "roles": [
+                "fullstack dev",
+                "organisation",
+                "creative leading"
+            ],
+            "projectImg": "static/projects/zwanzig-grad/main.jpg"
+        }
     }
 }
