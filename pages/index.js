@@ -11,6 +11,7 @@ import Slider from '../frontend/components/slider/slider';
 import projectsJson from '../static/Project.json';
 
 // STYLE IMPRTS
+import commonStyles from '../frontend/styles/pages/home-common';
 import desktopStyles from '../frontend/styles/pages/home-desktop';
 import mobileStyles from '../frontend/styles/pages/home-mobile';
 
@@ -140,24 +141,22 @@ class Home extends Component {
                 <React.Fragment>
                     <style jsx>{desktopStyles}</style>
 
-                    <div id="home-inner">
-                        <div id="home-display">
-                            <span id="circle" >circle</span>
-                            <Link href="project/zwanzig-grad">
-                                <a id="home-view-project" >view project</a>
-                            </Link>
-                        </div>
-
-                        <Slider ref={ instance => this.slider = instance } current={this.state.slider.current} length={this.state.slider.length} updateCurrent={this.updateCurrent}/>
-                        <div id="projectTitle" >{this.getProjectData().meta.title}</div>
-                        <div id="home-project-info">
-                            <span>{this.state.slider.current}/{this.state.slider.length}</span>
-                            <div id="home-date-topic" >
-                                <span>{this.getProjectData().meta.year}</span>
-                                <span>{this.getProjectData().meta.category}</span>
-                            </div>
-                        </div>
+                    <div id="home-display">
+                        <span id="circle" >circle</span>
+                        <Link href="project/zwanzig-grad">
+                            <a id="home-view-project" >view project</a>
+                        </Link>
                     </div>
+
+                    {/* <Slider ref={ instance => this.slider = instance } current={this.state.slider.current} length={this.state.slider.length} updateCurrent={this.updateCurrent}/>
+                    <div id="projectTitle" >{this.getProjectData().meta.title}</div>
+                    <div id="home-project-info">
+                        <span>{this.state.slider.current}/{this.state.slider.length}</span>
+                        <div id="home-date-topic" >
+                            <span>{this.getProjectData().meta.year}</span>
+                            <span>{this.getProjectData().meta.category}</span>
+                        </div>
+                    </div> */}
                 </React.Fragment>
             )
         }
@@ -174,8 +173,11 @@ class Home extends Component {
             
         return (
             <React.Fragment>
+                <style jsx>{commonStyles}</style>
                 <div id="home-wrapper">
-                    { Content }
+                    <div id="home-inner">
+                        { Content }
+                    </div>
                 </div>
             </React.Fragment>
         )
