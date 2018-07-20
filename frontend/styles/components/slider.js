@@ -5,8 +5,8 @@ export default css`
     div {
         z-index: -1;
         position: absolute;
-        left: calc( 50% - 12.5% );
-        width: 25%;
+        left: calc( 50% - 120px );
+        width: 240px/*25%*/;
         height: 100%;
         background-color: salmon;
         overflow: hidden;

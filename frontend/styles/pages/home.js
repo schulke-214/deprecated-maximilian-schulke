@@ -23,7 +23,6 @@ export default css`
     }
 
     #home-display {
-        width: 200px;
         height: 100%;  
         position: absolute;
 
@@ -52,10 +51,11 @@ export default css`
         height: 75px;
         width: min-content;
         text-transform: lowercase;
+        transition: all 0.5s ease-in-out;
+        transition-property: font-size height top;
     }
 
     #home-project-info {
-        width: 200px;
         height: 100%;  
         position: absolute;
 
@@ -77,5 +77,28 @@ export default css`
     #home-date-topic > span:first-child {
         margin-bottom: 15px;
     }
+
+    @media screen and ( max-width: ${ variables.breakpoints.desktop }px ) {
+        #projectTitle {
+            font-size: 60px;
+            height: 50px;
+            top: calc(50% - 25px);
+
+        }
+    }
+
+    @media screen and ( max-width: ${ variables.breakpoints.tablet }px ) {
+        #circle {
+            display: none;
+        }
+    
+        #home-display {
+            height: min-content;
+        }
+
+        
+
+    }
+
 
 `;

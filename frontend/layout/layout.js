@@ -7,6 +7,7 @@ import Logo from '../components/logo/logo';
 // IMPORT STYLES
 import styles from '../styles/components/layout';
 
+
 class Layout extends Component {
     constructor( props ) {
         super( props )
@@ -63,4 +64,4 @@ class Layout extends Component {
     }
 }
 
-export default Layout
+export default Layout;

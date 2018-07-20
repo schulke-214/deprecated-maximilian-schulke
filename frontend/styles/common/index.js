@@ -45,8 +45,12 @@ export default css`
 
     a {
         text-transform: lowercase;
+        white-space: nowrap;
     }
 
+    span {
+        white-space: nowrap;
+    }
     /* LOGO CLASSES */
     
     .logo {

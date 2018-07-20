@@ -17,6 +17,7 @@ const spacing = {
 }
 
 const breakpoints = {
+    desktop: 1280,
     tablet: 1024,
     phone: 620
 }

@@ -65,15 +65,19 @@ export default css`
             top: 50px;
             left: 50px;
         }
+
+        #gui-wrapper-top > span { 
+            display: none;
+        }
     }
 
     @media screen and ( max-width:  ${ variables.breakpoints.phone }px ) {
         #layout-layer {
-            width: calc( 100vw - 50px );
-            height: calc( 100vh - 50px );
+            width: calc( 100vw - 75px );
+            height: calc( 100vh - 75px );
     
-            top: 25px;
-            left: 25px;
+            top: 37.5px;
+            left: 37.5px;
         }
     }
 `;

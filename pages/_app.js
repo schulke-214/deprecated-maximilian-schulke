@@ -4,6 +4,9 @@ import React from 'react';
 import App, { Container } from 'next/app';
 import Head from 'next/head';
 
+// CONTEXT PROVIDER IMPORTS
+import { DeviceProvider } from '../frontend/context/device';
+
 // COMPONENT IMPORTS
 import Layout from '../frontend/layout/layout';
 import PageLoader from '../frontend/components/pageLoader/pageLoader';
@@ -13,6 +16,7 @@ import { capitalize } from '../frontend/utility/stringHelper';
 
 // STYLE IMPORTS
 import styles from '../frontend/styles/common/index';
+
 
 class Application extends App {
     constructor( props ) {
@@ -28,6 +32,10 @@ class Application extends App {
     }
 
     componentDidMount() {
+        // if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        //     window.location = "https://www.domain.com/lightweight";
+        // }
+
         document.getElementsByTagName('body')[0].style.display = "block";
     }
 
@@ -83,22 +91,24 @@ class Application extends App {
         const { Component, pageProps } = this.props;
         
         return (
-            <Container >
-                <Head>
-                    { this.dynamicPageTitle() }
-                </Head>
+            <DeviceProvider>
+                <Container >
+                    <Head>
+                        { this.dynamicPageTitle() }
+                    </Head>
 
-                {/* ADDING GLOBAL STYLES */}
-                <style jsx global>{styles}</style>
+                    {/* ADDING GLOBAL STYLES */}
+                    <style jsx global>{styles}</style>
 
-                {/* PAGELOADER */}
-                { this.state.pageLoader.isOpen ? <PageLoader finished={ this.removePageLoader } /> : null }
+                    {/* PAGELOADER */}
+                    { this.state.pageLoader.isOpen ? <PageLoader finished={ this.removePageLoader } /> : null }
 
 
-                <Layout>
-                    <Component {...pageProps} />
-                </Layout>
-            </Container>
+                    {/* <Layout> */}
+                        <Component {...pageProps} />
+                    {/* </Layout> */}
+                </Container>
+            </DeviceProvider>
         )
     }
 }
