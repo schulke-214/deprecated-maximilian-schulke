@@ -104,9 +104,9 @@ class Application extends App {
                     { this.state.pageLoader.isOpen ? <PageLoader finished={ this.removePageLoader } /> : null }
 
 
-                    {/* <Layout> */}
+                    <Layout>
                         <Component {...pageProps} />
-                    {/* </Layout> */}
+                    </Layout>
                 </Container>
             </DeviceProvider>
         )

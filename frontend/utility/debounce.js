@@ -1,4 +1,4 @@
-export default {
+export default () => ({
     oldTime: new Date().getTime(),
 
     call(callback, interval) {
@@ -9,5 +9,5 @@ export default {
             callback();
         }
     }
-};
+});
 

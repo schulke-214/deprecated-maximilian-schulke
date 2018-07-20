@@ -11,7 +11,8 @@ import Slider from '../frontend/components/slider/slider';
 import projectsJson from '../static/Project.json';
 
 // STYLE IMPRTS
-import styles from '../frontend/styles/pages/home'
+import desktopStyles from '../frontend/styles/pages/home-desktop';
+import mobileStyles from '../frontend/styles/pages/home-mobile';
 
 class Home extends Component {
     constructor( props ) {
@@ -132,10 +133,13 @@ class Home extends Component {
     // ADD DRAG SUPPORT LATER
 
     render() {
-        return (
-            <React.Fragment>
-                <style jsx>{styles}</style>
-                <div id="home-wrapper">
+        let Content;
+
+        if( !this.props.device.isSmall && !this.props.device.isMobile ) {
+            Content = (
+                <React.Fragment>
+                    <style jsx>{desktopStyles}</style>
+
                     <div id="home-inner">
                         <div id="home-display">
                             <span id="circle" >circle</span>
@@ -143,7 +147,7 @@ class Home extends Component {
                                 <a id="home-view-project" >view project</a>
                             </Link>
                         </div>
-{/* 
+
                         <Slider ref={ instance => this.slider = instance } current={this.state.slider.current} length={this.state.slider.length} updateCurrent={this.updateCurrent}/>
                         <div id="projectTitle" >{this.getProjectData().meta.title}</div>
                         <div id="home-project-info">
@@ -152,8 +156,26 @@ class Home extends Component {
                                 <span>{this.getProjectData().meta.year}</span>
                                 <span>{this.getProjectData().meta.category}</span>
                             </div>
-                        </div> */}
+                        </div>
                     </div>
+                </React.Fragment>
+            )
+        }
+
+        else  {
+            Content = (
+                <React.Fragment>
+                    <style jsx>{mobileStyles}</style>
+                    <h1>small screen</h1>
+                </React.Fragment>
+            )
+
+        }
+            
+        return (
+            <React.Fragment>
+                <div id="home-wrapper">
+                    { Content }
                 </div>
             </React.Fragment>
         )

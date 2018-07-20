@@ -1,8 +1,6 @@
 // ORIGINAL AUTHOR github@marvin1003
 // I just optimized this a bit.
 
-import Debouncer from '../utility/debounce';
-
 export const DeviceContext = React.createContext();
 
 export class DeviceProvider extends React.Component {
@@ -20,7 +18,6 @@ export class DeviceProvider extends React.Component {
 
     componentDidMount() {
         this.target();
-        
         window.addEventListener('resize', this.target);
     }
 
@@ -29,17 +26,14 @@ export class DeviceProvider extends React.Component {
     }
 
     target() {
-        Debouncer.call(() => {
-            let width = window.innerWidth;
-            let isSmall = window.innerWidth <= 1024;
-    
-            console.log('hi')
-            this.setState({
-                width,
-                isSmall,
-                isMobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-            });
-        }, 250)
+        let width = window.innerWidth;
+        let isSmall = window.innerWidth <= 1024;
+
+        this.setState({
+            width,
+            isSmall,
+            isMobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+        });
     }
 
     render() {
