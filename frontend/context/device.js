@@ -9,6 +9,7 @@ export class DeviceProvider extends React.Component {
 
         this.state = {
             width: null,
+            hideDesktop: null,
             isSmall: null,
             isMobile: null
         }
@@ -28,10 +29,12 @@ export class DeviceProvider extends React.Component {
     target() {
         let width = window.innerWidth;
         let isSmall = window.innerWidth <= 1024;
+        let hideDesktop = window.innerWidth <= 540;
 
         this.setState({
             width,
             isSmall,
+            hideDesktop,
             isMobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
         });
     }

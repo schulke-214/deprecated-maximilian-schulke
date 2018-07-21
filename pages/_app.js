@@ -36,6 +36,7 @@ class Application extends App {
         //     window.location = "https://www.domain.com/lightweight";
         // }
 
+        window.LIGHTWEIGHT = "https://www.domain.com/lightweight";
         document.getElementsByTagName('body')[0].style.display = "block";
     }
 

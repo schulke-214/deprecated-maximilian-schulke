@@ -2,6 +2,15 @@ import css from 'styled-jsx/css';
 import variables from '../var';
 
 export default css`
+    #home-inner {
+        position: absolute;
+        top: calc( 50% - 25vh );
+
+        width: 100%;
+        height: 50vh;
+
+        border: 1px solid grey;
+    }
 
     #home-display {
         height: 100%;  

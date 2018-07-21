@@ -140,44 +140,66 @@ class Home extends Component {
             Content = (
                 <React.Fragment>
                     <style jsx>{desktopStyles}</style>
+                    <div id="home-inner">
+                        {/* <div id="home-display">
+                            <span id="circle" >circle</span>
+                            <Link href="project/zwanzig-grad">
+                                <a id="home-view-project" >view project</a>
+                            </Link>
+                        </div> */}
 
-                    <div id="home-display">
-                        <span id="circle" >circle</span>
-                        <Link href="project/zwanzig-grad">
-                            <a id="home-view-project" >view project</a>
-                        </Link>
+                        <Slider ref={ instance => this.slider = instance } current={this.state.slider.current} length={this.state.slider.length} updateCurrent={this.updateCurrent}/>
+                        {/* <div id="projectTitle" >{this.getProjectData().meta.title}</div>
+                        <div id="home-project-info">
+                            <span>{this.state.slider.current}/{this.state.slider.length}</span>
+                            <div id="home-date-topic" >
+                                <span>{this.getProjectData().meta.year}</span>
+                                <span>{this.getProjectData().meta.category}</span>
+                            </div>
+                        </div> */}
                     </div>
-
-                    {/* <Slider ref={ instance => this.slider = instance } current={this.state.slider.current} length={this.state.slider.length} updateCurrent={this.updateCurrent}/>
-                    <div id="projectTitle" >{this.getProjectData().meta.title}</div>
-                    <div id="home-project-info">
-                        <span>{this.state.slider.current}/{this.state.slider.length}</span>
-                        <div id="home-date-topic" >
-                            <span>{this.getProjectData().meta.year}</span>
-                            <span>{this.getProjectData().meta.category}</span>
-                        </div>
-                    </div> */}
                 </React.Fragment>
             )
         }
 
-        else  {
+        else if ( this.props.device.isSmall && !this.props.device.hideDesktop ) {
             Content = (
                 <React.Fragment>
-                    <style jsx>{mobileStyles}</style>
-                    <h1>small screen</h1>
+                    <div id="home-inner">
+                        <style jsx>{mobileStyles}</style>
+                        <div id="projectTitle" >{this.getProjectData().meta.title}</div>
+                        <div id="home-wrapper" >
+                            <div id="home-top" >
+
+                            </div>
+                            <Slider ref={ instance => this.slider = instance } current={this.state.slider.current} length={this.state.slider.length} updateCurrent={this.updateCurrent}/>
+                            <div id="home-lower">
+
+                            </div>
+                        </div>
+                    </div>
                 </React.Fragment>
             )
-
         }
-            
+
+        else if ( this.props.device.isMobile ) {
+            window.location = window.LIGHTWEIGHT;
+        }
+        
+        else {
+            Content = (
+                <React.Fragment>
+                    {/* <style jsx>{fallbackStyles}</style> */}
+                    <p>Please use a bigger device</p>
+                </React.Fragment>
+            )  
+        }
+
         return (
             <React.Fragment>
                 <style jsx>{commonStyles}</style>
                 <div id="home-wrapper">
-                    <div id="home-inner">
-                        { Content }
-                    </div>
+                    { Content }
                 </div>
             </React.Fragment>
         )

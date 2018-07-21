@@ -14,12 +14,13 @@ export default css`
         left: ${variables.spacing.layout.marginOut + 'vw' };
     }
 
-    #home-inner {
-        position: absolute;
-        top: calc( 50% - 25vh );
+    @media screen and ( max-width: ${ variables.breakpoints.tablet }px ) {
+        #home-wrapper {
+            width: calc( 100vw - 100px );
+            height: calc( 100vh - 100px );
 
-        width: 100%;
-        height: 50vh;
+            top: 50px;
+            left: 50px;
+        }
     }
-
 `;
