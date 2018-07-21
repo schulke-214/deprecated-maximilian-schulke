@@ -29,7 +29,7 @@ export class DeviceProvider extends React.Component {
     target() {
         let width = window.innerWidth;
         let isSmall = window.innerWidth <= 1024;
-        let hideDesktop = window.innerWidth <= 540;
+        let hideDesktop = window.innerWidth <= 320;
 
         this.setState({
             width,

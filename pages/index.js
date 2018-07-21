@@ -15,6 +15,7 @@ import commonStyles from '../frontend/styles/pages/home-common';
 import desktopStyles from '../frontend/styles/pages/home-desktop';
 import mobileStyles from '../frontend/styles/pages/home-mobile';
 
+
 class Home extends Component {
     constructor( props ) {
         super( props );
@@ -148,7 +149,11 @@ class Home extends Component {
                             </Link>
                         </div> */}
 
-                        <Slider ref={ instance => this.slider = instance } current={this.state.slider.current} length={this.state.slider.length} updateCurrent={this.updateCurrent}/>
+                        <Slider 
+                            ref={ instance => this.slider = instance } 
+                            current={this.state.slider.current} 
+                            length={this.state.slider.length} 
+                            updateCurrent={this.updateCurrent} />
                         {/* <div id="projectTitle" >{this.getProjectData().meta.title}</div>
                         <div id="home-project-info">
                             <span>{this.state.slider.current}/{this.state.slider.length}</span>
@@ -162,7 +167,7 @@ class Home extends Component {
             )
         }
 
-        else if ( this.props.device.isSmall && !this.props.device.hideDesktop ) {
+        else if ( !this.props.device.hideDesktop ) {
             Content = (
                 <React.Fragment>
                     <div id="home-inner">
@@ -170,11 +175,22 @@ class Home extends Component {
                         <div id="projectTitle" >{this.getProjectData().meta.title}</div>
                         <div id="home-wrapper" >
                             <div id="home-top" >
-
+                                <span>{this.state.slider.current}/{this.state.slider.length}</span>
                             </div>
-                            <Slider ref={ instance => this.slider = instance } current={this.state.slider.current} length={this.state.slider.length} updateCurrent={this.updateCurrent}/>
+                            <Slider
+                                ref={ instance => this.slider = instance } 
+                                current={this.state.slider.current} 
+                                length={this.state.slider.length} 
+                                updateCurrent={this.updateCurrent} 
+                                isMobile />
                             <div id="home-lower">
-
+                                <Link href="project/zwanzig-grad">
+                                    <a id="home-view-project" >view project</a>
+                                </Link>
+                                <div id="home-date-topic" >
+                                    <span>{this.getProjectData().meta.year}</span>
+                                    <span>{this.getProjectData().meta.category}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -182,9 +198,9 @@ class Home extends Component {
             )
         }
 
-        else if ( this.props.device.isMobile ) {
-            window.location = window.LIGHTWEIGHT;
-        }
+        // else if ( this.props.device.isMobile ) {
+        //     window.location = window.LIGHTWEIGHT;
+        // }
         
         else {
             Content = (

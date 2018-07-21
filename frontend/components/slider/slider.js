@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 
-import styles from '../../styles/components/slider';
+import commonStyles from '../../styles/components/slider/slider-common';
+// CHANGE TO DYNAMIXLY INSERTED STYLESHEET - DEPENDING ON SCREEN SIZE
+import dekstopStyles from '../../styles/components/slider/slider-desktop';
+import mobileStyles from '../../styles/components/slider/slider-mobile';
 
 class Slider extends Component {
     constructor( props ) {
@@ -33,7 +36,8 @@ class Slider extends Component {
     render() {
         return (
             <React.Fragment>
-                <style jsx>{ styles }</style>
+                <style jsx>{ commonStyles }</style>
+                <style jsx>{ mobileStyles }</style>
                 <div ref={ instance => this.canvas = instance } >
                     { this.props.current }
                     <img id="4" src="/static/slider/4.jpg" />

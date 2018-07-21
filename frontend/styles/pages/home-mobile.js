@@ -7,7 +7,6 @@ export default css`
         width: 100%;
         height: 100%;
 
-        border: 1px solid grey;
     }
 
     #home-wrapper {
@@ -22,31 +21,56 @@ export default css`
         height: 100%;
 
 
-        border: 1px solid red;
     } 
 
     #home-top {
         flex: 1 1 0;
-        border: 1px solid orange;
+        
+        display: flex;
+        align-items: flex-end;
+    }
+
+    #home-top > span {
+        margin-bottom: 50px;
     }
 
     #home-lower {
         flex: 1 1 0;
-        border: 1px solid orange;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
     }
 
     #projectTitle {
         position: absolute;
-        top: calc(50% - 37.5px);
+        top: calc(50% - 25px);
         font-family: 'Spectral';
         font-weight: 600;
-        font-size: 80px;
+        font-size: 60px;
         white-space: nowrap;
-        height: 75px;
+        height: 50px;
         width: 100%;
         text-align: center;
         text-transform: lowercase;
         transition: all 0.5s ease-in-out;
         transition-property: font-size height top;
+    }
+
+    #home-view-project {
+        margin-top: 50px;
+    }
+
+    #home-date-topic {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+        width: min-content;
+    }
+
+    #home-date-topic > span:first-child {
+        margin-bottom: 15px;
     }
 `;
