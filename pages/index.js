@@ -163,7 +163,7 @@ class Home extends Component {
                 <React.Fragment>
                     <div id="home-inner">
                         <style jsx>{mobileStyles}</style>
-                        <div id="projectTitle" >{this.getProjectData().meta.title}</div>
+                        {/* <div id="projectTitle" >{this.getProjectData().meta.title}</div> */}
                         <div id="home-inner-wrap" >
                             <div id="home-top" >
                                 <span>{this.state.slider.current}/{this.state.slider.length}</span>

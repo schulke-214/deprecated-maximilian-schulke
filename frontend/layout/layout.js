@@ -32,7 +32,7 @@ class Layout extends Component {
         return (
             <React.Fragment>
                 <style jsx>{styles}</style>
-                {/* <div id="layout-layer">
+                <div id="layout-layer">
                     <div id="mouse-layer"></div>
                     <div id="gui-layer">
                         <div id="gui-wrapper-top" >
@@ -47,7 +47,7 @@ class Layout extends Component {
                         <div id="gui-wrapper-mid">
                             <a href="https://github.com/schulke-214/" target="_blank" >github</a>
                              
-                            <div>UP & DOWN ARROW</div>
+                            {/* <div>UP & DOWN ARROW</div> */}
                         </div>
                         <div id="gui-wrapper-low">
                             <Link href="/about">
@@ -56,7 +56,7 @@ class Layout extends Component {
                             <a href="mailto:info@domain.de">contact</a>
                         </div>
                     </div>
-                </div> */}
+                </div>
                 <main>
                     <DeviceContext.Consumer>
                         { state => React.cloneElement(this.props.children, { device: state }) }

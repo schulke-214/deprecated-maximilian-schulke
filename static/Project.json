@@ -2,7 +2,7 @@
     "zwanzigGrad": {
         "meta": {
             "title": "Zwanzig Grad",
-            "category": "Web Design",
+            "category": "design",
             "year": 2017,
             "roles": [
                 "ui",
@@ -21,7 +21,7 @@
     "imSad": { 
         "meta": {
             "title": "im sad",
-            "category": "code",
+            "category": "frontend",
             "year": 2018,
             "roles": [
                 "fullstack dev",
@@ -34,8 +34,8 @@
     "reciper": { 
         "meta": {
             "title": "reciper",
-            "category": "code",
-            "year": 2018,
+            "category": "fullstack",
+            "year": 2019,
             "roles": [
                 "fullstack dev",
                 "organisation",
