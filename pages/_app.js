@@ -9,7 +9,7 @@ import { DeviceProvider } from '../frontend/context/device';
 
 // COMPONENT IMPORTS
 import Layout from '../frontend/layout/layout';
-import PageLoader from '../frontend/components/pageLoader/pageLoader';
+import PageLoader from '../frontend/components/common/pageLoader/pageLoader';
 
 // UTILITY IMPORTS
 import { capitalize } from '../frontend/utility/stringHelper';

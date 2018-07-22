@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 
 // COMPONENT IMPORTS
-import Slider from '../frontend/components/slider/slider';
+import Slider from '../frontend/components/pages/home/slider/slider';
 
 // JSON IMPORT
 import projectsJson from '../static/Project.json';

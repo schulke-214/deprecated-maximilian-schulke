@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
 // STYLE IMPORTS
-import commonStyles from '../../styles/components/slider/slider-common';
+import commonStyles from '../../../../styles/components/slider/slider-common';
 // CHANGE TO DYNAMIXLY INSERTED STYLESHEET - DEPENDING ON SCREEN SIZE
 
-import mobileStyles from '../../styles/components/slider/slider-mobile';
-import dekstopStyles from '../../styles/components/slider/slider-desktop';
+import mobileStyles from '../../../../styles/components/slider/slider-mobile';
+import dekstopStyles from '../../../../styles/components/slider/slider-desktop';
 
 class Slider extends Component {
     constructor( props ) {

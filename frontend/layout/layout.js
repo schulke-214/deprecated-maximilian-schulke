@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 
 // COMPONENT IMPORTS
-import Logo from '../components/logo/logo';
+import Logo from '../components/common/logo/logo';
 
 // IMPORT STYLES
 import styles from '../styles/components/layout';

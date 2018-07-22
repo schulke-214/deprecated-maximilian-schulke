@@ -4,8 +4,8 @@ import React, { Component } from 'react';
 import Logo from '../logo/logo';
 
 // STYLE IMPORTS
-import layoutStyles from '../../styles/components/layout';
-import styles from '../../styles/components/pageLoader';
+import layoutStyles from '../../../styles/components/layout';
+import styles from '../../../styles/components/pageLoader';
 
 
 class pageLoader extends Component {
