@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
 
-// UTILITY IMPORTS
-// import { Median } from '../frontend/utility/math';
-
 // COMPONENT IMPORTS
 import Slider from '../frontend/components/slider/slider';
 
@@ -14,7 +11,6 @@ import projectsJson from '../static/Project.json';
 import commonStyles from '../frontend/styles/pages/home-common';
 import desktopStyles from '../frontend/styles/pages/home-desktop';
 import mobileStyles from '../frontend/styles/pages/home-mobile';
-
 
 class Home extends Component {
     constructor( props ) {
@@ -59,7 +55,6 @@ class Home extends Component {
     }
 
     updateCurrent( dir ) {
-
         const setTo = newCurrent => this.setState(prevState => ({
             slider: {
                 ...prevState.slider,
@@ -74,14 +69,12 @@ class Home extends Component {
             }
         }))
 
-
         switch( dir ) {
             case '+': 
                 if( this.state.slider.current < this.state.slider.length )
                     byPrev(1);
                 else
                     setTo(1);
-
                 break;
 
             case '-':
@@ -89,7 +82,6 @@ class Home extends Component {
                     byPrev(-1);
                 else 
                     setTo( this.state.slider.length );
-                
                 break;
         }
     }
@@ -106,12 +98,10 @@ class Home extends Component {
         this.animating = true;
 
         this.slider.prev(() => this.animating = false )
-
     }
 
     getProjectData = () => this.state.projects[ this.state.slider.current - 1 ];
     
-
     // SLIDER FUNCTIONALITY
 
     handleScroll( ev ) {
@@ -137,6 +127,7 @@ class Home extends Component {
     render() {
         let Content;
 
+        // DESKTOP LAYOUT
         if( !this.props.device.isSmall && !this.props.device.isMobile ) {
             Content = (
                 <React.Fragment>
@@ -148,7 +139,6 @@ class Home extends Component {
                                 <a id="home-view-project" >view project</a>
                             </Link>
                         </div> */}
-
                         <Slider 
                             ref={ instance => this.slider = instance } 
                             current={this.state.slider.current} 
@@ -167,13 +157,14 @@ class Home extends Component {
             )
         }
 
+        // MOBILE LAYOUT
         else if ( !this.props.device.hideDesktop ) {
             Content = (
                 <React.Fragment>
                     <div id="home-inner">
                         <style jsx>{mobileStyles}</style>
                         <div id="projectTitle" >{this.getProjectData().meta.title}</div>
-                        <div id="home-wrapper" >
+                        <div id="home-inner-wrap" >
                             <div id="home-top" >
                                 <span>{this.state.slider.current}/{this.state.slider.length}</span>
                             </div>

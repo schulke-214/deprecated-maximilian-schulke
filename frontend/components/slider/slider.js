@@ -16,7 +16,6 @@ class Slider extends Component {
 
         this.next = this.next.bind(this);
         this.prev = this.prev.bind(this);
-
     }
 
     next( callback ) {

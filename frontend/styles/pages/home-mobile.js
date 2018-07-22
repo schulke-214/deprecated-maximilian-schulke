@@ -6,21 +6,18 @@ export default css`
         position: relative;
         width: 100%;
         height: 100%;
-
     }
 
-    #home-wrapper {
+    #home-inner-wrap {
         position: absolute;
 
         display: flex;
         flex-direction: column;
 
         top: 0;
-        left: calc( 50% - 160px );
-        width: 320px;
+        left: 25%;
+        width: 50%;
         height: 100%;
-
-
     } 
 
     #home-top {
@@ -31,7 +28,7 @@ export default css`
     }
 
     #home-top > span {
-        margin-bottom: 50px;
+        margin-bottom: 5vh;
     }
 
     #home-lower {
@@ -48,7 +45,7 @@ export default css`
         top: calc(50% - 25px);
         font-family: 'Spectral';
         font-weight: 600;
-        font-size: 60px;
+        font-size: 70px;
         white-space: nowrap;
         height: 50px;
         width: 100%;
@@ -59,11 +56,11 @@ export default css`
     }
 
     #home-view-project {
-        margin-top: 50px;
+        margin-top: 5vh;
     }
 
     #home-date-topic {
-        margin-top: 50px;
+        margin-top: 5vh;
         display: flex;
         flex-direction: column;
         text-align: right;
@@ -72,5 +69,20 @@ export default css`
 
     #home-date-topic > span:first-child {
         margin-bottom: 15px;
+    }
+
+
+    @media screen and ( max-width: ${ variables.breakpoints.phone }px ) {
+        #home-inner-wrap {
+            position: absolute;
+
+            display: flex;
+            flex-direction: column;
+    
+            top: 0;
+            left: 12.5%;
+            width: 75%;
+            height: 100%;
+        }
     }
 `;
