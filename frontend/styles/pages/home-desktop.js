@@ -2,7 +2,7 @@ import css from 'styled-jsx/css';
 import variables from '../var';
 
 export default css`
-    #home-inner {
+    .inner {
         position: absolute;
         top: calc( 50% - 25vh );
 
@@ -10,20 +10,11 @@ export default css`
         height: 50vh;
     }
 
-    #home-display {
+    .indication {
+        position: absolute;
+        left: calc( 25vw - ${ variables.spacing.layout.marginOut }vw );
         width: min-content;
         height: 100%;  
-        position: absolute;
-
-        /* OFFSET BY LAYOUT WIDTH / 4 */
-        left: calc( 25vw - ${ variables.spacing.layout.marginOut }vw );
-
-        /*
-        calc(${ 100 - ( variables.spacing.layout.marginOut * 2 ) + 'vw' } / 4 );
-        
-        */
-        display: flex;
-        flex-direction: column;
         justify-content: space-between;
     }
 
@@ -37,24 +28,24 @@ export default css`
         position: absolute;
         top: calc(50% - 37.5px);
         left: 50%;
-        font-family: 'Spectral';
-        font-weight: 600;
+
         font-size: 80px;
-        white-space: nowrap;
         height: 75px;
         width: min-content;
+
+        white-space: nowrap;
         text-transform: lowercase;
         transition: all 0.5s ease-in-out;
         transition-property: font-size height top;
     }
 
-    #home-project-info {
-        height: 100%;  
-        width: min-content;
+    .project-info {
         position: absolute;
 
-        /* OFFSET BY LAYOUT WIDTH / 4 */
-        /*left: calc( 50% + 12.5% + 5%);*/
+        height: 100%;
+        width: min-content;
+
+        /* SLIDER + 5% */
         left: 67.5%;
         
         display: flex;
@@ -63,11 +54,11 @@ export default css`
     }
 
     #home-date-topic {
-        height: 50px;
-        margin-bottom: calc( 7.5vh - 50px );
-
         display: flex;
         flex-direction: column;
+        
+        height: 50px;
+        margin-bottom: calc( 7.5vh - 50px );
     }
 
     #home-date-topic > span:first-child {

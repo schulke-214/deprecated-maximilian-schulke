@@ -1,8 +1,6 @@
 import css from 'styled-jsx/css';
 import variables from '../var';
 
-// IMPORTS FROM OTHER CSS STRINGS
-
 export default css`
     /* FONT IMPORTS */
     @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700');
@@ -79,6 +77,4 @@ export default css`
     html::-webkit-scrollbar-thumb {
         background-color: rgba(255,255,255,0);
     }
-
-
 `

@@ -132,8 +132,8 @@ class Home extends Component {
             Content = (
                 <React.Fragment>
                     <style jsx>{desktopStyles}</style>
-                    <div id="home-inner">
-                        <div id="home-display">
+                    <div className="inner">
+                        <div className="indication flex column">
                             <span id="circle" >circle</span>
                             <Link href="project/zwanzig-grad">
                                 <a id="home-view-project" >view project</a>
@@ -144,8 +144,8 @@ class Home extends Component {
                             current={this.state.slider.current} 
                             length={this.state.slider.length} 
                             updateCurrent={this.updateCurrent} />
-                        {/* <div id="projectTitle" >{this.getProjectData().meta.title}</div> */}
-                        <div id="home-project-info">
+                        {/* <div id="projectTitle" className="spectral">{this.getProjectData().meta.title}</div> */}
+                        <div className="project-info">
                             <span>{this.state.slider.current}/{this.state.slider.length}</span>
                             <div id="home-date-topic" >
                                 <span>{this.getProjectData().meta.year}</span>
@@ -161,11 +161,11 @@ class Home extends Component {
         else if ( !this.props.device.hideDesktop ) {
             Content = (
                 <React.Fragment>
-                    <div id="home-inner">
+                    <div className="inner">
                         <style jsx>{mobileStyles}</style>
-                        {/* <div id="projectTitle" >{this.getProjectData().meta.title}</div> */}
-                        <div id="home-inner-wrap" >
-                            <div id="home-top" >
+                        {/* <div id="projectTitle" className="spectral" >{this.getProjectData().meta.title}</div> */}
+                        <div className="inner-wrap flex column" >
+                            <div className="top flex" >
                                 <span>{this.state.slider.current} / {this.state.slider.length}</span>
                             </div>
                             <Slider
@@ -174,7 +174,7 @@ class Home extends Component {
                                 length={this.state.slider.length} 
                                 updateCurrent={this.updateCurrent} 
                                 isMobile />
-                            <div id="home-lower">
+                            <div className="lower flex">
                                 <Link href="project/zwanzig-grad">
                                     <a id="home-view-project" >view project</a>
                                 </Link>

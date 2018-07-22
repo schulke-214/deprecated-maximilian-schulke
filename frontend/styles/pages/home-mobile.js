@@ -2,42 +2,33 @@ import css from 'styled-jsx/css';
 import variables from '../var';
 
 export default css`
-    #home-inner {
+    .inner {
         position: relative;
         width: 100%;
         height: 100%;
     }
 
-    #home-inner-wrap {
+    .inner-wrap {
         position: absolute;
-
-        display: flex;
-        flex-direction: column;
-
         top: 0;
         left: 25%;
         width: 50%;
         height: 100%;
     } 
 
-    #home-top {
+    .top {
         flex: 1 1 0;
-        
-        display: flex;
         align-items: flex-end;
     }
 
-    #home-top > span {
+    .top > span {
         margin-bottom: 5vh;
     }
 
-    #home-lower {
+    .lower {
         flex: 1 1 0;
-
-        display: flex;
         justify-content: space-between;
         align-items: flex-start;
-
     }
 
     #projectTitle {
@@ -71,9 +62,8 @@ export default css`
         margin-bottom: 15px;
     }
 
-
     @media screen and ( max-width: ${ variables.breakpoints.phone }px ) {
-        #home-inner-wrap {
+        .inner-wrap {
             position: absolute;
 
             display: flex;

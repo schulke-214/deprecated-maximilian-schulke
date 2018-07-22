@@ -16,6 +16,7 @@ import { capitalize } from '../frontend/utility/stringHelper';
 
 // STYLE IMPORTS
 import styles from '../frontend/styles/common/index';
+import utility from '../frontend/styles/common/utility';
 
 
 class Application extends App {
@@ -100,6 +101,7 @@ class Application extends App {
 
                     {/* ADDING GLOBAL STYLES */}
                     <style jsx global>{styles}</style>
+                    <style jsx global>{utility}</style>
 
                     {/* PAGELOADER */}
                     { this.state.pageLoader.isOpen ? <PageLoader finished={ this.removePageLoader } /> : null }
