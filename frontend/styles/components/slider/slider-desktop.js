@@ -4,7 +4,7 @@ export default css`
     div {
         z-index: -1;
         position: absolute;
-        left: calc( 50% - 120px );
+        left: 37.5%;
         top: 0;
         width: 25%;
         height: 100%;

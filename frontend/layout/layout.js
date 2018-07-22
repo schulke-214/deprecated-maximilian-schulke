@@ -44,17 +44,17 @@ class Layout extends Component {
                                 <a>all</a>
                             </Link>
                         </div>
-                        <div id="gui-wrapper-mid">
+                        {/* <div id="gui-wrapper-mid">
                             <a href="https://github.com/schulke-214/" target="_blank" >github</a>
                              
-                            {/* <div>UP & DOWN ARROW</div> */}
+                             <div>UP & DOWN ARROW</div>
                         </div>
                         <div id="gui-wrapper-low">
                             <Link href="/about">
                                 <a>about</a>
                             </Link>
                             <a href="mailto:info@domain.de">contact</a>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <main>

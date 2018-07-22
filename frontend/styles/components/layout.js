@@ -41,7 +41,11 @@ export default css`
     #gui-wrapper-top > span {
         position: absolute;
         /* OFFSET BY LAYOUT WIDTH / 4 */
-        left: calc(${ 100 - ( variables.spacing.layout.marginOut * 2 ) + 'vw' } / 4 );
+        left: calc( 25vw - ${ variables.spacing.layout.marginOut }vw );
+        
+        /* 
+        calc(${ 100 - ( variables.spacing.layout.marginOut * 2 ) + 'vw' } / 4 );
+        */
         white-space: nowrap;
     }
 

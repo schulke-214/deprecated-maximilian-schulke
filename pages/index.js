@@ -133,25 +133,25 @@ class Home extends Component {
                 <React.Fragment>
                     <style jsx>{desktopStyles}</style>
                     <div id="home-inner">
-                        {/* <div id="home-display">
+                        <div id="home-display">
                             <span id="circle" >circle</span>
                             <Link href="project/zwanzig-grad">
                                 <a id="home-view-project" >view project</a>
                             </Link>
-                        </div> */}
+                        </div>
                         <Slider 
                             ref={ instance => this.slider = instance } 
                             current={this.state.slider.current} 
                             length={this.state.slider.length} 
                             updateCurrent={this.updateCurrent} />
-                        {/* <div id="projectTitle" >{this.getProjectData().meta.title}</div>
+                        {/* <div id="projectTitle" >{this.getProjectData().meta.title}</div> */}
                         <div id="home-project-info">
                             <span>{this.state.slider.current}/{this.state.slider.length}</span>
                             <div id="home-date-topic" >
                                 <span>{this.getProjectData().meta.year}</span>
                                 <span>{this.getProjectData().meta.category}</span>
                             </div>
-                        </div> */}
+                        </div> 
                     </div>
                 </React.Fragment>
             )
@@ -166,7 +166,7 @@ class Home extends Component {
                         {/* <div id="projectTitle" >{this.getProjectData().meta.title}</div> */}
                         <div id="home-inner-wrap" >
                             <div id="home-top" >
-                                <span>{this.state.slider.current}/{this.state.slider.length}</span>
+                                <span>{this.state.slider.current} / {this.state.slider.length}</span>
                             </div>
                             <Slider
                                 ref={ instance => this.slider = instance } 

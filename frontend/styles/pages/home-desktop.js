@@ -8,25 +8,28 @@ export default css`
 
         width: 100%;
         height: 50vh;
-
-        border: 1px solid grey;
     }
 
     #home-display {
+        width: min-content;
         height: 100%;  
         position: absolute;
 
         /* OFFSET BY LAYOUT WIDTH / 4 */
-        left: calc(${ 100 - ( variables.spacing.layout.marginOut * 2 ) + 'vw' } / 4 );
+        left: calc( 25vw - ${ variables.spacing.layout.marginOut }vw );
+
+        /*
+        calc(${ 100 - ( variables.spacing.layout.marginOut * 2 ) + 'vw' } / 4 );
         
+        */
         display: flex;
         flex-direction: column;
         justify-content: space-between;
     }
 
     #home-view-project {
-        position: absolute;
-        top: calc( 100% - 75px);
+        height: 15px;
+        margin-bottom: calc( 7.5vh - 15px );
     }
 
 
@@ -47,19 +50,22 @@ export default css`
 
     #home-project-info {
         height: 100%;  
+        width: min-content;
         position: absolute;
 
         /* OFFSET BY LAYOUT WIDTH / 4 */
-        left: calc( 50% + 12.5% + 5%);
+        /*left: calc( 50% + 12.5% + 5%);*/
+        left: 67.5%;
         
-        /*display: flex;
+        display: flex;
         flex-direction: column;
-        justify-content: space-between;*/
+        justify-content: space-between;
     }
 
     #home-date-topic {
-        position: absolute;
-        top: calc( 100% - 75px);
+        height: 50px;
+        margin-bottom: calc( 7.5vh - 50px );
+
         display: flex;
         flex-direction: column;
     }
@@ -67,28 +73,4 @@ export default css`
     #home-date-topic > span:first-child {
         margin-bottom: 15px;
     }
-
-    @media screen and ( max-width: ${ variables.breakpoints.desktop }px ) {
-        #projectTitle {
-            font-size: 60px;
-            height: 50px;
-            top: calc(50% - 25px);
-
-        }
-    }
-
-    @media screen and ( max-width: ${ variables.breakpoints.tablet }px ) {
-        #circle {
-            display: none;
-        }
-    
-        #home-display {
-            height: min-content;
-        }
-
-        
-
-    }
-
-
 `;
