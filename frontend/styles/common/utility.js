@@ -2,6 +2,15 @@ import css from 'styled-jsx/css';
 import variables from '../var';
 
 export default css`
+    /* POSITION CLASSES */
+    .block {
+        display: block;
+    }
+
+    .relative {
+        position: relative;
+    }
+
     /* FLEXBOX CLASSES */
     .flex {
         display: flex;
@@ -34,4 +43,6 @@ export default css`
         font-family: 'Spectral';
         font-weight: 600;
     }
+
+
 `;

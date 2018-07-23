@@ -18,6 +18,11 @@ export default css`
         justify-content: space-between;
     }
 
+    .projectNum {
+        height: 15px;
+        margin-bottom: 5vh;
+    }
+
     #home-view-project {
         height: 15px;
         margin-bottom: calc( 7.5vh - 15px );

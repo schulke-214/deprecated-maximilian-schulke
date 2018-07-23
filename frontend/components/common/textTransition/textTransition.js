@@ -36,9 +36,11 @@ class TextTransition extends Component {
     next( nextValue ) {
         this.setState( { value: nextValue } );
 
-        TweenLite.to( this.current.current, 0.5, { opacity: 0 });
-        TweenLite.to( this.hiddenNext.current, 0.5, { opacity: 1 });
-        TweenLite.to( this.parent.current, 0.5, { y: "-100%", onComplete: () => {
+        const ease = Power1.easeInOut;
+
+        TweenLite.to( this.current.current, 0.75, { opacity: 0, ease });
+        TweenLite.to( this.hiddenNext.current, 0.75, { opacity: 1, ease });
+        TweenLite.to( this.parent.current, 0.75, { y: "-100%", ease, onComplete: () => {
             if( this.mounted ) {
                 this.setState({ current: nextValue });
 
@@ -52,9 +54,11 @@ class TextTransition extends Component {
     prev( prevValue ) {
         this.setState( { value: prevValue } );
         
-        TweenLite.to( this.current.current, 0.5, { opacity: 0 } )
-        TweenLite.to( this.hiddenPrev.current, 0.5, { opacity: 1 });
-        TweenLite.to( this.parent.current, 0.5, { y: "100%", onComplete: () => {
+        const ease = Power2.easeOut;
+
+        TweenLite.to( this.current.current, 0.75, { opacity: 0, ease } );
+        TweenLite.to( this.hiddenPrev.current, 0.75, { opacity: 1, ease });
+        TweenLite.to( this.parent.current, 0.75, { y: "100%", ease, onComplete: () => {
             if( this.mounted ) {
                 this.setState({ current: prevValue })
 
@@ -67,10 +71,10 @@ class TextTransition extends Component {
 
     render() {
         return (
-            <span ref={ this.parent } style={{ display: "block", position: "relative", top: "-100%" }} >
-                <span ref={ this.hiddenPrev } style={{ display: "block", height: "100%", opacity:"0"}}>{ this.state.value }</span>
-                <span ref={ this.current } style={{ display: "block", height: "100%" }}> { this.state.current } </span>
-                <span ref={ this.hiddenNext } style={{ display: "block", height: "100%", opacity:"0"}}>{ this.state.value }</span>
+            <span ref={ this.parent } className="block relative" style={{ height: "100%", top: "-100%" }} >
+                <span ref={ this.hiddenPrev } className="block" style={{ height: "100%", opacity:"0"}}>{ this.state.value }</span>
+                <span ref={ this.current } className="block" style={{ height: "100%" }}> { this.state.current } </span>
+                <span ref={ this.hiddenNext } className="block" style={{ height: "100%", opacity:"0"}}>{ this.state.value }</span>
             </span>
         )
     }

@@ -22,13 +22,16 @@ class Home extends Component {
         // REFS
         this.slider = React.createRef();
         this.textTransitions = {
-            projectNumber: React.createRef()
+            projectNumber: React.createRef(),
+            projectYear: React.createRef(),
+            projectCategory: React.createRef()
         }
 
         // VARIABLES
         this.threshold = 50;
-        this.animating = false;
-        this.running = false;
+        // this.animating = false;
+        // this.running = false;
+        this.wheelData = [];
 
         // MAP JSON TO ARRAY
         const projects = [];
@@ -97,9 +100,14 @@ class Home extends Component {
         this.animating = true;
 
         let next = this.state.slider.current <  this.state.slider.length ? this.state.slider.current + 1 : 1;
-        this.textTransitions.projectNumber.next( next );
+        let project = this.state.projects[ next - 1 ];
 
-        this.slider.next(() => this.animating = false )
+        this.textTransitions.projectNumber.current.next( next );
+        this.textTransitions.projectYear.current.next( project.meta.year );
+        this.textTransitions.projectCategory.current.next( project.meta.category );
+
+
+        this.slider.current.next(() => this.animating = false )
     }
 
     prevProject() {
@@ -107,9 +115,13 @@ class Home extends Component {
         this.animating = true;
 
         let prev = this.state.slider.current > 1 ? this.state.slider.current - 1 : this.state.slider.length ;
-        this.textTransitions.projectNumber.prev( prev );
+        let project = this.state.projects[ prev - 1 ];
 
-        this.slider.prev(() => this.animating = false )
+        this.textTransitions.projectNumber.current.prev( prev );
+        this.textTransitions.projectYear.current.prev( project.meta.year );
+        this.textTransitions.projectCategory.current.prev( project.meta.category );
+
+        this.slider.current.prev(() => this.animating = false )
     }
 
     getProjectData = () => this.state.projects[ this.state.slider.current - 1 ];
@@ -118,18 +130,27 @@ class Home extends Component {
 
     handleScroll( ev ) {
         // CONFIGURE OUT IF UP OR DOWN
+        // let delta = ev.deltaY;
+
+        // if( Math.abs( delta ) < this.threshold ) {
+        //     this.running = false;
+        // }
+
+        // if( Math.abs( delta ) >= this.threshold && !this.animating && !this.running ) {
+        //     if( delta >= 0 )
+        //         this.nextProject();
+        //     else
+        //         this.prevProject();
+        // }
+
         let delta = ev.deltaY;
 
-        if( Math.abs( delta ) < this.threshold ) {
-            this.running = false;
-        }
-
-        if( Math.abs( delta ) >= this.threshold && !this.animating && !this.running ) {
-            if( delta >= 0 )
-                this.nextProject();
-            else
-                this.prevProject();
-        }
+        // Limit to 100 - better performance
+        if (wheelData.length > 99)
+          wheelData.shift();
+  
+        // previous deltaY data
+        wheelData.push(Math.abs(scrollSpeed));
     }
 
     // ADD TOUCHSUPPORT LATER
@@ -138,7 +159,7 @@ class Home extends Component {
 
     render() {
         let Content;
-
+        
         // DESKTOP LAYOUT
         if( !this.props.device.isSmall && !this.props.device.isMobile ) {
             Content = (
@@ -153,22 +174,19 @@ class Home extends Component {
                             </Link>
                         </div>
                         <Slider 
-                            ref={ instance => this.slider = instance } 
+                            ref={ this.slider } 
                             current={this.state.slider.current} 
                             length={this.state.slider.length} 
                             updateCurrent={this.updateCurrent} />
                         {/* <div id="projectTitle" className="spectral">{this.getProjectData().meta.title}</div> */}
                         <div className="project-info">
-                            {/* TRANSITION CMP */}
-                            <span className="flex" style={{ height: "15px" }}>
+                            <span className="flex projectNum">
                                 <TextTransition 
                                     defaultValue={this.state.slider.current} 
-                                    ref={ instance => this.textTransitions.projectNumber = instance } /> 
+                                    ref={ this.textTransitions.projectNumber } /> 
                                     <span>/{this.state.slider.length}</span>
                             </span>
-                            {/* DATA CMP */}
-
-                            <ProjectData year={this.getProjectData().meta.year} category={this.getProjectData().meta.category} style={{ height: "50px", marginBottom: "calc( 7.5vh - 50px )" }} />
+                            {/* <ProjectData year={this.getProjectData().meta.year} category={this.getProjectData().meta.category} style={{ height: "50px", marginBottom: "calc( 7.5vh - 50px )" }} /> */}
                         </div> 
                     </div>
                 </React.Fragment>
@@ -184,24 +202,39 @@ class Home extends Component {
                         {/* <div id="projectTitle" className="spectral" >{this.getProjectData().meta.title}</div> */}
                         <div className="inner-wrap flex column" >
                             <div className="top flex" >
-                                <span className="flex" style={{ height: "15px" }} >
+                                <span className="flex projectNum">
                                     <TextTransition 
                                         defaultValue={this.state.slider.current} 
-                                        ref={ instance => this.textTransitions.projectNumber = instance } />
+                                        ref={ this.textTransitions.projectNumber } /> 
                                         <span>/{this.state.slider.length}</span>
                                 </span>
                             </div>
                             <Slider
-                                ref={ instance => this.slider = instance } 
+                                ref={ this.slider } 
                                 current={this.state.slider.current} 
                                 length={this.state.slider.length} 
                                 updateCurrent={this.updateCurrent} 
                                 isMobile />
                             <div className="lower flex">
                                 <Link href="project/zwanzig-grad">
-                                    <a id="home-view-project" >view project</a>
+                                    <a id="home-view-project">view project</a>
                                 </Link>
-                                <ProjectData year={this.getProjectData().meta.year} category={this.getProjectData().meta.category} style={{ marginTop: "50px", textAlign: "right" }} />
+                                <div className="flex row projectData">
+                                    <span className="projectYear" >
+                                        <TextTransition 
+                                            defaultValue={this.getProjectData().meta.year} 
+                                            ref={ this.textTransitions.projectYear }/>
+                                    </span>
+                                    {/* <span style={{marginBottom: "15px"}} >{props.year}</span> */}
+                                    <span className="projectCategory" >
+                                        <TextTransition 
+                                            defaultValue={this.getProjectData().meta.category}
+                                            ref={ this.textTransitions.projectCategory } />
+                                    </span>
+
+                                </div>
+
+                                {/* <ProjectData year={this.getProjectData().meta.year} category={this.getProjectData().meta.category} style={{ marginTop: "50px", textAlign: "right" }} /> */}
                             </div>
                         </div>
                     </div>

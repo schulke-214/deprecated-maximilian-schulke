@@ -21,14 +21,31 @@ export default css`
         align-items: flex-end;
     }
 
-    .top > span {
+    .projectNum {
+        height: 15px;
         margin-bottom: 5vh;
     }
+
 
     .lower {
         flex: 1 1 0;
         justify-content: space-between;
         align-items: flex-start;
+    }
+
+    .projectData {
+        margin-top: 50px;
+        text-align: right; 
+    }
+
+    .projectYear {
+        height: 30px;
+        position: absolute;
+        right: 75px;
+    }
+
+    .projectCategory {
+        height: 30px;
     }
 
     #projectTitle {
