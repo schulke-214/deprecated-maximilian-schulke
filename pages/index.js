@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Slider from '../frontend/components/pages/home/slider/slider';
 import Circle from '../frontend/components/common/circle/circle';
 import ProjectData from '../frontend/components/pages/home/projectData/projectData';
+import TextTransition from '../frontend/components/common/textTransition/textTransition';
 
 // JSON IMPORT
 import projectsJson from '../static/Project.json';
@@ -20,6 +21,9 @@ class Home extends Component {
 
         // REFS
         this.slider = React.createRef();
+        this.textTransitions = {
+            projectNumber: React.createRef()
+        }
 
         // VARIABLES
         this.threshold = 50;
@@ -92,6 +96,8 @@ class Home extends Component {
         this.running = true;
         this.animating = true;
 
+        let next = this.state.slider.current <  this.state.slider.length ? this.state.slider.current + 1 : 1;
+        this.textTransitions.projectNumber.next( next );
         this.slider.next(() => this.animating = false )
     }
 
@@ -99,6 +105,8 @@ class Home extends Component {
         this.running = true;
         this.animating = true;
 
+        let prev = this.state.slider.current > 1 ? this.state.slider.current - 1 : this.state.slider.length ;
+        this.textTransitions.projectNumber.prev( prev );
         this.slider.prev(() => this.animating = false )
     }
 
@@ -150,10 +158,14 @@ class Home extends Component {
                         {/* <div id="projectTitle" className="spectral">{this.getProjectData().meta.title}</div> */}
                         <div className="project-info">
                             {/* TRANSITION CMP */}
-                            <span>{this.state.slider.current}/{this.state.slider.length}</span>
+                            <span>
+                                <TextTransition 
+                                    defaultValue={this.state.slider.current} 
+                                    ref={ instance => this.textTransitions.projectNumber = instance } />/{this.state.slider.length}
+                            </span>
                             {/* DATA CMP */}
 
-                            <ProjectData year={this.getProjectData().meta.year} category={this.getProjectData().meta.category}/>
+                            <ProjectData year={this.getProjectData().meta.year} category={this.getProjectData().meta.category} style={{ height: "50px", marginBottom: "calc( 7.5vh - 50px )" }} />
                         </div> 
                     </div>
                 </React.Fragment>
@@ -169,7 +181,11 @@ class Home extends Component {
                         {/* <div id="projectTitle" className="spectral" >{this.getProjectData().meta.title}</div> */}
                         <div className="inner-wrap flex column" >
                             <div className="top flex" >
-                                <span>{this.state.slider.current} / {this.state.slider.length}</span>
+                                <span>
+                                    <TextTransition 
+                                        defaultValue={this.state.slider.current} 
+                                        ref={ instance => this.textTransitions.projectNumber = instance } />/{this.state.slider.length}
+                                </span>
                             </div>
                             <Slider
                                 ref={ instance => this.slider = instance } 
@@ -181,7 +197,7 @@ class Home extends Component {
                                 <Link href="project/zwanzig-grad">
                                     <a id="home-view-project" >view project</a>
                                 </Link>
-                                <ProjectData year={this.getProjectData().meta.year} category={this.getProjectData().meta.category}/>
+                                <ProjectData year={this.getProjectData().meta.year} category={this.getProjectData().meta.category} style={{ marginTop: "50px", textAlign: "right" }} />
                             </div>
                         </div>
                     </div>

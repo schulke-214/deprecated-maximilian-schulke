@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 import css from 'styled-jsx/css';
 
 const styles =  css`
     #circle {
-        color: red;
+        color: white;
     }
 `;
 

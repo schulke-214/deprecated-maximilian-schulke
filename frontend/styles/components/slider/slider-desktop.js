@@ -8,6 +8,5 @@ export default css`
         top: 0;
         width: 25%;
         height: 100%;
-        background-color: salmon;
     }
 `;

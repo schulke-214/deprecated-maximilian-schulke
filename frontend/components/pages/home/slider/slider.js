@@ -46,7 +46,6 @@ class Slider extends Component {
                 <style jsx>{ commonStyles }</style>
                 <style jsx>{ dynamicStyles }</style>
                 <div ref={ instance => this.canvas = instance } >
-                    { this.props.current }
                     <img id="4" src="/static/slider/4.jpg" />
                     <img id="3" src="/static/slider/3.jpg" />
                     <img id="2" src="/static/slider/2.jpg" />
