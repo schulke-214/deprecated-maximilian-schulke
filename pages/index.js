@@ -98,6 +98,7 @@ class Home extends Component {
 
         let next = this.state.slider.current <  this.state.slider.length ? this.state.slider.current + 1 : 1;
         this.textTransitions.projectNumber.next( next );
+
         this.slider.next(() => this.animating = false )
     }
 
@@ -107,6 +108,7 @@ class Home extends Component {
 
         let prev = this.state.slider.current > 1 ? this.state.slider.current - 1 : this.state.slider.length ;
         this.textTransitions.projectNumber.prev( prev );
+
         this.slider.prev(() => this.animating = false )
     }
 
@@ -158,10 +160,11 @@ class Home extends Component {
                         {/* <div id="projectTitle" className="spectral">{this.getProjectData().meta.title}</div> */}
                         <div className="project-info">
                             {/* TRANSITION CMP */}
-                            <span>
+                            <span className=" flex">
                                 <TextTransition 
                                     defaultValue={this.state.slider.current} 
-                                    ref={ instance => this.textTransitions.projectNumber = instance } />/{this.state.slider.length}
+                                    ref={ instance => this.textTransitions.projectNumber = instance } /> 
+                                    <span>/{this.state.slider.length}</span>
                             </span>
                             {/* DATA CMP */}
 
@@ -181,10 +184,11 @@ class Home extends Component {
                         {/* <div id="projectTitle" className="spectral" >{this.getProjectData().meta.title}</div> */}
                         <div className="inner-wrap flex column" >
                             <div className="top flex" >
-                                <span>
+                                <span className="flex">
                                     <TextTransition 
                                         defaultValue={this.state.slider.current} 
-                                        ref={ instance => this.textTransitions.projectNumber = instance } />/{this.state.slider.length}
+                                        ref={ instance => this.textTransitions.projectNumber = instance } />
+                                        <span>/{this.state.slider.length}</span>
                                 </span>
                             </div>
                             <Slider
