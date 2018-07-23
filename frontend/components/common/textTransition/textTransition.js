@@ -4,22 +4,33 @@ class TextTransition extends Component {
     constructor( props ) {
         super( props );
 
+        // VARIABLES
+        this.mounted;
+
+        // REFS
         this.parent = React.createRef();
         this.current = React.createRef();
         this.hiddenNext = React.createRef();
         this.hiddenPrev = React.createRef();
 
+        // STATE
         this.state = {
             current: null,
             value: null
         }
 
+        // THIS BINDS
         this.next = this.next.bind(this);
         this.prev = this.prev.bind(this);
     }
 
     componentWillMount() {
+        this.mounted = true;
         this.setState({ current: this.props.defaultValue })
+    }
+
+    componentWillUnmount() {
+        this.mounted = false;
     }
 
     next( nextValue ) {
@@ -28,11 +39,13 @@ class TextTransition extends Component {
         TweenLite.to( this.current.current, 0.5, { opacity: 0 });
         TweenLite.to( this.hiddenNext.current, 0.5, { opacity: 1 });
         TweenLite.to( this.parent.current, 0.5, { y: "-100%", onComplete: () => {
-            this.setState({ current: nextValue });
+            if( this.mounted ) {
+                this.setState({ current: nextValue });
 
-            TweenLite.set( this.parent.current, { y: "0%" });
-            TweenLite.set( this.current.current, { opacity: 1 });
-            TweenLite.set( this.hiddenNext.current, { opacity: 0 });
+                TweenLite.set( this.parent.current, { y: "0%" });
+                TweenLite.set( this.current.current, { opacity: 1 });
+                TweenLite.set( this.hiddenNext.current, { opacity: 0 });
+            }
         }});
     }
 
@@ -42,11 +55,13 @@ class TextTransition extends Component {
         TweenLite.to( this.current.current, 0.5, { opacity: 0 } )
         TweenLite.to( this.hiddenPrev.current, 0.5, { opacity: 1 });
         TweenLite.to( this.parent.current, 0.5, { y: "100%", onComplete: () => {
-            this.setState({ current: prevValue })
+            if( this.mounted ) {
+                this.setState({ current: prevValue })
 
-            TweenLite.set( this.parent.current, { y: "0%" });
-            TweenLite.set( this.current.current, { opacity: 1 });
-            TweenLite.set( this.hiddenPrev.current, { opacity: 0 });
+                TweenLite.set( this.parent.current, { y: "0%" });
+                TweenLite.set( this.current.current, { opacity: 1 });
+                TweenLite.set( this.hiddenPrev.current, { opacity: 0 });
+            }
         }})
     }
 
