@@ -4,6 +4,11 @@ class TextTransition extends Component {
     constructor( props ) {
         super( props );
 
+        this.parent = React.createRef();
+        this.current = React.createRef();
+        this.hiddenNext = React.createRef();
+        this.hiddenPrev = React.createRef();
+
         this.state = {
             current: null,
             value: null
@@ -13,27 +18,44 @@ class TextTransition extends Component {
         this.prev = this.prev.bind(this);
     }
 
+    componentWillMount() {
+        this.setState({ current: this.props.defaultValue })
+    }
+
     next( nextValue ) {
         this.setState( { value: nextValue } );
 
-        // setTimeout(() => {
-        //     this.setState( prevState => ({ current: prevState.value }) );
-        // }, 500 )
+        TweenLite.to( this.current.current, 0.5, { opacity: 0 });
+        TweenLite.to( this.hiddenNext.current, 0.5, { opacity: 1 });
+        TweenLite.to( this.parent.current, 0.5, { y: "-100%", onComplete: () => {
+            this.setState({ current: nextValue });
+
+            TweenLite.set( this.parent.current, { y: "0%" });
+            TweenLite.set( this.current.current, { opacity: 1 });
+            TweenLite.set( this.hiddenNext.current, { opacity: 0 });
+        }});
     }
 
     prev( prevValue ) {
         this.setState( { value: prevValue } );
+        
+        TweenLite.to( this.current.current, 0.5, { opacity: 0 } )
+        TweenLite.to( this.hiddenPrev.current, 0.5, { opacity: 1 });
+        TweenLite.to( this.parent.current, 0.5, { y: "100%", onComplete: () => {
+            this.setState({ current: prevValue })
 
-        // setTimeout(() => {
-        //     this.setState( prevState => ({ current: prevState.value }) );
-        // }, 500 )
+            TweenLite.set( this.parent.current, { y: "0%" });
+            TweenLite.set( this.current.current, { opacity: 1 });
+            TweenLite.set( this.hiddenPrev.current, { opacity: 0 });
+        }})
     }
 
     render() {
         return (
-            <span  style={{ display: "block" }}>
-                <span id="first" style={{border: "1px solid red", display: "block", width: "25px", height: "10px"}}>{ this.state.current }</span>
-                <span id="second" style={{border: "1px solid orange", display: "block", width: "25px", height: "10px"}}>{ this.state.value }</span>
+            <span ref={ this.parent } style={{ display: "block", position: "relative", top: "-100%" }} >
+                <span ref={ this.hiddenPrev } style={{ display: "block", height: "100%", opacity:"0"}}>{ this.state.value }</span>
+                <span ref={ this.current } style={{ display: "block", height: "100%" }}> { this.state.current } </span>
+                <span ref={ this.hiddenNext } style={{ display: "block", height: "100%", opacity:"0"}}>{ this.state.value }</span>
             </span>
         )
     }

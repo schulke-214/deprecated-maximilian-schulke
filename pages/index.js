@@ -160,7 +160,7 @@ class Home extends Component {
                         {/* <div id="projectTitle" className="spectral">{this.getProjectData().meta.title}</div> */}
                         <div className="project-info">
                             {/* TRANSITION CMP */}
-                            <span className=" flex">
+                            <span className="flex" style={{ height: "15px" }}>
                                 <TextTransition 
                                     defaultValue={this.state.slider.current} 
                                     ref={ instance => this.textTransitions.projectNumber = instance } /> 
@@ -184,7 +184,7 @@ class Home extends Component {
                         {/* <div id="projectTitle" className="spectral" >{this.getProjectData().meta.title}</div> */}
                         <div className="inner-wrap flex column" >
                             <div className="top flex" >
-                                <span className="flex">
+                                <span className="flex" style={{ height: "15px" }} >
                                     <TextTransition 
                                         defaultValue={this.state.slider.current} 
                                         ref={ instance => this.textTransitions.projectNumber = instance } />
