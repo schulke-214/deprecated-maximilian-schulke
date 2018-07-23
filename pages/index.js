@@ -3,6 +3,8 @@ import Link from 'next/link';
 
 // COMPONENT IMPORTS
 import Slider from '../frontend/components/pages/home/slider/slider';
+import Circle from '../frontend/components/common/circle/circle';
+import ProjectData from '../frontend/components/pages/home/projectData/projectData';
 
 // JSON IMPORT
 import projectsJson from '../static/Project.json';
@@ -134,9 +136,10 @@ class Home extends Component {
                     <style jsx>{desktopStyles}</style>
                     <div className="inner">
                         <div className="indication flex column">
-                            <span id="circle" >circle</span>
+                            <Circle />
+                            {/* COOL LINK CMP */}
                             <Link href="project/zwanzig-grad">
-                                <a id="home-view-project" >view project</a>
+                                <a id="home-view-project">view project</a>
                             </Link>
                         </div>
                         <Slider 
@@ -146,11 +149,11 @@ class Home extends Component {
                             updateCurrent={this.updateCurrent} />
                         {/* <div id="projectTitle" className="spectral">{this.getProjectData().meta.title}</div> */}
                         <div className="project-info">
+                            {/* TRANSITION CMP */}
                             <span>{this.state.slider.current}/{this.state.slider.length}</span>
-                            <div id="home-date-topic" >
-                                <span>{this.getProjectData().meta.year}</span>
-                                <span>{this.getProjectData().meta.category}</span>
-                            </div>
+                            {/* DATA CMP */}
+
+                            <ProjectData year={this.getProjectData().meta.year} category={this.getProjectData().meta.category}/>
                         </div> 
                     </div>
                 </React.Fragment>
@@ -178,10 +181,7 @@ class Home extends Component {
                                 <Link href="project/zwanzig-grad">
                                     <a id="home-view-project" >view project</a>
                                 </Link>
-                                <div id="home-date-topic" >
-                                    <span>{this.getProjectData().meta.year}</span>
-                                    <span>{this.getProjectData().meta.category}</span>
-                                </div>
+                                <ProjectData year={this.getProjectData().meta.year} category={this.getProjectData().meta.category}/>
                             </div>
                         </div>
                     </div>

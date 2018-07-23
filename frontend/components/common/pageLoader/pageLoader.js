@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import Logo from '../logo/logo';
 
 // STYLE IMPORTS
-import layoutStyles from '../../../styles/components/layout';
+import layoutStyles from '../../../layout/layout-styles';
 import styles from '../../../styles/components/pageLoader';
 
 
@@ -37,7 +37,7 @@ class pageLoader extends Component {
 
                     <div id="layout-layer">
                         <div id="gui-layer">
-                            <div id="gui-wrapper-top" >
+                            <div className="top flex space-between" >
                                 <Logo className="logo" />
                             </div>
                         </div>

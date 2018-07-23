@@ -18,6 +18,14 @@ export default css`
     .center {
         align-items: center;
         justify-content: center;
+    } 
+    
+    .space-around {
+        justify-content: space-around;
+    }
+
+    .space-between {
+        justify-content: space-between;
     }
 
     /* FONT CLASSES */

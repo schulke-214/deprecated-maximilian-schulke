@@ -1,5 +1,5 @@
 import css from 'styled-jsx/css';
-import variables from '../var';
+import variables from '../styles/var';
 
 export default css`
     #layout-layer {
@@ -34,11 +34,11 @@ export default css`
         height: min-content;
     }
 
-    #gui-wrapper-top {
+    .top {
         height: 25px;
     }
 
-    #gui-wrapper-top > span {
+    .top > span {
         position: absolute;
         /* OFFSET BY LAYOUT WIDTH / 4 */
         left: calc( 25vw - ${ variables.spacing.layout.marginOut }vw );
@@ -49,7 +49,7 @@ export default css`
         white-space: nowrap;
     }
 
-    #gui-wrapper-mid > a {
+    .mid > a {
         position: relative;
         display: block;
         transform-origin: center;
@@ -70,7 +70,7 @@ export default css`
             left: 50px;
         }
 
-        #gui-wrapper-top > span { 
+        .top > span { 
             display: none;
         }
     }

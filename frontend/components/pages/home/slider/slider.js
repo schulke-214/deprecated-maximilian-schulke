@@ -18,6 +18,10 @@ class Slider extends Component {
         this.prev = this.prev.bind(this);
     }
 
+    componentDidMount() {
+        document.getElementById(this.props.current).style.zIndex = this.zIndex;
+    }
+
     next( callback ) {
         this.props.updateCurrent('+');
 

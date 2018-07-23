@@ -5,8 +5,9 @@ import Link from 'next/link';
 import Logo from '../components/common/logo/logo';
 
 // IMPORT STYLES
-import styles from '../styles/components/layout';
+import styles from './layout-styles';
 
+// CONTEXT IMPORTS
 import { DeviceContext } from '../context/device';
 
 class Layout extends Component {
@@ -35,7 +36,7 @@ class Layout extends Component {
                 <div id="layout-layer">
                     <div id="mouse-layer"></div>
                     <div id="gui-layer">
-                        <div id="gui-wrapper-top" >
+                        <div className="top flex space-between" >
                             <Link href="/">
                                 <a><Logo className="logo" /></a>
                             </Link>
@@ -44,12 +45,12 @@ class Layout extends Component {
                                 <a>all</a>
                             </Link>
                         </div>
-                        <div id="gui-wrapper-mid">
+                        <div className="mid flex space-between">
                             <a href="https://github.com/schulke-214/" target="_blank" >github</a>
                              
                             {/* <div>UP & DOWN ARROW</div> */}
                         </div>
-                        <div id="gui-wrapper-low">
+                        <div className="low flex space-between">
                             <Link href="/about">
                                 <a>about</a>
                             </Link>
