@@ -38,9 +38,9 @@ class TextTransition extends Component {
 
         const ease = Power1.easeInOut;
 
-        TweenLite.to( this.current.current, 0.75, { opacity: 0, ease });
-        TweenLite.to( this.hiddenNext.current, 0.75, { opacity: 1, ease });
-        TweenLite.to( this.parent.current, 0.75, { y: "-100%", ease, onComplete: () => {
+        TweenLite.to( this.current.current, 0.5, { opacity: 0, ease });
+        TweenLite.to( this.hiddenNext.current, 0.5, { opacity: 1, ease });
+        TweenLite.to( this.parent.current, 0.5, { y: "-100%", ease, onComplete: () => {
             if( this.mounted ) {
                 this.setState({ current: nextValue });
 
@@ -56,9 +56,9 @@ class TextTransition extends Component {
         
         const ease = Power2.easeOut;
 
-        TweenLite.to( this.current.current, 0.75, { opacity: 0, ease } );
-        TweenLite.to( this.hiddenPrev.current, 0.75, { opacity: 1, ease });
-        TweenLite.to( this.parent.current, 0.75, { y: "100%", ease, onComplete: () => {
+        TweenLite.to( this.current.current, 0.5, { opacity: 0, ease } );
+        TweenLite.to( this.hiddenPrev.current, 0.5, { opacity: 1, ease });
+        TweenLite.to( this.parent.current, 0.5, { y: "100%", ease, onComplete: () => {
             if( this.mounted ) {
                 this.setState({ current: prevValue })
 

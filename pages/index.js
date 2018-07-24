@@ -4,7 +4,7 @@ import Link from 'next/link';
 // COMPONENT IMPORTS
 import Slider from '../frontend/components/pages/home/slider/slider';
 import Circle from '../frontend/components/common/circle/circle';
-import ProjectData from '../frontend/components/pages/home/projectData/projectData';
+// import ProjectData from '../frontend/components/pages/home/projectData/projectData';
 import TextTransition from '../frontend/components/common/textTransition/textTransition';
 
 // JSON IMPORT
@@ -97,7 +97,6 @@ class Home extends Component {
 
     nextProject() {
         this.running = true;
-        this.animating = true;
 
         let next = this.state.slider.current <  this.state.slider.length ? this.state.slider.current + 1 : 1;
         let project = this.state.projects[ next - 1 ];
@@ -107,12 +106,11 @@ class Home extends Component {
         this.textTransitions.projectCategory.current.next( project.meta.category );
 
 
-        this.slider.current.next(() => this.animating = false )
+        this.slider.current.next(() => this.running = false )
     }
 
     prevProject() {
         this.running = true;
-        this.animating = true;
 
         let prev = this.state.slider.current > 1 ? this.state.slider.current - 1 : this.state.slider.length ;
         let project = this.state.projects[ prev - 1 ];
@@ -121,7 +119,7 @@ class Home extends Component {
         this.textTransitions.projectYear.current.prev( project.meta.year );
         this.textTransitions.projectCategory.current.prev( project.meta.category );
 
-        this.slider.current.prev(() => this.animating = false )
+        this.slider.current.prev(() => this.running = false )
     }
 
     getProjectData = () => this.state.projects[ this.state.slider.current - 1 ];
@@ -130,27 +128,44 @@ class Home extends Component {
 
     handleScroll( ev ) {
         // CONFIGURE OUT IF UP OR DOWN
-        // let delta = ev.deltaY;
 
-        // if( Math.abs( delta ) < this.threshold ) {
-        //     this.running = false;
-        // }
-
-        // if( Math.abs( delta ) >= this.threshold && !this.animating && !this.running ) {
-        //     if( delta >= 0 )
-        //         this.nextProject();
-        //     else
-        //         this.prevProject();
-        // }
-
+        // APPROACH HEAVILY INSPIRED BY github@Marvin1003
         let delta = ev.deltaY;
 
-        // Limit to 100 - better performance
-        if (wheelData.length > 99)
-          wheelData.shift();
+        if (this.wheelData.length > 99)
+            this.wheelData.shift();
   
-        // previous deltaY data
-        wheelData.push(Math.abs(scrollSpeed));
+        this.wheelData.push(Math.abs(delta));
+
+        
+        if(!this.running) {
+            const nextStrength = this.averageScrollStrength( this.wheelData, 20 );
+            const prevStrength = this.averageScrollStrength( this.wheelData, 70 );
+            
+            let allowScrolling = nextStrength > prevStrength;
+            
+            console.log(allowScrolling)
+
+            if (allowScrolling) {
+                if (delta < 0)
+                    this.prevProject();
+                else if (delta > 0)
+                    this.nextProject();
+            }
+        }
+    }
+
+    averageScrollStrength( data, num ) {
+        let sum = 0;
+
+        // taking `number` elements from the end to get the average, if there are not enough, 1
+        const lastWheelData = data.slice(Math.max(data.length - num, 1));
+
+        lastWheelData.forEach( wheelData => {
+            sum += wheelData
+        });
+
+        return Math.ceil(sum / num);
     }
 
     // ADD TOUCHSUPPORT LATER
@@ -186,7 +201,6 @@ class Home extends Component {
                                     ref={ this.textTransitions.projectNumber } /> 
                                     <span>/{this.state.slider.length}</span>
                             </span>
-                            {/* <ProjectData year={this.getProjectData().meta.year} category={this.getProjectData().meta.category} style={{ height: "50px", marginBottom: "calc( 7.5vh - 50px )" }} /> */}
                         </div> 
                     </div>
                 </React.Fragment>
@@ -233,8 +247,6 @@ class Home extends Component {
                                     </span>
 
                                 </div>
-
-                                {/* <ProjectData year={this.getProjectData().meta.year} category={this.getProjectData().meta.category} style={{ marginTop: "50px", textAlign: "right" }} /> */}
                             </div>
                         </div>
                     </div>

@@ -39,13 +39,13 @@ export default css`
     }
 
     .projectYear {
-        height: 30px;
+        height: 15px;
         position: absolute;
         right: 75px;
     }
 
     .projectCategory {
-        height: 30px;
+        height: 15px;
     }
 
     #projectTitle {
