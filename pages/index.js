@@ -29,9 +29,9 @@ class Home extends Component {
 
         // VARIABLES
         this.threshold = 50;
-        // this.animating = false;
-        // this.running = false;
-        this.wheelData = [];
+        this.running = false;
+        
+
 
         // MAP JSON TO ARRAY
         const projects = [];
@@ -51,6 +51,8 @@ class Home extends Component {
         this.prevProject = this.prevProject.bind(this);
         this.getProjectData = this.getProjectData.bind(this);
         this.updateCurrent = this.updateCurrent.bind(this);
+
+        this.resetRunningState = this.resetRunningState.bind(this);
     }
 
     componentDidMount() {
@@ -98,28 +100,28 @@ class Home extends Component {
     nextProject() {
         this.running = true;
 
-        let next = this.state.slider.current <  this.state.slider.length ? this.state.slider.current + 1 : 1;
-        let project = this.state.projects[ next - 1 ];
+        // let next = this.state.slider.current <  this.state.slider.length ? this.state.slider.current + 1 : 1;
+        // let project = this.state.projects[ next - 1 ];
 
-        this.textTransitions.projectNumber.current.next( next );
-        this.textTransitions.projectYear.current.next( project.meta.year );
-        this.textTransitions.projectCategory.current.next( project.meta.category );
+        // this.textTransitions.projectNumber.current.next( next );
+        // this.textTransitions.projectYear.current.next( project.meta.year );
+        // this.textTransitions.projectCategory.current.next( project.meta.category );
 
 
-        this.slider.current.next(() => this.running = false )
+        this.slider.current.next(() => window.addEventListener("wheel", this.resetRunningState ) )
     }
 
     prevProject() {
         this.running = true;
 
-        let prev = this.state.slider.current > 1 ? this.state.slider.current - 1 : this.state.slider.length ;
-        let project = this.state.projects[ prev - 1 ];
+        // let prev = this.state.slider.current > 1 ? this.state.slider.current - 1 : this.state.slider.length ;
+        // let project = this.state.projects[ prev - 1 ];
 
-        this.textTransitions.projectNumber.current.prev( prev );
-        this.textTransitions.projectYear.current.prev( project.meta.year );
-        this.textTransitions.projectCategory.current.prev( project.meta.category );
+        // this.textTransitions.projectNumber.current.prev( prev );
+        // this.textTransitions.projectYear.current.prev( project.meta.year );
+        // this.textTransitions.projectCategory.current.prev( project.meta.category );
 
-        this.slider.current.prev(() => this.running = false )
+        this.slider.current.prev(() => window.addEventListener("wheel", this.resetRunningState ));
     }
 
     getProjectData = () => this.state.projects[ this.state.slider.current - 1 ];
@@ -127,47 +129,22 @@ class Home extends Component {
     // SLIDER FUNCTIONALITY
 
     handleScroll( ev ) {
-        // CONFIGURE OUT IF UP OR DOWN
-
-        // APPROACH HEAVILY INSPIRED BY github@Marvin1003
         let delta = ev.deltaY;
 
-        if (this.wheelData.length > 99)
-            this.wheelData.shift();
-  
-        this.wheelData.push(Math.abs(delta));
-
-        
-        if(!this.running) {
-            const nextStrength = this.averageScrollStrength( this.wheelData, 20 );
-            const prevStrength = this.averageScrollStrength( this.wheelData, 70 );
-            
-            let allowScrolling = nextStrength > prevStrength;
-            
-            console.log(allowScrolling)
-
-            if (allowScrolling) {
-                if (delta < 0)
-                    this.prevProject();
-                else if (delta > 0)
-                    this.nextProject();
-            }
+        if( Math.abs( delta ) > this.threshold && !this.running ) {
+            if (delta < 0)
+                this.prevProject();
+            else if (delta > 0)
+                this.nextProject();             
         }
     }
 
-    averageScrollStrength( data, num ) {
-        let sum = 0;
-
-        // taking `number` elements from the end to get the average, if there are not enough, 1
-        const lastWheelData = data.slice(Math.max(data.length - num, 1));
-
-        lastWheelData.forEach( wheelData => {
-            sum += wheelData
-        });
-
-        return Math.ceil(sum / num);
+    resetRunningState( ev ) {
+        if( ev.deltaY < this.threshold ) {
+            this.running = false;
+            window.removeEventListener("wheel", this.resetRunningState );
+        }
     }
-
     // ADD TOUCHSUPPORT LATER
     // ADD KEY SUPPORT LATER
     // ADD DRAG SUPPORT LATER
