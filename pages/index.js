@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Link from 'next/link';
 
 // COMPONENT IMPORTS
 import Slider from '../frontend/components/pages/home/slider/slider';
 import Circle from '../frontend/components/common/circle/circle';
 import TextTransition from '../frontend/components/common/textTransition/textTransition';
+import Hover from '../frontend/components/common/hover/hover';
 
 // JSON IMPORTS
 import projectsJson from '../static/Project.json';
@@ -158,9 +158,14 @@ class Home extends Component {
                         <div className="indication flex column">
                             <Circle />
                             {/* COOL LINK CMP */}
-                            <Link href="project/zwanzig-grad">
+                            {/*<Link href="project/zwanzig-grad">
                                 <a id="home-view-project">view project</a>
-                            </Link>
+                            </Link>*/}
+
+                            <Hover>
+                                Hello world
+                            </Hover>
+
                         </div>
                         <Slider 
                             ref={ this.slider } 
@@ -204,9 +209,9 @@ class Home extends Component {
                                 updateCurrent={this.updateCurrent} 
                                 isMobile />
                             <div className="lower flex">
-                                <Link href="project/zwanzig-grad">
+                                {/*<Link href="project/zwanzig-grad">
                                     <a id="home-view-project">view project</a>
-                                </Link>
+                                </Link>*/}
                                 <div className="flex row projectData">
                                     <span className="projectYear" >
                                         <TextTransition 
