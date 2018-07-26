@@ -162,10 +162,7 @@ class Home extends Component {
                                 <a id="home-view-project">view project</a>
                             </Link>*/}
 
-                            <Hover>
-                                Hello world
-                            </Hover>
-
+                            <Hover to="/project" text="view project" isMobile={this.props.device.isMobile} style={{ marginBottom: "calc( 7.5vh - 15px )", height: "15px" }} />
                         </div>
                         <Slider 
                             ref={ this.slider } 
@@ -180,6 +177,19 @@ class Home extends Component {
                                     ref={ this.textTransitions.projectNumber } /> 
                                     <span>/{this.state.slider.length}</span>
                             </span>
+
+                            <div className="flex row projectData">
+                                <span className="projectYear" >
+                                    <TextTransition
+                                        defaultValue={this.getProjectData().meta.year}
+                                        ref={ this.textTransitions.projectYear }/>
+                                </span>
+                                <span className="projectCategory" >
+                                    <TextTransition
+                                        defaultValue={this.getProjectData().meta.category}
+                                        ref={ this.textTransitions.projectCategory } />
+                                </span>
+                            </div>
                         </div> 
                     </div>
                 </React.Fragment>
@@ -212,6 +222,8 @@ class Home extends Component {
                                 {/*<Link href="project/zwanzig-grad">
                                     <a id="home-view-project">view project</a>
                                 </Link>*/}
+                                <Hover to="/project" text="view project" style={{ marginTop: "5vh" }} />
+
                                 <div className="flex row projectData">
                                     <span className="projectYear" >
                                         <TextTransition 

@@ -63,10 +63,6 @@ export default css`
         transition-property: font-size height top;
     }
 
-    #home-view-project {
-        margin-top: 5vh;
-    }
-
     #home-date-topic {
         margin-top: 5vh;
         display: flex;

@@ -1,11 +1,29 @@
 import React, {Component} from 'react';
 import Link from 'next/link';
 
+import css from 'styled-jsx/css';
+
+const styles =  css`
+    .sub-span {
+        display: inline-block;
+    }
+    
+    .space {
+        width: 5px
+    }
+`;
+
+
 class Hover extends Component {
     constructor( props ) {
         super( props );
 
+        // REFS
+        this.container = React.createRef();
+
+        // VARIABLES
         this.animation = null;
+        this.text = this.props.text || this.props.children;
 
         this.handlerHover = this.handlerHover.bind(this);
     }
@@ -13,27 +31,42 @@ class Hover extends Component {
     componentDidMount() {
         this.prepareDOM();
 
-        this.animation = new TimelineLite();
-        // this.animation.to
+        this.animation = new TimelineLite({ paused: true, onComplete: () => this.animation.pause(0) })
+            .staggerTo( this.container.current.childNodes, 0.2, { y: "-100%", opacity: 0 }, 0.01 )
+            .set( this.container.current.childNodes, { y: "100%"})
+            .staggerTo( this.container.current.childNodes, 0.2, { y: "0%", opacity: 1 }, 0.01 )
     }
 
     handlerHover() {
-        this.animation.play();
-
-        console.log("played the animation")
+        if( !this.props.isMobile )
+            this.animation.play();
     }
 
     prepareDOM() {
-        console.log("prepared the dom for the timeline");
+        for( let i = 0; i < this.text.length; i++ ) {
+            let span = document.createElement("span");
+            span.textContent = this.text.charAt(i);
+            span.classList.add("sub-span");
+
+            if( this.text.charAt(i) === " ")
+                span.classList.add("space");
+
+
+            this.container.current.appendChild(span);
+        }
     }
 
     render() {
         return (
-            <span onMouseEnter={this.handlerHover}>
-                <Link href="/project" >
-                    <a>{this.props.children}</a>
-                </Link>
-            </span>
+            <Link href={this.props.to} >
+                <a style={{...this.props.style}}>
+                    <style jsx global>{styles}</style>
+                    <span ref={this.container} onMouseEnter={this.handlerHover} style={{ position: "relative"}} >
+
+                    </span>
+                </a>
+            </Link>
+
         );
     }
 }
