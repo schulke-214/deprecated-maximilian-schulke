@@ -18,7 +18,7 @@ class AppDocument extends Document {
                     {/* <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/plugins/TextPlugin.min.js"></script> */}
 
                     <noscript>
-                        <meta http-equiv="Refresh" content="0; URL=https://domain.com/lightweight/" /* REMINDER FOR FUTURE ME: CHANGE THIS*/ />
+                        <meta httpEquiv="Refresh" content="0; URL=https://domain.com/lightweight/" /* REMINDER FOR FUTURE ME: CHANGE THIS*/ />
                     </noscript>
                 </Head>
                 <body style={{ display: "none", backgroundColor: variables.colors.main }} >

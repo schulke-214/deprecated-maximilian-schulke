@@ -28,7 +28,7 @@ class Application extends App {
                 // COMMENTED OUT FOR JUST FOR DEVELOPMENT
                 isOpen: false
             }
-        }
+        };
         this.removePageLoader = this.removePageLoader.bind(this);
     }
 
@@ -105,7 +105,6 @@ class Application extends App {
 
                     {/* PAGELOADER */}
                     { this.state.pageLoader.isOpen ? <PageLoader finished={ this.removePageLoader } /> : null }
-
 
                     <Layout>
                         <Component {...pageProps} />

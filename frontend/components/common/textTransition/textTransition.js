@@ -5,7 +5,7 @@ class TextTransition extends Component {
         super( props );
 
         // VARIABLES
-        this.mounted;
+        this.mounted = null;
 
         // REFS
         this.parent = React.createRef();
@@ -17,7 +17,7 @@ class TextTransition extends Component {
         this.state = {
             current: null,
             value: null
-        }
+        };
 
         // THIS BINDS
         this.next = this.next.bind(this);
@@ -71,9 +71,9 @@ class TextTransition extends Component {
 
     render() {
         return (
-            <span ref={ this.parent } className="block relative" style={{ height: "100%", top: "-100%" }} >
+            <span ref={ this.parent } className="block relative" style={{ height: "100%", top: "-100%"}} >
                 <span ref={ this.hiddenPrev } className="block" style={{ height: "100%", opacity:"0"}}>{ this.state.value }</span>
-                <span ref={ this.current } className="block" style={{ height: "100%" }}> { this.state.current } </span>
+                <span ref={ this.current } className="block" style={{ height: "100%"}}> { this.state.current } </span>
                 <span ref={ this.hiddenNext } className="block" style={{ height: "100%", opacity:"0"}}>{ this.state.value }</span>
             </span>
         )

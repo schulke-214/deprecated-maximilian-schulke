@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 // STYLE IMPORTS
 import commonStyles from '../../../../styles/components/slider/slider-common';
-// CHANGE TO DYNAMIXLY INSERTED STYLESHEET - DEPENDING ON SCREEN SIZE
+// CHANGE TO DYNAMICALLY INSERTED STYLESHEET - DEPENDING ON SCREEN SIZE
 
 import mobileStyles from '../../../../styles/components/slider/slider-mobile';
 import dekstopStyles from '../../../../styles/components/slider/slider-desktop';
@@ -27,7 +27,7 @@ class Slider extends Component {
 
         this.zIndex++;
         document.getElementById(this.props.current).style.zIndex = this.zIndex;
-        TweenLite.from( document.getElementById( this.props.current ) , 0.75, { y: "100%", ease: Power2.easeOut, onComplete: callback} )
+        TweenLite.from( document.getElementById( this.props.current ) , 0.5, { y: "100%", ease: Power2.easeOut, onComplete: callback} )
     }
 
     prev( callback ) {
@@ -35,7 +35,7 @@ class Slider extends Component {
 
         this.zIndex++;
         document.getElementById(this.props.current).style.zIndex = this.zIndex;
-        TweenLite.from( document.getElementById( this.props.current ) , 0.75, { y: "-100%", ease: Power2.easeOut, onComplete: callback} )
+        TweenLite.from( document.getElementById( this.props.current ) , 0.5, { y: "-100%", ease: Power2.easeOut, onComplete: callback} )
     }
 
     render() {

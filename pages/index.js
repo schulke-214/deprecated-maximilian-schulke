@@ -4,13 +4,12 @@ import Link from 'next/link';
 // COMPONENT IMPORTS
 import Slider from '../frontend/components/pages/home/slider/slider';
 import Circle from '../frontend/components/common/circle/circle';
-// import ProjectData from '../frontend/components/pages/home/projectData/projectData';
 import TextTransition from '../frontend/components/common/textTransition/textTransition';
 
-// JSON IMPORT
+// JSON IMPORTS
 import projectsJson from '../static/Project.json';
 
-// STYLE IMPRTS
+// STYLE IMPORTS
 import commonStyles from '../frontend/styles/pages/home-common';
 import desktopStyles from '../frontend/styles/pages/home-desktop';
 import mobileStyles from '../frontend/styles/pages/home-mobile';
@@ -25,13 +24,11 @@ class Home extends Component {
             projectNumber: React.createRef(),
             projectYear: React.createRef(),
             projectCategory: React.createRef()
-        }
+        };
 
         // VARIABLES
         this.threshold = 50;
         this.running = false;
-        
-
 
         // MAP JSON TO ARRAY
         const projects = [];
@@ -71,14 +68,14 @@ class Home extends Component {
                 ...prevState.slider,
                 current: newCurrent
             }
-        }))
+        }));
 
         const byPrev = int => this.setState( prevState => ({
             slider: {
                 ...prevState.slider,
                 current: prevState.slider.current + int
             }
-        }))
+        }));
 
         switch( dir ) {
             case '+': 
@@ -100,26 +97,25 @@ class Home extends Component {
     nextProject() {
         this.running = true;
 
-        // let next = this.state.slider.current <  this.state.slider.length ? this.state.slider.current + 1 : 1;
-        // let project = this.state.projects[ next - 1 ];
+        let next = this.state.slider.current <  this.state.slider.length ? this.state.slider.current + 1 : 1;
+        let project = this.state.projects[ next - 1 ];
 
-        // this.textTransitions.projectNumber.current.next( next );
-        // this.textTransitions.projectYear.current.next( project.meta.year );
-        // this.textTransitions.projectCategory.current.next( project.meta.category );
+        this.textTransitions.projectNumber.current.next( next );
+        this.textTransitions.projectYear.current.next( project.meta.year );
+        this.textTransitions.projectCategory.current.next( project.meta.category );
 
-
-        this.slider.current.next(() => window.addEventListener("wheel", this.resetRunningState ) )
+        this.slider.current.next(() => window.addEventListener("wheel", this.resetRunningState ));
     }
 
     prevProject() {
         this.running = true;
 
-        // let prev = this.state.slider.current > 1 ? this.state.slider.current - 1 : this.state.slider.length ;
-        // let project = this.state.projects[ prev - 1 ];
+        let prev = this.state.slider.current > 1 ? this.state.slider.current - 1 : this.state.slider.length ;
+        let project = this.state.projects[ prev - 1 ];
 
-        // this.textTransitions.projectNumber.current.prev( prev );
-        // this.textTransitions.projectYear.current.prev( project.meta.year );
-        // this.textTransitions.projectCategory.current.prev( project.meta.category );
+        this.textTransitions.projectNumber.current.prev( prev );
+        this.textTransitions.projectYear.current.prev( project.meta.year );
+        this.textTransitions.projectCategory.current.prev( project.meta.category );
 
         this.slider.current.prev(() => window.addEventListener("wheel", this.resetRunningState ));
     }
@@ -140,12 +136,13 @@ class Home extends Component {
     }
 
     resetRunningState( ev ) {
-        if( ev.deltaY < this.threshold ) {
+        if( Math.abs( ev.deltaY ) < this.threshold ) {
             this.running = false;
             window.removeEventListener("wheel", this.resetRunningState );
         }
     }
-    // ADD TOUCHSUPPORT LATER
+
+    // ADD TOUCH SUPPORT LATER
     // ADD KEY SUPPORT LATER
     // ADD DRAG SUPPORT LATER
 
@@ -222,7 +219,6 @@ class Home extends Component {
                                             defaultValue={this.getProjectData().meta.category}
                                             ref={ this.textTransitions.projectCategory } />
                                     </span>
-
                                 </div>
                             </div>
                         </div>
