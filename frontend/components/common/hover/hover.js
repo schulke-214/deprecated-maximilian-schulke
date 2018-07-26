@@ -4,11 +4,11 @@ import Link from 'next/link';
 import css from 'styled-jsx/css';
 
 const styles =  css`
-    .sub-span {
+    .hover-link-span {
         display: inline-block;
     }
     
-    .space {
+    .hover-link-space {
         width: 5px
     }
 `;
@@ -46,11 +46,10 @@ class Hover extends Component {
         for( let i = 0; i < this.text.length; i++ ) {
             let span = document.createElement("span");
             span.textContent = this.text.charAt(i);
-            span.classList.add("sub-span");
+            span.classList.add("hover-link-span");
 
             if( this.text.charAt(i) === " ")
-                span.classList.add("space");
-
+                span.classList.add("hover-link-space");
 
             this.container.current.appendChild(span);
         }

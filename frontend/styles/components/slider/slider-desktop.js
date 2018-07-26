@@ -1,7 +1,7 @@
 import css from 'styled-jsx/css';
 
 export default css`
-    div {
+    canvas {
         z-index: -1;
         position: absolute;
         left: 37.5%;

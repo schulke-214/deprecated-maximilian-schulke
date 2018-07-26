@@ -100,9 +100,11 @@ class Home extends Component {
         let next = this.state.slider.current <  this.state.slider.length ? this.state.slider.current + 1 : 1;
         let project = this.state.projects[ next - 1 ];
 
+/*
         this.textTransitions.projectNumber.current.next( next );
         this.textTransitions.projectYear.current.next( project.meta.year );
         this.textTransitions.projectCategory.current.next( project.meta.category );
+*/
 
         this.slider.current.next(() => window.addEventListener("wheel", this.resetRunningState ));
     }
@@ -113,9 +115,11 @@ class Home extends Component {
         let prev = this.state.slider.current > 1 ? this.state.slider.current - 1 : this.state.slider.length ;
         let project = this.state.projects[ prev - 1 ];
 
+/*
         this.textTransitions.projectNumber.current.prev( prev );
         this.textTransitions.projectYear.current.prev( project.meta.year );
         this.textTransitions.projectCategory.current.prev( project.meta.category );
+*/
 
         this.slider.current.prev(() => window.addEventListener("wheel", this.resetRunningState ));
     }

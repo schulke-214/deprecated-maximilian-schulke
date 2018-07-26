@@ -49,8 +49,8 @@ export default css`
     span {
         white-space: nowrap;
     }
-    /* LOGO CLASSES */
     
+    /* LOGO CLASSES */
     .logo {
         width: 20px;
         height: 10px;
