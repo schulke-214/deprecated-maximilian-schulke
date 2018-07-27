@@ -79,13 +79,17 @@ class Slider extends Component {
 
         this.pixi.container.addChild(bg);
 
-        window.addEventListener('resize', this.handleResize);
         this.animate();
         this.handleResize();
+
+        window.addEventListener('load', this.handleResize);
+        window.addEventListener('resize', this.handleResize);
     }
 
     componentWillUnmount() {
-        cancelAnimationFrame( this.raf );
+        window.cancelAnimationFrame( this.raf );
+
+        window.removeEventListener('load', this.handleResize);
         window.removeEventListener('resize', this.handleResize);
     }
 
@@ -144,7 +148,7 @@ class Slider extends Component {
             scale: factor,
             left: ( rect.width - this.pixi.width ) / 2,
             top: ( rect.height - this.pixi.height ) / 2
-        })
+        });
     }
 
     render() {

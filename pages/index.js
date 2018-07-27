@@ -208,21 +208,21 @@ class Home extends Component {
                         <style jsx>{mobileStyles}</style>
                         {/* <div id="projectTitle" className="spectral" >{this.getProjectData().meta.title}</div> */}
                         <div className="inner-wrap flex column" >
-                            {/*<div className="top flex" >
+                            <div className="top flex" >
                                 <span className="flex projectNum">
                                     <TextTransition
                                         defaultValue={this.state.slider.current}
                                         ref={ this.textTransitions.projectNumber } />
                                         <span>/{this.state.slider.length}</span>
                                 </span>
-                            </div>*/}
+                            </div>
                             <Slider
                                 ref={ this.slider }
                                 current={this.state.slider.current}
                                 length={this.state.slider.length}
                                 updateCurrent={this.updateCurrent}
                                 isMobile />
-                            {/*<div className="lower flex">
+                            <div className="lower flex">
                                 <Hover to="/project" text="view project" style={{ marginTop: "5vh" }} />
 
                                 <div className="flex row projectData">
@@ -237,7 +237,7 @@ class Home extends Component {
                                             ref={ this.textTransitions.projectCategory } />
                                     </span>
                                 </div>
-                            </div>*/}
+                            </div>
                         </div>
                     </div>
                 </React.Fragment>

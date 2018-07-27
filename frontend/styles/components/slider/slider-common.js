@@ -2,9 +2,9 @@ import css from 'styled-jsx/css';
 
 export default css`
     div {
-        z-index: 100;
-        overflow: hidden;
         position: relative;
+        z-index: -10;
+        overflow: hidden;
     }
 
     canvas {
