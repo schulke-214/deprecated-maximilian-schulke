@@ -169,11 +169,11 @@ class Home extends Component {
                             <Hover to="/project" text="view project" isMobile={this.props.device.isMobile} style={{ marginBottom: "calc( 7.5vh - 15px )", height: "15px" }} />
                         </div>
                         <Slider 
-                            ref={ this.slider } 
+                            ref={this.slider}
                             current={this.state.slider.current} 
                             length={this.state.slider.length} 
                             updateCurrent={this.updateCurrent} />
-                        {/* <div id="projectTitle" className="spectral">{this.getProjectData().meta.title}</div> */}
+                        {/*<div id="projectTitle" className="spectral">{this.getProjectData().meta.title}</div>*/}
                         <div className="project-info">
                             <span className="flex projectNum">
                                 <TextTransition 
@@ -206,18 +206,18 @@ class Home extends Component {
                 <React.Fragment>
                     <div className="inner" >
                         <style jsx>{mobileStyles}</style>
-                        {/* <div id="projectTitle" className="spectral" >{this.getProjectData().meta.title}</div> */}
+                        {/*<div id="projectTitle" className="spectral" >{this.getProjectData().meta.title}</div>*/}
                         <div className="inner-wrap flex column" >
                             <div className="top flex" >
                                 <span className="flex projectNum">
-                                    <TextTransition
+                                    {/*<TextTransition
                                         defaultValue={this.state.slider.current}
-                                        ref={ this.textTransitions.projectNumber } />
-                                        <span>/{this.state.slider.length}</span>
+                                        ref={ this.textTransitions.projectNumber } />*/}
+                                        <span>{this.state.slider.current}/{this.state.slider.length}</span>
                                 </span>
                             </div>
                             <Slider
-                                ref={ this.slider }
+                                ref={this.slider}
                                 current={this.state.slider.current}
                                 length={this.state.slider.length}
                                 updateCurrent={this.updateCurrent}

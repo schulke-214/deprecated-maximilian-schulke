@@ -23,8 +23,8 @@ class Slider extends Component {
             displacementSprite: null,
             displacementFilter: null,
 
-            delta_scale: 10,
-            delta_offset: 1,
+            delta_scale: 25,
+            delta_offset: 1.5,
             width: 1000,
             height: 1500
         };
@@ -35,7 +35,12 @@ class Slider extends Component {
         this.raf = null;
 
         // THIS FIXES
+        this.addImg = this.addImg.bind(this);
+        this.calcSize = this.calcSize.bind(this);
+        this.initPixi = this.initPixi.bind(this);
+
         this.animate = this.animate.bind(this);
+        this.imageTransition = this.imageTransition.bind(this);
 
         this.next = this.next.bind(this);
         this.prev = this.prev.bind(this);
@@ -44,6 +49,31 @@ class Slider extends Component {
     }
 
     componentDidMount() {
+        this.initPixi();
+
+
+        for( let i = 1; i <= this.props.length; i++ )
+            this.addImg( i  )
+
+        console.log("componentDidMount() bug found: component mounts twice");
+
+        this.animate();
+        this.handleResize();
+
+        window.addEventListener('load', this.handleResize);
+        window.addEventListener('resize', this.handleResize);
+    }
+
+    componentWillUnmount() {
+        console.log("componentWillUnmount() unmounted");
+
+        window.cancelAnimationFrame( this.raf );
+
+        window.removeEventListener('load', this.handleResize);
+        window.removeEventListener('resize', this.handleResize);
+    }
+
+    initPixi() {
         this.pixi.renderer = PIXI.autoDetectRenderer( this.pixi.width, this.pixi.height, {
             transparent: true,
             view: this.canvas.current,
@@ -65,47 +95,28 @@ class Slider extends Component {
 
         this.pixi.stage.addChild( this.pixi.displacementSprite );
         this.pixi.container.filters = [ this.pixi.displacementFilter ];
-
-        let bg = PIXI.Sprite.fromImage('static/slider/3-min.jpg');
-        let imgSize = this.calcSize( sizes[2], 1.25 );
-
-        bg.width = imgSize.width;
-        bg.height = imgSize.height;
-
-        bg.x = imgSize.x;
-        bg.y = imgSize.y;
-
-
-        console.log("bug found: component mounts twice");
-
-
-        // bg.width = sizes[0].width;
-        // bg.height = sizes[0].height;
-
-        // bg.x = - this.pixi.renderer.width / 4;
-        // bg.y = - this.pixi.renderer.height / 4;
-
-        this.pixi.container.addChild(bg);
-
-        this.animate();
-        this.handleResize();
-
-        window.addEventListener('load', this.handleResize);
-        window.addEventListener('resize', this.handleResize);
     }
 
-    componentWillUnmount() {
-        window.cancelAnimationFrame( this.raf );
+    addImg( num ) {
+        let img = PIXI.Sprite.fromImage(`static/slider/${num}-min.jpg`);
+        let imgSize = this.calcSize( sizes[ num - 1 ], 1.25 );
 
-        window.removeEventListener('load', this.handleResize);
-        window.removeEventListener('resize', this.handleResize);
+        img.width = imgSize.width;
+        img.height = imgSize.height;
+        img.x = imgSize.x;
+        img.y = imgSize.y;
+
+        img.zIndex = num;
+
+        if( num !== this.props.current )
+            img.alpha = 0;
+
+        this.pixi.container.addChild(img);
     }
 
     calcSize( size, scale = 1 ) {
-        let factor = 1;
-
         let widthProportion = ( size.height / size.width );
-        let heightPropotion = ( size.width / size.height );
+        let heightProportion = ( size.width / size.height );
 
         // CALC THE SIZES IN WHICH THEY WOULD FIT IN
         let widthFactor = ( this.pixi.width / size.width  );
@@ -122,7 +133,7 @@ class Slider extends Component {
         else {
             // CALC THE SMALLER SIDE TO FIT & THEN SCALE UP THE OTHER SITE PROPORTIONAL
             height = size.height * heightFactor;
-            width = height * heightPropotion;
+            width = height * heightProportion;
         }
 
         height *= scale;
@@ -130,8 +141,6 @@ class Slider extends Component {
 
         offsetX = ( this.pixi.width - width ) / 2;
         offsetY = (  this.pixi.height - height ) / 2;
-
-        console.log( width, height, offsetX, offsetY );
 
         return {
             width: Math.floor( width ),
@@ -153,20 +162,31 @@ class Slider extends Component {
         this.pixi.renderer.render( this.pixi.stage );
     }
 
-    next( callback ) {
-        // this.props.updateCurrent('+');
+    imageTransition( el, alpha, forwards, callback ) {
+        TweenLite.to( this.pixi, 0.75, { delta_scale: forwards ? 500 : -500, delta_offset: forwards ? 5 : -5, ease: Power3.easeIn });
+        TweenLite.to( this.pixi, 0.75, { delta_scale: 25, delta_offset: 1.5,  ease: Power3.easeOut,  delay: 0.75});
 
-        // this.zIndex++;
-        // document.getElementById(this.props.current).style.zIndex = this.zIndex;
-        // TweenLite.from( document.getElementById( this.props.current ) , 0.5, { y: "100%", ease: Power2.easeOut, onComplete: callback} )
+        TweenLite.to( el, 1, { alpha, ease: Power3.easeInOut, delay: 0.25, onComplete: callback });
+    }
+
+    next( callback ) {
+        this.props.updateCurrent('+');
+
+        if( this.props.current === 1 )
+            for( let i = 2; i <= this.pixi.container.children.length; i++ )
+                this.imageTransition(this.pixi.container.children[i -1], 0, true, callback)
+        else
+            this.imageTransition(this.pixi.container.children[ this.props.current - 1 ], 1, true, callback);
     }
 
     prev( callback ) {
-        // this.props.updateCurrent('-');
+        this.props.updateCurrent('-');
 
-        // this.zIndex++;
-        // document.getElementById(this.props.current).style.zIndex = this.zIndex;
-        // TweenLite.from( document.getElementById( this.props.current ) , 0.5, { y: "-100%", ease: Power2.easeOut, onComplete: callback} )
+        if( this.props.current === this.props.length )
+            for( let i = 1; i <= this.pixi.container.children.length; i++ )
+                this.imageTransition(this.pixi.container.children[i -1], 1, false, callback);
+        else
+            this.imageTransition(this.pixi.container.children[ this.props.current ], 0, false, callback);
     }
 
     handleResize() {
