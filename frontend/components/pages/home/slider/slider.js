@@ -66,10 +66,18 @@ class Slider extends Component {
         this.pixi.stage.addChild( this.pixi.displacementSprite );
         this.pixi.container.filters = [ this.pixi.displacementFilter ];
 
-        let bg = PIXI.Sprite.fromImage('static/slider/1-min.jpg');
+        let bg = PIXI.Sprite.fromImage('static/slider/3-min.jpg');
+        let imgSize = this.calcSize( sizes[2], 1.25 );
 
-        bg.width = this.pixi.renderer.width;
-        bg.height = this.pixi.renderer.height;
+        bg.width = imgSize.width;
+        bg.height = imgSize.height;
+
+        bg.x = imgSize.x;
+        bg.y = imgSize.y;
+
+
+        console.log("bug found: component mounts twice");
+
 
         // bg.width = sizes[0].width;
         // bg.height = sizes[0].height;
@@ -93,8 +101,44 @@ class Slider extends Component {
         window.removeEventListener('resize', this.handleResize);
     }
 
-    calcSize( size, containerSize ) {
+    calcSize( size, scale = 1 ) {
+        let factor = 1;
 
+        let widthProportion = ( size.height / size.width );
+        let heightPropotion = ( size.width / size.height );
+
+        // CALC THE SIZES IN WHICH THEY WOULD FIT IN
+        let widthFactor = ( this.pixi.width / size.width  );
+        let heightFactor = ( this.pixi.height / size.height );
+
+        let width, height, offsetX, offsetY;
+
+        if ( widthFactor > heightFactor ) {
+            // CALC THE SMALLER SIDE TO FIT & THEN SCALE UP THE OTHER SITE PROPORTIONAL
+            width = size.width * widthFactor;
+            height = width * widthProportion;
+        }
+
+        else {
+            // CALC THE SMALLER SIDE TO FIT & THEN SCALE UP THE OTHER SITE PROPORTIONAL
+            height = size.height * heightFactor;
+            width = height * heightPropotion;
+        }
+
+        height *= scale;
+        width *= scale;
+
+        offsetX = ( this.pixi.width - width ) / 2;
+        offsetY = (  this.pixi.height - height ) / 2;
+
+        console.log( width, height, offsetX, offsetY );
+
+        return {
+            width: Math.floor( width ),
+            height: Math.floor( height ),
+            x: Math.floor( offsetX ),
+            y: Math.floor( offsetY )
+        }
     }
 
     animate() {
