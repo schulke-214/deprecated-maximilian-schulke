@@ -22,8 +22,7 @@ class Home extends Component {
         this.slider = React.createRef();
         this.textTransitions = {
             projectNumber: React.createRef(),
-            projectYear: React.createRef(),
-            projectCategory: React.createRef()
+            projectData: React.createRef()
         };
 
         // VARIABLES
@@ -100,11 +99,8 @@ class Home extends Component {
         let next = this.state.slider.current <  this.state.slider.length ? this.state.slider.current + 1 : 1;
         let project = this.state.projects[ next - 1 ];
 
-/*
         this.textTransitions.projectNumber.current.next( next );
-        this.textTransitions.projectYear.current.next( project.meta.year );
-        this.textTransitions.projectCategory.current.next( project.meta.category );
-*/
+        this.textTransitions.projectData.current.next( this.getProjectData().meta.year + " ~ " + this.getProjectData().meta.category );
 
         this.slider.current.next(() => window.addEventListener("wheel", this.resetRunningState ));
     }
@@ -115,11 +111,8 @@ class Home extends Component {
         let prev = this.state.slider.current > 1 ? this.state.slider.current - 1 : this.state.slider.length ;
         let project = this.state.projects[ prev - 1 ];
 
-/*
         this.textTransitions.projectNumber.current.prev( prev );
-        this.textTransitions.projectYear.current.prev( project.meta.year );
-        this.textTransitions.projectCategory.current.prev( project.meta.category );
-*/
+        this.textTransitions.projectData.current.prev( this.getProjectData().meta.year + " ~ " + this.getProjectData().meta.category);
 
         this.slider.current.prev(() => window.addEventListener("wheel", this.resetRunningState ));
     }
@@ -161,11 +154,6 @@ class Home extends Component {
                     <div className="inner">
                         <div className="indication flex column">
                             <Circle />
-                            {/* COOL LINK CMP */}
-                            {/*<Link href="project/zwanzig-grad">
-                                <a id="home-view-project">view project</a>
-                            </Link>*/}
-
                             <Hover to="/project" text="view project" isMobile={this.props.device.isMobile} style={{ marginBottom: "calc( 7.5vh - 15px )", height: "15px" }} />
                         </div>
                         <Slider 
@@ -177,24 +165,14 @@ class Home extends Component {
                         <div className="project-info">
                             <span className="flex projectNum">
                                 <TextTransition 
-                                    defaultValue={this.state.slider.current} 
-                                    ref={ this.textTransitions.projectNumber } /> 
-                                    <span>/{this.state.slider.length}</span>
+                                    text={this.state.slider.current}
+                                    ref={this.textTransitions.projectNumber} />
+                                    <span>{" / " + this.state.slider.length}</span>
                             </span>
-
-                            <div className="flex row projectData">
-                                <span className="projectYear" >
-                                    <TextTransition
-                                        defaultValue={this.getProjectData().meta.year}
-                                        ref={ this.textTransitions.projectYear }/>
-                                </span>
-                                <span className="projectCategory" >
-                                    <TextTransition
-                                        defaultValue={this.getProjectData().meta.category}
-                                        ref={ this.textTransitions.projectCategory } />
-                                </span>
-                            </div>
-                        </div> 
+                            <TextTransition
+                                text={this.getProjectData().meta.year + " ~ " + this.getProjectData().meta.category}
+                                ref={this.textTransitions.projectData} />
+                        </div>
                     </div>
                 </React.Fragment>
             )
@@ -210,10 +188,10 @@ class Home extends Component {
                         <div className="inner-wrap flex column" >
                             <div className="top flex" >
                                 <span className="flex projectNum">
-                                    {/*<TextTransition
-                                        defaultValue={this.state.slider.current}
-                                        ref={ this.textTransitions.projectNumber } />*/}
-                                        <span>{this.state.slider.current}/{this.state.slider.length}</span>
+                                    <TextTransition
+                                        text={this.state.slider.current}
+                                        ref={this.textTransitions.projectNumber }/>
+                                    <span>{" / " + this.state.slider.length}</span>
                                 </span>
                             </div>
                             <Slider
@@ -225,18 +203,10 @@ class Home extends Component {
                             <div className="lower flex">
                                 <Hover to="/project" text="view project" style={{ marginTop: "5vh" }} />
 
-                                <div className="flex row projectData">
-                                    <span className="projectYear" >
-                                        <TextTransition 
-                                            defaultValue={this.getProjectData().meta.year} 
-                                            ref={ this.textTransitions.projectYear }/>
-                                    </span>
-                                    <span className="projectCategory" >
-                                        <TextTransition 
-                                            defaultValue={this.getProjectData().meta.category}
-                                            ref={ this.textTransitions.projectCategory } />
-                                    </span>
-                                </div>
+                                <TextTransition
+                                    style={{ marginTop: "5vh" }}
+                                    text={this.getProjectData().meta.year + " ~ " + this.getProjectData().meta.category}
+                                    ref={this.textTransitions.projectData} />
                             </div>
                         </div>
                     </div>

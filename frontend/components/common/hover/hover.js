@@ -1,19 +1,6 @@
 import React, {Component} from 'react';
 import Link from 'next/link';
 
-import css from 'styled-jsx/css';
-
-const styles =  css`
-    .hover-link-span {
-        display: inline-block;
-    }
-    
-    .hover-link-space {
-        width: 5px
-    }
-`;
-
-
 class Hover extends Component {
     constructor( props ) {
         super( props );
@@ -59,10 +46,7 @@ class Hover extends Component {
         return (
             <Link href={this.props.to} >
                 <a style={{...this.props.style}}>
-                    <style jsx global>{styles}</style>
-                    <span ref={this.container} onMouseEnter={this.handlerHover} style={{ position: "relative"}} >
-
-                    </span>
+                    <span ref={this.container} onMouseEnter={this.handlerHover} style={{ position: "relative" }} />
                 </a>
             </Link>
 

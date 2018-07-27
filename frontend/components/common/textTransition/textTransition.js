@@ -4,78 +4,71 @@ class TextTransition extends Component {
     constructor( props ) {
         super( props );
 
-        // VARIABLES
-        this.mounted = null;
-
         // REFS
-        this.parent = React.createRef();
-        this.current = React.createRef();
-        this.hiddenNext = React.createRef();
-        this.hiddenPrev = React.createRef();
-
-        // STATE
-        this.state = {
-            current: null,
-            value: null
-        };
+        this.container = React.createRef();
 
         // THIS BINDS
+        this.prepareDOM = this.prepareDOM.bind(this);
+        this.changeText = this.changeText.bind(this);
+
         this.next = this.next.bind(this);
         this.prev = this.prev.bind(this);
     }
 
-    componentWillMount() {
-        this.mounted = true;
-        this.setState({ current: this.props.defaultValue })
+    componentDidMount() {
+        this.prepareDOM();
     }
 
-    componentWillUnmount() {
-        this.mounted = false;
+    prepareDOM( text = this.props.text ) {
+        text += "";
+
+        console.log( typeof text)
+        console.log( "preparing for", text )
+        for( let i = 0; i < text.length; i++ ) {
+            console.log( text.charAt(i));
+            let span = document.createElement("span");
+            span.textContent = text.charAt(i);
+            span.classList.add("hover-link-span");
+
+            if( text.charAt(i) === " " )
+                span.classList.add("hover-link-space");
+
+            this.container.current.appendChild(span);
+        }
     }
 
     next( nextValue ) {
-        this.setState( { value: nextValue } );
-
-        const ease = Power1.easeInOut;
-
-        TweenLite.to( this.current.current, 0.5, { opacity: 0, ease });
-        TweenLite.to( this.hiddenNext.current, 0.5, { opacity: 1, ease });
-        TweenLite.to( this.parent.current, 0.5, { y: "-100%", ease, onComplete: () => {
-            if( this.mounted ) {
-                this.setState({ current: nextValue });
-
-                TweenLite.set( this.parent.current, { y: "0%" });
-                TweenLite.set( this.current.current, { opacity: 1 });
-                TweenLite.set( this.hiddenNext.current, { opacity: 0 });
-            }
-        }});
+        console.log( nextValue );
+        let tl = new TimelineLite({ onComplete: () => {
+                tl.pause(0);
+                this.changeText( nextValue );
+                let secTl = new TimelineLite().staggerFrom( this.container.current.childNodes, 0.2, { y: "100%", opacity: 0 }, 0.01 );
+            }})
+            .staggerTo( this.container.current.childNodes, 0.2, { y: "-100%", opacity: 0 }, 0.01 )
+            .set( this.container.current.childNodes, { y: "100%"});
     }
 
     prev( prevValue ) {
-        this.setState( { value: prevValue } );
-        
-        const ease = Power2.easeOut;
+        let tl = new TimelineLite({ onComplete: () => {
+                tl.pause(0);
+                this.changeText( prevValue );
+                let secTl = new TimelineLite().staggerFrom( this.container.current.childNodes, 0.2, { y: "-100%", opacity: 0 }, 0.01 );
+            }})
+            .staggerTo( this.container.current.childNodes, 0.2, { y: "100%", opacity: 0 }, 0.01 )
+            .set( this.container.current.childNodes, { y: "-100%"});
+    }
 
-        TweenLite.to( this.current.current, 0.5, { opacity: 0, ease } );
-        TweenLite.to( this.hiddenPrev.current, 0.5, { opacity: 1, ease });
-        TweenLite.to( this.parent.current, 0.5, { y: "100%", ease, onComplete: () => {
-            if( this.mounted ) {
-                this.setState({ current: prevValue })
+    changeText( text ) {
+        while ( this.container.current.firstChild ) {
+            this.container.current.removeChild( this.container.current.firstChild );
+        }
 
-                TweenLite.set( this.parent.current, { y: "0%" });
-                TweenLite.set( this.current.current, { opacity: 1 });
-                TweenLite.set( this.hiddenPrev.current, { opacity: 0 });
-            }
-        }})
+        this.prepareDOM( text );
     }
 
     render() {
         return (
-            <span ref={ this.parent } className="block relative" style={{ height: "100%", top: "-100%"}} >
-                <span ref={ this.hiddenPrev } className="block" style={{ height: "100%", opacity:"0"}}>{ this.state.value }</span>
-                <span ref={ this.current } className="block" style={{ height: "100%"}}> { this.state.current } </span>
-                <span ref={ this.hiddenNext } className="block" style={{ height: "100%", opacity:"0"}}>{ this.state.value }</span>
-            </span>
+            <span ref={ this.container } className="block relative" style={{ ...this.props.style, height: "100%" }} />
         )
     }
 }

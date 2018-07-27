@@ -68,7 +68,16 @@ export default css`
         object-fit: cover;
         display: block;
     }
-
+    
+    /* CLASSES FOR SPAN ANIMATION */
+    .hover-link-span {
+        display: inline-block;
+    }
+    
+    .hover-link-space {
+        width: 5px
+    }
+    
     /* HIDE SCROLLBAR */
     html::-webkit-scrollbar {
         width: 0px;
