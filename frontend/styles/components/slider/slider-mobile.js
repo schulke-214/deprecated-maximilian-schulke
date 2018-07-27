@@ -1,7 +1,7 @@
 import css from 'styled-jsx/css';
 
 export default css`
-    canvas {
+    div {
         position: relative;
         top: 0;
         left: 0;

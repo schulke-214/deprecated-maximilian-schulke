@@ -2,17 +2,13 @@ import css from 'styled-jsx/css';
 
 export default css`
     div {
-        z-index: -1;
+        z-index: 100;
         overflow: hidden;
+        position: relative;
     }
 
-    img {
-        display: block;
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
+    canvas {
+        transform-origin: center;
         position: absolute;
-        top: 0;
-        left: 0;
     }
 `;

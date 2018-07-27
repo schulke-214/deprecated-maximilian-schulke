@@ -72,6 +72,38 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/styles/var.js":
+/***/ (function(module, exports) {
+
+var font = {
+  sizes: {
+    small: '12.5px',
+    medium: '14px'
+  }
+};
+var colors = {
+  main: '#121212',
+  highlight: '#fff'
+};
+var spacing = {
+  layout: {
+    marginOut: 5
+  }
+};
+var breakpoints = {
+  desktop: 1280,
+  tablet: 1024,
+  phone: 620
+};
+module.exports = {
+  font: font,
+  colors: colors,
+  spacing: spacing,
+  breakpoints: breakpoints
+};
+
+/***/ }),
+
 /***/ "./pages/_document.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -81,6 +113,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_document__ = __webpack_require__("next/document");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_document___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_document__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__frontend_styles_var__ = __webpack_require__("./frontend/styles/var.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__frontend_styles_var___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__frontend_styles_var__);
 var _jsxFileName = "/Users/max/Desktop/maximilian-schulke/pages/_document.js";
 
 
@@ -97,6 +131,7 @@ function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) ===
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -118,18 +153,18 @@ function (_Document) {
         lang: "de",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 6
+          lineNumber: 7
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_document__["Head"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 7
+          lineNumber: 8
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("meta", {
         charSet: "UTF-8",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 8
+          lineNumber: 9
         }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("meta", {
         name: "viewport",
@@ -137,7 +172,7 @@ function (_Document) {
         key: "viewport",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 9
+          lineNumber: 10
         }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("meta", {
         name: "description",
@@ -146,7 +181,7 @@ function (_Document) {
         ,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 10
+          lineNumber: 11
         }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("meta", {
         name: "theme-color",
@@ -155,36 +190,64 @@ function (_Document) {
         ,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 11
+          lineNumber: 12
+        }
+      }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("script", {
+        src: "https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenLite.min.js",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 14
+        }
+      }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("script", {
+        src: "https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TimelineLite.min.js",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 15
+        }
+      }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("script", {
+        src: "https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/plugins/CSSPlugin.min.js",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 16
+        }
+      }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("script", {
+        src: "https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.1/pixi.min.js",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 17
         }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("noscript", {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 12
+          lineNumber: 19
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("meta", {
-        "http-equiv": "Refresh",
+        httpEquiv: "Refresh",
         content: "0; URL=https://domain.com/lightweight/"
         /* REMINDER FOR FUTURE ME: CHANGE THIS*/
         ,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 13
+          lineNumber: 20
         }
       }))), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("body", {
+        style: {
+          display: "none",
+          backgroundColor: __WEBPACK_IMPORTED_MODULE_2__frontend_styles_var___default.a.colors.main
+        },
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 16
+          lineNumber: 23
         }
       }, __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_document__["Main"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 17
+          lineNumber: 24
         }
       }), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_next_document__["NextScript"], {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 18
+          lineNumber: 25
         }
       })));
     }
