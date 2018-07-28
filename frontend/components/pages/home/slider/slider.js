@@ -163,7 +163,7 @@ class Slider extends Component {
     }
 
     imageTransition( el, alpha, forwards, callback ) {
-        TweenLite.to( this.pixi, 0.75, { delta_scale: forwards ? 500 : -500, delta_offset: forwards ? 5 : -5, ease: Power3.easeIn });
+        TweenLite.to( this.pixi, 0.75, { delta_scale: forwards ? 500 : -500, delta_offset: forwards ? -5 : 5, ease: Power3.easeIn });
         TweenLite.to( this.pixi, 0.75, { delta_scale: 25, delta_offset: 1.5,  ease: Power3.easeOut,  delay: 0.75});
 
         TweenLite.to( el, 1, { alpha, ease: Power3.easeInOut, delay: 0.25, onComplete: callback });

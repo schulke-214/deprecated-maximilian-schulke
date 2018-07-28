@@ -99,8 +99,8 @@ class Home extends Component {
         let next = this.state.slider.current <  this.state.slider.length ? this.state.slider.current + 1 : 1;
         let project = this.state.projects[ next - 1 ];
 
-        this.textTransitions.projectNumber.current.next( next );
-        this.textTransitions.projectData.current.next( this.getProjectData().meta.year + " ~ " + this.getProjectData().meta.category );
+        this.textTransitions.projectNumber.current.next( next + " " );
+        this.textTransitions.projectData.current.next( project.meta.year + " ~ " + project.meta.category );
 
         this.slider.current.next(() => window.addEventListener("wheel", this.resetRunningState ));
     }
@@ -111,8 +111,8 @@ class Home extends Component {
         let prev = this.state.slider.current > 1 ? this.state.slider.current - 1 : this.state.slider.length ;
         let project = this.state.projects[ prev - 1 ];
 
-        this.textTransitions.projectNumber.current.prev( prev );
-        this.textTransitions.projectData.current.prev( this.getProjectData().meta.year + " ~ " + this.getProjectData().meta.category);
+        this.textTransitions.projectNumber.current.prev( prev + " " );
+        this.textTransitions.projectData.current.prev( project.meta.year + " ~ " + project.meta.category);
 
         this.slider.current.prev(() => window.addEventListener("wheel", this.resetRunningState ));
     }
@@ -165,9 +165,9 @@ class Home extends Component {
                         <div className="project-info">
                             <span className="flex projectNum">
                                 <TextTransition 
-                                    text={this.state.slider.current}
+                                    text={this.state.slider.current + " "}
                                     ref={this.textTransitions.projectNumber} />
-                                    <span>{" / " + this.state.slider.length}</span>
+                                    <span>{"/ " + this.state.slider.length}</span>
                             </span>
                             <TextTransition
                                 text={this.getProjectData().meta.year + " ~ " + this.getProjectData().meta.category}
@@ -189,9 +189,9 @@ class Home extends Component {
                             <div className="top flex" >
                                 <span className="flex projectNum">
                                     <TextTransition
-                                        text={this.state.slider.current}
+                                        text={this.state.slider.current + " "}
                                         ref={this.textTransitions.projectNumber }/>
-                                    <span>{" / " + this.state.slider.length}</span>
+                                    <span>{"/ " + this.state.slider.length}</span>
                                 </span>
                             </div>
                             <Slider
