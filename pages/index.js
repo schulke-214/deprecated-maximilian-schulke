@@ -154,7 +154,9 @@ class Home extends Component {
                     <div className="inner">
                         <div className="indication flex column">
                             <Circle />
-                            <Hover to="/project" text="view project" isMobile={this.props.device.isMobile} style={{ marginBottom: "calc( 7.5vh - 15px )", height: "15px" }} />
+                            <Hover to="/project" text="view project"
+                                   isMobile={this.props.device.isMobile}
+                                   style={{ marginBottom: "calc( 7.5vh - 15px )", height: "15px" }} />
                         </div>
                         <Slider 
                             ref={this.slider}
@@ -171,6 +173,7 @@ class Home extends Component {
                             </span>
                             <TextTransition
                                 text={this.getProjectData().meta.year + " ~ " + this.getProjectData().meta.category}
+                                style={{ marginBottom: "calc( 7.5vh - 15px )", height: "15px" }}
                                 ref={this.textTransitions.projectData} />
                         </div>
                     </div>

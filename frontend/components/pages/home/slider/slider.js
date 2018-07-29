@@ -38,6 +38,7 @@ class Slider extends Component {
         this.addImg = this.addImg.bind(this);
         this.calcSize = this.calcSize.bind(this);
         this.initPixi = this.initPixi.bind(this);
+        this.setAlpha = this.setAlpha.bind(this);
 
         this.animate = this.animate.bind(this);
         this.imageTransition = this.imageTransition.bind(this);
@@ -57,6 +58,7 @@ class Slider extends Component {
 
         console.log("componentDidMount() bug found: component mounts twice");
 
+        this.setAlpha();
         this.animate();
         this.handleResize();
 
@@ -166,7 +168,17 @@ class Slider extends Component {
         TweenLite.to( this.pixi, 0.75, { delta_scale: forwards ? 500 : -500, delta_offset: forwards ? -5 : 5, ease: Power3.easeIn });
         TweenLite.to( this.pixi, 0.75, { delta_scale: 25, delta_offset: 1.5,  ease: Power3.easeOut,  delay: 0.75});
 
-        TweenLite.to( el, 1, { alpha, ease: Power3.easeInOut, delay: 0.25, onComplete: callback });
+        TweenLite.to( el, 1, { alpha, ease: Power3.easeInOut, delay: 0.25, onComplete: () => {
+            for(let i = 1; i <= this.pixi.container.children.length; i++ )
+                console.log("image: " + i + " has alpha " + this.pixi.container.children[i - 1].alpha );
+
+            callback();
+        }});
+    }
+
+    setAlpha() {
+        for(let i = 0; i < this.props.current - 1; i++ )
+            this.pixi.container.children[i].alpha = 1;
     }
 
     next( callback ) {
@@ -174,7 +186,7 @@ class Slider extends Component {
 
         if( this.props.current === 1 )
             for( let i = 2; i <= this.pixi.container.children.length; i++ )
-                this.imageTransition(this.pixi.container.children[i -1], 0, true, callback)
+                this.imageTransition(this.pixi.container.children[i -1], 0, true, callback);
         else
             this.imageTransition(this.pixi.container.children[ this.props.current - 1 ], 1, true, callback);
     }

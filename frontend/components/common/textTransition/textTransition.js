@@ -22,10 +22,7 @@ class TextTransition extends Component {
     prepareDOM( text = this.props.text ) {
         text += "";
 
-        console.log( typeof text)
-        console.log( "preparing for", text )
         for( let i = 0; i < text.length; i++ ) {
-            console.log( text.charAt(i));
             let span = document.createElement("span");
             span.textContent = text.charAt(i);
             span.classList.add("hover-link-span");
@@ -38,7 +35,6 @@ class TextTransition extends Component {
     }
 
     next( nextValue ) {
-        console.log( nextValue );
         let tl = new TimelineLite({ onComplete: () => {
                 tl.pause(0);
                 this.changeText( nextValue );
@@ -68,7 +64,7 @@ class TextTransition extends Component {
 
     render() {
         return (
-            <span ref={ this.container } className="block relative" style={{ ...this.props.style, height: "100%" }} />
+            <span ref={ this.container } className="block relative" style={{ ...this.props.style }} />
         )
     }
 }
