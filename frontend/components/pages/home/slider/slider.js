@@ -52,23 +52,18 @@ class Slider extends Component {
     componentDidMount() {
         this.initPixi();
 
-
         for( let i = 1; i <= this.props.length; i++ )
             this.addImg( i  )
 
-        console.log("componentDidMount() bug found: component mounts twice");
-
         this.setAlpha();
-        this.animate();
         this.handleResize();
+        this.animate();
 
         window.addEventListener('load', this.handleResize);
         window.addEventListener('resize', this.handleResize);
     }
 
     componentWillUnmount() {
-        console.log("componentWillUnmount() unmounted");
-
         window.cancelAnimationFrame( this.raf );
 
         window.removeEventListener('load', this.handleResize);
@@ -168,12 +163,7 @@ class Slider extends Component {
         TweenLite.to( this.pixi, 0.75, { delta_scale: forwards ? 500 : -500, delta_offset: forwards ? -5 : 5, ease: Power3.easeIn });
         TweenLite.to( this.pixi, 0.75, { delta_scale: 25, delta_offset: 1.5,  ease: Power3.easeOut,  delay: 0.75});
 
-        TweenLite.to( el, 1, { alpha, ease: Power3.easeInOut, delay: 0.25, onComplete: () => {
-            for(let i = 1; i <= this.pixi.container.children.length; i++ )
-                console.log("image: " + i + " has alpha " + this.pixi.container.children[i - 1].alpha );
-
-            callback();
-        }});
+        TweenLite.to( el, 1, { alpha, ease: Power3.easeInOut, delay: 0.25, onComplete: callback });
     }
 
     setAlpha() {

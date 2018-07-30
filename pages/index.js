@@ -20,6 +20,7 @@ class Home extends Component {
 
         // REFS
         this.slider = React.createRef();
+        this.circle = React.createRef();
         this.textTransitions = {
             projectNumber: React.createRef(),
             projectData: React.createRef()
@@ -99,6 +100,8 @@ class Home extends Component {
         let next = this.state.slider.current <  this.state.slider.length ? this.state.slider.current + 1 : 1;
         let project = this.state.projects[ next - 1 ];
 
+        this.circle.current.next( next );
+
         this.textTransitions.projectNumber.current.next( next + " " );
         this.textTransitions.projectData.current.next( project.meta.year + " ~ " + project.meta.category );
 
@@ -110,6 +113,8 @@ class Home extends Component {
 
         let prev = this.state.slider.current > 1 ? this.state.slider.current - 1 : this.state.slider.length ;
         let project = this.state.projects[ prev - 1 ];
+
+        this.circle.current.prev( prev );
 
         this.textTransitions.projectNumber.current.prev( prev + " " );
         this.textTransitions.projectData.current.prev( project.meta.year + " ~ " + project.meta.category);
@@ -153,7 +158,9 @@ class Home extends Component {
                     <style jsx>{desktopStyles}</style>
                     <div className="inner">
                         <div className="indication flex column">
-                            <Circle />
+                            <Circle ref={this.circle}
+                                    current={this.state.slider.current}
+                                    length={this.state.slider.length} />
                             <Hover to="/project" text="view project"
                                    isMobile={this.props.device.isMobile}
                                    style={{ marginBottom: "calc( 7.5vh - 15px )", height: "15px" }} />
