@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const zwanzigGrad = () => (
-    <a>
-        this is my project zwanzig-grad
-    </a>
-)
-
-export default zwanzigGrad
+class ZwanzigGrad extends Component {
+    render() {
+        return (
+            <a>
+                this is my project zwanzig-grad
+            </a>
+        )
+    }
+}
+export default ZwanzigGrad;

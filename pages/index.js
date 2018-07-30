@@ -50,6 +50,7 @@ class Home extends Component {
         this.updateCurrent = this.updateCurrent.bind(this);
 
         this.resetRunningState = this.resetRunningState.bind(this);
+        this.resetRunningStateByClick = this.resetRunningStateByClick.bind(this);
     }
 
     componentDidMount() {
@@ -60,22 +61,25 @@ class Home extends Component {
     componentWillUnmount() {
         // REMOVE LISTENERS
         window.removeEventListener('wheel', this.handleScroll );
+
+        window.removeEventListener("wheel", this.resetRunningState );
+        window.removeEventListener("mousedown", this.resetRunningStateByClick );
     }
 
-    updateCurrent( dir ) {
+    updateCurrent( dir, callback ) {
         const setTo = newCurrent => this.setState(prevState => ({
             slider: {
                 ...prevState.slider,
                 current: newCurrent
             }
-        }));
+        }), callback );
 
         const byPrev = int => this.setState( prevState => ({
             slider: {
                 ...prevState.slider,
                 current: prevState.slider.current + int
             }
-        }));
+        }), callback);
 
         switch( dir ) {
             case '+': 
@@ -94,7 +98,7 @@ class Home extends Component {
         }
     }
 
-    nextProject() {
+    nextProject( event ) {
         this.running = true;
 
         let next = this.state.slider.current <  this.state.slider.length ? this.state.slider.current + 1 : 1;
@@ -106,10 +110,21 @@ class Home extends Component {
         this.textTransitions.projectNumber.current.next( next + " " );
         this.textTransitions.projectData.current.next( project.meta.year + " ~ " + project.meta.category );
 
-        this.slider.current.next(() => window.addEventListener("wheel", this.resetRunningState ));
+        switch( event ) {
+            case "WHEEL":
+                this.slider.current.next(() => {
+                    window.addEventListener("wheel", this.resetRunningState);
+                    window.addEventListener("mousedown", this.resetRunningStateByClick)
+                });
+                break;
+
+            case "CLICK":
+                this.slider.current.next(() => this.running = false );
+                break;
+        }
     }
 
-    prevProject() {
+    prevProject( event ) {
         this.running = true;
 
         let prev = this.state.slider.current > 1 ? this.state.slider.current - 1 : this.state.slider.length ;
@@ -121,7 +136,18 @@ class Home extends Component {
         this.textTransitions.projectNumber.current.prev( prev + " " );
         this.textTransitions.projectData.current.prev( project.meta.year + " ~ " + project.meta.category);
 
-        this.slider.current.prev(() => window.addEventListener("wheel", this.resetRunningState ));
+        switch( event ) {
+            case "WHEEL":
+                this.slider.current.prev(() => {
+                    window.addEventListener("wheel", this.resetRunningState);
+                    window.addEventListener("mousedown", this.resetRunningStateByClick);
+                });
+                break;
+
+            case "CLICK":
+                this.slider.current.prev(() => this.running = false );
+                break;
+        }
     }
 
     getProjectData = () => this.state.projects[ this.state.slider.current - 1 ];
@@ -133,9 +159,19 @@ class Home extends Component {
 
         if( Math.abs( delta ) > this.threshold && !this.running ) {
             if (delta < 0)
-                this.prevProject();
+                this.prevProject("WHEEL");
             else if (delta > 0)
-                this.nextProject();             
+                this.nextProject("WHEEL");
+        }
+    }
+
+    handleClick( dir ) {
+        if( !this.running ) {
+            if( dir === "prev" )
+                this.prevProject("CLICK");
+
+            else if( dir === "next")
+                this.nextProject("CLICK");
         }
     }
 
@@ -143,7 +179,13 @@ class Home extends Component {
         if( Math.abs( ev.deltaY ) < this.threshold ) {
             this.running = false;
             window.removeEventListener("wheel", this.resetRunningState );
+            window.removeEventListener("mousedown", this.resetRunningStateByClick );
         }
+    }
+
+    resetRunningStateByClick() {
+        this.running = false;
+        window.removeEventListener("mousedown", this.resetRunningStateByClick );
     }
 
     // ADD TOUCH SUPPORT LATER

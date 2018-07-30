@@ -5,7 +5,7 @@ import App, { Container } from 'next/app';
 import Head from 'next/head';
 
 // CONTEXT PROVIDER IMPORTS
-import { DeviceProvider } from '../frontend/context/device';
+import {DeviceContext, DeviceProvider} from '../frontend/context/device';
 
 // COMPONENT IMPORTS
 import Layout from '../frontend/layout/layout';
@@ -106,9 +106,13 @@ class Application extends App {
                     {/* PAGELOADER */}
                     { this.state.pageLoader.isOpen ? <PageLoader finished={ this.removePageLoader } /> : null }
 
-                    <Layout>
-                        <Component {...pageProps} />
-                    </Layout>
+                    <DeviceContext.Consumer>
+                        { state => (
+                            <Layout device={state}>
+                                <Component {...pageProps} />
+                            </Layout>
+                        )}
+                    </DeviceContext.Consumer>
                 </Container>
             </DeviceProvider>
         )

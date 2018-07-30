@@ -53,7 +53,7 @@ class Slider extends Component {
         this.initPixi();
 
         for( let i = 1; i <= this.props.length; i++ )
-            this.addImg( i  )
+            this.addImg( i );
 
         this.setAlpha();
         this.handleResize();
@@ -172,23 +172,27 @@ class Slider extends Component {
     }
 
     next( callback ) {
-        this.props.updateCurrent('+');
+        this.props.updateCurrent('+', () => {
+            // RUNS WHEN STATE IS UPDATED
 
-        if( this.props.current === 1 )
-            for( let i = 2; i <= this.pixi.container.children.length; i++ )
-                this.imageTransition(this.pixi.container.children[i -1], 0, true, callback);
-        else
-            this.imageTransition(this.pixi.container.children[ this.props.current - 1 ], 1, true, callback);
+            if( this.props.current === 1 )
+                for( let i = 2; i <= this.pixi.container.children.length; i++ )
+                    this.imageTransition(this.pixi.container.children[i -1], 0, true, callback);
+            else
+                this.imageTransition(this.pixi.container.children[ this.props.current - 1 ], 1, true, callback);
+        });
     }
 
     prev( callback ) {
-        this.props.updateCurrent('-');
+        this.props.updateCurrent('-', () => {
+            // RUNS WHEN STATE IS UPDATED
 
-        if( this.props.current === this.props.length )
-            for( let i = 1; i <= this.pixi.container.children.length; i++ )
-                this.imageTransition(this.pixi.container.children[i -1], 1, false, callback);
-        else
-            this.imageTransition(this.pixi.container.children[ this.props.current ], 0, false, callback);
+            if( this.props.current === this.props.length )
+                for( let i = 1; i <= this.pixi.container.children.length; i++ )
+                    this.imageTransition(this.pixi.container.children[i -1], 1, false, callback);
+            else
+                this.imageTransition(this.pixi.container.children[ this.props.current ], 0, false, callback);
+        });
     }
 
     handleResize() {

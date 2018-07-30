@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 // COMPONENT IMPORTS
 import Logo from '../components/common/logo/logo';
+import Arrows from '../components/common/arrows/arrows';
 
 // IMPORT STYLES
 import styles from './layout-styles';
@@ -12,11 +13,14 @@ import { DeviceContext } from '../context/device';
 
 class Layout extends Component {
     constructor( props ) {
-        super( props )
-        
+        super( props );
+
+        this.page = React.createRef();
+
         this.state = {
             isLayout: true
-        }
+        };
+
 
         this.initCursor = this.initCursor.bind(this);
     }
@@ -33,7 +37,7 @@ class Layout extends Component {
         return (
             <React.Fragment>
                 <style jsx>{styles}</style>
-                 <div id="layout-layer">
+                <div id="layout-layer">
                     <div id="mouse-layer"></div>
                     <div id="gui-layer">
                         <div className="top flex space-between" >
@@ -41,9 +45,8 @@ class Layout extends Component {
                                 <a><Logo className="logo" /></a>
                             </Link>
                             {/* ONLY RENDER THIS WHILE BEEING A DESKTOP */}
-                            <DeviceContext.Consumer>
-                                { state => !state.isMobile ? <span> creative developer </span> : null }
-                            </DeviceContext.Consumer>
+
+                            { !this.props.device.isMobile ? <span> creative developer </span> : null }
 
                             <Link href="/project">
                                 <a>all</a>
@@ -51,7 +54,7 @@ class Layout extends Component {
                         </div>
                         <div className="mid flex space-between">
                             <a href="https://github.com/schulke-214/" target="_blank" >github</a>
-
+                            { this.page.current ? <Arrows prev={ () => this.page.current.handleClick("prev") } next={ () => this.page.current.handleClick("next") }/> : null }
                             {/* <div>UP & DOWN ARROW</div> */}
                         </div>
                         <div className="low flex space-between">
@@ -64,7 +67,7 @@ class Layout extends Component {
                 </div>
                 <main>
                     <DeviceContext.Consumer>
-                        { state => React.cloneElement(this.props.children, { device: state }) }
+                        { state => React.cloneElement(this.props.children, { device: state, ref: this.page }) }
                     </DeviceContext.Consumer>
                 </main>
             </React.Fragment>
