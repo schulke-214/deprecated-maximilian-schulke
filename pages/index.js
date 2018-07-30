@@ -100,7 +100,8 @@ class Home extends Component {
         let next = this.state.slider.current <  this.state.slider.length ? this.state.slider.current + 1 : 1;
         let project = this.state.projects[ next - 1 ];
 
-        this.circle.current.next( next );
+        if( !this.props.device.isSmall && !this.props.device.isMobile )
+            this.circle.current.next( next );
 
         this.textTransitions.projectNumber.current.next( next + " " );
         this.textTransitions.projectData.current.next( project.meta.year + " ~ " + project.meta.category );
@@ -114,7 +115,8 @@ class Home extends Component {
         let prev = this.state.slider.current > 1 ? this.state.slider.current - 1 : this.state.slider.length ;
         let project = this.state.projects[ prev - 1 ];
 
-        this.circle.current.prev( prev );
+        if( !this.props.device.isSmall && !this.props.device.isMobile )
+            this.circle.current.prev( prev );
 
         this.textTransitions.projectNumber.current.prev( prev + " " );
         this.textTransitions.projectData.current.prev( project.meta.year + " ~ " + project.meta.category);

@@ -40,7 +40,11 @@ class Layout extends Component {
                             <Link href="/">
                                 <a><Logo className="logo" /></a>
                             </Link>
-                            <span> creative developer </span>
+                            {/* ONLY RENDER THIS WHILE BEEING A DESKTOP */}
+                            <DeviceContext.Consumer>
+                                { state => !state.isMobile ? <span> creative developer </span> : null }
+                            </DeviceContext.Consumer>
+
                             <Link href="/project">
                                 <a>all</a>
                             </Link>

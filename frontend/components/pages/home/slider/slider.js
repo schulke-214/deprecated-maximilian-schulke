@@ -192,22 +192,28 @@ class Slider extends Component {
     }
 
     handleResize() {
-        let { width, height } = this.pixi;
+        let {width, height} = this.pixi;
         let rect = this.wrapper.current.getBoundingClientRect();
         let factor = 1;
 
         // SET THE FACTOR BY THE VALUE WHICH IS SMALLER
-        if( rect.width < rect.height )
+        if (rect.width <= rect.height)
             factor = rect.width / width;
 
-        else if ( rect.height < rect.width )
+        else if (rect.height <= rect.width)
             factor = rect.height / height;
 
         // USE THE FACTOR TO CALC A FITTING POSITION
-        if ( this.pixi.height * factor < rect.height )
+        if ( this.pixi.width * factor <= rect.width && width >= height )
+            factor = rect.width / width;
+
+        if ( this.pixi.height * factor <= rect.height && width >= height )
             factor = rect.height / height;
 
-        else if ( this.pixi.width * factor < rect.width )
+        if ( this.pixi.height * factor <= rect.height && height >= width )
+            factor = rect.height / height;
+
+        if ( this.pixi.width * factor <= rect.width && height >= width )
             factor = rect.width / width;
 
         TweenLite.set( this.canvas.current, {
