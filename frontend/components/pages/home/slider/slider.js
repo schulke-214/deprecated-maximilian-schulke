@@ -174,7 +174,6 @@ class Slider extends Component {
     next( callback ) {
         this.props.updateCurrent('+', () => {
             // RUNS WHEN STATE IS UPDATED
-
             if( this.props.current === 1 )
                 for( let i = 2; i <= this.pixi.container.children.length; i++ )
                     this.imageTransition(this.pixi.container.children[i -1], 0, true, callback);
@@ -186,7 +185,6 @@ class Slider extends Component {
     prev( callback ) {
         this.props.updateCurrent('-', () => {
             // RUNS WHEN STATE IS UPDATED
-
             if( this.props.current === this.props.length )
                 for( let i = 1; i <= this.pixi.container.children.length; i++ )
                     this.imageTransition(this.pixi.container.children[i -1], 1, false, callback);

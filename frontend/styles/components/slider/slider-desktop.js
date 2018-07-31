@@ -2,7 +2,7 @@ import css from 'styled-jsx/css';
 
 export default css`
     div {
-        z-index: -1;
+        z-index: 0;
         position: absolute;
         left: 37.5%;
         top: 0;

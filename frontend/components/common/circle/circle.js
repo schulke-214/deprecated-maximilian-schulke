@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+
 import css from 'styled-jsx/css';
+import variables from '../../../styles/var';
 
 const styles =  css`
     .circle-bg {
         fill: none;
-        stroke: #fff;
+        stroke: ${ variables.colors.highlight };
         stroke-miterlimit: 10;
         stroke-width: 2;
         opacity: 0.1;
@@ -12,7 +14,7 @@ const styles =  css`
     
     .circle-top {
         fill: none;
-        stroke: #fff;
+        stroke: ${ variables.colors.highlight };
         stroke-miterlimit: 10;
         stroke-width: 2;
     }

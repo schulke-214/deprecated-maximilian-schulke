@@ -1,11 +1,11 @@
 import css from "styled-jsx/css";
+import variables from '../var';
 
 export default css`
     .arrow-container {
         display: flex;
         flex-direction column;
         justify-content: space-between;
-
         height: 120px;
     }
     
@@ -18,6 +18,6 @@ export default css`
     .path {
         fill: none;
         stroke-width: 2;
-        stroke: white;
+        stroke: ${ variables.colors.highlight };
     }
 `;

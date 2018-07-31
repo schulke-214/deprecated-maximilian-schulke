@@ -5,6 +5,7 @@ import Slider from '../frontend/components/pages/home/slider/slider';
 import Circle from '../frontend/components/common/circle/circle';
 import TextTransition from '../frontend/components/common/textTransition/textTransition';
 import Hover from '../frontend/components/common/hover/hover';
+import Title from '../frontend/components/pages/home/title/title';
 
 // JSON IMPORTS
 import projectsJson from '../static/Project.json';
@@ -21,6 +22,7 @@ class Home extends Component {
         // REFS
         this.slider = React.createRef();
         this.circle = React.createRef();
+        this.projectTitle = React.createRef();
         this.textTransitions = {
             projectNumber: React.createRef(),
             projectData: React.createRef()
@@ -107,8 +109,11 @@ class Home extends Component {
         if( !this.props.device.isSmall && !this.props.device.isMobile )
             this.circle.current.next( next );
 
+        this.projectTitle.current.next( project.meta.title );
+
         this.textTransitions.projectNumber.current.next( next + " " );
         this.textTransitions.projectData.current.next( project.meta.year + " ~ " + project.meta.category );
+
 
         switch( event ) {
             case "WHEEL":
@@ -132,6 +137,8 @@ class Home extends Component {
 
         if( !this.props.device.isSmall && !this.props.device.isMobile )
             this.circle.current.prev( prev );
+
+        this.projectTitle.current.prev( project.meta.title );
 
         this.textTransitions.projectNumber.current.prev( prev + " " );
         this.textTransitions.projectData.current.prev( project.meta.year + " ~ " + project.meta.category);
@@ -199,6 +206,7 @@ class Home extends Component {
         if( !this.props.device.isSmall && !this.props.device.isMobile ) {
             Content = (
                 <React.Fragment>
+
                     <style jsx>{desktopStyles}</style>
                     <div className="inner">
                         <div className="indication flex column">
@@ -209,12 +217,13 @@ class Home extends Component {
                                    isMobile={this.props.device.isMobile}
                                    style={{ marginBottom: "calc( 7.5vh - 15px )", height: "15px" }} />
                         </div>
-                        <Slider 
+                        <Slider
                             ref={this.slider}
-                            current={this.state.slider.current} 
-                            length={this.state.slider.length} 
+                            current={this.state.slider.current}
+                            length={this.state.slider.length}
                             updateCurrent={this.updateCurrent} />
                         {/*<div id="projectTitle" className="spectral">{this.getProjectData().meta.title}</div>*/}
+                        <Title ref={this.projectTitle} text={this.getProjectData().meta.title} />
                         <div className="project-info">
                             <span className="flex projectNum">
                                 <TextTransition 
@@ -238,7 +247,7 @@ class Home extends Component {
                 <React.Fragment>
                     <div className="inner" >
                         <style jsx>{mobileStyles}</style>
-                        {/*<div id="projectTitle" className="spectral" >{this.getProjectData().meta.title}</div>*/}
+                        <div id="projectTitle" className="spectral" >{this.getProjectData().meta.title}</div>
                         <div className="inner-wrap flex column" >
                             <div className="top flex" >
                                 <span className="flex projectNum">
