@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
-import mobileStyles from "../../../../styles/components/slider/slider-mobile";
-import dekstopStyles from "../../../../styles/components/slider/slider-desktop";
+
+import styles from "../../../../styles/components/title/title-common";
+import mobileStyles from "../../../../styles/components/title/title-mobile";
+import dekstopStyles from "../../../../styles/components/title/title-desktop";
 
 
 class Title extends Component {
@@ -21,12 +23,15 @@ class Title extends Component {
     }
 
     prepareDOM( text = this.props.text ) {
-        text += "";
+        text = (text + "").toLowerCase();
 
         for( let i = 0; i < text.length; i++ ) {
             let span = document.createElement("span");
             span.textContent = text.charAt(i);
             span.classList.add("hover-link-span");
+            span.classList.add("spectral");
+
+            span.style.fontSize = "inherit";
 
             if( text.charAt(i) === " " )
                 span.classList.add("hover-link-space");
@@ -50,7 +55,7 @@ class Title extends Component {
                 let secTl = new TimelineLite().staggerFrom( this.container.current.childNodes, 0.2, { y: "100%", opacity: 0 }, 0.01 );
             }})
             .staggerTo( this.container.current.childNodes, 0.2, { y: "-100%", opacity: 0 }, 0.01 )
-            .set( this.container.current.childNodes, { y: "100%"});
+            .set( this.container.current.childNodes, { y: "100%" });
     }
 
     prev( prev ) {
@@ -68,8 +73,9 @@ class Title extends Component {
 
         return (
             <React.Fragment>
+                <style jsx>{styles}</style>
                 <style jsx>{dynamicStyles}</style>
-                <span ref={ this.container } />
+                <span ref={this.container} className="spectral" />
             </React.Fragment>
         );
     }

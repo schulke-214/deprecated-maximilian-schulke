@@ -247,7 +247,8 @@ class Home extends Component {
                 <React.Fragment>
                     <div className="inner" >
                         <style jsx>{mobileStyles}</style>
-                        <div id="projectTitle" className="spectral" >{this.getProjectData().meta.title}</div>
+                        <Title ref={this.projectTitle} text={this.getProjectData().meta.title} isMobile />
+                        {/*<div id="projectTitle" className="spectral" >{this.getProjectData().meta.title}</div>*/}
                         <div className="inner-wrap flex column" >
                             <div className="top flex" >
                                 <span className="flex projectNum">
