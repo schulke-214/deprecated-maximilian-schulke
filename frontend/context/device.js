@@ -1,6 +1,3 @@
-// ORIGINAL AUTHOR github@marvin1003
-// I just optimized this a bit.
-
 export const DeviceContext = React.createContext();
 
 export class DeviceProvider extends React.Component {
@@ -12,7 +9,7 @@ export class DeviceProvider extends React.Component {
             hideDesktop: null,
             isSmall: null,
             isMobile: null
-        }
+        };
 
         this.target = this.target.bind(this);
     }

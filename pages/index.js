@@ -167,6 +167,7 @@ class Home extends Component {
         if( Math.abs( delta ) > this.threshold && !this.running ) {
             if (delta < 0)
                 this.prevProject("WHEEL");
+
             else if (delta > 0)
                 this.nextProject("WHEEL");
         }
@@ -206,7 +207,6 @@ class Home extends Component {
         if( !this.props.device.isSmall && !this.props.device.isMobile ) {
             Content = (
                 <React.Fragment>
-
                     <style jsx>{desktopStyles}</style>
                     <div className="inner">
                         <div className="indication flex column">

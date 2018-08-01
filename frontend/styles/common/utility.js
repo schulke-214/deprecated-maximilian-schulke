@@ -43,6 +43,4 @@ export default css`
         font-family: 'Spectral';
         font-weight: 600;
     }
-
-
 `;

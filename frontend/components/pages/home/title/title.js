@@ -4,7 +4,6 @@ import styles from "../../../../styles/components/title/title-common";
 import mobileStyles from "../../../../styles/components/title/title-mobile";
 import dekstopStyles from "../../../../styles/components/title/title-desktop";
 
-
 class Title extends Component {
     constructor ( props ) {
         super( props );

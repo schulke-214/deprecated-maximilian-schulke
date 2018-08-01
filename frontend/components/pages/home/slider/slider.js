@@ -10,7 +10,6 @@ import commonStyles from '../../../../styles/components/slider/slider-common';
 import mobileStyles from '../../../../styles/components/slider/slider-mobile';
 import dekstopStyles from '../../../../styles/components/slider/slider-desktop';
 
-
 class Slider extends Component {
     constructor( props ) {
         super( props );

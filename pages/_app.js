@@ -18,14 +18,12 @@ import { capitalize } from '../frontend/utility/stringHelper';
 import styles from '../frontend/styles/common/index';
 import utility from '../frontend/styles/common/utility';
 
-
 class Application extends App {
     constructor( props ) {
         super( props );
 
         this.state = {
             pageLoader: {
-                // COMMENTED OUT FOR JUST FOR DEVELOPMENT
                 isOpen: false
             }
         };
@@ -33,11 +31,6 @@ class Application extends App {
     }
 
     componentDidMount() {
-        // if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-        //     window.location = "https://www.domain.com/lightweight";
-        // }
-
-        window.LIGHTWEIGHT = "https://www.domain.com/lightweight";
         document.getElementsByTagName('body')[0].style.display = "block";
     }
 
