@@ -51,20 +51,20 @@ class Title extends Component {
         let tl = new TimelineLite({ onComplete: () => {
                 tl.pause(0);
                 this.changeText( next );
-                let secTl = new TimelineLite().staggerFrom( this.container.current.childNodes, 0.2, { y: "100%", opacity: 0 }, 0.01 );
+                let secTl = new TimelineLite().staggerFrom( this.container.current.childNodes, 0.25, { y: "50%", opacity: 0 }, 0.025 );
             }})
-            .staggerTo( this.container.current.childNodes, 0.2, { y: "-100%", opacity: 0 }, 0.01 )
-            .set( this.container.current.childNodes, { y: "100%" });
+            .staggerTo( this.container.current.childNodes, 0.25, { y: "-50%", opacity: 0 }, 0.025 )
+            .set( this.container.current.childNodes, { y: "50%" });
     }
 
     prev( prev ) {
         let tl = new TimelineLite({ onComplete: () => {
                 tl.pause(0);
                 this.changeText( prev );
-                let secTl = new TimelineLite().staggerFrom( this.container.current.childNodes, 0.2, { y: "-100%", opacity: 0 }, 0.01 );
+                let secTl = new TimelineLite().staggerFrom( this.container.current.childNodes, 0.25, { y: "-50%", opacity: 0 }, 0.025 );
             }})
-            .staggerTo( this.container.current.childNodes, 0.2, { y: "100%", opacity: 0 }, 0.01 )
-            .set( this.container.current.childNodes, { y: "-100%"});
+            .staggerTo( this.container.current.childNodes, 0.25, { y: "50%", opacity: 0 }, 0.025 )
+            .set( this.container.current.childNodes, { y: "-50%"});
     }
 
     render() {

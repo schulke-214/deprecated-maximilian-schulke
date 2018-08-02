@@ -14,6 +14,22 @@ export default css`
 
         z-index: 1000;
     }
+    
+    #mouse-layer {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+    
+    #mouse-cursor {
+        display: block;
+        width: 25px;
+        height: 25px;
+        border-radius: 100%;
+        border: 2px solid #fff;
+    }
 
     #gui-layer {
         width: 100%;
