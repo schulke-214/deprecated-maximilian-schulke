@@ -4,6 +4,8 @@ import Link from 'next/link';
 // COMPONENT IMPORTS
 import Logo from '../components/common/logo/logo';
 import Arrows from '../components/common/arrows/arrows';
+import Sticky from '../components/common/sticky/sticky';
+
 
 // UTILITY IMPORTS
 import Debouncer from '../utility/debounce';
@@ -30,17 +32,12 @@ class Layout extends Component {
         };
         this.opacity = 1;
 
-
-
-
         this.mouseDebouncer = new Debouncer();
-
 
 
         this.state = {
             isLayout: true
         };
-
 
         this.initCursor = this.initCursor.bind(this);
 
@@ -88,7 +85,7 @@ class Layout extends Component {
         this.setMousePos(ev);
         this.mouseDebouncer.call( this.setCursorRect, 250);
 
-        let border = window.innerHeight > 1000 ? window.innerHeight / 15 : 100;
+        let border = window.innerHeight > 1000 ? window.innerHeight / 15 : 50;
 
         // BLENDS OUT THE MOUSETRACER A BIT BEFORE THE REAL WINDOWBORDER
         let borderOutside = 0.25;
@@ -151,9 +148,6 @@ class Layout extends Component {
             <React.Fragment>
                 <style jsx>{styles}</style>
                 <div id="layout-layer">
-                    <div id="mouse-layer">
-                        <span id="mouse-cursor" />
-                    </div>
                     <div id="gui-layer">
                         <div className="top flex space-between" >
                             <Link href="/">
@@ -162,7 +156,7 @@ class Layout extends Component {
                             {/* ONLY RENDER THIS WHILE BEEING A DESKTOP */}
 
                             { !this.props.device.isMobile ? <span> creative developer </span> : null }
-
+                            <Sticky />
                             <Link href="/project">
                                 <a>all</a>
                             </Link>
@@ -179,6 +173,9 @@ class Layout extends Component {
                             <a href="mailto:info@domain.de">contact</a>
                         </div>
                     </div>
+                </div>
+                <div id="mouse-layer">
+                    <span id="mouse-cursor" />
                 </div>
                 <main>
                     <DeviceContext.Consumer>

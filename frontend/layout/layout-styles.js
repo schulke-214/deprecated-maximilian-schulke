@@ -21,6 +21,7 @@ export default css`
         position: fixed;
         top: 0;
         left: 0;
+        z-index: 499;
     }
     
     #mouse-cursor {
@@ -28,17 +29,18 @@ export default css`
         width: 25px;
         height: 25px;
         border-radius: 100%;
-        border: 2px solid #fff;
+        border: 2px solid ${ variables.colors.highlight };
     }
 
     #gui-layer {
         width: 100%;
         height: 100%;
         position: relative;
-        z-index: 500;
+        z-index: 1;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        z-index: 500;
     }
 
     #gui-layer > div{

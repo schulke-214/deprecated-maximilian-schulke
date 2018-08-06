@@ -31,22 +31,9 @@
             "projectImg": "static/projects/zwanzig-grad/main.jpg"
         }
     },
-    "reciper": { 
+    "reciper": {
         "meta": {
             "title": "reciper",
-            "category": "fullstack",
-            "year": 2019,
-            "roles": [
-                "fullstack dev",
-                "organisation",
-                "creative leading"
-            ],
-            "projectImg": "static/projects/zwanzig-grad/main.jpg"
-        }
-    },
-    "ligma": {
-        "meta": {
-            "title": "ligma ass",
             "category": "fullstack",
             "year": 2019,
             "roles": [
