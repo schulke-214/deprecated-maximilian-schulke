@@ -29,6 +29,7 @@ export default css`
         width: 25px;
         height: 25px;
         border-radius: 100%;
+        opacity: 0;
         border: 2px solid ${ variables.colors.highlight };
     }
 

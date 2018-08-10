@@ -158,11 +158,11 @@ class Slider extends Component {
         this.pixi.renderer.render( this.pixi.stage );
     }
 
-    imageTransition( el, alpha, forwards, callback ) {
-        TweenLite.to( this.pixi, 0.75, { delta_scale: forwards ? 500 : -500, delta_offset: forwards ? -5 : 5, ease: Power3.easeIn });
-        TweenLite.to( this.pixi, 0.75, { delta_scale: 25, delta_offset: 1.5,  ease: Power3.easeOut,  delay: 0.75});
+    imageTransition( el, alpha, callback ) {
+        TweenLite.to( this.pixi, 0.5, { delta_offset: 5, ease: Power2.easeIn });
+        TweenLite.to( this.pixi, 0.5, { delta_offset: 1.5,  ease: Power2.easeOut,  delay: 0.5 });
 
-        TweenLite.to( el, 1, { alpha, ease: Power3.easeInOut, delay: 0.25, onComplete: callback });
+        TweenLite.to( el, 1, { alpha, ease: Power2.easeInOut, onComplete: callback });
     }
 
     setAlpha() {
@@ -175,9 +175,9 @@ class Slider extends Component {
             // RUNS WHEN STATE IS UPDATED
             if( this.props.current === 1 )
                 for( let i = 2; i <= this.pixi.container.children.length; i++ )
-                    this.imageTransition(this.pixi.container.children[i -1], 0, true, callback);
+                    this.imageTransition(this.pixi.container.children[i -1], 0, callback);
             else
-                this.imageTransition(this.pixi.container.children[ this.props.current - 1 ], 1, true, callback);
+                this.imageTransition(this.pixi.container.children[ this.props.current - 1 ], 1, callback);
         });
     }
 
@@ -186,9 +186,9 @@ class Slider extends Component {
             // RUNS WHEN STATE IS UPDATED
             if( this.props.current === this.props.length )
                 for( let i = 1; i <= this.pixi.container.children.length; i++ )
-                    this.imageTransition(this.pixi.container.children[i -1], 1, false, callback);
+                    this.imageTransition(this.pixi.container.children[i -1], 1, callback);
             else
-                this.imageTransition(this.pixi.container.children[ this.props.current ], 0, false, callback);
+                this.imageTransition(this.pixi.container.children[ this.props.current ], 0, callback);
         });
     }
 
