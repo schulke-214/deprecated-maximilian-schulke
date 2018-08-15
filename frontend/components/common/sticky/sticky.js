@@ -1,4 +1,25 @@
 import React, { PureComponent } from 'react';
+import css from 'styled-jsx/css';
+
+const styles = css`
+    #container {
+        position: relative;
+    }
+    
+    #trigger {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border: 1px solid red;
+        border-radius: 100%;
+    };
+    
+    span {
+        display: block;
+        height: min-content;
+        width: min-content;
+    }
+`;
 
 class Sticky extends PureComponent {
     constructor( props ) {
@@ -13,68 +34,41 @@ class Sticky extends PureComponent {
 
     componentDidMount() {
         this.handleResize();
-
-        console.log("mounted sticky.js");
-        // this.handleResize();
-        // addEventListener('DOMContentLoaded', this.handleResize );
-        // this.trigger.current.addEventListener('mousemove', () => console.log("test"))
-    }
-
-    componentDidUpdate() {
-        console.log("updated")
-        //<Link href="/project">
-        //                                     <a>Link</a>
-        //                                 </Link>
+        addEventListener('DOMContentLoaded', this.handleResize );
+        this.trigger.current.addEventListener('mousemove', () => console.log("test"))
     }
 
     componentWillUnmount() {
-        removeEventListener('resize', this.handleResize );
+        removeEventListener('DOMContentLoaded', this.handleResize );
     }
 
     handleResize() {
-        let rect = document.getElementById("test").getBoundingClientRect();
+        let rect = this.content.current.getBoundingClientRect();
 
-        console.log( rect );
-
-        /*
         TweenLite.set( this.trigger.current, {
             left: - ( 50 - ( rect.width / 2 ) ),
             top: - ( 50 - ( rect.height / 2 ) )
-        }); */
+        });
+    }
+
+    handleMouseOver() {
+
     }
 
     render() {
         return (
-            <span id="test">text</span>
+            <React.Fragment>
+                <style jsx>{styles}</style>
+
+                <div id="container">
+                    <span style={{ border: "1px solid orange" }} ref={ this.content }>{ this.props.children }</span>
+                    <div id="trigger" ref={ this.trigger } />
+                </div>
+
+            </React.Fragment>
         );
     }
 }
 
-/*
-<div id="container" style={{ position: "relative"}}>
-                <span style={{ border: "1px solid orange" }} ref={ this.content }>link</span>
-                <div id="trigger" style={{ border: "1px solid red", position: "absolute", width: 100, height: 100 }} ref={ this.trigger } ></div>
-            </div>
-
-    <style jsx>{`
-                    #container {
-                        position: relative;
-                    }
-
-                    #trigger {
-                        position: absolute;
-                        width: 100px;
-                        height: 100px;
-                        border: 1px solid red;
-                        border-radius: 100%;
-                    };
-
-                    span {
-                        display: block;
-                        height: min-content;
-                        width: min-content;
-                    }
-                `}</style>
-            */
 
 export default Sticky;

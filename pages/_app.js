@@ -31,13 +31,9 @@ class Application extends App {
     }
 
     componentDidMount() {
-        console.log("app mounted");
-        document.getElementsByTagName('body')[0].style.display = "block";
     }
 
     removePageLoader() {
-        console.log('removed page loader');
-
         this.setState({
             pageLoader: {
                 isOpen: false
@@ -66,7 +62,7 @@ class Application extends App {
         let pageTitle;
         switch( url.length ) {
             case 1: 
-                pageTitle = capitalize( url[0] )
+                pageTitle = capitalize( url[0] );
                 break;
             
             case 2:
@@ -74,13 +70,11 @@ class Application extends App {
                 break;
 
             default:
-                pageTitle = "Maximilian Schulke - Creative Developer"
+                pageTitle = "Maximilian Schulke - Creative Developer";
                 break;
         }
         
-        return (
-            <title>{pageTitle}</title>
-        )
+        return <title>{pageTitle}</title>;
     }
 
     render() {

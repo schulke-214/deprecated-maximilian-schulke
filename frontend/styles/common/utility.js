@@ -2,6 +2,11 @@ import css from 'styled-jsx/css';
 import variables from '../var';
 
 export default css`
+    /* DOCUMENT CLASSES */
+    .loading {
+        display: none;
+    }
+    
     /* POSITION CLASSES */
     .block {
         display: block;
@@ -35,6 +40,11 @@ export default css`
 
     .space-between {
         justify-content: space-between;
+    }
+    
+    /* COLORS */
+    .main-bg-color {
+        background-color: ${ variables.colors.main };
     }
 
     /* FONT CLASSES */

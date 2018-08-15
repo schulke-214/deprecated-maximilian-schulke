@@ -35,7 +35,6 @@ class Layout extends Component {
 
         this.mouseDebouncer = new Debouncer();
 
-
         this.state = {
             isLayout: true
         };
@@ -56,6 +55,19 @@ class Layout extends Component {
 
         addEventListener('mousemove', this.handleMouseMove );
         addEventListener('mouseout', this.handleMouseOut );
+    }
+
+    shouldComponentUpdate( nextProps ) {
+        return (
+            this.props.device.hideDesktop !== nextProps.device.hideDesktop ||
+            this.props.device.isMobile !== nextProps.device.isMobile ||
+            this.props.device.isSmall !== nextProps.device.isSmall ||
+            this.props.router.route !== nextProps.router.route
+        )
+    }
+
+    componentDidUpdate() {
+        console.log("layout updated smh")
     }
 
     componentWillUnmount() {
@@ -146,19 +158,6 @@ class Layout extends Component {
         TweenLite.to(this.cursor, 0.25, { x: this.cursorPos.x, y: this.cursorPos.y, opacity: this.opacity } );
     }
 
-    shouldComponentUpdate( nextProps ) {
-        return (
-            this.props.device.hideDesktop !== nextProps.device.hideDesktop ||
-            this.props.device.isMobile !== nextProps.device.isMobile ||
-            this.props.device.isSmall !== nextProps.device.isSmall ||
-            this.props.router.route !== nextProps.router.route
-        )
-    }
-
-    componentDidUpdate() {
-        console.log("layout updated smh")
-    }
-
     render() {
         return (
             <React.Fragment>
@@ -172,10 +171,12 @@ class Layout extends Component {
                             {/* ONLY RENDER THIS WHILE BEEING A DESKTOP */}
 
                             { !this.props.device.isMobile ? <span> creative developer </span> : null }
+
                             <Sticky>
-
+                                <Link href="/project">
+                                    <a>Link</a>
+                                </Link>
                             </Sticky>
-
 
                             <Link href="/project">
                                 <a>all</a>
