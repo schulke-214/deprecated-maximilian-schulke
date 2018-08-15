@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
+import { withRouter } from 'next/router'
 
 // COMPONENT IMPORTS
 import Logo from '../components/common/logo/logo';
@@ -49,6 +50,8 @@ class Layout extends Component {
     }
 
     componentDidMount() {
+        console.log("mounted layout.js");
+
         this.initCursor();
 
         addEventListener('mousemove', this.handleMouseMove );
@@ -143,6 +146,19 @@ class Layout extends Component {
         TweenLite.to(this.cursor, 0.25, { x: this.cursorPos.x, y: this.cursorPos.y, opacity: this.opacity } );
     }
 
+    shouldComponentUpdate( nextProps ) {
+        return (
+            this.props.device.hideDesktop !== nextProps.device.hideDesktop ||
+            this.props.device.isMobile !== nextProps.device.isMobile ||
+            this.props.device.isSmall !== nextProps.device.isSmall ||
+            this.props.router.route !== nextProps.router.route
+        )
+    }
+
+    componentDidUpdate() {
+        console.log("layout updated smh")
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -156,7 +172,11 @@ class Layout extends Component {
                             {/* ONLY RENDER THIS WHILE BEEING A DESKTOP */}
 
                             { !this.props.device.isMobile ? <span> creative developer </span> : null }
-                            <Sticky />
+                            <Sticky>
+
+                            </Sticky>
+
+
                             <Link href="/project">
                                 <a>all</a>
                             </Link>
@@ -187,4 +207,4 @@ class Layout extends Component {
     }
 }
 
-export default Layout;
+export default withRouter(Layout);

@@ -229,7 +229,7 @@ class Home extends Component {
                                 <TextTransition 
                                     text={this.state.slider.current + " "}
                                     ref={this.textTransitions.projectNumber} />
-                                    <span>{"/ " + this.state.slider.length}</span>
+                                <span>{"/ " + this.state.slider.length}</span>
                             </span>
                             <TextTransition
                                 text={this.getProjectData().meta.year + " ~ " + this.getProjectData().meta.category}

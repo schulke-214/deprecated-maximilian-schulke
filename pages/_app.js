@@ -31,6 +31,7 @@ class Application extends App {
     }
 
     componentDidMount() {
+        console.log("app mounted");
         document.getElementsByTagName('body')[0].style.display = "block";
     }
 

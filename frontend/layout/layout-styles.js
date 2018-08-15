@@ -4,14 +4,15 @@ import variables from '../styles/var';
 export default css`
     #layout-layer {
         display: block;
-        position: fixed;
+
         /* SINCE THE VARIABLE IS A STRING, THIS IS THE ONLY POSSIBLE WAY */
+        position: fixed;
         width: ${ 100 - ( variables.spacing.layout.marginOut * 2 ) + 'vw' };
         height: calc( 100vh - ${ ( variables.spacing.layout.marginOut * 2 ) + 'vw' });
 
-        top: ${variables.spacing.layout.marginOut + 'vw' };
         left: ${variables.spacing.layout.marginOut + 'vw' };
-
+        top: ${variables.spacing.layout.marginOut + 'vw' };
+        
         z-index: 1000;
     }
     
@@ -36,7 +37,6 @@ export default css`
     #gui-layer {
         width: 100%;
         height: 100%;
-        position: relative;
         z-index: 1;
         display: flex;
         flex-direction: column;
@@ -60,10 +60,9 @@ export default css`
     .top > span {
         position: absolute;
         /* OFFSET BY LAYOUT WIDTH / 4 */
-        left: calc( 25vw - ${ variables.spacing.layout.marginOut }vw );
-        
+        left: calc( 25vw - ${ variables.spacing.layout.marginOut + 'vw'});
         /* 
-        calc(${ 100 - ( variables.spacing.layout.marginOut * 2 ) + 'vw' } / 4 );
+        calc(${ 100 - ( variables.spacing.layout.marginOut * 2 ) + 'vw' }  / 4 );
         */
         white-space: nowrap;
     }
