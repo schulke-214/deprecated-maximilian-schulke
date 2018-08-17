@@ -31,6 +31,7 @@ class Application extends App {
     }
 
     componentDidMount() {
+        document.querySelector('body').classList.remove('loading');
     }
 
     removePageLoader() {
