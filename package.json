@@ -6,7 +6,11 @@
   "scripts": {
     "dev": "next",
     "build": "next build --mode production",
-    "start": "next start"
+    "heroku-postbuild": "next build -mode production",
+    "start": "next start -p $PORT"
+  },
+  "engines": {
+    "node": "10.9.0"
   },
   "repository": {
     "type": "git",
