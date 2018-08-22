@@ -2,10 +2,6 @@ import css from 'styled-jsx/css';
 import variables from '../var';
 
 export default css`
-    /* FONT IMPORTS */
-    @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700');
-    @import url('https://fonts.googleapis.com/css?family=Spectral:400,600');
-
     * {
         margin: 0;
         padding: 0;

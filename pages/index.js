@@ -66,6 +66,7 @@ class Home extends Component {
 
         window.removeEventListener("wheel", this.resetRunningState );
         window.removeEventListener("mousedown", this.resetRunningStateByClick );
+        window.removeEventListener("mousemove", this.resetRunningState );
     }
 
     updateCurrent( dir, callback ) {
@@ -119,7 +120,8 @@ class Home extends Component {
             case "WHEEL":
                 this.slider.current.next(() => {
                     window.addEventListener("wheel", this.resetRunningState);
-                    window.addEventListener("mousedown", this.resetRunningStateByClick)
+                    window.addEventListener("mousedown", this.resetRunningStateByClick);
+                    window.addEventListener("mousemove", this.resetRunningState );
                 });
                 break;
 
@@ -188,13 +190,20 @@ class Home extends Component {
             this.running = false;
             window.removeEventListener("wheel", this.resetRunningState );
             window.removeEventListener("mousedown", this.resetRunningStateByClick );
+            window.removeEventListener("mousemove", this.resetRunningState );
+
         }
     }
 
     resetRunningStateByClick() {
         this.running = false;
+        
+        window.removeEventListener("wheel", this.resetRunningState );
         window.removeEventListener("mousedown", this.resetRunningStateByClick );
+        window.removeEventListener("mousemove", this.resetRunningState );
     }
+
+
 
     // ADD TOUCH SUPPORT LATER
     // ADD KEY SUPPORT LATER

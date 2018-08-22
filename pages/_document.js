@@ -1,10 +1,24 @@
 import Document, { Head, Main, NextScript } from 'next/document';
+import variables from '../frontend/styles/var';
+
+let initStyles = `
+    .loading {
+        display: none;
+    }
+
+    .main-bg-color {
+        background-color: ${ variables.colors.main };
+    }
+`;
 
 class AppDocument extends Document {
     render() {
         return (
             <html lang="de">
                 <Head>
+                    <link rel="stylesheet" href="/static/fonts/fonts.css" />
+                    <style>{initStyles}</style>
+
                     <meta charSet="UTF-8" />
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
                     <meta name="description" content="Im a creative freelance developer based in bielefeld, germany!" /* REMINDER FOR FUTURE ME: CHANGE THIS*/ />
