@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-import { DeviceProvider } from '../../../context/device';
+import { DeviceContext } from '../../../context/device';
 import css from 'styled-jsx/css';
 
 const styles = css`
@@ -90,6 +90,9 @@ class Sticky extends PureComponent {
 
 
     handleMouseMove( ev ) {
+        if( this.props.device.isMobile )
+            return;
+
         this.setMouse( ev );
         
         // IF ENTERED STELLT NUR SICHER, DASS DIE DURATION SCHON GESETZT WURDE WENN MOUSEMOVE GETRIGERRED WIRD
@@ -156,4 +159,8 @@ class Sticky extends PureComponent {
 }
 
 
-export default Sticky;
+export default (props) => (
+    <DeviceContext.Consumer>
+        { state => <Sticky device={state} {...props} /> }
+    </DeviceContext.Consumer>
+);
