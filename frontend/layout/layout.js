@@ -49,8 +49,6 @@ class Layout extends Component {
     }
 
     componentDidMount() {
-        console.log("mounted layout.js");
-
         this.initCursor();
 
         addEventListener('mousemove', this.handleMouseMove );
@@ -165,22 +163,27 @@ class Layout extends Component {
                 <div id="layout-layer">
                     <div id="gui-layer">
                         <div className="top flex space-between" >
-                            <Link href="/">
-                                <a><Logo className="logo" /></a>
-                            </Link>
+                            <Sticky>
+                                <Link href="/">
+                                    <a><Logo className="logo" /></a>
+                                </Link>
+                            </Sticky>
+
                             {/* ONLY RENDER THIS WHILE BEEING A DESKTOP */}
 
                             { !this.props.device.isMobile ? <span> creative developer </span> : null }
 
-                            <Sticky>
+                            {/* <Sticky>
                                 <Link href="/project">
                                     <a>Link</a>
                                 </Link>
-                            </Sticky>
+                            </Sticky> */}
 
-                            <Link href="/project">
-                                <a>all</a>
-                            </Link>
+                            <Sticky>
+                                <Link href="/project">
+                                    <a>all</a>
+                                </Link>
+                            </Sticky>
                         </div>
                         <div className="mid flex space-between">
                             <a href="https://github.com/schulke-214/" target="_blank" >github</a>
@@ -188,10 +191,15 @@ class Layout extends Component {
                             {/* <div>UP & DOWN ARROW</div> */}
                         </div>
                         <div className="low flex space-between">
-                            <Link href="/about">
-                                <a>about</a>
-                            </Link>
-                            <a href="mailto:info@domain.de">contact</a>
+                            <Sticky>
+                                <Link href="/about">
+                                    <a>about</a>
+                                </Link>
+                            </Sticky>
+
+                            <Sticky>
+                                <a href="mailto:info@domain.de">contact</a>
+                            </Sticky>
                         </div>
                     </div>
                 </div>

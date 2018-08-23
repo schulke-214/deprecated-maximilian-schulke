@@ -1,7 +1,7 @@
 {
     "zwanzigGrad": {
         "meta": {
-            "title": "Zwanzig Grad",
+            "title": "example",
             "category": "design",
             "year": 2017,
             "roles": [
@@ -20,7 +20,7 @@
     },
     "imSad": { 
         "meta": {
-            "title": "im sad",
+            "title": "project",
             "category": "frontend",
             "year": 2018,
             "roles": [
@@ -33,7 +33,7 @@
     },
     "reciper": {
         "meta": {
-            "title": "reciper",
+            "title": "im sad",
             "category": "fullstack",
             "year": 2019,
             "roles": [
