@@ -98,6 +98,12 @@ class Layout extends Component {
         this.setMousePos(ev);
         this.mouseDebouncer.call( this.setCursorRect, 250);
 
+        if( this.props.device.isMobile ) {
+            TweenLite.to(this.cursor, 0.25, { opacity: 0 } );
+            return;
+        }
+
+
         let border = window.innerHeight > 1000 ? window.innerHeight / 15 : 50;
 
         // BLENDS OUT THE MOUSETRACER A BIT BEFORE THE REAL WINDOWBORDER

@@ -62,6 +62,8 @@ class Sticky extends PureComponent {
         addEventListener('DOMContentLoaded', this.handleResize );
         addEventListener('resize', this.handleResize );
 
+        window.onclick = () => console.log("lol");
+
         this.trigger.current.addEventListener('mousemove', this.handleMouseMove );
         this.trigger.current.addEventListener('mouseenter', this.handleMouseEnter );
         this.trigger.current.addEventListener('mouseout', this.handleMouseOut );
@@ -116,7 +118,6 @@ class Sticky extends PureComponent {
     }
 
     handleMouseEnter( ev ) {
-        console.log( this.contentRect );
         this.setMouse(ev);
         this.duration = 2;
         this.entered = true;
@@ -164,7 +165,6 @@ class Sticky extends PureComponent {
                     <span ref={ this.content }>{ this.props.children }</span>
                     <div id="trigger" style={{ width: this.size, height: this.size }} ref={ this.trigger } />
                 </div>
-
             </React.Fragment>
         );
     }
