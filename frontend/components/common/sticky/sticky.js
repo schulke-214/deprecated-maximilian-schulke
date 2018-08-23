@@ -44,26 +44,21 @@ class Sticky extends PureComponent {
         this.ease;
         this.duration = 0;
 
-        this.handleResize = this.handleResize.bind(this);
+        this.setRect = this.setRect.bind(this);
+
         this.handleMouseMove = this.handleMouseMove.bind(this);
         this.handleMouseEnter = this.handleMouseEnter.bind(this);
         this.handleMouseOut = this.handleMouseOut.bind(this);
 
         this.setMouse = this.setMouse.bind(this);
-        this.setRect = this.setRect.bind(this);
         this.getHypotenuse = this.getHypotenuse.bind(this);
     }
 
     componentDidMount() {
         this.ease = Elastic.easeOut.config(1, 0.3);
         this.setRect();
-        this.handleResize();
 
-
-        addEventListener('load', this.handleResize );
-        addEventListener('resize', this.handleResize );
-
-        window.onclick = () => console.log("lol");
+        addEventListener('load', this.setRect );
 
         this.trigger.current.addEventListener('mousemove', this.handleMouseMove );
         this.trigger.current.addEventListener('mouseenter', this.handleMouseEnter );
@@ -71,25 +66,28 @@ class Sticky extends PureComponent {
     }
 
     componentWillUnmount() {
-        removeEventListener('resize', this.handleResize );
-        removeEventListener('load', this.handleResize );
+        removeEventListener('load', this.setRect );
 
         this.trigger.current.removeEventListener('mousemove', this.handleMouseMove );
         this.trigger.current.removeEventListener('mouseenter', this.handleMouseEnter );
         this.trigger.current.removeEventListener('mouseout', this.handleMouseOut );
     }
 
-    handleResize() {
-        this.setRect();
+    setRect() {
         this.contentRect = this.content.current.getBoundingClientRect();
-
-
+        this.triggerRect = this.trigger.current.getBoundingClientRect();
+        
+        this.triggerCenter = {
+            x: this.triggerRect.left + ( this.triggerRect.width / 2 ),
+            y: this.triggerRect.top + ( this.triggerRect.height / 2 )
+        }
 
         TweenLite.set( this.trigger.current, {
             left: - ( (this.size / 2) - ( this.contentRect.width / 2 ) ),
             top: - ( (this.size / 2) - ( this.contentRect.height / 2 ) )
         });
     }
+
 
     handleMouseMove( ev ) {
         this.setMouse( ev );
@@ -101,24 +99,16 @@ class Sticky extends PureComponent {
                 this.duration -= 0.05
 
             // ELEMENT UM MAUSOFFSET * STICKYRATIO VERSCHIEBEN UM KLEBE EFFEKT ZU ERZEUGEN
-            if( !this.props.center ) {
-                TweenLite.to(this.content.current, this.duration, {
-                    x: (this.mousePos.x - (this.contentRect.width / 2)) * this.stickyRatio, 
-                    y: (this.mousePos.y - (this.contentRect.height / 2)) * this.stickyRatio, 
-                    ease: this.ease 
-                });
-            }
-            else {
-                TweenLite.to(this.content.current, this.duration, {
-                    x: this.mousePos.x * this.stickyRatio, 
-                    y: this.mousePos.y * this.stickyRatio, 
-                    ease: this.ease 
-                });
-            }
+            TweenLite.to(this.content.current, this.duration, {
+                x: this.mousePos.x * this.stickyRatio, 
+                y: this.mousePos.y * this.stickyRatio, 
+                ease: this.ease 
+            });
         }
     }
 
     handleMouseEnter( ev ) {
+        this.setRect();
         this.setMouse(ev);
         this.duration = 2;
         this.entered = true;
@@ -142,20 +132,14 @@ class Sticky extends PureComponent {
         return C;
     }
 
-    setRect() {
-        this.triggerRect = this.trigger.current.getBoundingClientRect();
-        
-        this.triggerCenter = {
-            x: this.triggerRect.left + ( this.triggerRect.width / 2 ),
-            y: this.triggerRect.top + ( this.triggerRect.height / 2 )
-        }
-    }
-
     setMouse(ev) {
         // MAUS POS = MAUS OFFSET AUSGEHEND VOM MITTELPUNKT DES WRAPPERS
         this.mousePos.x = ev.clientX - this.triggerCenter.x;
         this.mousePos.y = ev.clientY - this.triggerCenter.y;
     }
+
+    
+    
 
     render() {
         return (

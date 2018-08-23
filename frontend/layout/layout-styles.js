@@ -27,11 +27,11 @@ export default css`
     
     #mouse-cursor {
         display: block;
-        width: 25px;
-        height: 25px;
+        width: 5px;
+        height: 5px;
         border-radius: 100%;
         opacity: 0;
-        border: 2px solid ${ variables.colors.highlight };
+        background-color: ${ variables.colors.highlight };
     }
 
     #gui-layer {
