@@ -59,7 +59,8 @@ class Sticky extends PureComponent {
         this.setRect();
         this.handleResize();
 
-        addEventListener('DOMContentLoaded', this.handleResize );
+
+        addEventListener('load', this.handleResize );
         addEventListener('resize', this.handleResize );
 
         window.onclick = () => console.log("lol");
@@ -71,7 +72,7 @@ class Sticky extends PureComponent {
 
     componentWillUnmount() {
         removeEventListener('resize', this.handleResize );
-        removeEventListener('DOMContentLoaded', this.handleResize );
+        removeEventListener('load', this.handleResize );
 
         this.trigger.current.removeEventListener('mousemove', this.handleMouseMove );
         this.trigger.current.removeEventListener('mouseenter', this.handleMouseEnter );
