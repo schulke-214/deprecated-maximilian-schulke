@@ -115,11 +115,15 @@ class Sticky extends PureComponent {
         this.setMouse(ev);
         this.duration = 2;
         this.entered = true;
+
+        window.CURSOR_ONCLICK = this.props.clickHandler;
     }
 
     handleMouseOut( ev ) {
         this.setMouse(ev);
         this.entered = false;
+
+        window.CURSOR_ONCLICK = null;
 
         // DURATION DER ANIMATION IST ABHÄNGIG DAVON WIE WEIT DIE MAUS WEG IST
         TweenLite.to( this.content.current, this.getHypotenuse() / 50 ,{x: 0, y: 0, ease: this.ease} );

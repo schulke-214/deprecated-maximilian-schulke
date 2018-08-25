@@ -46,6 +46,7 @@ class Layout extends Component {
 
         this.handleMouseOut = this.handleMouseOut.bind(this);
         this.handleMouseMove = this.handleMouseMove.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
@@ -53,6 +54,7 @@ class Layout extends Component {
 
         addEventListener('mousemove', this.handleMouseMove );
         addEventListener('mouseout', this.handleMouseOut );
+        addEventListener('click', this.handleClick );
     }
 
     shouldComponentUpdate( nextProps ) {
@@ -64,13 +66,10 @@ class Layout extends Component {
         )
     }
 
-    componentDidUpdate() {
-        console.log("layout updated smh")
-    }
-
     componentWillUnmount() {
         removeEventListener('mousemove', this.handleMouseMove );
         removeEventListener('mouseout', this.handleMouseOut );
+        removeEventListener('click', this.handleClick );
     }
 
     initCursor() {
@@ -78,6 +77,11 @@ class Layout extends Component {
         this.cursor = document.getElementById('mouse-cursor');
         this.mouseLayer.appendChild( this.cursor );
         this.cursorRect = this.cursor.getBoundingClientRect();
+    }
+
+    handleClick() {
+        if( window.CURSOR_ONCLICK )
+            window.CURSOR_ONCLICK();
     }
 
     setMousePos( ev ) {
