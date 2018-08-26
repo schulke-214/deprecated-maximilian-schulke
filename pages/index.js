@@ -58,10 +58,6 @@ class Home extends Component {
     componentDidMount() {
         // INIT STUFF
         addEventListener('wheel', this.handleScroll );
-
-        addEventListener('click', ev => {
-            console.log( ev.target );
-        })
     } 
 
     componentWillUnmount() {
