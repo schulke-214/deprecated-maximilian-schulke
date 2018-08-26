@@ -57,16 +57,20 @@ class Home extends Component {
 
     componentDidMount() {
         // INIT STUFF
-        window.addEventListener('wheel', this.handleScroll );
+        addEventListener('wheel', this.handleScroll );
+
+        addEventListener('click', ev => {
+            console.log( ev.target );
+        })
     } 
 
     componentWillUnmount() {
         // REMOVE LISTENERS
-        window.removeEventListener('wheel', this.handleScroll );
+        removeEventListener('wheel', this.handleScroll );
 
-        window.removeEventListener("wheel", this.resetRunningState );
-        window.removeEventListener("mousedown", this.resetRunningStateByClick );
-        window.removeEventListener("mousemove", this.resetRunningState );
+        removeEventListener("wheel", this.resetRunningState );
+        removeEventListener("mousedown", this.resetRunningStateByClick );
+        removeEventListener("mousemove", this.resetRunningState );
     }
 
     updateCurrent( dir, callback ) {

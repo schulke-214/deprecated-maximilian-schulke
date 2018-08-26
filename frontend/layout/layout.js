@@ -170,7 +170,7 @@ class Layout extends Component {
         return (
             <React.Fragment>
                 <style jsx>{styles}</style>
-                <div id="layout-layer">
+                <div id="layout-layer" className="unclickable" >
                     <div id="gui-layer">
                         <div className="top flex space-between" >
                             <Sticky>
@@ -196,7 +196,7 @@ class Layout extends Component {
                             </Sticky>
                         </div>
                         <div className="mid flex space-between">
-                            <a href="https://github.com/schulke-214/" target="_blank" >github</a>
+                            <a href="https://github.com/schulke-214/" target="_blank" className="clickable" >github</a>
                             { this.page.current ? <Arrows prev={ () => this.page.current.handleClick("prev") } next={ () => this.page.current.handleClick("next") }/> : null }
                             {/* <div>UP & DOWN ARROW</div> */}
                         </div>
@@ -213,7 +213,7 @@ class Layout extends Component {
                         </div>
                     </div>
                 </div>
-                <div id="mouse-layer">
+                <div id="mouse-layer" className="unclickable" >
                     <span id="mouse-cursor" />
                 </div>
                 <main>

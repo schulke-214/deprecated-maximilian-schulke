@@ -45,7 +45,16 @@ export default css`
     span {
         white-space: nowrap;
     }
-    
+
+    /* HANDLING MOUSE EVENTS */
+    .clickable {
+        pointer-events: all;
+    }
+
+    .unclickable {
+        pointer-events: none;
+    }
+
     /* LOGO CLASSES */
     .logo {
         width: 20px;
