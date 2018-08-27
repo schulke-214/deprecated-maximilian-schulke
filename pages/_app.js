@@ -27,6 +27,7 @@ class Application extends App {
                 isOpen: false
             }
         };
+        
         this.removePageLoader = this.removePageLoader.bind(this);
     }
 

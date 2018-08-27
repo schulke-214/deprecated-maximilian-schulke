@@ -115,7 +115,6 @@ class Home extends Component {
         this.textTransitions.projectNumber.current.next( next + " " );
         this.textTransitions.projectData.current.next( project.meta.year + " ~ " + project.meta.category );
 
-
         switch( event ) {
             case "WHEEL":
                 this.slider.current.next(() => {
@@ -202,8 +201,6 @@ class Home extends Component {
         window.removeEventListener("mousedown", this.resetRunningStateByClick );
         window.removeEventListener("mousemove", this.resetRunningState );
     }
-
-
 
     // ADD TOUCH SUPPORT LATER
     // ADD KEY SUPPORT LATER

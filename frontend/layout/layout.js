@@ -7,7 +7,6 @@ import Logo from '../components/common/logo/logo';
 import Arrows from '../components/common/arrows/arrows';
 import Sticky from '../components/common/sticky/sticky';
 
-
 // UTILITY IMPORTS
 import Debouncer from '../utility/debounce';
 
@@ -31,6 +30,7 @@ class Layout extends Component {
             x: 0,
             y: 0
         };
+        
         this.opacity = 1;
 
         this.mouseDebouncer = new Debouncer();

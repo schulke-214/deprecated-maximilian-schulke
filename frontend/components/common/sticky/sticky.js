@@ -117,6 +117,7 @@ class Sticky extends PureComponent {
         this.entered = true;
 
         window.CURSOR_ONCLICK = this.props.clickHandler;
+        window.CURSOR_TYPE = this.props.cursorState || "click";
     }
 
     handleMouseOut( ev ) {

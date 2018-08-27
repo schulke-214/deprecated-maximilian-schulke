@@ -27,11 +27,11 @@ export default css`
     
     #mouse-cursor {
         display: block;
-        width: 5px;
-        height: 5px;
+        width: 25px;
+        height: 25px;
+        border: 2px solid ${ variables.colors.highlight };
         border-radius: 100%;
         opacity: 0;
-        background-color: ${ variables.colors.highlight };
     }
 
     #gui-layer {
@@ -61,9 +61,6 @@ export default css`
         position: absolute;
         /* OFFSET BY LAYOUT WIDTH / 4 */
         left: calc( 25vw - ${ variables.spacing.layout.marginOut + 'vw'});
-        /* 
-        calc(${ 100 - ( variables.spacing.layout.marginOut * 2 ) + 'vw' }  / 4 );
-        */
         white-space: nowrap;
     }
 

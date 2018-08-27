@@ -193,7 +193,7 @@ class Slider extends Component {
     }
 
     handleResize() {
-        let {width, height} = this.pixi;
+        let { width, height } = this.pixi;
         let rect = this.wrapper.current.getBoundingClientRect();
         let factor = 1;
 
