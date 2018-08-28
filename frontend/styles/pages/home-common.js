@@ -21,13 +21,16 @@ export default css`
 
     @media screen and ( max-width: ${ variables.breakpoints.tablet }px ) {
         #home-wrapper {
-            padding: 50px;
+            padding: 0;
+            /*padding: 50px;*/
         }
     }
 
     @media screen and ( max-width:  ${ variables.breakpoints.phone }px ) {
         #home-wrapper {
-            padding: 37.5px;
+            padding: 0;
+
+            /*padding: 37.5px;*/
         }
     }
 `;

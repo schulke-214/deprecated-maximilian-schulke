@@ -253,7 +253,7 @@ class Home extends Component {
                     <div className="inner" >
                         <style jsx>{mobileStyles}</style>
                         {/* <Title ref={this.projectTitle} text={this.getProjectData().meta.title} isMobile /> */}
-                        <div className="inner-wrap flex column" >
+                        {/* <div className="inner-wrap flex column" >
                             <div className="top flex" >
                                 <span className="flex projectNum">
                                     <TextTransition
@@ -261,14 +261,14 @@ class Home extends Component {
                                         ref={this.textTransitions.projectNumber }/>
                                     <span>{"/ " + this.state.slider.length}</span>
                                 </span>
-                            </div>
+                            </div> */}
                             <Slider
                                 ref={this.slider}
                                 current={this.state.slider.current}
                                 length={this.state.slider.length}
                                 updateCurrent={this.updateCurrent}
                                 isMobile />
-                            <div className="lower flex">
+                            {/* <div className="lower flex">
                                 <Hover to="/project" text="view project" style={{ marginTop: "5vh" }} />
 
                                 <TextTransition
@@ -276,8 +276,9 @@ class Home extends Component {
                                     text={this.getProjectData().meta.year + " ~ " + this.getProjectData().meta.category}
                                     ref={this.textTransitions.projectData} />
                             </div>
-                        </div>
+                        </div> */}
                     </div>
+                    
                 </React.Fragment>
             )
         }
