@@ -262,6 +262,7 @@ class Home extends Component {
                                     <span>{"/ " + this.state.slider.length}</span>
                                 </span>
                             </div> */}
+                            <div id="kek" />
                             <Slider
                                 ref={this.slider}
                                 current={this.state.slider.current}
