@@ -30,7 +30,7 @@ class Layout extends Component {
             x: 0,
             y: 0
         };
-        
+
         this.opacity = 1;
 
         this.mouseDebouncer = new Debouncer();
@@ -44,6 +44,7 @@ class Layout extends Component {
         this.setMousePos = this.setMousePos.bind(this);
         this.setCursorRect = this.setCursorRect.bind(this);
 
+        this.handleResize = this.handleResize.bind(this);
         this.handleMouseOut = this.handleMouseOut.bind(this);
         this.handleMouseMove = this.handleMouseMove.bind(this);
         this.handleClick = this.handleClick.bind(this);
@@ -51,7 +52,9 @@ class Layout extends Component {
 
     componentDidMount() {
         this.initCursor();
+        this.handleResize();
 
+        addEventListener('resize', this.handleResize );
         addEventListener('mousemove', this.handleMouseMove );
         addEventListener('mouseout', this.handleMouseOut );
         addEventListener('click', this.handleClick );
@@ -67,6 +70,7 @@ class Layout extends Component {
     }
 
     componentWillUnmount() {
+        removeEventListener('resize', this.handleResize );
         removeEventListener('mousemove', this.handleMouseMove );
         removeEventListener('mouseout', this.handleMouseOut );
         removeEventListener('click', this.handleClick );
@@ -79,19 +83,27 @@ class Layout extends Component {
         this.cursorRect = this.cursor.getBoundingClientRect();
     }
 
-    handleClick() {
-        if( window.CURSOR_ONCLICK )
-            window.CURSOR_ONCLICK();
-    }
-
     setMousePos( ev ) {
         // MAUS POS = MAUS OFFSET AUSGEHEND VOM MITTELPUNKT DES WRAPPERS
         this.cursorPos.x = ev.clientX - this.cursorRect.width / 2;
         this.cursorPos.y = ev.clientY - this.cursorRect.height / 2;
     }
 
-    setCursorRect( ev ) {
+    setCursorRect() {
         this.cursorRect = this.cursor.getBoundingClientRect();
+    }
+
+    handleClick() {
+        if( window.CURSOR_ONCLICK )
+            window.CURSOR_ONCLICK();
+    }
+
+    handleResize() {
+        TweenLite.set("#layout-layer", {
+            height: window.innerHeight
+        });
+
+        console.log( window.innerHeight );
     }
 
     handleMouseOut() {

@@ -7,12 +7,15 @@ export default css`
 
         /* SINCE THE VARIABLE IS A STRING, THIS IS THE ONLY POSSIBLE WAY */
         position: fixed;
-        width: ${ 100 - ( variables.spacing.layout.marginOut * 2 ) + 'vw' };
+        width: 100vw;
+        padding: ${ variables.spacing.layout.marginOut + 'vw' };
+
+/*
         height: calc( 100vh - ${ ( variables.spacing.layout.marginOut * 2 ) + 'vw' });
 
-        left: ${variables.spacing.layout.marginOut + 'vw' };
-        top: ${variables.spacing.layout.marginOut + 'vw' };
-        
+left: ${variables.spacing.layout.marginOut + 'vw' };
+        padding-top: ${variables.spacing.layout.marginOut + 'vw' };
+  */      
         z-index: 1000;
     }
     
@@ -78,11 +81,7 @@ export default css`
 
     @media screen and ( max-width: ${ variables.breakpoints.tablet }px ) {
         #layout-layer {
-            width: calc( 100vw - 100px );
-            height: calc( 100vh - 100px );
-    
-            top: 50px;
-            left: 50px;
+            padding: 50px;
         }
 
         .top > span { 
@@ -92,11 +91,7 @@ export default css`
 
     @media screen and ( max-width:  ${ variables.breakpoints.phone }px ) {
         #layout-layer {
-            width: calc( 100vw - 75px );
-            height: calc( 100vh - 75px );
-    
-            top: 37.5px;
-            left: 37.5px;
+            padding: 37.5px;
         }
     }
 `;
