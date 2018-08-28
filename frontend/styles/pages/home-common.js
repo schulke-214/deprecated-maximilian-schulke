@@ -7,20 +7,27 @@ export default css`
         position: fixed;
 
         /* SINCE THE VARIABLE IS A STRING, THIS IS THE ONLY POSSIBLE WAY */
-        width: ${ 100 - ( variables.spacing.layout.marginOut * 2 ) + 'vw' };
-        height: calc( 100vh - ${ ( variables.spacing.layout.marginOut * 2 ) + 'vw' });
+        width: 100vw;
+        height: 100%;
+
+        padding: ${variables.spacing.layout.marginOut + 'vw'};
         
+        /*
         top: ${variables.spacing.layout.marginOut + 'vw' };
         left: ${variables.spacing.layout.marginOut + 'vw' };
+
+        */
     }
 
     @media screen and ( max-width: ${ variables.breakpoints.tablet }px ) {
         #home-wrapper {
-            width: calc( 100vw - 100px );
-            height: calc( 100vh - 100px );
+            padding: 50px;
+        }
+    }
 
-            top: 50px;
-            left: 50px;
+    @media screen and ( max-width:  ${ variables.breakpoints.phone }px ) {
+        #home-wrapper {
+            padding: 37.5px;
         }
     }
 `;

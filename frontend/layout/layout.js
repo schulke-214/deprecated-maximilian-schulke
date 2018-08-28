@@ -99,7 +99,7 @@ class Layout extends Component {
     }
 
     handleResize() {
-        TweenLite.set("#layout-layer", {
+        TweenLite.set("#layout-layer, main", {
             height: window.innerHeight
         });
 
