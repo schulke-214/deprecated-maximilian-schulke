@@ -1,3 +1,5 @@
+import variables from '../styles/var';
+
 export const DeviceContext = React.createContext();
 
 export class DeviceProvider extends React.Component {
@@ -6,7 +8,7 @@ export class DeviceProvider extends React.Component {
 
         this.state = {
             width: null,
-            hideDesktop: null,
+            isPhone: null,
             isSmall: null,
             isMobile: null
         };
@@ -25,13 +27,13 @@ export class DeviceProvider extends React.Component {
 
     target() {
         let width = window.innerWidth;
-        let isSmall = window.innerWidth <= 1024;
-        let hideDesktop = window.innerWidth <= 320;
+        let isSmall = window.innerWidth <= variables.breakpoints.tablet;
+        let isPhone = window.innerWidth <= variables.breakpoints.phone;
 
         this.setState({
             width,
             isSmall,
-            hideDesktop,
+            isPhone,
             isMobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
         });
     }

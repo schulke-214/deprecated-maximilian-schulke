@@ -8,6 +8,7 @@ import commonStyles from '../../../../styles/components/slider/slider-common';
 
 // DYNAMICALLY INSERTED STYLESHEET - DEPENDING ON SCREEN SIZE
 import mobileStyles from '../../../../styles/components/slider/slider-mobile';
+import tabletStyles from '../../../../styles/components/slider/slider-tablet';
 import dekstopStyles from '../../../../styles/components/slider/slider-desktop';
 
 class Slider extends Component {
@@ -225,7 +226,16 @@ class Slider extends Component {
     }
 
     render() {
-        const dynamicStyles = this.props.isMobile ?  mobileStyles : dekstopStyles;
+        let dynamicStyles;
+
+        if ( this.props.isSmall )
+            dynamicStyles = tabletStyles;
+
+        else if ( this.props.isPhone )
+            dynamicStyles = mobileStyles;
+        
+        else
+            dynamicStyles = dekstopStyles;
 
         return (
             <React.Fragment>

@@ -13,6 +13,7 @@ import projectsJson from '../static/Project.json';
 // STYLE IMPORTS
 import commonStyles from '../frontend/styles/pages/home-common';
 import desktopStyles from '../frontend/styles/pages/home-desktop';
+import tabletStyles from '../frontend/styles/pages/home-tablet';
 import mobileStyles from '../frontend/styles/pages/home-mobile';
 
 class Home extends Component {
@@ -246,8 +247,44 @@ class Home extends Component {
             )
         }
 
+        // TABLET LAYOUT
+        else if ( !this.props.device.isPhone && ( this.props.device.isMobile || this.props.device.isSmall ) ) {
+            Content = ( 
+                <React.Fragment>
+                    <div className="inner" >
+                        <style jsx>{tabletStyles}</style>
+                        <Title ref={this.projectTitle} text={this.getProjectData().meta.title} isMobile />
+
+                        <div className="inner-wrap flex column" >
+                            <div className="top flex" >
+                                <span className="flex projectNum">
+                                    <TextTransition
+                                        text={this.state.slider.current + " "}
+                                        ref={this.textTransitions.projectNumber }/>
+                                    <span>{"/ " + this.state.slider.length}</span>
+                                </span>
+                            </div> 
+                            <Slider
+                                ref={this.slider}
+                                current={this.state.slider.current}
+                                length={this.state.slider.length}
+                                updateCurrent={this.updateCurrent}
+                                isSmall />
+                            <div className="lower flex">
+                                <Hover to="/project" text="view project" style={{ marginTop: "5vh" }} />
+                                <TextTransition
+                                    style={{ marginTop: "5vh" }}
+                                    text={this.getProjectData().meta.year + " ~ " + this.getProjectData().meta.category}
+                                    ref={this.textTransitions.projectData} />
+                            </div>
+                        </div>
+                    </div>
+                </React.Fragment>
+             )
+        }
+
         // MOBILE LAYOUT
-        else if ( !this.props.device.hideDesktop ) {
+        else if ( this.props.device.isPhone ) {
             Content = (
                 <React.Fragment>
                     <div className="inner" >
@@ -268,7 +305,7 @@ class Home extends Component {
                                 current={this.state.slider.current}
                                 length={this.state.slider.length}
                                 updateCurrent={this.updateCurrent}
-                                isMobile />
+                                isPhone />
                             {/* <div className="lower flex">
                                 <Hover to="/project" text="view project" style={{ marginTop: "5vh" }} />
 
@@ -279,7 +316,6 @@ class Home extends Component {
                             </div>
                         </div> */}
                     </div>
-                    
                 </React.Fragment>
             )
         }
