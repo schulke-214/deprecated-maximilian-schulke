@@ -75,15 +75,38 @@ export default css`
         margin-bottom: 15px;
     }
 
-    #kek {
+    #shadow {
         position: absolute;
         width: 100%;
         height: 100vh;
-        display: block;
-        background: -moz-radial-gradient(center, ellipse cover, rgba(125,185,232,0) 0%, rgba(125,185,232,0) 2%, rgba(73,103,127,0) 50%, rgba(18,18,18,0.5) 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        /*background: -moz-radial-gradient(center, ellipse cover, rgba(125,185,232,0) 0%, rgba(125,185,232,0) 2%, rgba(73,103,127,0) 50%, rgba(18,18,18,0.5) 100%);
         background: -webkit-radial-gradient(center, ellipse cover, rgba(125,185,232,0) 0%,rgba(125,185,232,0) 2%,rgba(73,103,127,0) 50%,rgba(18,18,18,0.5) 100%);
         background: radial-gradient(ellipse at center, rgba(125,185,232,0) 0%,rgba(125,185,232,0) 2%,rgba(73,103,127,0) 50%,rgba(18,18,18,0.5) 100%);
+        */
     }
+
+    #shadow::before, #shadow::after {
+        content: " ";
+        display: block;
+        width: 100%;
+        height: 20vh;
+        min-height: 50px;
+    }
+
+    #shadow::before {
+        background: -moz-linear-gradient(top, rgba(18,18,18,0.75) 0%, rgba(18,18,18,0) 100%);
+        background: -webkit-linear-gradient(top, rgba(18,18,18,0.75) 0%,rgba(18,18,18,0) 100%);
+        background: linear-gradient(to bottom, rgba(18,18,18,0.75) 0%,rgba(18,18,18,0) 100%);
+    }
+
+    #shadow::after {
+        background: -moz-linear-gradient(top, rgba(18,18,18,0) 0%, rgba(18,18,18,0.75) 100%);
+        background: -webkit-linear-gradient(top, rgba(18,18,18,0) 0%,rgba(18,18,18,0.75) 100%);
+        background: linear-gradient(to bottom, rgba(18,18,18,0) 0%,rgba(18,18,18,0.75) 100%);
+    } 
 
     @media screen and ( max-width: ${ variables.breakpoints.phone }px ) {
         .inner-wrap {

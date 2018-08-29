@@ -289,32 +289,13 @@ class Home extends Component {
                 <React.Fragment>
                     <div className="inner" >
                         <style jsx>{mobileStyles}</style>
-                        {/* <Title ref={this.projectTitle} text={this.getProjectData().meta.title} isMobile /> */}
-                        {/* <div className="inner-wrap flex column" >
-                            <div className="top flex" >
-                                <span className="flex projectNum">
-                                    <TextTransition
-                                        text={this.state.slider.current + " "}
-                                        ref={this.textTransitions.projectNumber }/>
-                                    <span>{"/ " + this.state.slider.length}</span>
-                                </span>
-                            </div> */}
-                            <div id="kek" />
-                            <Slider
-                                ref={this.slider}
-                                current={this.state.slider.current}
-                                length={this.state.slider.length}
-                                updateCurrent={this.updateCurrent}
-                                isPhone />
-                            {/* <div className="lower flex">
-                                <Hover to="/project" text="view project" style={{ marginTop: "5vh" }} />
-
-                                <TextTransition
-                                    style={{ marginTop: "5vh" }}
-                                    text={this.getProjectData().meta.year + " ~ " + this.getProjectData().meta.category}
-                                    ref={this.textTransitions.projectData} />
-                            </div>
-                        </div> */}
+                        <div id="shadow" />
+                        <Slider
+                            ref={this.slider}
+                            current={this.state.slider.current}
+                            length={this.state.slider.length}
+                            updateCurrent={this.updateCurrent}
+                            isPhone />
                     </div>
                 </React.Fragment>
             )
