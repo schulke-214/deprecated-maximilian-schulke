@@ -67,7 +67,7 @@ left: ${variables.spacing.layout.marginOut + 'vw' };
         white-space: nowrap;
     }
 
-    .mid > a {
+    .git-link {
         position: relative;
         display: block;
         transform-origin: center;
@@ -75,8 +75,7 @@ left: ${variables.spacing.layout.marginOut + 'vw' };
         heigth: 15px;
         width: 50px;
         text-align: center;
-        /* - Half Width + Half Height */
-        left: ${-25 + 7.5}px;
+        /* left: - Half Width + Half Height */
     }
 
     @media screen and ( max-width: ${ variables.breakpoints.tablet }px ) {

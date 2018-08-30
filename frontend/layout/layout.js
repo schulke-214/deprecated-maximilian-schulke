@@ -208,7 +208,10 @@ class Layout extends Component {
                             </Sticky>
                         </div>
                         <div className="mid flex space-between">
-                            <a href="https://github.com/schulke-214/" target="_blank" className="clickable" >github</a>
+                            <Sticky style={{ left: `${-25 + 7.5}px`}}>
+                                <a href="https://github.com/schulke-214/" target="_blank" className="clickable git-link" >github</a>
+                            </Sticky>
+
                             { this.page.current ? <Arrows prev={ () => this.page.current.handleClick("prev") } next={ () => this.page.current.handleClick("next") }/> : null }
                             {/* <div>UP & DOWN ARROW</div> */}
                         </div>

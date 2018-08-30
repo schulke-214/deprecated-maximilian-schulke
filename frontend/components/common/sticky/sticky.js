@@ -154,7 +154,7 @@ class Sticky extends PureComponent {
             <React.Fragment>
                 <style jsx>{styles}</style>
 
-                <div id="container" className="clickable" >
+                <div id="container" className="clickable" style={ this.props.style } >
                     <span ref={ this.content }>{ this.props.children }</span>
                     <div id="trigger" style={{ width: this.size, height: this.size }} ref={ this.trigger } />
                 </div>
