@@ -102,8 +102,6 @@ class Layout extends Component {
         TweenLite.set("body, main, #layout-layer", {
             height: window.innerHeight
         });
-
-        console.log( window.innerHeight );
     }
 
     handleMouseOut() {
@@ -114,11 +112,8 @@ class Layout extends Component {
         this.setMousePos(ev);
         this.mouseDebouncer.call( this.setCursorRect, 250);
 
-        if( this.props.device.isMobile ) {
-            TweenLite.to(this.cursor, 0.25, { opacity: 0 } );
-            return;
-        }
-
+        if( this.props.device.isMobile )
+            return TweenLite.to(this.cursor, 0.25, { opacity: 0 } );
 
         let border = window.innerHeight > 1000 ? window.innerHeight / 15 : 50;
 
@@ -129,48 +124,41 @@ class Layout extends Component {
             // LEFT
             this.opacity = ev.clientX / border - borderOutside;
 
-            if( ev.clientY < border ) {
-                // TOP LEFT
-                // SMALLER VALUE = CLOSER TO THE BORDER = THAT VALUE SHOULD BE USED
+            // TOP LEFT
+            // SMALLER VALUE = CLOSER TO THE BORDER = THAT VALUE SHOULD BE USED
+            if( ev.clientY < border )
                 if( !( ev.clientX < ev.clientY ) )
                     this.opacity = ev.clientY / border - borderOutside;
-            }
 
-            else if( ev.clientY > window.innerHeight - border ) {
-                // BOTTOM LEFT
-                // WINDOW HEIGHT - Y POS = OFFSET TO BOTTOM OF SCREEN
+            // BOTTOM LEFT
+            // WINDOW HEIGHT - Y POS = OFFSET TO BOTTOM OF SCREEN
+            else if( ev.clientY > window.innerHeight - border )
                 if( !( ev.clientX < ( window.innerHeight - ev.clientY ) ) )
                     this.opacity = ( window.innerHeight - ev.clientY ) / border - borderOutside;
-            }
         }
 
         else if ( ev.clientX > window.innerWidth - border ) {
             // RIGHT
             this.opacity = ( window.innerWidth - ev.clientX ) / border - borderOutside;
 
-            if( ev.clientY < border ) {
-                // TOP RIGHT
-
+            // TOP RIGHT
+            if( ev.clientY < border )
                 if(!( ( window.innerWidth - ev.clientX ) < ev.clientY ) )
                     this.opacity = ev.clientY / border - borderOutside;
-            }
 
-            else if( ev.clientY > window.innerHeight - border ) {
-                // BOTTOM RIGHT
+            // BOTTOM RIGHT
+            else if( ev.clientY > window.innerHeight - border )
                 if(!( ( window.innerWidth - ev.clientX ) < ( window.innerHeight - ev.clientY ) ) )
                     this.opacity = ( window.innerHeight - ev.clientY ) / border - borderOutside;
-            }
         }
 
-        else if ( ev.clientY < border ) {
-            // TOP BORDER ONLY
+        // TOP BORDER ONLY
+        else if ( ev.clientY < border )
             this.opacity = ev.clientY / border - borderOutside;
-        }
 
-        else if ( ev.clientY > window.innerHeight - border ) {
-            // BOTTOM BORDER ONLY
+        // BOTTOM BORDER ONLY
+        else if ( ev.clientY > window.innerHeight - border ) 
             this.opacity = ( window.innerHeight - ev.clientY ) / border - borderOutside;
-        }
 
         else
             this.opacity = 1;
@@ -192,14 +180,7 @@ class Layout extends Component {
                             </Sticky>
 
                             {/* ONLY RENDER THIS WHILE BEEING A DESKTOP */}
-
                             { !this.props.device.isMobile ? <span> creative developer </span> : null }
-
-                            {/* <Sticky>
-                                <Link href="/project">
-                                    <a>Link</a>
-                                </Link>
-                            </Sticky> */}
 
                             <Sticky>
                                 <Link href="/project">
@@ -213,7 +194,6 @@ class Layout extends Component {
                             </Sticky>
 
                             { this.page.current ? <Arrows prev={ () => this.page.current.handleClick("prev") } next={ () => this.page.current.handleClick("next") }/> : null }
-                            {/* <div>UP & DOWN ARROW</div> */}
                         </div>
                         <div className="low flex space-between">
                             <Sticky>
