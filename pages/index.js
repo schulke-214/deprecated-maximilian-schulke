@@ -301,14 +301,9 @@ class Home extends Component {
             )
         }
 
-        // else if ( this.props.device.isMobile ) {
-        //     window.location = window.LIGHTWEIGHT;
-        // }
-        
         else {
             Content = (
                 <React.Fragment>
-                    {/* <style jsx>{fallbackStyles}</style> */}
                     <p>Please use a bigger device</p>
                 </React.Fragment>
             )  

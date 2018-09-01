@@ -11,12 +11,6 @@ export default css`
         height: 100%;
 
         padding: ${variables.spacing.layout.marginOut + 'vw'};
-        
-        /*
-        top: ${variables.spacing.layout.marginOut + 'vw' };
-        left: ${variables.spacing.layout.marginOut + 'vw' };
-
-        */
     }
 
     @media screen and ( max-width: ${ variables.breakpoints.tablet }px ) {

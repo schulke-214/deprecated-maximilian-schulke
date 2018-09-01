@@ -146,9 +146,6 @@ class Sticky extends PureComponent {
         this.mousePos.y = ev.clientY - this.triggerCenter.y;
     }
 
-    
-    
-
     render() {
         return (
             <React.Fragment>
