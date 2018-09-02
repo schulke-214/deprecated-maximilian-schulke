@@ -82,10 +82,6 @@ export default css`
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        /*background: -moz-radial-gradient(center, ellipse cover, rgba(125,185,232,0) 0%, rgba(125,185,232,0) 2%, rgba(73,103,127,0) 50%, rgba(18,18,18,0.5) 100%);
-        background: -webkit-radial-gradient(center, ellipse cover, rgba(125,185,232,0) 0%,rgba(125,185,232,0) 2%,rgba(73,103,127,0) 50%,rgba(18,18,18,0.5) 100%);
-        background: radial-gradient(ellipse at center, rgba(125,185,232,0) 0%,rgba(125,185,232,0) 2%,rgba(73,103,127,0) 50%,rgba(18,18,18,0.5) 100%);
-        */
     }
 
     #shadow::before, #shadow::after {

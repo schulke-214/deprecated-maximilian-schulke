@@ -23,7 +23,6 @@ export default css`
     @media screen and ( max-width:  ${ variables.breakpoints.phone }px ) {
         #home-wrapper {
             padding: 0;
-
             /*padding: 37.5px;*/
         }
     }

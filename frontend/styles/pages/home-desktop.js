@@ -3,8 +3,9 @@ import variables from '../var';
 
 export default css`
     .inner {
-        position: absolute;
+        position: relative;
         top: calc( 50% - 25vh );
+        left: 0;
 
         width: 100%;
         height: 50vh;

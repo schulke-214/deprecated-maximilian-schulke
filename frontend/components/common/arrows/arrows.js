@@ -15,6 +15,7 @@ const Arrows = props => (
                     </svg>
                 </span>
             </Sticky>
+            
             <Sticky size={80} clickHandler={props.next} >
                 <span className="arrow-box">
                     <svg viewBox="0 0 40 40" style={{transform: "rotate(180deg)"}} >
