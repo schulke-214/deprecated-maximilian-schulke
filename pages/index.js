@@ -111,7 +111,7 @@ class Home extends Component {
         if( !this.props.device.isSmall && !this.props.device.isMobile )
             this.circle.current.next( next );
 
-        // this.projectTitle.current.next( project.meta.title );
+        this.projectTitle.current.next( project.meta.title );
 
         this.textTransitions.projectNumber.current.next( next + " " );
         this.textTransitions.projectData.current.next( project.meta.year + " ~ " + project.meta.category );
@@ -140,7 +140,7 @@ class Home extends Component {
         if( !this.props.device.isSmall && !this.props.device.isMobile )
             this.circle.current.prev( prev );
 
-        // this.projectTitle.current.prev( project.meta.title );
+        this.projectTitle.current.prev( project.meta.title );
 
         this.textTransitions.projectNumber.current.prev( prev + " " );
         this.textTransitions.projectData.current.prev( project.meta.year + " ~ " + project.meta.category);
@@ -229,7 +229,7 @@ class Home extends Component {
                             current={this.state.slider.current}
                             length={this.state.slider.length}
                             updateCurrent={this.updateCurrent} />
-                        {/* <Title ref={this.projectTitle} text={this.getProjectData().meta.title} /> */}
+                        <Title ref={this.projectTitle} text={this.getProjectData().meta.title} />
                         <div className="project-info">
                             <span className="flex projectNum">
                                 <TextTransition 
@@ -253,9 +253,8 @@ class Home extends Component {
                 <React.Fragment>
                     <div className="inner" >
                         <style jsx>{tabletStyles}</style>
-                        <Title ref={this.projectTitle} text={this.getProjectData().meta.title} isMobile />
-
-                        <div className="inner-wrap flex column" >
+                        <Title ref={this.projectTitle} text={this.getProjectData().meta.title} isSmall />
+                        <div className="inner-wrap flex column" style={{ display: "none"}} >
                             <div className="top flex" >
                                 <span className="flex projectNum">
                                     <TextTransition
@@ -289,6 +288,7 @@ class Home extends Component {
                 <React.Fragment>
                     <div className="inner" >
                         <style jsx>{mobileStyles}</style>
+                        <Title ref={this.projectTitle} text={this.getProjectData().meta.title} isPhone />
                         <div id="shadow" />
                         <Slider
                             ref={this.slider}

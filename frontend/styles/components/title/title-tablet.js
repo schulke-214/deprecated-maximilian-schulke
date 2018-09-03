@@ -5,9 +5,8 @@ export default css`
     span {
         width: 100%;
         text-align: center;
-        top: calc( 50% - 17.5px );
-        height: 35px;
-        font-weight: 300;
-        font-size: ${ variables.font.title.small };
-    };
-`;
+        top: calc( 50% - 22.5px );
+        height: 45px;
+        font-size: ${ variables.font.title.medium };
+    }
+`

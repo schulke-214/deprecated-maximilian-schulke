@@ -42,6 +42,5 @@ export default css`
 
     .spectral {
         font-family: 'Spectral';
-        font-weight: 600;
     }
 `;

@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 
 import styles from "../../../../styles/components/title/title-common";
-import mobileStyles from "../../../../styles/components/title/title-mobile";
+
 import dekstopStyles from "../../../../styles/components/title/title-desktop";
+import tabletStyles  from "../../../../styles/components/title/title-tablet";
+import mobileStyles from "../../../../styles/components/title/title-mobile";
 
 class Title extends Component {
     constructor ( props ) {
@@ -51,30 +53,42 @@ class Title extends Component {
         let tl = new TimelineLite({ onComplete: () => {
                 tl.pause(0);
                 this.changeText( next );
-                let secTl = new TimelineLite().staggerFrom( this.container.current.childNodes, 0.2, { y: "50%", opacity: 0 }, 0.01 );
+                let secTl = new TimelineLite().staggerFrom( this.container.current.childNodes, 0.5, { y: "100%", opacity: 0 }, 0.01 );
             }})
-            .staggerTo( this.container.current.childNodes, 0.2, { y: "-50%", opacity: 0 }, 0.01 )
-            .set( this.container.current.childNodes, { y: "50%" });
+            .staggerTo( this.container.current.childNodes, 0.5, { y: "-100%", opacity: 0 }, 0.01 )
+            .set( this.container.current.childNodes, { y: "100%" });
     }
 
     prev( prev ) {
         let tl = new TimelineLite({ onComplete: () => {
                 tl.pause(0);
                 this.changeText( prev );
-                let secTl = new TimelineLite().staggerFrom( this.container.current.childNodes, 0.2, { y: "-50%", opacity: 0 }, 0.01 );
+                let secTl = new TimelineLite().staggerFrom( this.container.current.childNodes, 0.5, { y: "-100%", opacity: 0 }, 0.01 );
             }})
-            .staggerTo( this.container.current.childNodes, 0.2, { y: "50%", opacity: 0 }, 0.01 )
-            .set( this.container.current.childNodes, { y: "-50%"});
+            .staggerTo( this.container.current.childNodes, 0.5, { y: "100%", opacity: 0 }, 0.01 )
+            .set( this.container.current.childNodes, { y: "-100%"});
     }
 
     render() {
-        const dynamicStyles = this.props.isMobile ?  mobileStyles : dekstopStyles;
+        let dynamicStyles;
+
+        if ( this.props.isSmall )
+            dynamicStyles = tabletStyles;
+
+        else if ( this.props.isPhone )
+            dynamicStyles = mobileStyles;
+        
+        else
+            dynamicStyles = dekstopStyles;
 
         return (
             <React.Fragment>
                 <style jsx>{styles}</style>
                 <style jsx>{dynamicStyles}</style>
-                <span ref={this.container} className="spectral" />
+                <span ref={this.container} className="spectral">
+                    <span id="first"></span>
+                    <span id="second"></span>
+                </span>
             </React.Fragment>
         );
     }

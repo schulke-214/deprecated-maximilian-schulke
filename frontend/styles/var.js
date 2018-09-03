@@ -1,5 +1,11 @@
 const font = {
-    sizes: {
+    title: {
+        small: '40px',
+        medium: '50px',
+        huge: '65px'
+    },
+
+    text: {
         small: '12.5px',
         medium: '14px'
     }

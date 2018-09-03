@@ -31,7 +31,7 @@ export default css`
 
     h1, h2, h3, h4, h5, h6, a, p, span, div {
         user-select: none;
-        font-size: ${ variables.font.sizes.medium };
+        font-size: ${ variables.font.text.medium };
         line-height: 80%;
         font-weight: 400;
         text-decoration: none;
