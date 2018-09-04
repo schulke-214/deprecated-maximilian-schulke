@@ -37,8 +37,12 @@ class Home extends Component {
         const projects = [];
         Object.keys(projectsJson).map( key => projects.push(projectsJson[key]) )
 
+        const projectTitles = [];
+        projects.map( project => projectTitles.push( project.meta.title ));
+
         this.state = {
             projects,
+            projectTitles,
             slider: {
                 current: 1,
                 length: projects.length
@@ -111,7 +115,7 @@ class Home extends Component {
         if( !this.props.device.isSmall && !this.props.device.isMobile )
             this.circle.current.next( next );
 
-        this.projectTitle.current.next( project.meta.title );
+        this.projectTitle.current.next( next);
 
         this.textTransitions.projectNumber.current.next( next + " " );
         this.textTransitions.projectData.current.next( project.meta.year + " ~ " + project.meta.category );
@@ -140,7 +144,7 @@ class Home extends Component {
         if( !this.props.device.isSmall && !this.props.device.isMobile )
             this.circle.current.prev( prev );
 
-        this.projectTitle.current.prev( project.meta.title );
+        this.projectTitle.current.prev( prev );
 
         this.textTransitions.projectNumber.current.prev( prev + " " );
         this.textTransitions.projectData.current.prev( project.meta.year + " ~ " + project.meta.category);
@@ -229,7 +233,7 @@ class Home extends Component {
                             current={this.state.slider.current}
                             length={this.state.slider.length}
                             updateCurrent={this.updateCurrent} />
-                        <Title ref={this.projectTitle} text={this.getProjectData().meta.title} />
+                        <Title ref={this.projectTitle} titles={ this.state.projectTitles } />
                         <div className="project-info">
                             <span className="flex projectNum">
                                 <TextTransition 
@@ -253,7 +257,7 @@ class Home extends Component {
                 <React.Fragment>
                     <div className="inner" >
                         <style jsx>{tabletStyles}</style>
-                        <Title ref={this.projectTitle} text={this.getProjectData().meta.title} isSmall />
+                        <Title ref={this.projectTitle} titles={ this.state.projectTitles } isSmall />
                         <div className="inner-wrap flex column" style={{ display: "none"}} >
                             <div className="top flex" >
                                 <span className="flex projectNum">
@@ -288,7 +292,7 @@ class Home extends Component {
                 <React.Fragment>
                     <div className="inner" >
                         <style jsx>{mobileStyles}</style>
-                        <Title ref={this.projectTitle} text={this.getProjectData().meta.title} isPhone />
+                        <Title ref={this.projectTitle} titles={ this.state.projectTitles } isPhone />
                         <div id="shadow" />
                         <Slider
                             ref={this.slider}

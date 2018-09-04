@@ -20,7 +20,7 @@ class Title extends Component {
     }
 
     componentDidMount() {
-        this.prepareDOM();
+        // this.prepareDOM();
     }
 
     prepareDOM( text = this.props.text ) {
@@ -85,9 +85,12 @@ class Title extends Component {
             <React.Fragment>
                 <style jsx>{styles}</style>
                 <style jsx>{dynamicStyles}</style>
-                <span ref={this.container} className="spectral">
-                    <span id="first"></span>
-                    <span id="second"></span>
+                <span ref={this.container} className="spectral" id="container" >
+                    { this.props.titles.map( title => (
+                        <span className="title" key={title} >
+                            { title }
+                        </span>
+                    ))}
                 </span>
             </React.Fragment>
         );

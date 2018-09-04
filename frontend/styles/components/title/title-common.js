@@ -1,8 +1,13 @@
 import css from 'styled-jsx/css';
 
 export default css`
-    span {
+    #container {
         position: absolute;
         overflow: hidden;
+    }
+
+    .title {
+        position: absolute;
+        
     }
 `;
