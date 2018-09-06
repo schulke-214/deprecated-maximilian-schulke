@@ -24,49 +24,49 @@ class Title extends Component {
     }
 
     prepareDOM( text = this.props.text ) {
-        text = (text + "").toLowerCase();
+        // text = (text + "").toLowerCase();
 
-        for( let i = 0; i < text.length; i++ ) {
-            let span = document.createElement("span");
-            span.textContent = text.charAt(i);
-            span.classList.add("hover-link-span");
-            span.classList.add("spectral");
+        // for( let i = 0; i < text.length; i++ ) {
+        //     let span = document.createElement("span");
+        //     span.textContent = text.charAt(i);
+        //     span.classList.add("hover-link-span");
+        //     span.classList.add("spectral");
 
-            span.style.fontSize = "inherit";
+        //     span.style.fontSize = "inherit";
 
-            if( text.charAt(i) === " " )
-                span.classList.add("hover-link-space");
+        //     if( text.charAt(i) === " " )
+        //         span.classList.add("hover-link-space");
 
-            this.container.current.appendChild(span);
-        }
+        //     this.container.current.appendChild(span);
+        // }
     }
 
     changeText( text ) {
-        while ( this.container.current.firstChild ) {
-            this.container.current.removeChild( this.container.current.firstChild );
-        }
+        // while ( this.container.current.firstChild ) {
+        //     this.container.current.removeChild( this.container.current.firstChild );
+        // }
 
-        this.prepareDOM( text );
+        // this.prepareDOM( text );
     }
 
     next( next ) {
-        let tl = new TimelineLite({ onComplete: () => {
-                tl.pause(0);
-                this.changeText( next );
-                let secTl = new TimelineLite().staggerFrom( this.container.current.childNodes, 0.5, { y: "100%", opacity: 0 }, 0.01 );
-            }})
-            .staggerTo( this.container.current.childNodes, 0.5, { y: "-100%", opacity: 0 }, 0.01 )
-            .set( this.container.current.childNodes, { y: "100%" });
+        // let tl = new TimelineLite({ onComplete: () => {
+        //         tl.pause(0);
+        //         this.changeText( next );
+        //         let secTl = new TimelineLite().staggerFrom( this.container.current.childNodes, 0.5, { y: "100%", opacity: 0 }, 0.01 );
+        //     }})
+        //     .staggerTo( this.container.current.childNodes, 0.5, { y: "-100%", opacity: 0 }, 0.01 )
+        //     .set( this.container.current.childNodes, { y: "100%" });
     }
 
     prev( prev ) {
-        let tl = new TimelineLite({ onComplete: () => {
-                tl.pause(0);
-                this.changeText( prev );
-                let secTl = new TimelineLite().staggerFrom( this.container.current.childNodes, 0.5, { y: "-100%", opacity: 0 }, 0.01 );
-            }})
-            .staggerTo( this.container.current.childNodes, 0.5, { y: "100%", opacity: 0 }, 0.01 )
-            .set( this.container.current.childNodes, { y: "-100%"});
+        // let tl = new TimelineLite({ onComplete: () => {
+        //         tl.pause(0);
+        //         this.changeText( prev );
+        //         let secTl = new TimelineLite().staggerFrom( this.container.current.childNodes, 0.5, { y: "-100%", opacity: 0 }, 0.01 );
+        //     }})
+        //     .staggerTo( this.container.current.childNodes, 0.5, { y: "100%", opacity: 0 }, 0.01 )
+        //     .set( this.container.current.childNodes, { y: "-100%"});
     }
 
     render() {
@@ -87,7 +87,7 @@ class Title extends Component {
                 <style jsx>{dynamicStyles}</style>
                 <span ref={this.container} className="spectral" id="container" >
                     { this.props.titles.map( title => (
-                        <span className="title" key={title} >
+                        <span className="title" key={title}>
                             { title }
                         </span>
                     ))}

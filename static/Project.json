@@ -20,7 +20,7 @@
     },
     "imSad": { 
         "meta": {
-            "title": "project",
+            "title": "Project",
             "category": "frontend",
             "year": 2018,
             "roles": [
@@ -33,7 +33,7 @@
     },
     "reciper": {
         "meta": {
-            "title": "other project",
+            "title": "Other Project",
             "category": "fullstack",
             "year": 2019,
             "roles": [

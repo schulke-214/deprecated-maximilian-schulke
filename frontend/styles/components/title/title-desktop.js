@@ -5,7 +5,10 @@ export default css`
     #container {
         left: 50%;
         top: calc( 50% - 30px );
-        height: 60px;
+    }
+
+    .title {
         font-size: 70px;
+        height: 60px;
     }
 `;
