@@ -26,30 +26,93 @@ class Title extends Component {
     }
 
     componentDidMount() {
+        this.ease = Power0.easeNone;
         this.update();
-        console.log( this );
     }
 
-
-    next( next ) {
-
+    next() {
+        let next = this.active + 1; 
         
+        if( this.active === this.props.titles.length - 1 )
+            next = 0;
+        
+        TweenLite.set( this.projects[this.active].current, {
+            y: "0%"
+        });
+
+        TweenLite.set( this.projects[this.active].current.childNodes, {
+            y: "0%",
+            opacity: 1
+        });
+
+        TweenLite.set( this.projects[next].current, {
+            display: "flex",
+            y: "100%"
+        });
+
+        TweenLite.set( this.projects[next].current.childNodes, {
+            display: "flex",
+            y: "0%",
+            opacity: 1
+        });
+
+        let tl = new TimelineLite()
+            .to( this.projects[this.active].current, 0.5, { y: "-50%" }, 0)
+            .staggerTo( this.projects[this.active].current.childNodes, 0.5, { y: "-100%", opacity: 0 }, 0.01, 0)
+            .to( this.projects[next].current, 0.5, { y: "0%" }, 0)
+            .staggerFrom( this.projects[next].current.childNodes, 0.5, { y: "100%" }, 0.01, 0)
+
+        this.active = next;
     }
 
-    prev( prev ) {
-
+    prev() {
+        let prev = this.active - 1;        
         
+        if( this.active === 0 )
+            prev = this.props.titles.length - 1;
+        
+        TweenLite.set( this.projects[this.active].current, {
+            y: "0%"
+        });
+
+        TweenLite.set( this.projects[this.active].current.childNodes, {
+            y: "0%",
+            opacity: 1
+        });
+
+        TweenLite.set( this.projects[prev].current, {
+            display: "flex",
+            y: "-100%"
+        });
+
+        TweenLite.set( this.projects[prev].current.childNodes, {
+            display: "flex",
+            y: "0%",
+            opacity: 1
+        });
+
+        let tl = new TimelineLite()
+            .to( this.projects[this.active].current, 0.5, { y: "50%" }, 0)
+            .staggerTo( this.projects[this.active].current.childNodes, 0.5, { y: "100%", opacity: 0 }, 0.01, 0)
+            .to( this.projects[prev].current, 0.5, { y: "0%" }, 0)
+            .staggerFrom( this.projects[prev].current.childNodes, 0.5, { y: "-100%" }, 0.01, 0)
+
+        this.active = prev;
     }
 
     update() {
         this.projects.forEach( ( project, index ) => {
             if( this.active === index )
-                return;
+                TweenLite.set(this.projects[ index ].current, {
+                    display: "flex",
+                    y: "0%"
+                });
 
-            TweenLite.set(this.projects[ index ].current, {
-                display: "none",
-                top: "-100%"
-            });
+            else
+                TweenLite.set(this.projects[ index ].current, {
+                    display: "none",
+                    y: "0%"
+                });
         })
     }
 

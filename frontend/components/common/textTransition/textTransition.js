@@ -38,9 +38,9 @@ class TextTransition extends Component {
         let tl = new TimelineLite({ onComplete: () => {
                 tl.pause(0);
                 this.changeText( nextValue );
-                let secTl = new TimelineLite().staggerFrom( this.container.current.childNodes, 0.2, { y: "100%", opacity: 0 }, 0.01 );
+                let secTl = new TimelineLite().staggerFrom( this.container.current.childNodes, 0.25, { y: "100%", opacity: 0 }, 0.01 );
             }})
-            .staggerTo( this.container.current.childNodes, 0.2, { y: "-100%", opacity: 0 }, 0.01 )
+            .staggerTo( this.container.current.childNodes, 0.25, { y: "-100%", opacity: 0 }, 0.01 )
             .set( this.container.current.childNodes, { y: "100%"});
     }
 
@@ -48,9 +48,9 @@ class TextTransition extends Component {
         let tl = new TimelineLite({ onComplete: () => {
                 tl.pause(0);
                 this.changeText( prevValue );
-                let secTl = new TimelineLite().staggerFrom( this.container.current.childNodes, 0.2, { y: "-100%", opacity: 0 }, 0.01 );
+                let secTl = new TimelineLite().staggerFrom( this.container.current.childNodes, 0.25, { y: "-100%", opacity: 0 }, 0.01 );
             }})
-            .staggerTo( this.container.current.childNodes, 0.2, { y: "100%", opacity: 0 }, 0.01 )
+            .staggerTo( this.container.current.childNodes, 0.25, { y: "100%", opacity: 0 }, 0.01 )
             .set( this.container.current.childNodes, { y: "-100%"});
     }
 

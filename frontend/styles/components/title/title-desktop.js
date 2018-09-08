@@ -5,8 +5,8 @@ export default css`
     #container {
         width: 50%;
         left: 50%;
-        height: 80px;
-        top: calc( 50% - 40px );
+        height: 75px;
+        top: calc( 50% - 37.5px );
     }
 
     .title-parent {
