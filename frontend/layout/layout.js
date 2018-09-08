@@ -85,8 +85,8 @@ class Layout extends Component {
 
     setMousePos( ev ) {
         // MAUS POS = MAUS OFFSET AUSGEHEND VOM MITTELPUNKT DES WRAPPERS
-        this.cursorPos.x = ev.clientX - this.cursorRect.width / 2;
-        this.cursorPos.y = ev.clientY - this.cursorRect.height / 2;
+        this.cursorPos.x = ev.clientX - ( this.cursorRect.width || 25 ) / 2;
+        this.cursorPos.y = ev.clientY - ( this.cursorRect.height || 25 ) / 2;
     }
 
     setCursorRect() {

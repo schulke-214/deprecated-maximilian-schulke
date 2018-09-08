@@ -12,61 +12,45 @@ class Title extends Component {
 
         this.container = React.createRef();
 
-        this.changeText = this.changeText.bind(this);
-        this.prepareDOM = this.prepareDOM.bind(this);
+        // DYNAMICLY CREATE REFS
+        this.projects = []
+        this.props.titles.forEach( (title, index) => {
+            this.projects[index] = React.createRef();
+        })
+
+        this.active = 0;
 
         this.next = this.next.bind(this);
         this.prev = this.prev.bind(this);
+        this.update = this.update.bind(this);
     }
 
     componentDidMount() {
-        // this.prepareDOM();
+        this.update();
+        console.log( this );
     }
 
-    prepareDOM( text = this.props.text ) {
-        // text = (text + "").toLowerCase();
-
-        // for( let i = 0; i < text.length; i++ ) {
-        //     let span = document.createElement("span");
-        //     span.textContent = text.charAt(i);
-        //     span.classList.add("hover-link-span");
-        //     span.classList.add("spectral");
-
-        //     span.style.fontSize = "inherit";
-
-        //     if( text.charAt(i) === " " )
-        //         span.classList.add("hover-link-space");
-
-        //     this.container.current.appendChild(span);
-        // }
-    }
-
-    changeText( text ) {
-        // while ( this.container.current.firstChild ) {
-        //     this.container.current.removeChild( this.container.current.firstChild );
-        // }
-
-        // this.prepareDOM( text );
-    }
 
     next( next ) {
-        // let tl = new TimelineLite({ onComplete: () => {
-        //         tl.pause(0);
-        //         this.changeText( next );
-        //         let secTl = new TimelineLite().staggerFrom( this.container.current.childNodes, 0.5, { y: "100%", opacity: 0 }, 0.01 );
-        //     }})
-        //     .staggerTo( this.container.current.childNodes, 0.5, { y: "-100%", opacity: 0 }, 0.01 )
-        //     .set( this.container.current.childNodes, { y: "100%" });
+
+        
     }
 
     prev( prev ) {
-        // let tl = new TimelineLite({ onComplete: () => {
-        //         tl.pause(0);
-        //         this.changeText( prev );
-        //         let secTl = new TimelineLite().staggerFrom( this.container.current.childNodes, 0.5, { y: "-100%", opacity: 0 }, 0.01 );
-        //     }})
-        //     .staggerTo( this.container.current.childNodes, 0.5, { y: "100%", opacity: 0 }, 0.01 )
-        //     .set( this.container.current.childNodes, { y: "-100%"});
+
+        
+    }
+
+    update() {
+        this.projects.forEach( ( project, index ) => {
+            if( this.active === index )
+                return;
+
+            TweenLite.set(this.projects[ index ].current, {
+                display: "none",
+                top: "-100%"
+            });
+        })
     }
 
     render() {
@@ -86,11 +70,25 @@ class Title extends Component {
                 <style jsx>{styles}</style>
                 <style jsx>{dynamicStyles}</style>
                 <span ref={this.container} className="spectral" id="container" >
-                    { this.props.titles.map( title => (
-                        <span className="title" key={title}>
-                            { title }
-                        </span>
-                    ))}
+                    { this.props.titles.map( (title, index) => {
+                        title = (title + "").toLowerCase();
+
+                        return ( 
+                            <span className="title-parent" ref={this.projects[index]} key={title}>
+                                { title.split('').map( (letter, index) => {
+                                    let classes = "hover-link-span spectral";
+                                    if( letter === " " )
+                                        classes += " hover-link-space";
+                                    
+                                    return (
+                                        <span className={classes} key={letter + index}>
+                                            { letter }
+                                        </span>
+                                    )
+                                }) }
+                            </span>
+                        );
+                    }) }
                 </span>
             </React.Fragment>
         );

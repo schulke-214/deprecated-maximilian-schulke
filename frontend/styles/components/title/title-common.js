@@ -4,16 +4,29 @@ export default css`
     #container {
         position: absolute;
         overflow: hidden;
-        display: flex;
-        flex-direction: column;
+        width: 100%;
     }
 
-    .title {
+    .title-parent {
         position: relative;
-        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
         text-align: center;
+
         font-weight: 400;
         font-family: "Spectral";
-        height: 100%;
+
+        height: inherit;
+        width: 100%;
+
+
+        position: absolute;
     }
+
+    .title-parent > span {
+        font-size: inherit;
+    } 
 `;

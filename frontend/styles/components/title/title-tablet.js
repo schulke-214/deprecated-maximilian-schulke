@@ -4,16 +4,11 @@ import variables from '../../var';
 export default css`
     #container {
         width: 100%;
-        top: calc( 50% - 20px );
-        height: 40px;
+        top: calc( 50% - 30px );
+        height: 60px;
     }
 
-    .title {
-        top: -100%;
+    .title-parent {
         font-size: ${ variables.font.title.medium };
-    }
-
-    .title:last-child {
-        order: -1
     }
 `

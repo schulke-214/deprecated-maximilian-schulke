@@ -3,12 +3,14 @@ import variables from '../../var';
 
 export default css`
     #container {
+        width: 50%;
         left: 50%;
-        top: calc( 50% - 30px );
+        height: 80px;
+        top: calc( 50% - 40px );
     }
 
-    .title {
-        font-size: 70px;
-        height: 60px;
+    .title-parent {
+        font-size: ${ variables.font.title.huge };
+        justify-content: flex-start;
     }
 `;
