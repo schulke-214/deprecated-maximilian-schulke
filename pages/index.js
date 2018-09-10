@@ -115,10 +115,13 @@ class Home extends Component {
         if( !this.props.device.isSmall && !this.props.device.isMobile )
             this.circle.current.next( next );
 
-        this.projectTitle.current.next( next);
+        // ONLY A TEMPORARY SOLUTION
+        try {
+            this.projectTitle.current.next( next);
 
-        this.textTransitions.projectNumber.current.next( next + " " );
-        this.textTransitions.projectData.current.next( project.meta.year + " ~ " + project.meta.category );
+            this.textTransitions.projectNumber.current.next( next + " " );
+            this.textTransitions.projectData.current.next( project.meta.year + " ~ " + project.meta.category );
+        } catch( e ) {}
 
         switch( event ) {
             case "WHEEL":
@@ -144,10 +147,15 @@ class Home extends Component {
         if( !this.props.device.isSmall && !this.props.device.isMobile )
             this.circle.current.prev( prev );
 
-        this.projectTitle.current.prev( prev );
 
-        this.textTransitions.projectNumber.current.prev( prev + " " );
-        this.textTransitions.projectData.current.prev( project.meta.year + " ~ " + project.meta.category);
+        // ONLY A TEMPORARY SOLUTION
+        try {
+            this.projectTitle.current.prev( prev );
+
+            this.textTransitions.projectNumber.current.prev( prev + " " );
+            this.textTransitions.projectData.current.prev( project.meta.year + " ~ " + project.meta.category);
+        } catch( e ) {}
+
 
         switch( event ) {
             case "WHEEL":
