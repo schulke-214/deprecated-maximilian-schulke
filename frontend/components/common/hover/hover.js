@@ -6,22 +6,59 @@ class Hover extends Component {
         super( props );
 
         // REFS
-        this.container = React.createRef();
+        this.content = React.createRef();
+        this.trigger = React.createRef();
 
         // VARIABLES
         this.animation = null;
+        this.size = this.props.size || 100;
         this.text = this.props.text || this.props.children;
+        this.triggerRect;
+        this.triggerCenter;
 
+        this.mousePos = {
+            x: 0,
+            y: 0
+        }
+        
+
+        this.setRect = this.setRect.bind(this);
         this.handlerHover = this.handlerHover.bind(this);
     }
 
     componentDidMount() {
         this.prepareDOM();
+        this.setRect();
+
 
         this.animation = new TimelineLite({ paused: true, onComplete: () => this.animation.pause(0) })
-            .staggerTo( this.container.current.childNodes, 0.2, { y: "-100%", opacity: 0 }, 0.01 )
-            .set( this.container.current.childNodes, { y: "100%"})
-            .staggerTo( this.container.current.childNodes, 0.2, { y: "0%", opacity: 1 }, 0.01 )
+            .staggerTo( this.content.current.childNodes, 0.2, { y: "-100%", opacity: 0 }, 0.01 )
+            .set( this.content.current.childNodes, { y: "100%"})
+            .staggerTo( this.content.current.childNodes, 0.2, { y: "0%", opacity: 1 }, 0.01 );
+
+
+        addEventListener('load', this.setRect );
+        this.trigger.current.addEventListener('mouseenter', this.handlerHover );
+    }
+
+    componentWillUnmount() {
+        removeEventListener('load', this.setRect );
+        this.trigger.current.removeEventListener('mouseenter', this.handlerHover );
+    }
+
+    setRect() {
+        this.contentRect = this.content.current.getBoundingClientRect();
+        this.triggerRect = this.trigger.current.getBoundingClientRect();
+
+        this.triggerCenter = {
+            x: this.triggerRect.left + ( this.triggerRect.width / 2 ),
+            y: this.triggerRect.top + ( this.triggerRect.height / 2 )
+        }
+
+        TweenLite.set( this.trigger.current, {
+            left: - ( (this.size / 2) - ( this.contentRect.width / 2 ) ),
+            top: - ( (this.size / 2) - ( this.contentRect.height / 2 ) )
+        });
     }
 
     handlerHover() {
@@ -38,15 +75,16 @@ class Hover extends Component {
             if( this.text.charAt(i) === " ")
                 span.classList.add("hover-link-space");
 
-            this.container.current.appendChild(span);
+            this.content.current.appendChild(span);
         }
     }
 
     render() {
         return (
             <Link href={this.props.to} >
-                <a style={{...this.props.style}}>
-                    <span ref={this.container} onMouseEnter={this.handlerHover} style={{ position: "relative" }} />
+                <a style={{...this.props.style, position: "relative" }}>
+                    <span ref={this.content} style={{ position: "relative" }} />
+                    <div id="trigger" style={{ width: this.size, height: this.size, position: "absolute", borderRadius: "100%" }} ref={ this.trigger } />
                 </a>
             </Link>
 

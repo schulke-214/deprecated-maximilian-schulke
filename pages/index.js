@@ -258,7 +258,7 @@ class Home extends Component {
                     <div className="inner" >
                         <style jsx>{tabletStyles}</style>
                         <Title ref={this.projectTitle} titles={ this.state.projectTitles } isSmall />
-                        <div className="inner-wrap flex column" style={{ display: "none"}} >
+                        <div className="inner-wrap flex column">
                             <div className="top flex" >
                                 <span className="flex projectNum">
                                     <TextTransition

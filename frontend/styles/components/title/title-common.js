@@ -8,22 +8,16 @@ export default css`
     }
 
     .title-parent {
-        position: relative;
+        position: absolute;
         display: flex;
         justify-content: center;
         align-items: center;
 
-
         text-align: center;
-
         font-weight: 400;
         font-family: "Spectral";
-
         height: inherit;
         width: 100%;
-
-
-        position: absolute;
     }
 
     .title-parent > span {

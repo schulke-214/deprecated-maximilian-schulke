@@ -171,7 +171,7 @@ class Layout extends Component {
             <React.Fragment>
                 <style jsx>{styles}</style>
                 <div id="layout-layer" className="unclickable" >
-                    <div id="gui-layer" style={{ display: "none"}}>
+                    <div id="gui-layer">
                         <div className="top flex space-between" >
                             <Sticky>
                                 <Link href="/">
