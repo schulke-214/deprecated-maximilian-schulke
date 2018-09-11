@@ -58,9 +58,9 @@ class Title extends Component {
 
         let tl = new TimelineLite()
             .to( this.projects[this.active].current, 0.75, { y: "-50%", ease: Power2.easeInOut }, 0)
-            .staggerTo( this.projects[this.active].current.childNodes, 0.75, { y: "-100%", opacity: 0, ease: Power2.easeInOut }, 0.01, 0)
+            .staggerTo( this.projects[this.active].current.childNodes, 0.75, { y: "-100%", opacity: 0, ease: Power2.easeInOut }, 0.02, 0)
             .to( this.projects[next].current, 0.75, { y: "0%", ease: Power2.easeInOut }, 0)
-            .staggerFrom( this.projects[next].current.childNodes, 0.75, { y: "100%", ease: Power2.easeInOut }, 0.01, 0)
+            .staggerFrom( this.projects[next].current.childNodes, 0.75, { y: "100%", ease: Power2.easeInOut }, 0.02, 0)
 
         this.active = next;
     }
@@ -93,9 +93,9 @@ class Title extends Component {
 
         let tl = new TimelineLite()
             .to( this.projects[this.active].current, 0.75, { y: "50%", ease: Power2.easeInOut }, 0)
-            .staggerTo( this.projects[this.active].current.childNodes, 0.75, { y: "100%", opacity: 0, ease: Power2.easeInOut }, 0.01, 0)
+            .staggerTo( this.projects[this.active].current.childNodes, 0.75, { y: "100%", opacity: 0, ease: Power2.easeInOut }, 0.02, 0)
             .to( this.projects[prev].current, 0.75, { y: "0%", ease: Power2.easeInOut }, 0)
-            .staggerFrom( this.projects[prev].current.childNodes, 0.75, { y: "-100%", ease: Power2.easeInOut }, 0.01, 0)
+            .staggerFrom( this.projects[prev].current.childNodes, 0.75, { y: "-100%", ease: Power2.easeInOut }, 0.02, 0)
 
         this.active = prev;
     }
