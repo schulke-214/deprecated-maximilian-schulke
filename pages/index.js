@@ -51,6 +51,8 @@ class Home extends Component {
 
         // THIS FIXES
         this.handleScroll = this.handleScroll.bind(this);
+        this.handleTouch = this.handleTouch.bind(this);
+
         this.nextProject = this.nextProject.bind(this);
         this.prevProject = this.prevProject.bind(this);
         this.getProjectData = this.getProjectData.bind(this);
@@ -63,11 +65,13 @@ class Home extends Component {
     componentDidMount() {
         // INIT STUFF
         addEventListener('wheel', this.handleScroll );
+        addEventListener('touchstart', this.handleTouch );
     } 
 
     componentWillUnmount() {
         // REMOVE LISTENERS
         removeEventListener('wheel', this.handleScroll );
+        removeEventListener('touchstart', this.handleTouch );
 
         removeEventListener("wheel", this.resetRunningState );
         removeEventListener("mousedown", this.resetRunningStateByClick );
@@ -194,6 +198,20 @@ class Home extends Component {
 
             else if( dir === "next")
                 this.nextProject("CLICK");
+        }
+    }
+
+    handleTouch( ev ) {
+        let { clientX, clientY } = ev.touches[0];
+        console.log(clientX, clientY)
+
+        window.ontouchmove = ev => {
+            var deltaX, deltaY;
+
+            deltaX = ev.changedTouches[0].clientX - clientX;
+            deltaY = ev.changedTouches[0].clientY - clientY;
+
+            console.log( deltaX, deltaY )
         }
     }
 
