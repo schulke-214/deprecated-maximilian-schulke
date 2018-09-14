@@ -139,6 +139,10 @@ class Home extends Component {
             case "CLICK":
                 this.slider.current.next(() => this.running = false );
                 break;
+
+            case "TOUCH":
+                this.slider.current.next(() => this.running = false );
+                break;
         }
     }
 
@@ -172,6 +176,11 @@ class Home extends Component {
             case "CLICK":
                 this.slider.current.prev(() => this.running = false );
                 break;
+
+            case "TOUCH":
+                this.slider.current.prev(() => this.running = false );
+                break;
+
         }
     }
 
@@ -202,16 +211,30 @@ class Home extends Component {
     }
 
     handleTouch( ev ) {
-        let { clientX, clientY } = ev.touches[0];
-        console.log(clientX, clientY)
-
+        let startX = ev.touches[0].clientY;
+        let startY = ev.touches[0].clientY;
+        let dir;
+        
         window.ontouchmove = ev => {
-            var deltaX, deltaY;
+            let { posX, posY } = ev.touches[0];
 
-            deltaX = ev.changedTouches[0].clientX - clientX;
-            deltaY = ev.changedTouches[0].clientY - clientY;
+        } 
 
-            console.log( deltaX, deltaY )
+        window.ontouchend = ev => {
+            let deltaX, deltaY;
+
+            deltaX = ev.changedTouches[0].clientX - startX;
+            deltaY = ev.changedTouches[0].clientY - startY;
+
+            if( Math.abs(deltaY) > this.threshold && !this.running ) {
+                if( deltaY > 0 )
+                    this.prevProject("TOUCH");
+
+                if( deltaY < 0 )
+                    this.nextProject("TOUCH");
+            }
+
+            console.log( deltaX, deltaY, this.running )
         }
     }
 
@@ -221,12 +244,13 @@ class Home extends Component {
             window.removeEventListener("wheel", this.resetRunningState );
             window.removeEventListener("mousedown", this.resetRunningStateByClick );
             window.removeEventListener("mousemove", this.resetRunningState );
-
         }
     }
 
     resetRunningStateByClick() {
         this.running = false;
+
+        console.log("RESET RUNNING STATE!!")
         
         window.removeEventListener("wheel", this.resetRunningState );
         window.removeEventListener("mousedown", this.resetRunningStateByClick );
