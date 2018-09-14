@@ -111,9 +111,6 @@ class Sticky extends PureComponent {
     }
 
     handleMouseEnter( ev ) {
-        if( this.props.device.isMobile )
-            return;
-
         this.setRect();
         this.setMouse(ev);
         this.duration = 2;
