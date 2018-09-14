@@ -19,7 +19,18 @@ export default css`
         -webkit-tap-highlight-color: rgba(0,0,0,0);
     } 
 
+    html {
+        overflow-y: -ms-autohiding-scrollbar;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;  
+    }
+
+    ::-webkit-scrollbar {
+        display: none;  
+    }
+
     html, body {
+        overscroll-behavior-y: contain;
         background-color: ${ variables.colors.main };
     }
 
