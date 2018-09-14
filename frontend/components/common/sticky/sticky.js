@@ -111,6 +111,9 @@ class Sticky extends PureComponent {
     }
 
     handleMouseEnter( ev ) {
+        if( this.props.device.isMobile )
+            return;
+
         this.setRect();
         this.setMouse(ev);
         this.duration = 2;
@@ -153,7 +156,7 @@ class Sticky extends PureComponent {
 
                 <div id="container" className="clickable" style={ this.props.style } >
                     <span ref={ this.content }>{ this.props.children }</span>
-                    <div id="trigger" style={{ width: this.size, height: this.size }} ref={ this.trigger } />
+                    { !this.props.device.isMobile ? <div id="trigger" style={{ width: this.size, height: this.size }} ref={ this.trigger } /> : null }
                 </div>
             </React.Fragment>
         );
