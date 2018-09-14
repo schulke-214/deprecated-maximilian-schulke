@@ -81,6 +81,9 @@ class Layout extends Component {
         this.cursor = document.getElementById('mouse-cursor');
         this.mouseLayer.appendChild( this.cursor );
         this.cursorRect = this.cursor.getBoundingClientRect();
+
+        if( this.props.device.isMobile )
+            TweenLite.to(this.cursor, 0.25, { opacity: 0 } );
     }
 
     setMousePos( ev ) {
@@ -109,11 +112,11 @@ class Layout extends Component {
     }
 
     handleMouseMove( ev ) {
+        if( this.props.device.isMobile )
+            return;
+
         this.setMousePos(ev);
         this.mouseDebouncer.call( this.setCursorRect, 250);
-
-        if( this.props.device.isMobile )
-            return TweenLite.to(this.cursor, 0.25, { opacity: 0 } );
 
         let border = window.innerHeight > 1000 ? window.innerHeight / 15 : 50;
 
