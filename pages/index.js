@@ -218,6 +218,7 @@ class Home extends Component {
         window.ontouchmove = ev => {
             let { posX, posY } = ev.touches[0];
 
+            window.pageYOffset = 0;
         } 
 
         window.ontouchend = ev => {
