@@ -30,6 +30,7 @@ export default css`
     }
 
     html, body {
+        /* PREVENT CHROMES PULL-TO-REFRESH - HAS STILL BUGS */
         overscroll-behavior-y: contain;
         background-color: ${ variables.colors.main };
     }

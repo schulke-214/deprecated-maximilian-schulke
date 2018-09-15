@@ -4,10 +4,10 @@
   "description": "a personal portfolio website",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "nodemon server.js",
     "build": "next build --mode production",
     "heroku-postbuild": "next build -mode production",
-    "start": "next start -p $PORT"
+    "start": "NODE_ENV=production node server.js"
   },
   "engines": {
     "node": "10.9.0"
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/schulke-214/maximilian-schulke#readme",
   "dependencies": {
+    "compression": "^1.7.3",
     "express": "^4.16.3",
     "next": "^6.1.2",
     "npm": "^6.4.0",
