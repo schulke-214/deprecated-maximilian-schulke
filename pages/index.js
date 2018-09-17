@@ -207,7 +207,6 @@ class Home extends Component {
         let dir;
         
         window.ontouchmove = ev => {
-            ev.preventDefault();
             
             let { posX, posY } = ev.touches[0];
         } 

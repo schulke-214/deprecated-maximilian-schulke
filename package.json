@@ -4,7 +4,7 @@
   "description": "a personal portfolio website",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "node server.js",
     "build": "next build --mode production",
     "heroku-postbuild": "next build -mode production",
     "start": "NODE_ENV=production node server.js"
