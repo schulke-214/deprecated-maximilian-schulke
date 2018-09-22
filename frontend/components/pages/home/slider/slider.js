@@ -25,6 +25,7 @@ class Slider extends Component {
 
             delta_scale: 25,
             delta_offset: 1.5,
+
             width: 1000,
             height: 1500
         };
@@ -86,9 +87,6 @@ class Slider extends Component {
         this.pixi.displacementSprite = PIXI.Sprite.fromImage('static/slider/map.jpg');
         this.pixi.displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
         this.pixi.displacementFilter = new PIXI.filters.DisplacementFilter( this.pixi.displacementSprite );
-
-        this.pixi.displacementFilter.scale.x = 2;
-        this.pixi.displacementFilter.scale.y = 2;
 
         this.pixi.stage.addChild( this.pixi.displacementSprite );
         this.pixi.container.filters = [ this.pixi.displacementFilter ];

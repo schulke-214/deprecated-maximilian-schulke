@@ -176,10 +176,8 @@ class Layout extends Component {
                 <div id="layout-layer" className="unclickable" >
                     <div id="gui-layer">
                         <div className="top flex space-between" >
-                            <Sticky>
-                                <Link href="/">
-                                    <a><Logo className="logo" /></a>
-                                </Link>
+                            <Sticky to='/' >
+                                <a><Logo className="logo" /></a>
                             </Sticky>
 
                             {/* ONLY RENDER THIS WHILE BEEING A DESKTOP */}
@@ -192,21 +190,19 @@ class Layout extends Component {
                             </Sticky>
                         </div>
                         <div className="mid flex space-between">
-                            <Sticky style={{ left: `${-25 + 7.5}px`}}>
-                                <a href="https://github.com/schulke-214/" target="_blank" className="clickable git-link" >github</a>
+                            <Sticky style={{ left: `${-25 + 7.5}px`}} newTab="https://github.com/schulke-214/" >
+                                <a className="clickable git-link" >github</a>
                             </Sticky>
 
                             { this.page.current ? <Arrows prev={ () => this.page.current.handleClick("prev") } next={ () => this.page.current.handleClick("next") }/> : null }
                         </div>
                         <div className="low flex space-between">
-                            <Sticky>
-                                <Link href="/about">
-                                    <a>about</a>
-                                </Link>
+                            <Sticky to="/about">
+                                <a>about</a>
                             </Sticky>
 
-                            <Sticky>
-                                <a href="mailto:info@domain.de">contact</a>
+                            <Sticky mailto="info@domain.de" >
+                                <a>contact</a>
                             </Sticky>
                         </div>
                     </div>

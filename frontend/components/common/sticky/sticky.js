@@ -49,6 +49,7 @@ class Sticky extends PureComponent {
         this.handleMouseMove = this.handleMouseMove.bind(this);
         this.handleMouseEnter = this.handleMouseEnter.bind(this);
         this.handleMouseOut = this.handleMouseOut.bind(this);
+        this.handleClick = this.handleClick.bind(this);
 
         this.setMouse = this.setMouse.bind(this);
         this.getHypotenuse = this.getHypotenuse.bind(this);
@@ -116,7 +117,7 @@ class Sticky extends PureComponent {
         this.duration = 2;
         this.entered = true;
 
-        window.CURSOR_ONCLICK = this.props.clickHandler;
+        window.CURSOR_ONCLICK = this.props.clickHandler || this.handleClick;
         window.CURSOR_TYPE = this.props.cursorState || "click";
     }
 
@@ -128,6 +129,18 @@ class Sticky extends PureComponent {
 
         // DURATION DER ANIMATION IST ABHÄNGIG DAVON WIE WEIT DIE MAUS WEG IST
         TweenLite.to( this.content.current, this.getHypotenuse() / 50 ,{x: 0, y: 0, ease: this.ease} );
+    }
+
+    handleClick( ) {
+        if( this.props.to ) {
+            // PROGRAMATICALLY ROUTING ( USING A INTERFACE OR THE LAYOUT COMPONENT )
+        }
+
+        else if ( this.props.newTab )
+            window.open( this.props.newTab,'_blank');
+
+        else if( this.props.mailto )
+            location.href = "mailto:" + this.props.mailto;
     }
 
     // STICKY FUNCTIONS
