@@ -5,7 +5,7 @@ import App, { Container } from 'next/app';
 import Head from 'next/head';
 
 // CONTEXT PROVIDER IMPORTS
-import {DeviceContext, DeviceProvider} from '../frontend/context/device';
+import { DeviceContext, DeviceProvider } from '../frontend/context/device';
 
 // COMPONENT IMPORTS
 import Layout from '../frontend/layout/layout';

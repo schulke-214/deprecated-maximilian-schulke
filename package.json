@@ -10,7 +10,8 @@
     "start": "NODE_ENV=production node server.js"
   },
   "engines": {
-    "node": "10.9.0"
+    "node": "10.9.0",
+    "npm": "^6.4.1"
   },
   "repository": {
     "type": "git",
@@ -26,10 +27,9 @@
     "compression": "^1.7.3",
     "express": "^4.16.3",
     "next": "^6.1.2",
-    "npm": "^6.4.0",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "styled-jsx": "^2.2.7"
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "styled-jsx": "^3.0.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
