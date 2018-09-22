@@ -1,2 +1,6 @@
 # maximilian-schulke
-Personal Portfolio Website
+This is the source-code for the website currently running on ```[final url].com```.
+
+### Architecture
+
+### Custom Server
