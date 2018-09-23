@@ -72,7 +72,7 @@ left: ${variables.spacing.layout.marginOut + 'vw' };
         display: block;
         transform-origin: center;
         transform: rotate( -90deg );
-        heigth: 15px;
+        height: 15px;
         width: 50px;
         text-align: center;
         /* left: - Half Width + Half Height */

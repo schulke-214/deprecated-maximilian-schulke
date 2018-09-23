@@ -236,10 +236,9 @@ class Slider extends Component {
 
         return (
             <React.Fragment>
-                <style jsx>{ commonStyles }</style>
-                <style jsx>{ dynamicStyles }</style>
-
                 <div ref={ this.wrapper } >
+                    <style jsx>{ commonStyles }</style>
+                    <style jsx>{ dynamicStyles }</style>
                     <canvas ref={ this.canvas } />
                 </div>
             </React.Fragment>
