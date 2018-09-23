@@ -79,7 +79,6 @@ class Slider extends Component {
         });
 
         this.pixi.stage = new PIXI.Container();
-        this.pixi.stage.interactive = true;
 
         this.pixi.container = new PIXI.Container();
         this.pixi.stage.addChild( this.pixi.container );
