@@ -36,12 +36,9 @@ export default css`
     }
 
     body {
-        position: absolute;
+        position: fixed;
         top: 0px;
         left: 0px;
-        
-        height: 100vh;
-        width: 100vw;
         
         overflow: hidden;
     }
