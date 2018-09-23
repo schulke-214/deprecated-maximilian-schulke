@@ -7,7 +7,11 @@ export default css`
 
         /* SINCE THE VARIABLE IS A STRING, THIS IS THE ONLY POSSIBLE WAY */
         position: fixed;
-        width: 100vw;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+
         padding: ${ variables.spacing.layout.marginOut + 'vw' };
 
 /*
@@ -35,6 +39,14 @@ left: ${variables.spacing.layout.marginOut + 'vw' };
         border: 2px solid ${ variables.colors.highlight };
         border-radius: 100%;
         opacity: 0;
+    }
+
+    main {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
     }
 
     #gui-layer {

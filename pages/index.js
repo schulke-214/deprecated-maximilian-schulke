@@ -210,32 +210,36 @@ class Home extends Component {
     }
 
     handleTouch( ev ) {
-        let startX = ev.touches[0].clientY;
+        let startX = ev.touches[0].clientX;
         let startY = ev.touches[0].clientY;
-        let dir;
         
-        console.log( "Hi ")
-
-        window.ontouchmove = ev => {
-            let { posX, posY } = ev.touches[0];
-
-        } 
-
         window.ontouchend = ev => {
             let deltaX, deltaY;
 
             deltaX = ev.changedTouches[0].clientX - startX;
             deltaY = ev.changedTouches[0].clientY - startY;
 
-            if( Math.abs(deltaY) > this.threshold && !this.running ) {
-                if( deltaY > 0 )
-                    this.prevProject("TOUCH");
-
-                if( deltaY < 0 )
-                    this.nextProject("TOUCH");
+            // VERTICAL
+            if( Math.abs(deltaY) > Math.abs(deltaX) ) {
+                if( Math.abs(deltaY) > this.threshold && !this.running ) {
+                    if( deltaY > 0 )
+                        this.prevProject("TOUCH");
+    
+                    if( deltaY < 0 )
+                        this.nextProject("TOUCH");
+                }
             }
 
-            console.log( deltaX, deltaY, this.running )
+            // HORIZONTAL
+            else {
+                if( Math.abs(deltaX) > this.threshold && !this.running ) {
+                    if( deltaX > 0 )
+                        this.prevProject("TOUCH");
+    
+                    if( deltaX < 0 )
+                        this.nextProject("TOUCH");
+                }
+            }
         }
     }
 
