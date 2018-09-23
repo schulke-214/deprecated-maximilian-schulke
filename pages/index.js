@@ -136,7 +136,11 @@ class Home extends Component {
                 });
                 break;
 
-            default:
+            case "CLICK":
+                this.slider.current.next(() => this.running = false );
+                break;
+
+            case "TOUCH":
                 this.slider.current.next(() => this.running = false );
                 break;
         }
@@ -169,7 +173,11 @@ class Home extends Component {
                 });
                 break;
 
-            default:
+            case "CLICK":
+                this.slider.current.prev(() => this.running = false );
+                break;
+
+            case "TOUCH":
                 this.slider.current.prev(() => this.running = false );
                 break;
         }
@@ -194,10 +202,10 @@ class Home extends Component {
     handleClick( dir ) {
         if( !this.running ) {
             if( dir === "prev" )
-                this.prevProject();
+                this.prevProject("CLICK");
 
             else if( dir === "next")
-                this.nextProject();
+                this.nextProject("CLICK");
         }
     }
 
@@ -206,9 +214,11 @@ class Home extends Component {
         let startY = ev.touches[0].clientY;
         let dir;
         
+        console.log( "Hi ")
+
         window.ontouchmove = ev => {
-            
             let { posX, posY } = ev.touches[0];
+
         } 
 
         window.ontouchend = ev => {
@@ -219,10 +229,10 @@ class Home extends Component {
 
             if( Math.abs(deltaY) > this.threshold && !this.running ) {
                 if( deltaY > 0 )
-                    this.prevProject();
+                    this.prevProject("TOUCH");
 
                 if( deltaY < 0 )
-                    this.nextProject();
+                    this.nextProject("TOUCH");
             }
 
             console.log( deltaX, deltaY, this.running )
