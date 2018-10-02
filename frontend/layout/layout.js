@@ -44,6 +44,9 @@ class Layout extends Component {
         this.setMousePos = this.setMousePos.bind(this);
         this.setCursorRect = this.setCursorRect.bind(this);
 
+        this.allowScrolling = this.allowScrolling.bind(this);
+        this.preventScrolling = this.preventScrolling.bind(this);
+
         this.handleResize = this.handleResize.bind(this);
         this.handleMouseOut = this.handleMouseOut.bind(this);
         this.handleMouseMove = this.handleMouseMove.bind(this);
@@ -94,6 +97,20 @@ class Layout extends Component {
 
     setCursorRect() {
         this.cursorRect = this.cursor.getBoundingClientRect();
+    }
+
+    allowScrolling() {
+        window.onwheel = ev => {
+            ev.preventDefault();
+            return true;
+        }
+    }
+
+    preventScrolling() {
+        window.onwheel = ev => {
+            ev.preventDefault();
+            return false;
+        }
     }
 
     handleClick() {
@@ -212,7 +229,12 @@ class Layout extends Component {
                 </div>
                 <main>
                     <DeviceContext.Consumer>
-                        { state => React.cloneElement(this.props.children, { device: state, ref: this.page }) }
+                        { state => React.cloneElement(this.props.children, { 
+                            device: state,
+                            allowScrolling: this.allowScrolling, 
+                            preventScrolling: this.preventScrolling, 
+                            ref: this.page 
+                        })}
                     </DeviceContext.Consumer>
                 </main>
             </React.Fragment>

@@ -66,6 +66,8 @@ class Home extends Component {
         // INIT STUFF
         addEventListener('wheel', this.handleScroll );
         addEventListener('touchstart', this.handleTouch );
+        
+        this.props.preventScrolling();
     } 
 
     componentWillUnmount() {
