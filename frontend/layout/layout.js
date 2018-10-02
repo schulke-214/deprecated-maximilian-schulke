@@ -116,7 +116,7 @@ class Layout extends Component {
 
         window.ontouchmove = ev => {
             ev.preventDefault();
-            return false;
+            ev.stopPropagation();
         };
 
     }
