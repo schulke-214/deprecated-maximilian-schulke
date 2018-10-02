@@ -104,6 +104,8 @@ class Layout extends Component {
             ev.preventDefault();
             return true;
         }
+
+        window.ontouchmove = () => true;
     }
 
     preventScrolling() {
@@ -111,6 +113,12 @@ class Layout extends Component {
             ev.preventDefault();
             return false;
         }
+
+        window.ontouchmove = ev => {
+            ev.preventDefault();
+            return false;
+        };
+
     }
 
     handleClick() {
