@@ -105,7 +105,7 @@ class Layout extends Component {
             return true;
         }
 
-        window.ontouchmove = () => true;
+        removeEventListener('touchmove', this.preventDefault, { passive: false });
     }
 
     preventScrolling() {
@@ -114,12 +114,10 @@ class Layout extends Component {
             return false;
         }
 
-        window.ontouchmove = ev => {
-            ev.preventDefault();
-            ev.stopPropagation();
-        };
-
+        addEventListener('touchmove', this.preventDefault, { passive: false });
     }
+
+    preventDefault = ev => ev.preventDefault(); 
 
     handleClick() {
         if( window.CURSOR_ONCLICK )
