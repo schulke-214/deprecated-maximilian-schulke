@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Router from 'next/router';
 
 // COMPONENT IMPORTS
 import Slider from '../frontend/components/pages/home/slider/slider';
@@ -57,6 +58,7 @@ class Home extends Component {
         this.prevProject = this.prevProject.bind(this);
         this.getProjectData = this.getProjectData.bind(this);
         this.updateCurrent = this.updateCurrent.bind(this);
+        this.openProject = this.openProject.bind(this);
 
         this.resetRunningState = this.resetRunningState.bind(this);
         this.resetRunningStateByClick = this.resetRunningStateByClick.bind(this);
@@ -67,7 +69,7 @@ class Home extends Component {
         addEventListener('wheel', this.handleScroll );
         addEventListener('touchstart', this.handleTouch );
         
-        this.props.preventScrolling();
+        this.props.helper.preventScrolling();
     } 
 
     componentWillUnmount() {
@@ -187,6 +189,10 @@ class Home extends Component {
 
     getProjectData = () => this.state.projects[ this.state.slider.current - 1 ];
     
+    openProject() {
+        let page = this.getProjectData().meta.link;
+        Router.push(`/project/${ page }`)
+    }
     // SLIDER FUNCTIONALITY
 
     handleScroll( ev ) {
@@ -279,8 +285,9 @@ class Home extends Component {
                             <Circle ref={this.circle}
                                     current={this.state.slider.current}
                                     length={this.state.slider.length} />
-                            <Hover to="/project" text="view project"
+                            <Hover text="view project"
                                    isMobile={this.props.device.isMobile}
+                                   handleClick={this.openProject}
                                    style={{ marginBottom: "calc( 7.5vh - 15px )", height: "15px" }} />
                         </div>
                         <Slider
@@ -329,7 +336,7 @@ class Home extends Component {
                                 updateCurrent={this.updateCurrent}
                                 isSmall />
                             <div className="lower flex">
-                                <Hover to="/project" text="view project" style={{ marginTop: "5vh" }} />
+                                <Hover handleClick={this.openProject} text="view project" style={{ marginTop: "5vh" }} />
                                 <TextTransition
                                     style={{ marginTop: "5vh" }}
                                     text={this.getProjectData().meta.year + " ~ " + this.getProjectData().meta.category}

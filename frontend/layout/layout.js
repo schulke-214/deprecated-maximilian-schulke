@@ -40,6 +40,7 @@ class Layout extends Component {
         };
 
         this.initCursor = this.initCursor.bind(this);
+        this.changePage = this.changePage.bind(this);
 
         this.setMousePos = this.setMousePos.bind(this);
         this.setCursorRect = this.setCursorRect.bind(this);
@@ -77,6 +78,10 @@ class Layout extends Component {
         removeEventListener('mousemove', this.handleMouseMove );
         removeEventListener('mouseout', this.handleMouseOut );
         removeEventListener('click', this.handleClick );
+    }
+
+    changePage( url ) {
+        this.props.router.push( url );
     }
 
     initCursor() {
@@ -199,17 +204,15 @@ class Layout extends Component {
                 <div id="layout-layer" className="unclickable" >
                     <div id="gui-layer">
                         <div className="top flex space-between" >
-                            <Sticky to='/' >
+                            <Sticky handleClick={ () => this.changePage("/") } >
                                 <a><Logo className="logo" /></a>
                             </Sticky>
 
                             {/* ONLY RENDER THIS WHILE BEEING A DESKTOP */}
                             { !this.props.device.isMobile ? <span> creative developer </span> : null }
 
-                            <Sticky>
-                                <Link href="/project">
-                                    <a>all</a>
-                                </Link>
+                            <Sticky handleClick={ () => this.changePage("/project") }>
+                                <a>all</a>
                             </Sticky>
                         </div>
                         <div className="mid flex space-between">
@@ -220,7 +223,7 @@ class Layout extends Component {
                             { this.page.current ? <Arrows prev={ () => this.page.current.handleClick("prev") } next={ () => this.page.current.handleClick("next") }/> : null }
                         </div>
                         <div className="low flex space-between">
-                            <Sticky to="/about">
+                            <Sticky handleClick={ () => this.changePage("/about") }>
                                 <a>about</a>
                             </Sticky>
 
@@ -237,8 +240,11 @@ class Layout extends Component {
                     <DeviceContext.Consumer>
                         { state => React.cloneElement(this.props.children, { 
                             device: state,
-                            allowScrolling: this.allowScrolling, 
-                            preventScrolling: this.preventScrolling, 
+                            helper: {
+                                changePage: this.changePage,
+                                allowScrolling: this.allowScrolling, 
+                                preventScrolling: this.preventScrolling, 
+                            },
                             ref: this.page 
                         })}
                     </DeviceContext.Consumer>

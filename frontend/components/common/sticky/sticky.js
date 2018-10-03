@@ -64,6 +64,7 @@ class Sticky extends PureComponent {
         this.trigger.current.addEventListener('mousemove', this.handleMouseMove );
         this.trigger.current.addEventListener('mouseenter', this.handleMouseEnter );
         this.trigger.current.addEventListener('mouseout', this.handleMouseOut );
+        this.trigger.current.addEventListener('click', this.props.handleClick );
     }
 
     componentWillUnmount() {
@@ -72,6 +73,7 @@ class Sticky extends PureComponent {
         this.trigger.current.removeEventListener('mousemove', this.handleMouseMove );
         this.trigger.current.removeEventListener('mouseenter', this.handleMouseEnter );
         this.trigger.current.removeEventListener('mouseout', this.handleMouseOut );
+        this.trigger.current.removeEventListener('click', this.props.handleClick );
     }
 
     setRect() {

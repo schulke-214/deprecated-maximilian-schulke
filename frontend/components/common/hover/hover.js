@@ -38,11 +38,13 @@ class Hover extends Component {
 
 
         addEventListener('load', this.setRect );
+        this.trigger.current.addEventListener('click', this.props.handleClick );
         this.trigger.current.addEventListener('mouseenter', this.handlerHover );
     }
 
     componentWillUnmount() {
         removeEventListener('load', this.setRect );
+        this.trigger.current.removeEventListener('click', this.props.handleClick );
         this.trigger.current.removeEventListener('mouseenter', this.handlerHover );
     }
 
@@ -80,15 +82,27 @@ class Hover extends Component {
     }
 
     render() {
-        return (
-            <Link href={this.props.to} >
+        if( this.props.to && !this.props.handleClick ) {
+            return (
+                <Link href={this.props.to} >
+                    <a style={{...this.props.style, position: "relative" }}>
+                        <span ref={this.content} style={{ position: "relative" }} />
+                        <div id="trigger" style={{ width: this.size, height: this.size, position: "absolute", borderRadius: "100%" }} ref={ this.trigger } />
+                    </a>
+                </Link>
+            );
+        }
+
+        else if ( this.props.handleClick && !this.props.to ) {
+            return (
                 <a style={{...this.props.style, position: "relative" }}>
                     <span ref={this.content} style={{ position: "relative" }} />
                     <div id="trigger" style={{ width: this.size, height: this.size, position: "absolute", borderRadius: "100%" }} ref={ this.trigger } />
                 </a>
-            </Link>
+            );
+        }
 
-        );
+        else throw new Error('You need to provide either \'this.props.to\' or \'this.props.handleClick\'.');
     }
 }
 
