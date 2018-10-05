@@ -120,7 +120,7 @@ class Sticky extends PureComponent {
         this.entered = true;
 
         window.CURSOR_ONCLICK = this.props.clickHandler || this.handleClick;
-        window.CURSOR_TYPE = this.props.cursorState || "click";
+        window.CURSOR_TYPE = this.props.clickCursor || 'click';
     }
 
     handleMouseOut( ev ) {
@@ -130,7 +130,7 @@ class Sticky extends PureComponent {
         window.CURSOR_ONCLICK = null;
 
         // DURATION DER ANIMATION IST ABHÄNGIG DAVON WIE WEIT DIE MAUS WEG IST
-        TweenLite.to( this.content.current, this.getHypotenuse() / 50 ,{x: 0, y: 0, ease: this.ease} );
+        TweenLite.to( this.content.current, this.getHypotenuse() / 25 ,{x: 0, y: 0, ease: this.ease} );
     }
 
     handleClick( ) {
@@ -142,7 +142,7 @@ class Sticky extends PureComponent {
             window.open( this.props.newTab,'_blank');
 
         else if( this.props.mailto )
-            location.href = "mailto:" + this.props.mailto;
+            location.href = 'mailto:' + this.props.mailto;
     }
 
     // STICKY FUNCTIONS
@@ -166,9 +166,9 @@ class Sticky extends PureComponent {
             <React.Fragment>
                 <style jsx>{styles}</style>
 
-                <div id="container" className="clickable" style={ this.props.style } >
+                <div id='container' className='clickable' style={ this.props.style } >
                     <span ref={ this.content }>{ this.props.children }</span>
-                    <div id="trigger" style={{ width: this.size, height: this.size }} ref={ this.trigger } />
+                    <div id='trigger' style={{ width: this.size, height: this.size }} ref={ this.trigger } />
                 </div>
             </React.Fragment>
         );

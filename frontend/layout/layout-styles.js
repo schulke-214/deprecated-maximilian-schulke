@@ -13,13 +13,6 @@ export default css`
         left: 0;
 
         padding: ${ variables.spacing.layout.marginOut + 'vw' };
-
-/*
-        height: calc( 100vh - ${ ( variables.spacing.layout.marginOut * 2 ) + 'vw' });
-
-left: ${variables.spacing.layout.marginOut + 'vw' };
-        padding-top: ${variables.spacing.layout.marginOut + 'vw' };
-  */      
         z-index: 1000;
     }
     

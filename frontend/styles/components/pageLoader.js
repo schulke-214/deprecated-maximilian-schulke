@@ -8,7 +8,7 @@ export default css`
         left: 0;
         width: 100vw;
         height: 100vh;
-        z-index: 999;
+        z-index: 10000;
         background-color: ${ variables.colors.main };
     }
 

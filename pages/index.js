@@ -66,7 +66,6 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        // INIT STUFF
         addEventListener('wheel', this.handleScroll );
         addEventListener('touchstart', this.handleTouch );
         addEventListener('keydown', this.handleKeyDown );
@@ -75,15 +74,13 @@ class Home extends Component {
     } 
 
     componentWillUnmount() {
-        // REMOVE LISTENERS
         removeEventListener('wheel', this.handleScroll );
         removeEventListener('touchstart', this.handleTouch );
         removeEventListener('keydown', this.handleKeyDown );
 
-
-        removeEventListener("wheel", this.resetRunningState );
-        removeEventListener("mousedown", this.resetRunningStateByClick );
-        removeEventListener("mousemove", this.resetRunningState );
+        removeEventListener('wheel', this.resetRunningState );
+        removeEventListener('mousedown', this.resetRunningStateByClick );
+        removeEventListener('mousemove', this.resetRunningState );
     }
 
     updateCurrent( dir, callback ) {
@@ -131,28 +128,28 @@ class Home extends Component {
         try {
             this.projectTitle.current.next( next);
 
-            this.textTransitions.projectNumber.current.next( next + " " );
-            this.textTransitions.projectData.current.next( project.meta.year + " ~ " + project.meta.category );
+            this.textTransitions.projectNumber.current.next( next + ' ' );
+            this.textTransitions.projectData.current.next( project.meta.year + ' ~ ' + project.meta.category );
         } catch( e ) {}
 
         switch( event ) {
-            case "WHEEL":
+            case 'WHEEL':
                 this.slider.current.next(() => {
-                    window.addEventListener("wheel", this.resetRunningState);
-                    window.addEventListener("mousedown", this.resetRunningStateByClick);
-                    window.addEventListener("mousemove", this.resetRunningState );
+                    window.addEventListener('wheel', this.resetRunningState);
+                    window.addEventListener('mousedown', this.resetRunningStateByClick);
+                    window.addEventListener('mousemove', this.resetRunningState );
                 });
                 break;
 
-            case "CLICK":
+            case 'CLICK':
                 this.slider.current.next(() => this.running = false );
                 break;
 
-            case "TOUCH":
+            case 'TOUCH':
                 this.slider.current.next(() => this.running = false );
                 break;
 
-            case "KEY":
+            case 'KEY':
                 this.slider.current.next(() => this.running = false );
                 break;
         }
@@ -167,33 +164,32 @@ class Home extends Component {
         if( !this.props.device.isSmall && !this.props.device.isMobile )
             this.circle.current.prev( prev );
 
-
         // ONLY A TEMPORARY SOLUTION
         try {
             this.projectTitle.current.prev( prev );
 
-            this.textTransitions.projectNumber.current.prev( prev + " " );
-            this.textTransitions.projectData.current.prev( project.meta.year + " ~ " + project.meta.category);
+            this.textTransitions.projectNumber.current.prev( prev + ' ' );
+            this.textTransitions.projectData.current.prev( project.meta.year + ' ~ ' + project.meta.category);
         } catch( e ) {}
 
 
         switch( event ) {
-            case "WHEEL":
+            case 'WHEEL':
                 this.slider.current.prev(() => {
-                    window.addEventListener("wheel", this.resetRunningState);
-                    window.addEventListener("mousedown", this.resetRunningStateByClick);
+                    window.addEventListener('wheel', this.resetRunningState);
+                    window.addEventListener('mousedown', this.resetRunningStateByClick);
                 });
                 break;
 
-            case "CLICK":
+            case 'CLICK':
                 this.slider.current.prev(() => this.running = false );
                 break;
 
-            case "TOUCH":
+            case 'TOUCH':
                 this.slider.current.prev(() => this.running = false );
                 break;
 
-            case "KEY":
+            case 'KEY':
                 this.slider.current.prev(() => this.running = false );
                 break;
         }
@@ -203,7 +199,7 @@ class Home extends Component {
     
     openProject() {
         let page = this.getProjectData().meta.link;
-        Router.push(`/project/${ page }`)
+        Router.push(`/work/${ page }`)
     }
     // SLIDER FUNCTIONALITY
 
@@ -212,20 +208,20 @@ class Home extends Component {
 
         if( Math.abs( delta ) > this.threshold && !this.running ) {
             if (delta < 0)
-                this.prevProject("WHEEL");
+                this.prevProject('WHEEL');
 
             else if (delta > 0)
-                this.nextProject("WHEEL");
+                this.nextProject('WHEEL');
         }
     }
 
     handleClick( dir ) {
         if( !this.running ) {
-            if( dir === "prev" )
-                this.prevProject("CLICK");
+            if( dir === 'prev' )
+                this.prevProject('CLICK');
 
-            else if( dir === "next")
-                this.nextProject("CLICK");
+            else if( dir === 'next')
+                this.nextProject('CLICK');
         }
     }
 
@@ -243,10 +239,10 @@ class Home extends Component {
             if( Math.abs(deltaY) > Math.abs(deltaX) ) {
                 if( Math.abs(deltaY) > this.threshold && !this.running ) {
                     if( deltaY > 0 )
-                        this.prevProject("TOUCH");
+                        this.prevProject('TOUCH');
     
                     if( deltaY < 0 )
-                        this.nextProject("TOUCH");
+                        this.nextProject('TOUCH');
                 }
             }
 
@@ -254,10 +250,10 @@ class Home extends Component {
             else {
                 if( Math.abs(deltaX) > this.threshold && !this.running ) {
                     if( deltaX > 0 )
-                        this.prevProject("TOUCH");
+                        this.prevProject('TOUCH');
     
                     if( deltaX < 0 )
-                        this.nextProject("TOUCH");
+                        this.nextProject('TOUCH');
                 }
             }
         }
@@ -266,10 +262,10 @@ class Home extends Component {
     handleKeyDown( ev ){
         if( !this.running ) {
             if( ev.keyCode === 37 || ev.keyCode === 38 ) // PREV 
-                this.prevProject("KEY");
+                this.prevProject('KEY');
 
             else if( ev.keyCode === 39 || ev.keyCode === 40 ) // NEXT 
-                this.nextProject("KEY");
+                this.nextProject('KEY');
         }
     }
 
@@ -281,18 +277,18 @@ class Home extends Component {
     resetRunningState( ev ) {
         if( Math.abs( ev.deltaY ) < this.threshold ) {
             this.running = false;
-            window.removeEventListener("wheel", this.resetRunningState );
-            window.removeEventListener("mousedown", this.resetRunningStateByClick );
-            window.removeEventListener("mousemove", this.resetRunningState );
+            window.removeEventListener('wheel', this.resetRunningState );
+            window.removeEventListener('mousedown', this.resetRunningStateByClick );
+            window.removeEventListener('mousemove', this.resetRunningState );
         }
     }
 
     resetRunningStateByClick() {
         this.running = false;
 
-        window.removeEventListener("wheel", this.resetRunningState );
-        window.removeEventListener("mousedown", this.resetRunningStateByClick );
-        window.removeEventListener("mousemove", this.resetRunningState );
+        window.removeEventListener('wheel', this.resetRunningState );
+        window.removeEventListener('mousedown', this.resetRunningStateByClick );
+        window.removeEventListener('mousemove', this.resetRunningState );
     }
 
     render() {
@@ -303,15 +299,15 @@ class Home extends Component {
             Content = (
                 <React.Fragment>
                     <style jsx>{desktopStyles}</style>
-                    <div className="inner">
-                        <div className="indication flex column">
+                    <div className='inner'>
+                        <div className='indication flex column'>
                             <Circle ref={this.circle}
                                 current={this.state.slider.current}
                                 length={this.state.slider.length} />
-                            <Hover text="view project"
+                            <Hover text='view project'
                                 isMobile={this.props.device.isMobile}
                                 handleClick={this.openProject}
-                                style={{ marginBottom: "calc( 7.5vh - 15px )", height: "15px" }} />
+                                style={{ marginBottom: 'calc( 7.5vh - 15px )', height: '15px' }} />
                         </div>
                         <Slider
                             ref={this.slider}
@@ -319,16 +315,16 @@ class Home extends Component {
                             length={this.state.slider.length}
                             updateCurrent={this.updateCurrent} />
                         <Title ref={this.projectTitle} titles={ this.state.projectTitles } />
-                        <div className="project-info">
-                            <span className="flex projectNum">
+                        <div className='project-info'>
+                            <span className='flex projectNum'>
                                 <TextTransition 
-                                    text={this.state.slider.current + " "}
+                                    text={this.state.slider.current + ' '}
                                     ref={this.textTransitions.projectNumber} />
-                                <span>{"/ " + this.state.slider.length}</span>
+                                <span>{'/ ' + this.state.slider.length}</span>
                             </span>
                             <TextTransition
-                                text={this.getProjectData().meta.year + " ~ " + this.getProjectData().meta.category}
-                                style={{ marginBottom: "calc( 7.5vh - 15px )", height: "15px" }}
+                                text={this.getProjectData().meta.year + ' ~ ' + this.getProjectData().meta.category}
+                                style={{ marginBottom: 'calc( 7.5vh - 15px )', height: '15px' }}
                                 ref={this.textTransitions.projectData} />
                         </div>
                     </div>
@@ -340,29 +336,29 @@ class Home extends Component {
         else if ( !this.props.device.isPhone && ( this.props.device.isMobile || this.props.device.isSmall ) ) {
             Content = ( 
                 <React.Fragment>
-                    <div className="inner" >
+                    <div className='inner' >
                         <style jsx>{tabletStyles}</style>
                         <Title ref={this.projectTitle} titles={ this.state.projectTitles } isSmall />
-                        <div className="inner-wrap flex column">
-                            <div className="top flex" >
-                                <span className="flex projectNum">
+                        <div className='inner-wrap flex column'>
+                            <div className='top flex' >
+                                <span className='flex projectNum'>
                                     <TextTransition
-                                        text={this.state.slider.current + " "}
+                                        text={this.state.slider.current + ' '}
                                         ref={this.textTransitions.projectNumber }/>
-                                    <span>{"/ " + this.state.slider.length}</span>
+                                    <span>{'/ ' + this.state.slider.length}</span>
                                 </span>
-                            </div> 
+                            </div>
                             <Slider
                                 ref={this.slider}
                                 current={this.state.slider.current}
                                 length={this.state.slider.length}
                                 updateCurrent={this.updateCurrent}
                                 isSmall />
-                            <div className="lower flex">
-                                <Hover handleClick={this.openProject} text="view project" style={{ marginTop: "5vh" }} />
+                            <div className='lower flex'>
+                                <Hover handleClick={this.openProject} text='view project' style={{ marginTop: '5vh' }} />
                                 <TextTransition
-                                    style={{ marginTop: "5vh" }}
-                                    text={this.getProjectData().meta.year + " ~ " + this.getProjectData().meta.category}
+                                    style={{ marginTop: '5vh' }}
+                                    text={this.getProjectData().meta.year + ' ~ ' + this.getProjectData().meta.category}
                                     ref={this.textTransitions.projectData} />
                             </div>
                         </div>
@@ -375,10 +371,10 @@ class Home extends Component {
         else if ( this.props.device.isPhone ) {
             Content = (
                 <React.Fragment>
-                    <div className="inner" >
+                    <div className='inner' >
                         <style jsx>{mobileStyles}</style>
                         <Title ref={this.projectTitle} titles={ this.state.projectTitles } isPhone />
-                        <div id="shadow" />
+                        <div id='shadow' />
                         <Slider
                             ref={this.slider}
                             current={this.state.slider.current}
@@ -401,7 +397,7 @@ class Home extends Component {
         return (
             <React.Fragment>
                 <style jsx>{commonStyles}</style>
-                <div id="home-wrapper">
+                <div id='home-wrapper'>
                     { Content }
                 </div>
             </React.Fragment>

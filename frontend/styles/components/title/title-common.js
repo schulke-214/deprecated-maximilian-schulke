@@ -15,7 +15,7 @@ export default css`
 
         text-align: center;
         font-weight: 400;
-        font-family: "Spectral";
+        font-family: 'Spectral';
         height: inherit;
         width: 100%;
     }

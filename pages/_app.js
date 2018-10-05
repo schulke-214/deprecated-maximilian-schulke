@@ -58,7 +58,7 @@ class Application extends App {
             url[1] = projectName.join(' ');
         }
 
-        if ( url[0] === "" )
+        if ( url[0] === '' )
             url.shift();
 
         let pageTitle;
@@ -68,11 +68,11 @@ class Application extends App {
                 break;
             
             case 2:
-                pageTitle = capitalize( url[0] ) +  " - " + url[1];
+                pageTitle = capitalize( url[0] ) +  ' - ' + url[1];
                 break;
 
             default:
-                pageTitle = "Maximilian Schulke - Creative Developer";
+                pageTitle = 'Maximilian Schulke - Creative Developer';
                 break;
         }
         

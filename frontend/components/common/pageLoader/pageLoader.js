@@ -18,14 +18,26 @@ class pageLoader extends Component {
             value: 1,
             ease: Power4.easeInOut
         };
+
         let updateEl = () => document.getElementById('pageloader-counter').textContent = Math.floor(progress.value);
         updateEl();
 
-        let loader = new TimelineLite({ paused: true, onComplete: this.props.finished })
-            .to( progress, 2, { value: 99, delay: 0.25, ease: progress.ease, onUpdate: updateEl })
-            .to( progress, 1, { value: 100, ease: progress.ease, onUpdate: updateEl })
-            .to( "#pageloader", 2, { opacity: 0, ease: progress.ease} )
-            .play();
+        let loader = new TimelineLite({ 
+            paused: true, 
+            onComplete: this.props.finished 
+        }).to( progress, 2, { 
+            value: 99, 
+            delay: 0.25, 
+            ease: progress.ease, 
+            onUpdate: updateEl 
+        }).to( progress, 1, { 
+            value: 100, 
+            ease: progress.ease, 
+            onUpdate: updateEl 
+        }).to( "#pageloader", 2, { 
+            opacity: 0, 
+            ease: progress.ease 
+        }).play();
     }
 
     render() {
@@ -33,8 +45,8 @@ class pageLoader extends Component {
             <React.Fragment>
                 <style jsx>{layoutStyles}</style>
                 <style jsx>{styles}</style>
-                <div id="pageloader">
 
+                <div id="pageloader">
                     <div id="layout-layer">
                         <div id="gui-layer">
                             <div className="top flex space-between" >

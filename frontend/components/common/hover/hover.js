@@ -32,9 +32,9 @@ class Hover extends Component {
 
 
         this.animation = new TimelineLite({ paused: true, onComplete: () => this.animation.pause(0) })
-            .staggerTo( this.content.current.childNodes, 0.2, { y: "-100%", opacity: 0 }, 0.01 )
-            .set( this.content.current.childNodes, { y: "100%"})
-            .staggerTo( this.content.current.childNodes, 0.2, { y: "0%", opacity: 1 }, 0.01 );
+            .staggerTo( this.content.current.childNodes, 0.2, { y: '-100%', opacity: 0 }, 0.01 )
+            .set( this.content.current.childNodes, { y: '100%'})
+            .staggerTo( this.content.current.childNodes, 0.2, { y: '0%', opacity: 1 }, 0.01 );
 
 
         addEventListener('load', this.setRect );
@@ -70,12 +70,12 @@ class Hover extends Component {
 
     prepareDOM() {
         for( let i = 0; i < this.text.length; i++ ) {
-            let span = document.createElement("span");
+            let span = document.createElement('span');
             span.textContent = this.text.charAt(i);
-            span.classList.add("hover-link-span");
+            span.classList.add('hover-link-span');
 
-            if( this.text.charAt(i) === " ")
-                span.classList.add("hover-link-space");
+            if( this.text.charAt(i) === ' ')
+                span.classList.add('hover-link-space');
 
             this.content.current.appendChild(span);
         }
@@ -85,9 +85,9 @@ class Hover extends Component {
         if( this.props.to && !this.props.handleClick ) {
             return (
                 <Link href={this.props.to} >
-                    <a style={{...this.props.style, position: "relative" }}>
-                        <span ref={this.content} style={{ position: "relative" }} />
-                        <div id="trigger" style={{ width: this.size, height: this.size, position: "absolute", borderRadius: "100%" }} ref={ this.trigger } />
+                    <a style={{...this.props.style, position: 'relative' }}>
+                        <span ref={this.content} style={{ position: 'relative' }} />
+                        <div id='trigger' style={{ width: this.size, height: this.size, position: 'absolute', borderRadius: '100%' }} ref={ this.trigger } />
                     </a>
                 </Link>
             );
@@ -95,9 +95,9 @@ class Hover extends Component {
 
         else if ( this.props.handleClick && !this.props.to ) {
             return (
-                <a style={{...this.props.style, position: "relative" }}>
-                    <span ref={this.content} style={{ position: "relative" }} />
-                    <div id="trigger" style={{ width: this.size, height: this.size, position: "absolute", borderRadius: "100%" }} ref={ this.trigger } />
+                <a style={{...this.props.style, position: 'relative' }}>
+                    <span ref={this.content} style={{ position: 'relative' }} />
+                    <div id='trigger' style={{ width: this.size, height: this.size, position: 'absolute', borderRadius: '100%' }} ref={ this.trigger } />
                 </a>
             );
         }

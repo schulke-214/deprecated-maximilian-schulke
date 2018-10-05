@@ -85,7 +85,7 @@ class Layout extends Component {
     }
 
     initCursor() {
-        this.mouseLayer = document.getElementById("mouse-layer");
+        this.mouseLayer = document.getElementById('mouse-layer');
         this.cursor = document.getElementById('mouse-cursor');
         this.mouseLayer.appendChild( this.cursor );
         this.cursorRect = this.cursor.getBoundingClientRect();
@@ -130,7 +130,7 @@ class Layout extends Component {
     }
 
     handleResize() {
-        TweenLite.set("body, main, #layout-layer", {
+        TweenLite.set('body, main, #layout-layer', {
             height: window.innerHeight
         });
     }
@@ -194,47 +194,47 @@ class Layout extends Component {
         else
             this.opacity = 1;
 
-        TweenLite.to(this.cursor, 0.25, { x: this.cursorPos.x, y: this.cursorPos.y, opacity: this.opacity } );
+        TweenLite.to(this.cursor, 0.5, { x: this.cursorPos.x, y: this.cursorPos.y, opacity: this.opacity } );
     }
 
     render() {
         return (
             <React.Fragment>
                 <style jsx>{styles}</style>
-                <div id="layout-layer" className="unclickable" >
-                    <div id="gui-layer">
-                        <div className="top flex space-between" >
-                            <Sticky handleClick={ () => this.changePage("/") } >
-                                <a><Logo className="logo" /></a>
+                <div id='layout-layer' className='unclickable' >
+                    <div id='gui-layer'>
+                        <div className='top flex space-between' >
+                            <Sticky handleClick={ () => this.changePage('/') }>
+                                <a><Logo className='logo' /></a>
                             </Sticky>
 
                             {/* ONLY RENDER THIS WHILE BEEING A DESKTOP */}
                             { !this.props.device.isMobile ? <span> creative developer </span> : null }
 
-                            <Sticky handleClick={ () => this.changePage("/project") }>
+                            <Sticky handleClick={ () => this.changePage('/work') }>
                                 <a>all</a>
                             </Sticky>
                         </div>
-                        <div className="mid flex space-between">
-                            <Sticky style={{ left: `${-25 + 7.5}px`}} newTab="https://github.com/schulke-214/" >
-                                <a className="clickable git-link" >github</a>
+                        <div className='mid flex space-between'>
+                            <Sticky style={{ left: `${-25 + 7.5}px`}} newTab='https://github.com/schulke-214/' >
+                                <a className='clickable git-link' >github</a>
                             </Sticky>
 
-                            { this.page.current ? <Arrows prev={ () => this.page.current.handleClick("prev") } next={ () => this.page.current.handleClick("next") }/> : null }
+                            { this.page.current ? <Arrows prev={ () => this.page.current.handleClick('prev') } next={ () => this.page.current.handleClick('next') }/> : null }
                         </div>
-                        <div className="low flex space-between">
-                            <Sticky handleClick={ () => this.changePage("/about") }>
+                        <div className='low flex space-between'>
+                            <Sticky handleClick={ () => this.changePage('/about') }>
                                 <a>about</a>
                             </Sticky>
 
-                            <Sticky mailto="info@domain.de" >
+                            <Sticky mailto='info@domain.de'>
                                 <a>contact</a>
                             </Sticky>
                         </div>
                     </div>
                 </div>
-                <div id="mouse-layer" className="unclickable" >
-                    <span id="mouse-cursor" />
+                <div id='mouse-layer' className='unclickable' >
+                    <span id='mouse-cursor' />
                 </div>
                 <main>
                     <DeviceContext.Consumer>
