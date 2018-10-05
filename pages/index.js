@@ -53,6 +53,7 @@ class Home extends Component {
         // THIS FIXES
         this.handleScroll = this.handleScroll.bind(this);
         this.handleTouch = this.handleTouch.bind(this);
+        this.handleKeyDown = this.handleKeyDown.bind(this);
 
         this.nextProject = this.nextProject.bind(this);
         this.prevProject = this.prevProject.bind(this);
@@ -68,6 +69,7 @@ class Home extends Component {
         // INIT STUFF
         addEventListener('wheel', this.handleScroll );
         addEventListener('touchstart', this.handleTouch );
+        addEventListener('keydown', this.handleKeyDown );
         
         this.props.helper.preventScrolling();
     } 
@@ -76,6 +78,8 @@ class Home extends Component {
         // REMOVE LISTENERS
         removeEventListener('wheel', this.handleScroll );
         removeEventListener('touchstart', this.handleTouch );
+        removeEventListener('keydown', this.handleKeyDown );
+
 
         removeEventListener("wheel", this.resetRunningState );
         removeEventListener("mousedown", this.resetRunningStateByClick );
@@ -251,6 +255,19 @@ class Home extends Component {
         }
     }
 
+    handleKeyDown( ev ){
+        if( ev.keyCode === 37 || ev.keyCode === 38 ) // PREV 
+            console.log("prev");
+
+        else if( ev.keyCode === 39 || ev.keyCode === 40 ) // NEXT 
+            console.log("next");
+    }
+
+    handleDrag(){}
+
+    // ADD KEY SUPPORT LATER
+    // ADD DRAG SUPPORT LATER
+
     resetRunningState( ev ) {
         if( Math.abs( ev.deltaY ) < this.threshold ) {
             this.running = false;
@@ -268,10 +285,6 @@ class Home extends Component {
         window.removeEventListener("mousemove", this.resetRunningState );
     }
 
-    // ADD TOUCH SUPPORT LATER
-    // ADD KEY SUPPORT LATER
-    // ADD DRAG SUPPORT LATER
-
     render() {
         let Content;
         
@@ -283,12 +296,12 @@ class Home extends Component {
                     <div className="inner">
                         <div className="indication flex column">
                             <Circle ref={this.circle}
-                                    current={this.state.slider.current}
-                                    length={this.state.slider.length} />
+                                current={this.state.slider.current}
+                                length={this.state.slider.length} />
                             <Hover text="view project"
-                                   isMobile={this.props.device.isMobile}
-                                   handleClick={this.openProject}
-                                   style={{ marginBottom: "calc( 7.5vh - 15px )", height: "15px" }} />
+                                isMobile={this.props.device.isMobile}
+                                handleClick={this.openProject}
+                                style={{ marginBottom: "calc( 7.5vh - 15px )", height: "15px" }} />
                         </div>
                         <Slider
                             ref={this.slider}
