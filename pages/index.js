@@ -36,7 +36,7 @@ class Home extends Component {
 
         // MAP JSON TO ARRAY
         const projects = [];
-        Object.keys(projectsJson).map( key => projects.push(projectsJson[key]) )
+        Object.keys(projectsJson).map( key => projects.push(projectsJson[key]) );
 
         const projectTitles = [];
         projects.map( project => projectTitles.push( project.meta.title ));
@@ -151,6 +151,10 @@ class Home extends Component {
             case "TOUCH":
                 this.slider.current.next(() => this.running = false );
                 break;
+
+            case "KEY":
+                this.slider.current.next(() => this.running = false );
+                break;
         }
     }
 
@@ -186,6 +190,10 @@ class Home extends Component {
                 break;
 
             case "TOUCH":
+                this.slider.current.prev(() => this.running = false );
+                break;
+
+            case "KEY":
                 this.slider.current.prev(() => this.running = false );
                 break;
         }
@@ -256,11 +264,13 @@ class Home extends Component {
     }
 
     handleKeyDown( ev ){
-        if( ev.keyCode === 37 || ev.keyCode === 38 ) // PREV 
-            console.log("prev");
+        if( !this.running ) {
+            if( ev.keyCode === 37 || ev.keyCode === 38 ) // PREV 
+                this.prevProject("KEY");
 
-        else if( ev.keyCode === 39 || ev.keyCode === 40 ) // NEXT 
-            console.log("next");
+            else if( ev.keyCode === 39 || ev.keyCode === 40 ) // NEXT 
+                this.nextProject("KEY");
+        }
     }
 
     handleDrag(){}
