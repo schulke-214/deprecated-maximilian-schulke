@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 
-// JSON IMPORTS
-import sizes from '../../../../../static/slider/sizes';
-
 // STYLE IMPORTS
 import commonStyles from '../../../../styles/components/slider/slider-common';
 
@@ -72,7 +69,7 @@ class Slider extends Component {
     }
 
     initPixi() {
-        this.pixi.renderer = PIXI.autoDetectRenderer( this.pixi.width, this.pixi.height, {
+        this.pixi.renderer = new PIXI.autoDetectRenderer( this.pixi.width, this.pixi.height, {
             transparent: true,
             view: this.canvas.current,
             legacy: true
@@ -83,7 +80,7 @@ class Slider extends Component {
         this.pixi.container = new PIXI.Container();
         this.pixi.stage.addChild( this.pixi.container );
 
-        this.pixi.displacementSprite = PIXI.Sprite.fromImage('static/slider/map.jpg');
+        this.pixi.displacementSprite = new PIXI.Sprite.fromImage('static/slider/map.jpg');
         this.pixi.displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
         this.pixi.displacementFilter = new PIXI.filters.DisplacementFilter( this.pixi.displacementSprite );
 
@@ -91,21 +88,29 @@ class Slider extends Component {
         this.pixi.container.filters = [ this.pixi.displacementFilter ];
     }
 
-    addImg( num ) {
-        let img = PIXI.Sprite.fromImage(`static/slider/${num}-min.jpg`);
-        let imgSize = this.calcSize( sizes[ num - 1 ], 1.25 );
+    async addImg( num ) {
+        let img = new PIXI.Sprite.fromImage(`static/slider/${num}.jpg`);
+        img.texture.baseTexture.on('loaded', () => initSprite(img) )
 
-        img.width = imgSize.width;
-        img.height = imgSize.height;
-        img.x = imgSize.x;
-        img.y = imgSize.y;
 
-        img.zIndex = num;
+        const initSprite = sprite => {
+            let spriteSize = this.calcSize({
+                width: sprite.texture.baseTexture.realWidth,
+                height: sprite.texture.baseTexture.realHeight
+            }, 1.25 );
 
-        if( num !== this.props.current )
-            img.alpha = 0;
+            img.width = spriteSize.width;
+            img.height = spriteSize.height;
+            img.x = spriteSize.x;
+            img.y = spriteSize.y;
 
-        this.pixi.container.addChild(img);
+            sprite.zIndex = num;
+
+            if( num !== this.props.current )
+                sprite.alpha = 0;
+
+            this.pixi.container.addChild(sprite);
+        }
     }
 
     calcSize( size, scale = 1 ) {

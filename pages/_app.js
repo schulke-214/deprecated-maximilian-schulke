@@ -24,7 +24,7 @@ class Application extends App {
 
         this.state = {
             pageLoader: {
-                isOpen: true
+                isOpen: false
             }
         };
         
@@ -107,8 +107,6 @@ class Application extends App {
                             </Layout>
                         )}
                     </DeviceContext.Consumer>
-
-                    
                 </Container>
             </DeviceProvider>
         )
