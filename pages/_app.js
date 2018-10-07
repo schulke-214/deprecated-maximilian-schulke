@@ -24,7 +24,7 @@ class Application extends App {
 
         this.state = {
             pageLoader: {
-                isOpen: false
+                isOpen: true
             }
         };
         

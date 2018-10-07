@@ -73,14 +73,7 @@ export default css`
     .logo {
         width: 20px;
         height: 10px;
-    }
-
-    .logo-pageloader {
-        width: 25px;
-        height: 25px;
-        position: absolute;
-        top: 50px;
-        left: 50px;
+        mix-blend-mode: exclusion;
     }
 
     img {

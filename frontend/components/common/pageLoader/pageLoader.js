@@ -48,11 +48,7 @@ class pageLoader extends Component {
 
                 <div id="pageloader">
                     <div id="layout-layer">
-                        <div id="gui-layer">
-                            <div className="top flex space-between" >
-                                <Logo className="logo" />
-                            </div>
-                        </div>
+                        <Logo className="logo" />
                     </div>
                 
                     <span id="pageloader-counter"></span>
