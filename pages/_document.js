@@ -16,6 +16,8 @@ class AppDocument extends Document {
         return (
             <html lang="de">
                 <Head>
+                    <link rel="shortcut icon" type="image/png" href="/static/icons/logo-dark-48.png"/>
+                    <link rel="manifest" href="/static/manifest.json" />
                     <link rel="stylesheet" href="/static/fonts/fonts.css" />
                     <style>{initStyles}</style>
 
