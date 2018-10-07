@@ -33,9 +33,13 @@ class Application extends App {
 
     componentDidMount() {
         document.querySelector('body').classList.remove('loading');
+
+        console.log("APP MOUNTED")
     }
 
     removePageLoader() {
+        console.log("LOADER REMOVED")
+
         this.setState({
             pageLoader: {
                 isOpen: false
@@ -95,7 +99,7 @@ class Application extends App {
 
                     {/* PAGELOADER */}
                     { this.state.pageLoader.isOpen ? <PageLoader finished={ this.removePageLoader } /> : null }
-
+                    
                     <DeviceContext.Consumer>
                         { state => (
                             <Layout device={state}>

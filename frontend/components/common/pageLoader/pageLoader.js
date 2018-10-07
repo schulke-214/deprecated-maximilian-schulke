@@ -19,23 +19,26 @@ class pageLoader extends Component {
             ease: Power4.easeInOut
         };
 
-        let updateEl = () => document.getElementById('pageloader-counter').textContent = Math.floor(progress.value);
+        let updateEl = () => document.getElementById('pl-count').textContent = Math.floor(progress.value);
         updateEl();
 
         let loader = new TimelineLite({ 
             paused: true, 
             onComplete: this.props.finished 
-        }).to( progress, 2, { 
+        }).to( progress, 1, { 
             value: 99, 
             delay: 0.25, 
             ease: progress.ease, 
             onUpdate: updateEl 
-        }).to( progress, 1, { 
+        }).to( progress, 0.5, { 
             value: 100, 
             ease: progress.ease, 
             onUpdate: updateEl 
-        }).to( "#pageloader", 2, { 
-            opacity: 0, 
+        }).to(".pl-hide > *", 1, {
+            y: "-100%", 
+            ease: progress.ease 
+        }).to( "#pl-bg", 1.5, { 
+            y: "-100%", 
             ease: progress.ease 
         }).play();
     }
@@ -46,12 +49,14 @@ class pageLoader extends Component {
                 <style jsx>{layoutStyles}</style>
                 <style jsx>{styles}</style>
 
-                <div id="pageloader">
-                    <div id="layout-layer">
-                        <Logo className="logo" />
-                    </div>
-                
-                    <span id="pageloader-counter"></span>
+                <div id="pl">
+                    <div id="pl-bg"></div>
+                    <span className="pl-hide logo" >
+                        <Logo className="logo"/>
+                    </span>
+                    <span className="pl-hide" id="pl-count-wrap">
+                        <span id="pl-count"></span>
+                    </span>
                 </div>
             </React.Fragment>
         )
