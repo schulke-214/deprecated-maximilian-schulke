@@ -34,6 +34,7 @@ class Slider extends Component {
 
         // THIS FIXES
         this.addImg = this.addImg.bind(this);
+        this.sortImages = this.sortImages.bind(this);
         this.calcSize = this.calcSize.bind(this);
         this.initPixi = this.initPixi.bind(this);
         this.setAlpha = this.setAlpha.bind(this);
@@ -47,15 +48,22 @@ class Slider extends Component {
         this.handleResize = this.handleResize.bind(this);
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         this.initPixi();
 
+        let start = new Date().getTime();
         for( let i = 1; i <= this.props.length; i++ )
-            this.addImg( i );
+            await this.addImg( i );
 
+        console.log( "dur", new Date().getTime() - start);
+
+
+        this.sortImages();
         this.setAlpha();
         this.handleResize();
         this.animate();
+
+        this.pixi.container.children.forEach( el => console.log( { id: el.zIndex, opacity: el.alpha } ) );
 
         window.addEventListener('load', this.handleResize);
         window.addEventListener('resize', this.handleResize);
@@ -66,6 +74,16 @@ class Slider extends Component {
 
         window.removeEventListener('load', this.handleResize);
         window.removeEventListener('resize', this.handleResize);
+    }
+
+    sortImages() {
+        this.pixi.container.children.sort( ( a, b) => {
+            if (a.zIndex < b.zIndex ) return -1;
+
+            if (a.zIndex > b.zIndex ) return 1;
+
+            else return 0;
+        })
     }
 
     initPixi() {
@@ -88,29 +106,25 @@ class Slider extends Component {
         this.pixi.container.filters = [ this.pixi.displacementFilter ];
     }
 
-    async addImg( num ) {
-        let img = new PIXI.Sprite.fromImage(`static/slider/${num}.jpg`);
-        img.texture.baseTexture.on('loaded', () => initSprite(img) )
+    addImg( num ) {
+        let sprite = new PIXI.Sprite.fromImage(`static/slider/${num}.jpg`);
 
+        let spriteSize = this.calcSize({
+            width: sprite.texture.baseTexture.realWidth,
+            height: sprite.texture.baseTexture.realHeight
+        }, 1.25 );
 
-        const initSprite = sprite => {
-            let spriteSize = this.calcSize({
-                width: sprite.texture.baseTexture.realWidth,
-                height: sprite.texture.baseTexture.realHeight
-            }, 1.25 );
+        sprite.width = spriteSize.width;
+        sprite.height = spriteSize.height;
+        sprite.x = spriteSize.x;
+        sprite.y = spriteSize.y;
 
-            img.width = spriteSize.width;
-            img.height = spriteSize.height;
-            img.x = spriteSize.x;
-            img.y = spriteSize.y;
+        sprite.zIndex = num;
 
-            sprite.zIndex = num;
+        if( num !== this.props.current )
+            sprite.alpha = 0;
 
-            if( num !== this.props.current )
-                sprite.alpha = 0;
-
-            this.pixi.container.addChild(sprite);
-        }
+        this.pixi.container.addChild(sprite);
     }
 
     calcSize( size, scale = 1 ) {
@@ -174,30 +188,46 @@ class Slider extends Component {
     }
 
     next( callback ) {
+        const cb = () => {
+            this.pixi.container.children.forEach( el => console.log( { id: el.zIndex, opacity: el.alpha } ) );
+            callback()
+        }
+
         this.props.updateCurrent('+', () => {
             // RUNS WHEN STATE IS UPDATED
+            console.log( this.props.current );
+
             if( this.props.current === 1 )
                 for( let i = 2; i <= this.pixi.container.children.length; i++ )
-                    this.imageTransition(this.pixi.container.children[i -1], 0, callback);
+                    this.imageTransition(this.pixi.container.children[i -1], 0, cb);
+
             else
-                this.imageTransition(this.pixi.container.children[ this.props.current - 1 ], 1, callback);
+                this.imageTransition(this.pixi.container.children[ this.props.current - 1 ], 1, cb);
+
         });
     }
 
     prev( callback ) {
+        const cb = () => {
+            this.pixi.container.children.forEach( el => console.log( { id: el.zIndex, opacity: el.alpha } ) );
+            callback()
+        }
+
         this.props.updateCurrent('-', () => {
             // RUNS WHEN STATE IS UPDATED
+            console.log( this.props.current );
+
             if( this.props.current === this.props.length )
                 for( let i = 1; i <= this.pixi.container.children.length; i++ )
-                    this.imageTransition(this.pixi.container.children[i -1], 1, callback);
+                    this.imageTransition(this.pixi.container.children[i -1], 1, cb);
             else
-                this.imageTransition(this.pixi.container.children[ this.props.current ], 0, callback);
+                this.imageTransition(this.pixi.container.children[ this.props.current ], 0, cb);
         });
     }
 
     handleResize() {
         let { width, height } = this.pixi;
-        let rect = this.wrapper.current.getBoundingClientRect();
+        let rect =  this.wrapper.current.getBoundingClientRect();
         let factor = 1;
 
         // SET THE FACTOR BY THE VALUE WHICH IS SMALLER
