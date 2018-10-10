@@ -188,44 +188,35 @@ class Slider extends Component {
     }
 
     next( callback ) {
-        const cb = () => {
-            this.pixi.container.children.forEach( el => console.log( { id: el.zIndex, opacity: el.alpha } ) );
-            callback()
-        }
-
         this.props.updateCurrent('+', () => {
             // RUNS WHEN STATE IS UPDATED
-            console.log( this.props.current );
-
-            if( this.props.current === 1 )
-                for( let i = 2; i <= this.pixi.container.children.length; i++ )
-                    this.imageTransition(this.pixi.container.children[i -1], 0, cb);
+            if( this.props.current === 1 ) {
+                this.pixi.container.children[1].alpha = 0;
+                this.imageTransition(this.pixi.container.children[2], 0, callback);
+            }
 
             else
-                this.imageTransition(this.pixi.container.children[ this.props.current - 1 ], 1, cb);
+                this.imageTransition(this.pixi.container.children[ this.props.current - 1 ], 1, callback);
 
         });
     }
 
     prev( callback ) {
-        const cb = () => {
-            this.pixi.container.children.forEach( el => console.log( { id: el.zIndex, opacity: el.alpha } ) );
-            callback()
-        }
-
         this.props.updateCurrent('-', () => {
             // RUNS WHEN STATE IS UPDATED
-            console.log( this.props.current );
-
-            if( this.props.current === this.props.length )
-                for( let i = 1; i <= this.pixi.container.children.length; i++ )
-                    this.imageTransition(this.pixi.container.children[i -1], 1, cb);
+            if( this.props.current === this.props.length ) {
+                this.imageTransition(this.pixi.container.children[2], 1, () => {
+                    this.pixi.container.children[1].alpha = 1;
+                    callback();
+                });
+            }
             else
-                this.imageTransition(this.pixi.container.children[ this.props.current ], 0, cb);
+                this.imageTransition(this.pixi.container.children[ this.props.current ], 0, callback);
         });
     }
 
     handleResize() {
+        return console.log( "bypassed" )
         let { width, height } = this.pixi;
         let rect =  this.wrapper.current.getBoundingClientRect();
         let factor = 1;
