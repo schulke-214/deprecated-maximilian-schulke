@@ -27,15 +27,13 @@ class Application extends App {
                 isOpen: true
             }
         };
-        
-        this.removePageLoader = this.removePageLoader.bind(this);
     }
 
     componentDidMount() {
         document.querySelector('body').classList.remove('loading');
     }
 
-    removePageLoader() {
+    removePageLoader = () => {
         this.setState({
             pageLoader: {
                 isOpen: false
@@ -43,7 +41,7 @@ class Application extends App {
         })
     }
 
-    dynamicPageTitle() {
+    dynamicPageTitle = () => {
         let url = this.props.router.pathname;
         url = url.slice(1, url.length);
         url = url.split('/', 2);

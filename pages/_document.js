@@ -23,8 +23,8 @@ class AppDocument extends Document {
 
                     <meta charSet="UTF-8" />
                     <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
-                    <meta name="description" content="Im a creative freelance developer based in bielefeld, germany!" /* REMINDER FOR FUTURE ME: CHANGE THIS*/ />
-                    <meta name="theme-color" content="#fff" /* REMINDER FOR FUTURE ME: CHANGE THIS*/ />
+                    <meta name="description" content="Im a creative developer based in bielefeld, germany!" /* REMINDER FOR FUTURE ME: CHANGE THIS*/ />
+                    <meta name="theme-color" content={ variables.colors.main } />
                     
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenLite.min.js"></script>
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TimelineLite.min.js"></script>

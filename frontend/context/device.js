@@ -12,8 +12,6 @@ export class DeviceProvider extends React.Component {
             isSmall: null,
             isMobile: null
         };
-
-        this.target = this.target.bind(this);
     }
 
     componentDidMount() {
@@ -25,7 +23,7 @@ export class DeviceProvider extends React.Component {
         window.removeEventListener('resize', this.target);
     }
 
-    target() {
+    target = () => {
         let width = window.innerWidth;
         let isSmall = window.innerWidth <= variables.breakpoints.tablet;
         let isPhone = window.innerWidth <= variables.breakpoints.phone;

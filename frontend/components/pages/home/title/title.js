@@ -19,10 +19,6 @@ class Title extends Component {
         })
 
         this.active = 0;
-
-        this.next = this.next.bind(this);
-        this.prev = this.prev.bind(this);
-        this.update = this.update.bind(this);
     }
 
     componentDidMount() {
@@ -30,7 +26,7 @@ class Title extends Component {
         this.update();
     }
 
-    next() {
+    next = () => {
         let next = this.active + 1; 
         
         if( this.active === this.props.titles.length - 1 )
@@ -65,7 +61,7 @@ class Title extends Component {
         this.active = next;
     }
 
-    prev() {
+    prev = () => {
         let prev = this.active - 1;        
         
         if( this.active === 0 )
@@ -100,7 +96,7 @@ class Title extends Component {
         this.active = prev;
     }
 
-    update() {
+    update = () => {
         this.projects.forEach( ( project, index ) => {
             if( this.active === index )
                 TweenLite.set(this.projects[ index ].current, {

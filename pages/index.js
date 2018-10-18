@@ -49,20 +49,6 @@ class Home extends Component {
                 length: projects.length
             }
         };
-
-        // THIS FIXES
-        this.handleScroll = this.handleScroll.bind(this);
-        this.handleTouch = this.handleTouch.bind(this);
-        this.handleKeyDown = this.handleKeyDown.bind(this);
-
-        this.nextProject = this.nextProject.bind(this);
-        this.prevProject = this.prevProject.bind(this);
-        this.getProjectData = this.getProjectData.bind(this);
-        this.updateCurrent = this.updateCurrent.bind(this);
-        this.openProject = this.openProject.bind(this);
-
-        this.resetRunningState = this.resetRunningState.bind(this);
-        this.resetRunningStateByClick = this.resetRunningStateByClick.bind(this);
     }
 
     componentDidMount() {
@@ -83,7 +69,7 @@ class Home extends Component {
         removeEventListener('mousemove', this.resetRunningState );
     }
 
-    updateCurrent( dir, callback ) {
+    updateCurrent = ( dir, callback ) => {
         const setTo = newCurrent => this.setState(prevState => ({
             slider: {
                 ...prevState.slider,
@@ -115,7 +101,7 @@ class Home extends Component {
         }
     }
 
-    nextProject( event ) {
+    nextProject = event => {
         this.running = true;
 
         let next = this.state.slider.current <  this.state.slider.length ? this.state.slider.current + 1 : 1;
@@ -155,7 +141,7 @@ class Home extends Component {
         }
     }
 
-    prevProject( event ) {
+    prevProject = event => {
         this.running = true;
 
         let prev = this.state.slider.current > 1 ? this.state.slider.current - 1 : this.state.slider.length ;
@@ -197,13 +183,13 @@ class Home extends Component {
 
     getProjectData = () => this.state.projects[ this.state.slider.current - 1 ];
     
-    openProject() {
+    openProject = () => {
         let page = this.getProjectData().meta.link;
         Router.push(`/work/${ page }`)
     }
     // SLIDER FUNCTIONALITY
 
-    handleScroll( ev ) {
+    handleScroll = ev => {
         let delta = ev.deltaY;
 
         if( Math.abs( delta ) > this.threshold && !this.running ) {
@@ -215,7 +201,7 @@ class Home extends Component {
         }
     }
 
-    handleClick( dir ) {
+    handleClick = dir => {
         if( !this.running ) {
             if( dir === 'prev' )
                 this.prevProject('CLICK');
@@ -225,7 +211,7 @@ class Home extends Component {
         }
     }
 
-    handleTouch( ev ) {
+    handleTouch = ev => {
         let startX = ev.touches[0].clientX;
         let startY = ev.touches[0].clientY;
         
@@ -259,7 +245,7 @@ class Home extends Component {
         }
     }
 
-    handleKeyDown( ev ){
+    handleKeyDown = ev => {
         if( !this.running ) {
             if( ev.keyCode === 37 || ev.keyCode === 38 ) // PREV 
                 this.prevProject('KEY');
@@ -269,12 +255,12 @@ class Home extends Component {
         }
     }
 
-    handleDrag(){}
+    handleDrag = () => {}
 
     // ADD KEY SUPPORT LATER
     // ADD DRAG SUPPORT LATER
 
-    resetRunningState( ev ) {
+    resetRunningState = ev => {
         if( Math.abs( ev.deltaY ) < this.threshold ) {
             this.running = false;
             window.removeEventListener('wheel', this.resetRunningState );
@@ -283,7 +269,7 @@ class Home extends Component {
         }
     }
 
-    resetRunningStateByClick() {
+    resetRunningStateByClick = () => {
         this.running = false;
 
         window.removeEventListener('wheel', this.resetRunningState );

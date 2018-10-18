@@ -3,23 +3,15 @@ import React, { Component } from 'react'
 class TextTransition extends Component {
     constructor( props ) {
         super( props );
-
         // REFS
         this.container = React.createRef();
-
-        // THIS BINDS
-        this.prepareDOM = this.prepareDOM.bind(this);
-        this.changeText = this.changeText.bind(this);
-
-        this.next = this.next.bind(this);
-        this.prev = this.prev.bind(this);
     }
 
     componentDidMount() {
         this.prepareDOM();
     }
 
-    prepareDOM( text = this.props.text ) {
+    prepareDOM = ( text = this.props.text ) => {
         text += "";
 
         for( let i = 0; i < text.length; i++ ) {
@@ -34,7 +26,7 @@ class TextTransition extends Component {
         }
     }
 
-    next( nextValue ) {
+    next = nextValue => {
         let tl = new TimelineLite({ onComplete: () => {
                 tl.pause(0);
                 this.changeText( nextValue );
@@ -44,7 +36,7 @@ class TextTransition extends Component {
             .set( this.container.current.childNodes, { y: "100%"});
     }
 
-    prev( prevValue ) {
+    prev = prevValue => {
         let tl = new TimelineLite({ onComplete: () => {
                 tl.pause(0);
                 this.changeText( prevValue );
@@ -54,7 +46,7 @@ class TextTransition extends Component {
             .set( this.container.current.childNodes, { y: "-100%"});
     }
 
-    changeText( text ) {
+    changeText = text => {
         while ( this.container.current.firstChild ) {
             this.container.current.removeChild( this.container.current.firstChild );
         }

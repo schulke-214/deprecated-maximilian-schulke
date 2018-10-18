@@ -38,20 +38,6 @@ class Layout extends Component {
         this.state = {
             isLayout: true
         };
-
-        this.initCursor = this.initCursor.bind(this);
-        this.changePage = this.changePage.bind(this);
-
-        this.setMousePos = this.setMousePos.bind(this);
-        this.setCursorRect = this.setCursorRect.bind(this);
-
-        this.allowScrolling = this.allowScrolling.bind(this);
-        this.preventScrolling = this.preventScrolling.bind(this);
-
-        this.handleResize = this.handleResize.bind(this);
-        this.handleMouseOut = this.handleMouseOut.bind(this);
-        this.handleMouseMove = this.handleMouseMove.bind(this);
-        this.handleClick = this.handleClick.bind(this);
     }
 
     componentDidMount() {
@@ -80,11 +66,11 @@ class Layout extends Component {
         removeEventListener('click', this.handleClick );
     }
 
-    changePage( url ) {
+    changePage = url => {
         this.props.router.push( url );
     }
 
-    initCursor() {
+    initCursor = () => {
         this.mouseLayer = document.getElementById('mouse-layer');
         this.cursor = document.getElementById('mouse-cursor');
         this.mouseLayer.appendChild( this.cursor );
@@ -94,17 +80,17 @@ class Layout extends Component {
             TweenLite.to(this.cursor, 0.25, { opacity: 0 } );
     }
 
-    setMousePos( ev ) {
+    setMousePos = ev => {
         // MAUS POS = MAUS OFFSET AUSGEHEND VOM MITTELPUNKT DES WRAPPERS
         this.cursorPos.x = ev.clientX - ( this.cursorRect.width || 25 ) / 2;
         this.cursorPos.y = ev.clientY - ( this.cursorRect.height || 25 ) / 2;
     }
 
-    setCursorRect() {
+    setCursorRect = () => {
         this.cursorRect = this.cursor.getBoundingClientRect();
     }
 
-    allowScrolling() {
+    allowScrolling = () => {
         window.onwheel = ev => {
             ev.preventDefault();
             return true;
@@ -113,7 +99,7 @@ class Layout extends Component {
         removeEventListener('touchmove', this.preventDefault, { passive: false });
     }
 
-    preventScrolling() {
+    preventScrolling = () => {
         window.onwheel = ev => {
             ev.preventDefault();
             return false;
@@ -124,22 +110,22 @@ class Layout extends Component {
 
     preventDefault = ev => ev.preventDefault(); 
 
-    handleClick() {
+    handleClick = () => {
         if( window.CURSOR_ONCLICK )
             window.CURSOR_ONCLICK();
     }
 
-    handleResize() {
+    handleResize = () => {
         TweenLite.set('body, main, #layout-layer', {
             height: window.innerHeight
         });
     }
 
-    handleMouseOut() {
+    handleMouseOut = () => {
         TweenLite.to(this.cursor, 0.25, { opacity: 0 });
     }
 
-    handleMouseMove( ev ) {
+    handleMouseMove = ev => {
         if( this.props.device.isMobile )
             return;
 

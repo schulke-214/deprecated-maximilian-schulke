@@ -29,30 +29,23 @@ class Circle extends Component {
         this.circleLength = 158.1;
         this.step = this.circleLength / this.props.length;
         this.progress = this.circleLength - this.step * this.props.current;
-
-        // THIS FIXES
-        this.lastToFirst = this.lastToFirst.bind(this);
-        this.firstToLast = this.firstToLast.bind(this);
-
-        this.next = this.next.bind(this);
-        this.prev = this.prev.bind(this);
     }
 
-    next( next ) {
+    next = next => {
         if( next === 1 )
             this.lastToFirst();
         else
             TweenLite.to(this.circle.current, 0.5, { strokeDashoffset: this.circleLength - this.step * next, ease: Power2.easeInOut, })
     }
 
-    prev( prev ) {
+    prev = prev => {
         if( prev === this.props.length )
             this.firstToLast();
         else
             TweenLite.to(this.circle.current, 0.5, { strokeDashoffset: this.circleLength - this.step * prev, ease: Power2.easeInOut, })
     }
 
-    lastToFirst() {
+    lastToFirst = () => {
         TweenLite.to(this.circle.current, 0.5, { strokeDashoffset: -this.circleLength, strokeDasharray: 0, ease: Power2.easeIn, onComplete: () => {
             TweenLite.set(this.circle.current, {
                 strokeDashoffset: this.circleLength,
@@ -62,7 +55,7 @@ class Circle extends Component {
         }});
     }
 
-    firstToLast() {
+    firstToLast = () => {
         TweenLite.to(this.circle.current, 0.25, { strokeDashoffset: this.circleLength, ease: Power2.easeIn, onComplete: () => {
             TweenLite.fromTo(this.circle.current, 0.5, { strokeDashoffset: -this.circleLength }, { strokeDashoffset: 0 });
         }});

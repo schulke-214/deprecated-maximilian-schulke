@@ -43,16 +43,6 @@ class Sticky extends PureComponent {
 
         this.ease;
         this.duration = 0;
-
-        this.setRect = this.setRect.bind(this);
-
-        this.handleMouseMove = this.handleMouseMove.bind(this);
-        this.handleMouseEnter = this.handleMouseEnter.bind(this);
-        this.handleMouseOut = this.handleMouseOut.bind(this);
-        this.handleClick = this.handleClick.bind(this);
-
-        this.setMouse = this.setMouse.bind(this);
-        this.getHypotenuse = this.getHypotenuse.bind(this);
     }
 
     componentDidMount() {
@@ -76,7 +66,7 @@ class Sticky extends PureComponent {
         this.trigger.current.removeEventListener('click', this.props.handleClick );
     }
 
-    setRect() {
+    setRect = () => {
         this.contentRect = this.content.current.getBoundingClientRect();
         this.triggerRect = this.trigger.current.getBoundingClientRect();
         
@@ -92,7 +82,7 @@ class Sticky extends PureComponent {
     }
 
 
-    handleMouseMove( ev ) {
+    handleMouseMove = ev => {
         if( this.props.device.isMobile )
             return;
 
@@ -113,7 +103,7 @@ class Sticky extends PureComponent {
         }
     }
 
-    handleMouseEnter( ev ) {
+    handleMouseEnter = ev => {
         this.setRect();
         this.setMouse(ev);
         this.duration = 2;
@@ -123,7 +113,7 @@ class Sticky extends PureComponent {
         window.CURSOR_TYPE = this.props.clickCursor || 'click';
     }
 
-    handleMouseOut( ev ) {
+    handleMouseOut = ev => {
         this.setMouse(ev);
         this.entered = false;
 
@@ -133,7 +123,7 @@ class Sticky extends PureComponent {
         TweenLite.to( this.content.current, this.getHypotenuse() / 25 ,{x: 0, y: 0, ease: this.ease} );
     }
 
-    handleClick( ) {
+    handleClick = () => {
         if( this.props.to ) {
             // PROGRAMATICALLY ROUTING ( USING A INTERFACE OR THE LAYOUT COMPONENT )
         }
@@ -146,7 +136,7 @@ class Sticky extends PureComponent {
     }
 
     // STICKY FUNCTIONS
-    getHypotenuse() {
+    getHypotenuse = () => {
         // SATZ DES PYTAGORAS A^2 + B^2 = C^2 
         let C = Math.sqrt( 
             Math.pow(Math.abs( this.mousePos.x ), 2) + Math.pow(Math.abs( this.mousePos.y ), 2)
@@ -155,7 +145,7 @@ class Sticky extends PureComponent {
         return C;
     }
 
-    setMouse(ev) {
+    setMouse = ev => {
         // MAUS POS = MAUS OFFSET AUSGEHEND VOM MITTELPUNKT DES WRAPPERS
         this.mousePos.x = ev.clientX - this.triggerCenter.x;
         this.mousePos.y = ev.clientY - this.triggerCenter.y;

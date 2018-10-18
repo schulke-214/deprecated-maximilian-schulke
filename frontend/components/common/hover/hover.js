@@ -21,21 +21,16 @@ class Hover extends Component {
             y: 0
         }
         
-
-        this.setRect = this.setRect.bind(this);
-        this.handlerHover = this.handlerHover.bind(this);
     }
 
     componentDidMount() {
         this.prepareDOM();
         this.setRect();
 
-
         this.animation = new TimelineLite({ paused: true, onComplete: () => this.animation.pause(0) })
             .staggerTo( this.content.current.childNodes, 0.2, { y: '-100%', opacity: 0 }, 0.01 )
             .set( this.content.current.childNodes, { y: '100%'})
             .staggerTo( this.content.current.childNodes, 0.2, { y: '0%', opacity: 1 }, 0.01 );
-
 
         addEventListener('load', this.setRect );
         this.trigger.current.addEventListener('click', this.props.handleClick );
@@ -48,7 +43,7 @@ class Hover extends Component {
         this.trigger.current.removeEventListener('mouseenter', this.handlerHover );
     }
 
-    setRect() {
+    setRect = () => {
         this.contentRect = this.content.current.getBoundingClientRect();
         this.triggerRect = this.trigger.current.getBoundingClientRect();
 
@@ -63,12 +58,12 @@ class Hover extends Component {
         });
     }
 
-    handlerHover() {
+    handlerHover = () => {
         if( !this.props.isMobile )
             this.animation.play();
     }
 
-    prepareDOM() {
+    prepareDOM = () => {
         for( let i = 0; i < this.text.length; i++ ) {
             let span = document.createElement('span');
             span.textContent = this.text.charAt(i);

@@ -31,21 +31,6 @@ class Slider extends Component {
         this.wrapper = React.createRef();
 
         this.raf = null;
-
-        // THIS FIXES
-        this.addImg = this.addImg.bind(this);
-        this.sortImages = this.sortImages.bind(this);
-        this.calcSize = this.calcSize.bind(this);
-        this.initPixi = this.initPixi.bind(this);
-        this.setAlpha = this.setAlpha.bind(this);
-
-        this.animate = this.animate.bind(this);
-        this.imageTransition = this.imageTransition.bind(this);
-
-        this.next = this.next.bind(this);
-        this.prev = this.prev.bind(this);
-
-        this.handleResize = this.handleResize.bind(this);
     }
 
     async componentDidMount() {
@@ -70,7 +55,7 @@ class Slider extends Component {
         window.removeEventListener('resize', this.handleResize);
     }
 
-    sortImages() {
+    sortImages = () => {
         this.pixi.container.children.sort( ( a, b) => {
             if (a.zIndex < b.zIndex ) return -1;
 
@@ -80,7 +65,7 @@ class Slider extends Component {
         })
     }
 
-    initPixi() {
+    initPixi = () => {
         this.pixi.renderer = new PIXI.autoDetectRenderer( this.pixi.width, this.pixi.height, {
             transparent: true,
             view: this.canvas.current,
@@ -100,7 +85,7 @@ class Slider extends Component {
         this.pixi.container.filters = [ this.pixi.displacementFilter ];
     }
 
-    addImg( num ) {
+    addImg = num => {
         let sprite = new PIXI.Sprite.fromImage(`static/slider/${num}.jpg`);
 
         let spriteSize = this.calcSize({
@@ -121,7 +106,7 @@ class Slider extends Component {
         this.pixi.container.addChild(sprite);
     }
 
-    calcSize( size, scale = 1 ) {
+    calcSize = ( size, scale = 1 ) => {
         let widthProportion = ( size.height / size.width );
         let heightProportion = ( size.width / size.height );
 
@@ -157,7 +142,7 @@ class Slider extends Component {
         }
     }
 
-    animate() {
+    animate = () => {
         this.raf = requestAnimationFrame( this.animate );
 
         this.pixi.displacementFilter.scale.x = this.pixi.delta_scale;
@@ -169,19 +154,19 @@ class Slider extends Component {
         this.pixi.renderer.render( this.pixi.stage );
     }
 
-    imageTransition( el, alpha, callback ) {
+    imageTransition = ( el, alpha, callback ) => {
         TweenLite.to( this.pixi, 0.4, { delta_offset: 5, ease: Power2.easeIn });
         TweenLite.to( this.pixi, 0.4, { delta_offset: 1.5,  ease: Power2.easeOut,  delay: 0.4 });
 
         TweenLite.to( el, 0.8, { alpha, ease: Power2.easeInOut, onComplete: callback });
     }
 
-    setAlpha() {
+    setAlpha = () => {
         for(let i = 0; i < this.props.current - 1; i++ )
             this.pixi.container.children[i].alpha = 1;
     }
 
-    next( callback ) {
+    next = callback => {
         this.props.updateCurrent('+', () => {
             // RUNS WHEN STATE IS UPDATED
             if( this.props.current === 1 ) {
@@ -195,7 +180,7 @@ class Slider extends Component {
         });
     }
 
-    prev( callback ) {
+    prev = callback => {
         this.props.updateCurrent('-', () => {
             // RUNS WHEN STATE IS UPDATED
             if( this.props.current === this.props.length ) {
@@ -209,7 +194,7 @@ class Slider extends Component {
         });
     }
 
-    handleResize() {
+    handleResize = () => {
         let { width, height } = this.pixi;
         let rect =  this.wrapper.current.getBoundingClientRect();
         let factor = 1;
