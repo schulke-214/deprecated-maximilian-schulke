@@ -38,7 +38,7 @@ class pageLoader extends Component {
             y: "-100%", 
             ease: progress.ease 
         }).to( "#pl-bg", 1.5, { 
-            y: "-100%", 
+            opacity: 0, 
             ease: progress.ease 
         }).play();
     }

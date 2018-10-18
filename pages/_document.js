@@ -7,7 +7,7 @@ let initStyles = `
     }
 
     .main-bg-color {
-        background-color: #121212;
+        background-color: ${ variables.colors.main };
     }
 `;
 

@@ -12,7 +12,7 @@ const font = {
 };
 
 const colors = {
-    main: '#121212',
+    main: '#060606',
     highlight: '#fff'
 };
 
