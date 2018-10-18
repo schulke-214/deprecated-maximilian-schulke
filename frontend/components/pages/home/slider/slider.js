@@ -51,19 +51,13 @@ class Slider extends Component {
     async componentDidMount() {
         this.initPixi();
 
-        let start = new Date().getTime();
         for( let i = 1; i <= this.props.length; i++ )
-            await this.addImg( i );
-
-        console.log( "dur", new Date().getTime() - start);
-
+            this.addImg( i );
 
         this.sortImages();
         this.setAlpha();
         this.handleResize();
         this.animate();
-
-        this.pixi.container.children.forEach( el => console.log( { id: el.zIndex, opacity: el.alpha } ) );
 
         window.addEventListener('load', this.handleResize);
         window.addEventListener('resize', this.handleResize);
@@ -216,7 +210,6 @@ class Slider extends Component {
     }
 
     handleResize() {
-        return console.log( "bypassed" )
         let { width, height } = this.pixi;
         let rect =  this.wrapper.current.getBoundingClientRect();
         let factor = 1;

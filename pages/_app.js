@@ -24,7 +24,7 @@ class Application extends App {
 
         this.state = {
             pageLoader: {
-                isOpen: false
+                isOpen: true
             }
         };
         
@@ -33,13 +33,9 @@ class Application extends App {
 
     componentDidMount() {
         document.querySelector('body').classList.remove('loading');
-
-        console.log("APP MOUNTED")
     }
 
     removePageLoader() {
-        console.log("LOADER REMOVED")
-
         this.setState({
             pageLoader: {
                 isOpen: false
