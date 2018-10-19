@@ -36,6 +36,28 @@ export default css`
         background-color: ${ variables.colors.main };
     }
 
+    #pl-blur-top {
+        position: absolute;
+        top: -7.5vh;
+        left: -25vw;
+        width: 150vw;
+        height: 15vh;
+        background-color: ${ variables.colors.main };
+        z-index: -2;
+        filter: blur(30px);
+    }
+
+    #pl-blur-bot {
+        position: absolute;
+        left: -25vw;
+        bottom: -7.5vh;
+        width: 150vw;
+        height: 15vh;
+        background-color: ${ variables.colors.main };
+        z-index: -2;
+        filter: blur(30px);
+    }
+
     #pl-count-wrap {
         display: block;
         width: 25px;

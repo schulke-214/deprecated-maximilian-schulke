@@ -37,9 +37,9 @@ class pageLoader extends Component {
         }).to(".pl-hide > *", 1, {
             y: "-100%", 
             ease: progress.ease 
-        }).to( "#pl-bg", 1.5, { 
-            opacity: 0, 
-            ease: progress.ease 
+        }).to("#pl-bg", 1, { 
+            y: "-125%",
+            ease: progress.ease
         }).play();
     }
 
@@ -50,7 +50,10 @@ class pageLoader extends Component {
                 <style jsx>{styles}</style>
 
                 <div id="pl">
-                    <div id="pl-bg"></div>
+                    <div id="pl-bg">
+                        <div id="pl-blur-top"></div>
+                        <div id="pl-blur-bot"></div>
+                    </div>
                     <span className="pl-hide logo" >
                         <Logo className="logo"/>
                     </span>
