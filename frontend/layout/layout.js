@@ -180,7 +180,7 @@ class Layout extends Component {
         else
             this.opacity = 1;
 
-        TweenLite.to(this.cursor, 0.5, { x: this.cursorPos.x, y: this.cursorPos.y, opacity: this.opacity } );
+        TweenLite.to(this.cursor, 0.25, { x: this.cursorPos.x, y: this.cursorPos.y, opacity: this.opacity } );
     }
 
     render() {

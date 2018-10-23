@@ -7,7 +7,7 @@ let initStyles = `
     }
 
     .main-bg-color {
-        background-color: ${ variables.colors.main };
+        background-color: ${ variables.colors.highlight };
     }
 `;
 
