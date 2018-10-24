@@ -24,15 +24,6 @@ export default css`
         left: 0;
         z-index: 499;
     }
-    
-    #mouse-cursor {
-        display: block;
-        width: 25px;
-        height: 25px;
-        border: 2px solid ${ variables.colors.highlight };
-        border-radius: 100%;
-        opacity: 0;
-    }
 
     main {
         position: absolute;

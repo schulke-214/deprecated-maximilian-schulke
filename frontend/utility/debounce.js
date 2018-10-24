@@ -1,5 +1,7 @@
-export default () => ({
-    oldTime: new Date().getTime(),
+export default class Debouncer {
+    constructor() {
+        this.oldTime = new Date().getTime()
+    }
 
     call(callback, interval) {
         let currentTime = new Date().getTime();
@@ -9,5 +11,5 @@ export default () => ({
             callback();
         }
     }
-});
+};
 
