@@ -43,7 +43,7 @@ class Cursor extends Component {
         this.setCursorRect();
         
         if( this.props.device.isMobile )
-            TweenLite.to(this.cursor.current, 0.25, { opacity: 0, display: "none" } );
+            TweenLite.set(this.cursor.current, { opacity: 0, display: "none" } );
     }
 
     expand = () => {
