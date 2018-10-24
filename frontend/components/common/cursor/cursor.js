@@ -39,7 +39,7 @@ class Cursor extends Component {
     initCursor = () => {
         this.setCursorRect();
         
-        if( this.props.device.isMobile )
+        if( this.props.device.isPhone || this.props.device.isMobile )
             TweenLite.set(this.cursor.current, { display: "none" } );
     }
 
@@ -90,7 +90,7 @@ class Cursor extends Component {
     }
 
     handleMouseMove = ev => {
-        if( this.props.device.isMobile )
+        if( this.props.device.isPhone || this.props.device.isMobile )
             return;
 
         this.setMousePos(ev);
@@ -156,8 +156,7 @@ class Cursor extends Component {
             <React.Fragment>
                 <style jsx>{styles}</style>
                 <span id="mouse-cursor" ref={ this.cursor } 
-                    style={ this.props.device.isMobile ? { display: "none" } : null }>
-                    { this.props.device.isMobile + "" }
+                    style={ this.props.device.isPhone || this.props.device.isMobile ? { display: "none" } : null } >
                 </span>
             </React.Fragment>
         )
