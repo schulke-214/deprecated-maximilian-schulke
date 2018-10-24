@@ -157,6 +157,7 @@ class Cursor extends Component {
                 <style jsx>{styles}</style>
                 <span id="mouse-cursor" ref={ this.cursor } 
                     style={ this.props.device.isMobile ? { display: "none" } : null }>
+                    { this.props.device.isMobile + "" }
                 </span>
             </React.Fragment>
         )
