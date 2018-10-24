@@ -23,6 +23,16 @@ class Layout extends Component {
         };
     }
 
+    componentDidMount() {
+        this.handleResize();
+
+        addEventListener('resize', this.handleResize );
+    }
+
+    componentWillUnmount() {
+        removeEventListener('resize', this.handleResize );
+    }
+
     shouldComponentUpdate( nextProps ) {
         return (
             this.props.device.hideDesktop !== nextProps.device.hideDesktop ||
@@ -30,6 +40,12 @@ class Layout extends Component {
             this.props.device.isSmall !== nextProps.device.isSmall ||
             this.props.router.route !== nextProps.router.route
         )
+    }
+
+    handleResize = () => {
+        TweenLite.set('body, main, #layout-layer', {
+            height: window.innerHeight
+        });
     }
 
     changePage = url => {
@@ -63,37 +79,39 @@ class Layout extends Component {
                 <div id='layout-layer' className='unclickable' >
                     <div id='gui-layer'>
                         <div className='top flex space-between' >
-                            <Sticky handleClick={ () => this.changePage('/') }>
+                            <Sticky handleClick={ () => this.changePage('/') } cursor={ this.cursor } >
                                 <a><Logo className='logo' /></a>
                             </Sticky>
 
                             {/* ONLY RENDER THIS WHILE BEEING A DESKTOP */}
                             { !this.props.device.isMobile ? <span> creative developer </span> : null }
 
-                            <Sticky handleClick={ () => this.changePage('/work') }>
+                            <Sticky handleClick={ () => this.changePage('/work') } cursor={ this.cursor }>
                                 <a>all</a>
                             </Sticky>
                         </div>
                         <div className='mid flex space-between'>
-                            <Sticky style={{ left: `${-25 + 7.5}px`}} newTab='https://github.com/schulke-214/' >
+                            <Sticky style={{ left: `${-25 + 7.5}px`}} cursor={ this.cursor } newTab='https://github.com/schulke-214/' >
                                 <a className='clickable git-link' >github</a>
                             </Sticky>
 
-                            { this.page.current ? <Arrows prev={ () => this.page.current.handleClick('prev') } next={ () => this.page.current.handleClick('next') }/> : null }
+                            { this.page.current ? <Arrows prev={ () => this.page.current.handleClick('prev') } next={ () => this.page.current.handleClick('next') } cursor={ this.cursor }/> : null }
                         </div>
                         <div className='low flex space-between'>
-                            <Sticky handleClick={ () => this.changePage('/about') }>
+                            <Sticky handleClick={ () => this.changePage('/about') } cursor={ this.cursor }>
                                 <a>about</a>
                             </Sticky>
 
-                            <Sticky mailto='info@domain.de'>
+                            <Sticky mailto='info@domain.de' cursor={ this.cursor }>
                                 <a>contact</a>
                             </Sticky>
                         </div>
                     </div>
                 </div>
                 <div id='mouse-layer' className='unclickable' >
-                    <Cursor ref={ this.cursor } />
+                    <DeviceContext.Consumer>
+                        { state => <Cursor device={state} ref={ this.cursor } /> }
+                    </DeviceContext.Consumer>
                 </div>
                 <main>
                     <DeviceContext.Consumer>
@@ -104,6 +122,7 @@ class Layout extends Component {
                                 allowScrolling: this.allowScrolling, 
                                 preventScrolling: this.preventScrolling, 
                             },
+                            cursor: this.cursor,
                             ref: this.page 
                         })}
                     </DeviceContext.Consumer>

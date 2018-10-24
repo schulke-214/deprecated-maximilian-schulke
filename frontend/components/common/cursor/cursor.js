@@ -1,19 +1,20 @@
 import React, { Component } from 'react'
 
-// UTILITY IMPORTS
-import Debouncer from '../../../utility/debounce';
-
 // CONTEXT IMPORTS
 import { DeviceContext } from '../../../context/device';
 
 // STYLE IMPORTS
 import styles from '../../../styles/components/cursor';
 
+// UTILITY IMPORTS
+import Debouncer from '../../../utility/debounce';
+import variables from '../../../styles/var';
+
 class Cursor extends Component {
     constructor( props ) {
         super( props );
 
-        this.cursor = null;
+        this.cursor = React.createRef();
         this.cursorRect = null;
         this.cursorPos = {
             x: 0,
@@ -26,29 +27,45 @@ class Cursor extends Component {
 
     componentDidMount() {
         this.initCursor();
-        this.handleResize();
 
-        addEventListener('resize', this.handleResize );
         addEventListener('mousemove', this.handleMouseMove );
         addEventListener('mouseout', this.handleMouseOut );
         addEventListener('click', this.handleClick );
     }
 
     componentWillUnmount() {
-        removeEventListener('resize', this.handleResize );
         removeEventListener('mousemove', this.handleMouseMove );
         removeEventListener('mouseout', this.handleMouseOut );
         removeEventListener('click', this.handleClick );
     }
 
     initCursor = () => {
-        this.mouseLayer = document.getElementById('mouse-layer');
-        this.cursor = document.getElementById('mouse-cursor');
-        this.mouseLayer.appendChild( this.cursor );
-        this.cursorRect = this.cursor.getBoundingClientRect();
-
+        this.setCursorRect();
+        
         if( this.props.device.isMobile )
-            TweenLite.to(this.cursor, 0.25, { opacity: 0 } );
+            TweenLite.to(this.cursor.current, 0.25, { opacity: 0, display: "none" } );
+    }
+
+    expand = () => {
+        this.static = true;
+        this.opacity = 0.25;
+
+        TweenLite.to( this.cursor.current, 0.25, {
+            scale: 3,
+            opacity: this.opacity,
+            backgroundColor: variables.colors.highlight
+        })
+    }
+
+    // EGAL VON WO -> STANDARD STYLES
+    reset = () => {
+        this.static = false;
+
+        TweenLite.to( this.cursor.current, 0.25, {
+            scale: 1,
+            opacity: this.opacity,
+            backgroundColor: "none"
+        })
     }
 
     setMousePos = ev => {
@@ -58,7 +75,10 @@ class Cursor extends Component {
     }
 
     setCursorRect = () => {
-        this.cursorRect = this.cursor.getBoundingClientRect();
+        console.log("set cursor rect")
+        console.table( this.cursor.current.getBoundingClientRect() )
+
+        this.cursorRect = this.cursor.current.getBoundingClientRect();
     }
 
     handleClick = () => {
@@ -66,14 +86,8 @@ class Cursor extends Component {
             window.CURSOR_ONCLICK();
     }
 
-    handleResize = () => {
-        TweenLite.set('body, main, #layout-layer', {
-            height: window.innerHeight
-        });
-    }
-
     handleMouseOut = () => {
-        TweenLite.to(this.cursor, 0.25, { opacity: 0 });
+        TweenLite.to(this.cursor.current, 0.25, { opacity: 0 });
     }
 
     handleMouseMove = ev => {
@@ -88,64 +102,65 @@ class Cursor extends Component {
         // BLENDS OUT THE MOUSETRACER A BIT BEFORE THE REAL WINDOWBORDER
         let borderOutside = 0.25;
 
-        if ( ev.clientX < border ) {
-            // LEFT
-            this.opacity = ev.clientX / border - borderOutside;
-
-            // TOP LEFT
-            // SMALLER VALUE = CLOSER TO THE BORDER = THAT VALUE SHOULD BE USED
-            if( ev.clientY < border )
-                if( !( ev.clientX < ev.clientY ) )
-                    this.opacity = ev.clientY / border - borderOutside;
-
-            // BOTTOM LEFT
-            // WINDOW HEIGHT - Y POS = OFFSET TO BOTTOM OF SCREEN
-            else if( ev.clientY > window.innerHeight - border )
-                if( !( ev.clientX < ( window.innerHeight - ev.clientY ) ) )
-                    this.opacity = ( window.innerHeight - ev.clientY ) / border - borderOutside;
+        // IF THE OPACITY ISNT MANIPULATED TROUGH A ANIMATION
+        if( !this.static ) {
+            // NORMAL CASES
+            if ( ev.clientX < border ) {
+                // LEFT
+                this.opacity = ev.clientX / border - borderOutside;
+                // TOP LEFT
+                // SMALLER VALUE = CLOSER TO THE BORDER = THAT VALUE SHOULD BE USED
+                if( ev.clientY < border )
+                    if( !( ev.clientX < ev.clientY ) )
+                        this.opacity = ev.clientY / border - borderOutside;
+    
+                // BOTTOM LEFT
+                // WINDOW HEIGHT - Y POS = OFFSET TO BOTTOM OF SCREEN
+                else if( ev.clientY > window.innerHeight - border )
+                    if( !( ev.clientX < ( window.innerHeight - ev.clientY ) ) )
+                        this.opacity = ( window.innerHeight - ev.clientY ) / border - borderOutside;
+            }
+    
+            else if ( ev.clientX > window.innerWidth - border ) {
+                // RIGHT
+                this.opacity = ( window.innerWidth - ev.clientX ) / border - borderOutside;
+    
+                // TOP RIGHT
+                if( ev.clientY < border )
+                    if(!( ( window.innerWidth - ev.clientX ) < ev.clientY ) )
+                        this.opacity = ev.clientY / border - borderOutside;
+    
+                // BOTTOM RIGHT
+                else if( ev.clientY > window.innerHeight - border )
+                    if(!( ( window.innerWidth - ev.clientX ) < ( window.innerHeight - ev.clientY ) ) )
+                        this.opacity = ( window.innerHeight - ev.clientY ) / border - borderOutside;
+            }
+    
+            // TOP BORDER ONLY
+            else if ( ev.clientY < border )
+                this.opacity = ev.clientY / border - borderOutside;
+    
+            // BOTTOM BORDER ONLY
+            else if ( ev.clientY > window.innerHeight - border ) 
+                this.opacity = ( window.innerHeight - ev.clientY ) / border - borderOutside;
+    
+            else
+                this.opacity = 1;
         }
 
-        else if ( ev.clientX > window.innerWidth - border ) {
-            // RIGHT
-            this.opacity = ( window.innerWidth - ev.clientX ) / border - borderOutside;
 
-            // TOP RIGHT
-            if( ev.clientY < border )
-                if(!( ( window.innerWidth - ev.clientX ) < ev.clientY ) )
-                    this.opacity = ev.clientY / border - borderOutside;
 
-            // BOTTOM RIGHT
-            else if( ev.clientY > window.innerHeight - border )
-                if(!( ( window.innerWidth - ev.clientX ) < ( window.innerHeight - ev.clientY ) ) )
-                    this.opacity = ( window.innerHeight - ev.clientY ) / border - borderOutside;
-        }
-
-        // TOP BORDER ONLY
-        else if ( ev.clientY < border )
-            this.opacity = ev.clientY / border - borderOutside;
-
-        // BOTTOM BORDER ONLY
-        else if ( ev.clientY > window.innerHeight - border ) 
-            this.opacity = ( window.innerHeight - ev.clientY ) / border - borderOutside;
-
-        else
-            this.opacity = 1;
-
-        TweenLite.to(this.cursor, 0.25, { x: this.cursorPos.x, y: this.cursorPos.y, opacity: this.opacity } );
+        TweenLite.to(this.cursor.current, 0.25, { x: this.cursorPos.x, y: this.cursorPos.y, opacity: this.opacity } );
     }
 
     render() {
         return (
             <React.Fragment>
                 <style jsx>{styles}</style>
-                <span id="mouse-cursor"></span>
+                <span id="mouse-cursor" ref={ this.cursor }></span>
             </React.Fragment>
         )
     }
 }
 
-export default () => (
-    <DeviceContext.Consumer>
-        { state => <Cursor device={state} /> }
-    </DeviceContext.Consumer>
-);
+export default Cursor;

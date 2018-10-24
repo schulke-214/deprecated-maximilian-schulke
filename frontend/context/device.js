@@ -1,8 +1,9 @@
+import React, { Component } from 'react';
 import variables from '../styles/var';
 
 export const DeviceContext = React.createContext();
 
-export class DeviceProvider extends React.Component {
+export class DeviceProvider extends Component {
     constructor( props ) {
         super(props);
 

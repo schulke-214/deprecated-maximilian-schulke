@@ -8,6 +8,7 @@ export default css`
         width: 25px;
         height: 25px;
         border: 2px solid ${ variables.colors.highlight };
+        transform-origin: center;
         border-radius: 100%;
         opacity: 0;
     }
