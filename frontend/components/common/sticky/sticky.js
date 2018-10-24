@@ -83,7 +83,7 @@ class Sticky extends PureComponent {
 
 
     handleMouseMove = ev => {
-        if( this.props.device.isMobile )
+        if( this.props.device.isPhone || this.props.device.isMobile )
             return;
 
         this.setMouse( ev );
