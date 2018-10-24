@@ -15,6 +15,9 @@ class Menu extends Component {
                 <p style={{ lineHeight: 2 }}>
                     { this.text }
                 </p>
+                <p>
+                    { this.props.device.isMobile + "" }
+                </p>
             </React.Fragment>
         )
     }

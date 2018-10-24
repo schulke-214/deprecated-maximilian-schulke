@@ -33,7 +33,7 @@ export class DeviceProvider extends Component {
             width,
             isSmall,
             isPhone,
-            isMobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+            isMobile: /Android|webOS|Version\/|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
         });
     }
 
