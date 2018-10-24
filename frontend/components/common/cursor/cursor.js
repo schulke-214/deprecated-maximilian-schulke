@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 
-// CONTEXT IMPORTS
-import { DeviceContext } from '../../../context/device';
-
 // STYLE IMPORTS
 import styles from '../../../styles/components/cursor';
 
@@ -43,7 +40,7 @@ class Cursor extends Component {
         this.setCursorRect();
         
         if( this.props.device.isMobile )
-            TweenLite.set(this.cursor.current, { opacity: 0, display: "none" } );
+            TweenLite.set(this.cursor.current, { display: "none" } );
     }
 
     expand = () => {
@@ -51,7 +48,7 @@ class Cursor extends Component {
         this.opacity = 0.25;
 
         TweenLite.to( this.cursor.current, 0.25, {
-            scale: 3,
+            scale: 2,
             opacity: this.opacity,
             backgroundColor: variables.colors.highlight
         })
@@ -70,13 +67,15 @@ class Cursor extends Component {
 
     setMousePos = ev => {
         // MAUS POS = MAUS OFFSET AUSGEHEND VOM MITTELPUNKT DES WRAPPERS
-        this.cursorPos.x = ev.clientX - ( this.cursorRect.width || 25 ) / 2;
-        this.cursorPos.y = ev.clientY - ( this.cursorRect.height || 25 ) / 2;
+        this.cursorPos.x = ev.clientX - ( variables.cursor.width ) / 2;
+        this.cursorPos.y = ev.clientY - ( variables.cursor.height ) / 2;
+
+        console.log( ev.clientX, this.cursorRect.width / 2, this.cursorPos.x );
     }
 
     setCursorRect = () => {
-        console.log("set cursor rect")
-        console.table( this.cursor.current.getBoundingClientRect() )
+        // console.log("set cursor rect")
+        // console.table( this.cursor.current.getBoundingClientRect() )
 
         this.cursorRect = this.cursor.current.getBoundingClientRect();
     }
@@ -148,16 +147,17 @@ class Cursor extends Component {
                 this.opacity = 1;
         }
 
-
-
         TweenLite.to(this.cursor.current, 0.25, { x: this.cursorPos.x, y: this.cursorPos.y, opacity: this.opacity } );
     }
 
     render() {
+
         return (
             <React.Fragment>
                 <style jsx>{styles}</style>
-                <span id="mouse-cursor" ref={ this.cursor }></span>
+                <span id="mouse-cursor" ref={ this.cursor } 
+                    style={ this.props.device.isMobile ? { display: "none" } : null }>
+                </span>
             </React.Fragment>
         )
     }

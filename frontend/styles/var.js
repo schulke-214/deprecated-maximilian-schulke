@@ -16,6 +16,11 @@ const colors = {
     highlight: '#fff'
 };
 
+const cursor = {
+    width: 25,
+    height: 25
+}
+
 const spacing = {
     layout: {
         marginOut: 5,
@@ -31,6 +36,7 @@ const breakpoints = {
 module.exports = {
     font,
     colors,
+    cursor,
     spacing,
     breakpoints
 };
