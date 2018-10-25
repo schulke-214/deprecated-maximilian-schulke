@@ -45,10 +45,10 @@ class Cursor extends Component {
 
     expand = () => {
         this.static = true;
-        this.opacity = 0.25;
+        this.opacity = 1;
 
         TweenLite.to( this.cursor.current, 0.25, {
-            scale: 2,
+            scale: 0.25,
             opacity: this.opacity,
             backgroundColor: variables.colors.highlight
         })

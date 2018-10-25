@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import Logo from '../logo/logo';
 
 // STYLE IMPORTS
-import layoutStyles from '../../../layout/layout-styles';
 import styles from '../../../styles/components/pageLoader';
 
 
@@ -26,19 +25,25 @@ class pageLoader extends Component {
             paused: true, 
             onComplete: this.props.finished 
         }).to( progress, 1, { 
+            value: Math.floor( Math.random() * 50 + 25 ), 
+            delay: 0.25, 
+            ease: progress.ease, 
+            onUpdate: updateEl 
+        }).to( progress, 0.5, { 
             value: 99, 
             delay: 0.25, 
             ease: progress.ease, 
             onUpdate: updateEl 
         }).to( progress, 0.5, { 
             value: 100, 
+            delay: 1,
             ease: progress.ease, 
             onUpdate: updateEl 
         }).to(".pl-hide > *", 1, {
-            y: "-100%", 
+            x: "100%", 
             ease: progress.ease 
-        }).to("#pl-bg", 0.5, { 
-            y: "-100%",
+        }).to("#pl-bg", 1, { 
+            x: "100%",
             ease: progress.ease 
         }).play();
     }
@@ -46,8 +51,7 @@ class pageLoader extends Component {
     render() {
         return (
             <React.Fragment>
-                <style jsx>{layoutStyles}</style>
-                <style jsx>{styles}</style>
+                {/* <style jsx>{styles}</style> */}
 
                 <div id="pl">
                     <div id="pl-bg"></div>
