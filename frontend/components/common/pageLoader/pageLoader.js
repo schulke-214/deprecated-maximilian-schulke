@@ -11,6 +11,9 @@ class pageLoader extends Component {
     constructor( props ) {
         super( props );
 
+        this.logo = React.createRef();
+        this.counter = React.createRef();
+        
         this.progress = {
             value: 1,
             ease: () => Power4.easeInOut
@@ -22,6 +25,8 @@ class pageLoader extends Component {
             this.defineTl();
             this.load();
         }
+
+        console.log()
             
         this.updateEl();
     }
@@ -39,7 +44,7 @@ class pageLoader extends Component {
             onUpdate: this.updateEl 
         }).to( this.progress, 0.5, { 
             value: 99, 
-            delay: 0.25, 
+            delay: 10.25, 
             ease: this.progress.ease(), 
             onUpdate: this.updateEl 
         }).to( this.progress, 0.5, { 
@@ -61,7 +66,7 @@ class pageLoader extends Component {
         this.loader.play();
     }
 
-    updateEl = () => document.getElementById('pl-count').textContent = Math.floor( this.progress.value );
+    updateEl = () => document.getElementById('pl-count').textContent = this.logo.current.img.current.complete  + "";//Math.floor( this.progress.value );
 
     render() {
         return (
@@ -71,10 +76,10 @@ class pageLoader extends Component {
                 <div id="pl">
                     <div id="pl-bg"></div>
                     <span className="pl-hide logo" >
-                        <Logo className="logo" onLoad={ () => { this.defineTl(); this.load(); }} />
+                        <Logo className="logo" onLoad={ () => { this.defineTl(); this.load(); }} ref={ this.logo } />
                     </span>
                     <span className="pl-hide" id="pl-count-wrap">
-                        <span id="pl-count"></span>
+                        <span id="pl-count" ref={ this.counter }></span>
                     </span>
                 </div>
             </React.Fragment>

@@ -8,7 +8,7 @@ let initStyles = `
 
     .pl-hide {
         display: block;
-        overflow: hidden;
+        ${ /* overflow: hidden; */ ""}
     }
 
     .pl-hide.logo {
