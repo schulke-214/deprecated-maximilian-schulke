@@ -70,7 +70,7 @@ class Cursor extends Component {
         this.cursorPos.x = ev.clientX - ( variables.cursor.width ) / 2;
         this.cursorPos.y = ev.clientY - ( variables.cursor.height ) / 2;
 
-        console.log( ev.clientX, this.cursorRect.width / 2, this.cursorPos.x );
+        // console.log( ev.clientX, this.cursorRect.width / 2, this.cursorPos.x );
     }
 
     setCursorRect = () => {

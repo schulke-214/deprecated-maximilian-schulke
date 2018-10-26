@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const logo = props => (
-    <img { ...props } src="/static/logo/logo-nospace.png" />
-)
+class Logo extends Component {
+    constructor( props ) {
+        super( props );
 
-export default logo;
+        this.img = React.createRef();
+    }
+
+    render() {
+        return (
+            <img { ...this.props } src="/static/logo/logo-nospace.png" ref={this.img} />
+        )
+    }
+}
+
+export default Logo;

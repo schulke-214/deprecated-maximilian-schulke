@@ -2,6 +2,10 @@ import Document, { Head, Main, NextScript } from 'next/document';
 import variables from '../frontend/styles/var';
 
 let initStyles = `
+    .loading {
+        display: none;
+    }
+
     .pl-hide {
         display: block;
         overflow: hidden;
@@ -94,7 +98,7 @@ class AppDocument extends Document {
                         <meta httpEquiv="Refresh" content="0; URL=https://domain.com/lightweight/" /* REMINDER FOR FUTURE ME: CHANGE THIS*/ />
                     </noscript>
                 </Head>
-                <body>
+                <body className="loading" >
                     <Main />
                     <NextScript />
                 </body>
