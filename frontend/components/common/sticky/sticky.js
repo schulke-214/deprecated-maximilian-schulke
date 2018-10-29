@@ -50,6 +50,7 @@ class Sticky extends PureComponent {
         this.setRect();
 
         addEventListener('load', this.setRect );
+        console.log(this.content.current)
 
         this.trigger.current.addEventListener('mousemove', this.handleMouseMove );
         this.trigger.current.addEventListener('mouseenter', this.handleMouseEnter );
@@ -109,8 +110,12 @@ class Sticky extends PureComponent {
         this.duration = 2;
         this.entered = true;
 
-        this.props.cursor.current.expand();            
+        if( this.props.cursor )
+            this.props.cursor.current.shrink();    
 
+        if( this.props.hoverClass )
+            this.content.current.classList.add( this.props.hoverClass );
+            
         window.CURSOR_ONCLICK = this.props.clickHandler || this.handleClick;
     }
 
@@ -118,7 +123,13 @@ class Sticky extends PureComponent {
         this.setMouse(ev);
         this.entered = false;
 
-        this.props.cursor.current.reset();            
+        if( this.props.cursor )
+            this.props.cursor.current.reset(); 
+
+        if( this.props.hoverClass )
+            this.content.current.classList.remove( this.props.hoverClass );
+    
+            
         window.CURSOR_ONCLICK = null;
         // DURATION DER ANIMATION IST ABHÄNGIG DAVON WIE WEIT DIE MAUS WEG IST
         TweenLite.to( this.content.current, this.getHypotenuse() / 25 ,{x: 0, y: 0, ease: this.ease} );

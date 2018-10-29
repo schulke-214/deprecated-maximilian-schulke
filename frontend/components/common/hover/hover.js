@@ -35,12 +35,14 @@ class Hover extends Component {
         addEventListener('load', this.setRect );
         this.trigger.current.addEventListener('click', this.props.handleClick );
         this.trigger.current.addEventListener('mouseenter', this.handlerHover );
+        this.trigger.current.addEventListener('mouseout', this.handleMouseOut );
     }
 
     componentWillUnmount() {
         removeEventListener('load', this.setRect );
         this.trigger.current.removeEventListener('click', this.props.handleClick );
         this.trigger.current.removeEventListener('mouseenter', this.handlerHover );
+        this.trigger.current.removeEventListener('mouseout', this.handleMouseOut );
     }
 
     setRect = () => {
@@ -61,6 +63,13 @@ class Hover extends Component {
     handlerHover = () => {
         if( !this.props.isMobile )
             this.animation.play();
+
+        this.props.cursor.current.shrink();
+    }
+
+    handleMouseOut = () => {
+        this.props.cursor.current.reset();
+
     }
 
     prepareDOM = () => {

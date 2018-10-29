@@ -30,8 +30,6 @@ export default css`
     }
 
     html, body {
-        /* PREVENT CHROMES PULL-TO-REFRESH - HAS STILL BUGS */
-        overscroll-behavior-y: contain;
         background-color: ${ variables.colors.main };
     }
 
@@ -88,6 +86,12 @@ export default css`
     
     .hover-link-space {
         width: 5px
+    }
+
+    .black-arrow polyline {
+        transition: all .25s ease-in-out; 
+        mix-blend-mode: exlcusion;
+        /* stroke: ${ variables.colors.main }!important; */
     }
     
     /* HIDE SCROLLBAR */

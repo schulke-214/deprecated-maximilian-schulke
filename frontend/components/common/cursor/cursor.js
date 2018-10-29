@@ -43,12 +43,23 @@ class Cursor extends Component {
             TweenLite.set(this.cursor.current, { display: "none" } );
     }
 
-    expand = () => {
+    shrink = () => {
         this.static = true;
         this.opacity = 1;
 
         TweenLite.to( this.cursor.current, 0.25, {
             scale: 0.25,
+            opacity: this.opacity,
+            backgroundColor: variables.colors.highlight
+        })
+    }
+
+    expand = () => {
+        this.static = true;
+        this.opacity = 1;
+
+        TweenLite.to( this.cursor.current, 0.25, {
+            scale: 1.5,
             opacity: this.opacity,
             backgroundColor: variables.colors.highlight
         })
@@ -147,7 +158,7 @@ class Cursor extends Component {
                 this.opacity = 1;
         }
 
-        TweenLite.to(this.cursor.current, 0.25, { x: this.cursorPos.x, y: this.cursorPos.y, opacity: this.opacity } );
+        TweenLite.to(this.cursor.current, 0.5, { x: this.cursorPos.x, y: this.cursorPos.y, opacity: this.opacity } );
     }
 
     render() {

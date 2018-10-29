@@ -7,7 +7,8 @@ const font = {
 
     text: {
         small: '12.5px',
-        medium: '14px'
+        medium: '14px',
+        huge: '20px'
     }
 };
 

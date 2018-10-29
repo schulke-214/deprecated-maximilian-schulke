@@ -293,6 +293,7 @@ class Home extends Component {
                             <Hover text='view project'
                                 isMobile={this.props.device.isMobile}
                                 handleClick={this.openProject}
+                                cursor={this.props.cursor}
                                 style={{ marginBottom: 'calc( 7.5vh - 15px )', height: '15px' }} />
                         </div>
                         <Slider
@@ -341,7 +342,7 @@ class Home extends Component {
                                 updateCurrent={this.updateCurrent}
                                 isSmall />
                             <div className='lower flex'>
-                                <Hover handleClick={this.openProject} text='view project' style={{ marginTop: '5vh' }} />
+                                <Hover handleClick={this.openProject} cursor={this.props.cursor} text='view project' style={{ marginTop: '5vh' }} />
                                 <TextTransition
                                     style={{ marginTop: '5vh' }}
                                     text={this.getProjectData().meta.year + ' ~ ' + this.getProjectData().meta.category}
