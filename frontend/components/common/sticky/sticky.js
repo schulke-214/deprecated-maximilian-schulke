@@ -110,12 +110,14 @@ class Sticky extends PureComponent {
         this.duration = 2;
         this.entered = true;
 
-        if( this.props.cursor )
-            this.props.cursor.current.shrink();    
+        if( !this.props.device.isPhone && !this.props.device.isMobile ) {
+            if( this.props.cursor )
+                this.props.cursor.current.shrink();    
 
-        if( this.props.hoverClass )
-            this.content.current.classList.add( this.props.hoverClass );
-            
+            if( this.props.hoverClass )
+                this.content.current.classList.add( this.props.hoverClass );
+        }
+
         window.CURSOR_ONCLICK = this.props.clickHandler || this.handleClick;
     }
 
@@ -123,12 +125,14 @@ class Sticky extends PureComponent {
         this.setMouse(ev);
         this.entered = false;
 
-        if( this.props.cursor )
-            this.props.cursor.current.reset(); 
+        if( !this.props.device.isPhone && !this.props.device.isMobile ) {
+            if( this.props.cursor )
+                this.props.cursor.current.reset(); 
 
-        if( this.props.hoverClass )
-            this.content.current.classList.remove( this.props.hoverClass );
-    
+            if( this.props.hoverClass )
+                this.content.current.classList.remove( this.props.hoverClass );
+        }
+
             
         window.CURSOR_ONCLICK = null;
         // DURATION DER ANIMATION IST ABHÄNGIG DAVON WIE WEIT DIE MAUS WEG IST
