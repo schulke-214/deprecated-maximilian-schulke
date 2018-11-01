@@ -3,6 +3,7 @@ import variables from '../var';
 
 export default css`
     .arrow-container {
+        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -15,14 +16,20 @@ export default css`
         height: 40px;
     }
 
-    circle {
-        mix-blend-mode: exclusion;
-    }
-
     .path {
         fill: none;
         stroke-width: 2;
         mix-blend-mode: exclusion;
-        /* stroke: ${ variables.colors.highlight }; */
+        stroke: ${ variables.colors.highlight };
+    }
+
+    .trigger {
+        position: absolute;
+        width: calc( 100% + 50px );
+        height: calc( 100% + 50px );
+        left: -25px;
+        top: -25px;
+        border: 1px solid green;
+        z-index: -100;
     }
 `;

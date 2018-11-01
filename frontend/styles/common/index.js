@@ -37,7 +37,6 @@ export default css`
         position: fixed;
         top: 0px;
         left: 0px;
-        
         overflow: hidden;
     }
 
@@ -90,8 +89,7 @@ export default css`
 
     .black-arrow polyline {
         transition: all .25s ease-in-out; 
-        mix-blend-mode: exlcusion;
-        /* stroke: ${ variables.colors.main }!important; */
+        stroke: ${ variables.colors.main }!important;
     }
     
     /* HIDE SCROLLBAR */
