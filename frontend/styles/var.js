@@ -13,8 +13,9 @@ const font = {
 };
 
 const colors = {
-    main: '#060606',
-    highlight: '#fff'
+    // main: '#060606',
+    main: '#f2f2f2',
+    highlight: '#060606'
 };
 
 const cursor = {

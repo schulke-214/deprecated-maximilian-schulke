@@ -73,6 +73,8 @@ class Layout extends Component {
     preventDefault = ev => ev.preventDefault(); 
 
     render() {
+        console.log(this.props.router.pathname)
+
         return (
             <React.Fragment>
                 <style jsx>{styles}</style>
@@ -87,19 +89,18 @@ class Layout extends Component {
                             { !this.props.device.isMobile ? <span> creative developer </span> : null }
 
                             <Sticky handleClick={ () => this.changePage('/work') } cursor={ this.cursor }>
-                                <a>all</a>
+                                <a>work</a>
                             </Sticky>
                         </div>
                         <div className='mid flex space-between'>
                             <Sticky style={{ left: `${-25 + 7.5}px`}} cursor={ this.cursor } newTab='https://github.com/schulke-214/' >
                                 <a className='clickable git-link' >github</a>
                             </Sticky>
-
-                            { this.page.current ? <Arrows prev={ () => this.page.current.handleClick('prev') } next={ () => this.page.current.handleClick('next') } cursor={ this.cursor }/> : null }
+                            { this.page.current && this.props.router.pathname === '/' ? <Arrows prev={ () => this.page.current.handleClick('prev') } next={ () => this.page.current.handleClick('next') } cursor={ this.cursor }/> : null }
                         </div>
                         <div className='low flex space-between'>
-                            <Sticky handleClick={ () => this.changePage('/about') } cursor={ this.cursor }>
-                                <a>about</a>
+                            <Sticky handleClick={ () => this.changePage('/info') } cursor={ this.cursor }>
+                                <a>info</a>
                             </Sticky>
 
                             <Sticky mailto='info@domain.de' cursor={ this.cursor }>
