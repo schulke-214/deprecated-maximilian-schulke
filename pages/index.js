@@ -119,10 +119,7 @@ class Home extends Component {
 
         switch( event ) {
             case 'WHEEL':
-                this.slider.current.next(() => {
-                    addEventListener('wheel', this.resetRunningState);
-                    addEventListener('mousemove', this.resetRunningState );
-                });
+                this.slider.current.next(() => this.running = false );
                 break;
 
             case 'CLICK':
@@ -159,9 +156,7 @@ class Home extends Component {
 
         switch( event ) {
             case 'WHEEL':
-                this.slider.current.prev(() => {
-                    addEventListener('wheel', this.resetRunningState);
-                });
+                this.slider.current.prev(() => this.running = false );
                 break;
 
             case 'CLICK':
