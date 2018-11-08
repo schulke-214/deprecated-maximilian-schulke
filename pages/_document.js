@@ -14,7 +14,7 @@ let initStyles = `
 class AppDocument extends Document {
     render() {
         return (
-            <html lang="de">
+            <html lang="en">
                 <Head>
                     <link rel="shortcut icon" type="image/png" href="/static/icons/logo-dark-48.png"/>
                     <link rel="manifest" href="/static/manifest.json" />

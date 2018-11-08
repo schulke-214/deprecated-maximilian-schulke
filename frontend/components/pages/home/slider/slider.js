@@ -44,15 +44,15 @@ class Slider extends Component {
         this.handleResize();
         this.animate();
 
-        window.addEventListener('load', this.handleResize);
-        window.addEventListener('resize', this.handleResize);
+        addEventListener('load', this.handleResize);
+        addEventListener('resize', this.handleResize);
     }
 
     componentWillUnmount() {
-        window.cancelAnimationFrame( this.raf );
+        cancelAnimationFrame( this.raf );
 
-        window.removeEventListener('load', this.handleResize);
-        window.removeEventListener('resize', this.handleResize);
+        removeEventListener('load', this.handleResize);
+        removeEventListener('resize', this.handleResize);
     }
 
     sortImages = () => {
@@ -240,7 +240,7 @@ class Slider extends Component {
 
         return (
             <React.Fragment>
-                <div ref={ this.wrapper } >
+                <div ref={ this.wrapper } className="clickable" onClick={this.props.handleClick} >
                     <style jsx>{ commonStyles }</style>
                     <style jsx>{ dynamicStyles }</style>
                     <canvas ref={ this.canvas } />

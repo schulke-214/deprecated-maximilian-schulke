@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 
-// COMPONENT IMPORTS
-import Logo from '../logo/logo';
-
 // STYLE IMPORTS
 import styles from '../../../styles/components/pageLoader';
 

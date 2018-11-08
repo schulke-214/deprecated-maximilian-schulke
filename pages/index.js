@@ -300,7 +300,8 @@ class Home extends Component {
                             ref={this.slider}
                             current={this.state.slider.current}
                             length={this.state.slider.length}
-                            updateCurrent={this.updateCurrent} />
+                            updateCurrent={this.updateCurrent} 
+                            handleClick={() => console.log("gay")} />
                         <Title ref={this.projectTitle} titles={ this.state.projectTitles } />
                         <div className='project-info'>
                             <span className='flex projectNum'>
@@ -340,6 +341,7 @@ class Home extends Component {
                                 current={this.state.slider.current}
                                 length={this.state.slider.length}
                                 updateCurrent={this.updateCurrent}
+                                handleClick={() => console.log("gay")}
                                 isSmall />
                             <div className='lower flex'>
                                 <Hover handleClick={this.openProject} cursor={this.props.cursor} text='view project' style={{ marginTop: '5vh' }} />

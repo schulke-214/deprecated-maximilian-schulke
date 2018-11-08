@@ -9,7 +9,9 @@ class Logo extends Component {
 
     render() {
         return (
-            <img { ...this.props } src="/static/logo/logo-nospace-dark.png" ref={this.img} />
+            <img { ...this.props } 
+                src={ this.props.dark ? "/static/logo/logo-nospace-dark.png" : "/static/logo/logo-nospace.png" } 
+                ref={this.img} />
         )
     }
 }

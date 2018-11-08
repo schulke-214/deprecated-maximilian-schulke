@@ -14,7 +14,7 @@ export default css`
         align-items: center;
 
         text-align: center;
-        font-weight: 400;
+        font-weight: 500;
         font-family: 'Spectral';
         height: inherit;
         width: 100%;
@@ -22,5 +22,6 @@ export default css`
 
     .title-parent > span {
         font-size: inherit;
+        font-weight: inherit;
     } 
 `;

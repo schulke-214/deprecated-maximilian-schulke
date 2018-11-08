@@ -91,7 +91,7 @@ export default css`
         height: 20vh;
         min-height: 50px;
     }
-
+    
     #shadow::before {
         background: -moz-linear-gradient(top, rgba(18,18,18,0.75) 0%, rgba(18,18,18,0) 100%);
         background: -webkit-linear-gradient(top, rgba(18,18,18,0.75) 0%,rgba(18,18,18,0) 100%);

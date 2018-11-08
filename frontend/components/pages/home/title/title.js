@@ -128,7 +128,7 @@ class Title extends Component {
             <React.Fragment>
                 <style jsx>{styles}</style>
                 <style jsx>{dynamicStyles}</style>
-                <span ref={this.container} className="spectral" id="container" >
+                <span ref={this.container} className="spectral unclickable" id="container" >
                     { this.props.titles.map( (title, index) => {
                         title = (title + "");
 
