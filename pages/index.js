@@ -258,7 +258,8 @@ class Home extends Component {
     // ADD KEY SUPPORT LATER
     // ADD DRAG SUPPORT LATER
 
-    resetRunningState = ev => {
+    resetRunningState = () => {
+        console.log("Reseted")
         this.running = false;
         window.removeEventListener('wheel', this.resetRunningState );
         window.removeEventListener('mousemove', this.resetRunningState );
