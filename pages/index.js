@@ -65,7 +65,6 @@ class Home extends Component {
         removeEventListener('keydown', this.handleKeyDown );
 
         removeEventListener('wheel', this.resetRunningState );
-        removeEventListener('mousedown', this.resetRunningStateByClick );
         removeEventListener('mousemove', this.resetRunningState );
     }
 
@@ -121,9 +120,8 @@ class Home extends Component {
         switch( event ) {
             case 'WHEEL':
                 this.slider.current.next(() => {
-                    window.addEventListener('wheel', this.resetRunningState);
-                    window.addEventListener('mousedown', this.resetRunningStateByClick);
-                    window.addEventListener('mousemove', this.resetRunningState );
+                    addEventListener('wheel', this.resetRunningState);
+                    addEventListener('mousemove', this.resetRunningState );
                 });
                 break;
 
@@ -162,8 +160,7 @@ class Home extends Component {
         switch( event ) {
             case 'WHEEL':
                 this.slider.current.prev(() => {
-                    window.addEventListener('wheel', this.resetRunningState);
-                    window.addEventListener('mousedown', this.resetRunningStateByClick);
+                    addEventListener('wheel', this.resetRunningState);
                 });
                 break;
 
@@ -262,19 +259,8 @@ class Home extends Component {
     // ADD DRAG SUPPORT LATER
 
     resetRunningState = ev => {
-        if( Math.abs( ev.deltaY ) < this.threshold ) {
-            this.running = false;
-            window.removeEventListener('wheel', this.resetRunningState );
-            window.removeEventListener('mousedown', this.resetRunningStateByClick );
-            window.removeEventListener('mousemove', this.resetRunningState );
-        }
-    }
-
-    resetRunningStateByClick = () => {
         this.running = false;
-
         window.removeEventListener('wheel', this.resetRunningState );
-        window.removeEventListener('mousedown', this.resetRunningStateByClick );
         window.removeEventListener('mousemove', this.resetRunningState );
     }
 
