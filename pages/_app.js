@@ -5,6 +5,7 @@ import App, { Container } from 'next/app';
 import Head from 'next/head';
 
 // CONTEXT PROVIDER IMPORTS
+import { ScrollProvider } from '../frontend/context/scroll';
 import { DeviceContext, DeviceProvider } from '../frontend/context/device';
 
 // COMPONENT IMPORTS
@@ -17,12 +18,10 @@ import { capitalize } from '../frontend/utility/stringHelper';
 // STYLE IMPORTS
 import styles from '../frontend/styles/common/index';
 import utility from '../frontend/styles/common/utility';
-import { ScrollProvider, ScrollContext } from '../frontend/context/scroll';
 
 class Application extends App {
     constructor( props ) {
         super( props );
-
 
         this.state = {
             pageLoader: {

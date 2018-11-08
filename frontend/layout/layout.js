@@ -12,6 +12,7 @@ import styles from './layout-styles';
 
 // CONTEXT IMPORTS
 import { DeviceContext } from '../context/device';
+import { ScrollContext } from '../context/scroll';
 
 class Layout extends Component {
     constructor( props ) {
@@ -116,16 +117,23 @@ class Layout extends Component {
                 </div>
                 <main>
                     <DeviceContext.Consumer>
-                        { state => React.cloneElement(this.props.children, { 
-                            device: state,
-                            helper: {
-                                changePage: this.changePage,
-                                allowScrolling: this.allowScrolling, 
-                                preventScrolling: this.preventScrolling, 
-                            },
-                            cursor: this.cursor,
-                            ref: this.page 
-                        })}
+                        { deviceState => (
+                            <ScrollContext.Consumer>
+                                { scrollState => (
+                                    React.cloneElement(this.props.children, { 
+                                        device: deviceState,
+                                        lethargy: scrollState,
+                                        helper: {
+                                            changePage: this.changePage,
+                                            allowScrolling: this.allowScrolling, 
+                                            preventScrolling: this.preventScrolling, 
+                                        },
+                                        cursor: this.cursor,
+                                        ref: this.page 
+                                    })
+                                )}
+                            </ScrollContext.Consumer> 
+                        )}
                     </DeviceContext.Consumer>
                 </main>
             </React.Fragment>
