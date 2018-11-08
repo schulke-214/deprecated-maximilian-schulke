@@ -192,7 +192,8 @@ class Home extends Component {
     handleScroll = ev => {
         let delta = ev.deltaY;
 
-        if( Math.abs( delta ) > this.threshold && !this.running ) {
+        if( !this.running && this.props.scroll.status !== false ) {
+            console.log( "triggered" )
             if (delta < 0)
                 this.prevProject('WHEEL');
 

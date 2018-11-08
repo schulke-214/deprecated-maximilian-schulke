@@ -122,7 +122,7 @@ class Layout extends Component {
                                 { scrollState => (
                                     React.cloneElement(this.props.children, { 
                                         device: deviceState,
-                                        lethargy: scrollState,
+                                        scroll: scrollState,
                                         helper: {
                                             changePage: this.changePage,
                                             allowScrolling: this.allowScrolling, 
