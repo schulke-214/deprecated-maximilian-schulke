@@ -17,10 +17,12 @@ import { capitalize } from '../frontend/utility/stringHelper';
 // STYLE IMPORTS
 import styles from '../frontend/styles/common/index';
 import utility from '../frontend/styles/common/utility';
+import { ScrollProvider, ScrollContext } from '../frontend/context/scroll';
 
 class Application extends App {
     constructor( props ) {
         super( props );
+
 
         this.state = {
             pageLoader: {
@@ -82,26 +84,28 @@ class Application extends App {
         
         return (
             <DeviceProvider>
-                <Container >
-                    <Head>
-                        { this.dynamicPageTitle() }
-                    </Head>
+                <ScrollProvider>
+                    <Container >
+                        <Head>
+                            { this.dynamicPageTitle() }
+                        </Head>
 
-                    {/* ADDING GLOBAL STYLES */}
-                    <style jsx global>{styles}</style>
-                    <style jsx global>{utility}</style>
+                        {/* ADDING GLOBAL STYLES */}
+                        <style jsx global>{styles}</style>
+                        <style jsx global>{utility}</style>
 
-                    {/* PAGELOADER */}
-                    { this.state.pageLoader.isOpen ? <PageLoader finished={ this.removePageLoader } /> : null }
-                    
-                    <DeviceContext.Consumer>
-                        { state => (
-                            <Layout device={state}>
-                                <Component {...pageProps} />
-                            </Layout>
-                        )}
-                    </DeviceContext.Consumer>
-                </Container>
+                        {/* PAGELOADER */}
+                        { this.state.pageLoader.isOpen ? <PageLoader finished={ this.removePageLoader } /> : null }
+                        
+                        <DeviceContext.Consumer>
+                            { state => (
+                                <Layout device={state}>
+                                    <Component {...pageProps} />
+                                </Layout>
+                            )}
+                        </DeviceContext.Consumer>
+                    </Container>
+                </ScrollProvider>
             </DeviceProvider>
         )
     }
