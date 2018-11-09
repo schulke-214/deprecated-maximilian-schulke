@@ -15,7 +15,8 @@ export default css`
         padding: ${ variables.spacing.layout.marginOut + 'vw' };
         z-index: 1000;
 
-        mix-blend-mode: exclusion;
+        /* only in subpages */
+        /* mix-blend-mode: exclusion; */
     }
     
     #mouse-layer {
