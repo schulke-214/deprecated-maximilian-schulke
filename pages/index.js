@@ -347,6 +347,7 @@ class Home extends Component {
                             current={this.state.slider.current}
                             length={this.state.slider.length}
                             updateCurrent={this.updateCurrent}
+                            handleClick={this.openProject}
                             isPhone />
                         <div className='project-info'>
                             <TextTransition

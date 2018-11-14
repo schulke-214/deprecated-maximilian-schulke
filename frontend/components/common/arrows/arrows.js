@@ -22,12 +22,10 @@ class Arrows extends Component {
     }
 
     handleHover = () => {
-        console.log("IN")
         this.props.cursor.current.expand();
     }
 
     handleMouseOut = () => {
-        console.log("OUT")
         this.props.cursor.current.reset();
     }
 

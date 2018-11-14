@@ -2,6 +2,7 @@ import css from 'styled-jsx/css';
 
 export default css`
     #container {
+        z-index: 1;
         position: absolute;
         overflow: hidden;
         width: 100%;
