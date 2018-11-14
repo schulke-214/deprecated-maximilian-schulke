@@ -74,8 +74,6 @@ class Layout extends Component {
     preventDefault = ev => ev.preventDefault(); 
 
     render() {
-        console.log(this.props.router.pathname)
-
         return (
             <React.Fragment>
                 <style jsx>{styles}</style>

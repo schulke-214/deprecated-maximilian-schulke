@@ -50,7 +50,6 @@ class Sticky extends PureComponent {
         this.setRect();
 
         addEventListener('load', this.setRect );
-        console.log(this.content.current)
 
         this.trigger.current.addEventListener('mousemove', this.handleMouseMove );
         this.trigger.current.addEventListener('mouseenter', this.handleMouseEnter );
