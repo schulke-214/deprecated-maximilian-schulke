@@ -178,12 +178,10 @@ class Home extends Component {
         Router.push(`/work/${ page }`)
     }
     // SLIDER FUNCTIONALITY
-
     handleScroll = ev => {
         let delta = ev.deltaY;
 
         if( !this.running && this.props.scroll.status !== false ) {
-            console.log( "triggered" )
             if (delta < 0)
                 this.prevProject('WHEEL');
 
@@ -252,7 +250,6 @@ class Home extends Component {
     // ADD DRAG SUPPORT LATER
 
     resetRunningState = () => {
-        console.log("Reseted")
         this.running = false;
         window.removeEventListener('wheel', this.resetRunningState );
         window.removeEventListener('mousemove', this.resetRunningState );

@@ -14,7 +14,7 @@ export default css`
         left: 25%;
         width: 50%;
         height: 100%;
-    } 
+    }
 
     .top {
         flex: 1 1 0;
@@ -73,16 +73,6 @@ export default css`
 
     #home-date-topic > span:first-child {
         margin-bottom: 15px;
-    }
-
-    #kek {
-        position: absolute;
-        width: 100%;
-        height: 100vh;
-        display: block;
-        background: -moz-radial-gradient(center, ellipse cover, rgba(125,185,232,0) 0%, rgba(125,185,232,0) 2%, rgba(73,103,127,0) 50%, rgba(18,18,18,0.5) 100%);
-        background: -webkit-radial-gradient(center, ellipse cover, rgba(125,185,232,0) 0%,rgba(125,185,232,0) 2%,rgba(73,103,127,0) 50%,rgba(18,18,18,0.5) 100%);
-        background: radial-gradient(ellipse at center, rgba(125,185,232,0) 0%,rgba(125,185,232,0) 2%,rgba(73,103,127,0) 50%,rgba(18,18,18,0.5) 100%);
     }
 
     @media screen and ( max-width: ${ variables.breakpoints.phone }px ) {
