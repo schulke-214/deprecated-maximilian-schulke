@@ -112,9 +112,8 @@ class Home extends Component {
         // ONLY A TEMPORARY SOLUTION
         try {
             this.projectTitle.current.next( next);
-
-            this.textTransitions.projectNumber.current.next( next + ' ' );
             this.textTransitions.projectData.current.next( project.meta.year + ' ~ ' + project.meta.category );
+            this.textTransitions.projectNumber.current.next( next + ' ' );
         } catch( e ) {}
 
         switch( event ) {
@@ -148,9 +147,8 @@ class Home extends Component {
         // ONLY A TEMPORARY SOLUTION
         try {
             this.projectTitle.current.prev( prev );
-
-            this.textTransitions.projectNumber.current.prev( prev + ' ' );
             this.textTransitions.projectData.current.prev( project.meta.year + ' ~ ' + project.meta.category);
+            this.textTransitions.projectNumber.current.prev( prev + ' ' );
         } catch( e ) {}
 
 
@@ -353,6 +351,12 @@ class Home extends Component {
                             length={this.state.slider.length}
                             updateCurrent={this.updateCurrent}
                             isPhone />
+                        <div className='project-info'>
+                            <TextTransition
+                                text={this.getProjectData().meta.year + ' ~ ' + this.getProjectData().meta.category}
+                                style={{ height: '15px' }}
+                                ref={this.textTransitions.projectData} />
+                        </div>
                     </div>
                 </React.Fragment>
             )

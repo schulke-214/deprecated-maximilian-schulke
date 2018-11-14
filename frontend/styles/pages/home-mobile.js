@@ -104,6 +104,17 @@ export default css`
         background: linear-gradient(to bottom, rgba(18,18,18,0) 0%,rgba(18,18,18,0.75) 100%);
     } 
 
+    .project-info {
+        position: absolute;
+        bottom: 32.5px;
+        left: 40%;
+        width: min-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        /* padding: 37.5px; */
+    }
+
     @media screen and ( max-width: ${ variables.breakpoints.phone }px ) {
         .inner-wrap {
             position: absolute;
