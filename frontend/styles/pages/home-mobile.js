@@ -107,12 +107,11 @@ export default css`
     .project-info {
         position: absolute;
         bottom: 32.5px;
-        left: 40%;
-        width: min-content;
+        width: 100%;
+        text-align: center;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        /* padding: 37.5px; */
     }
 
     @media screen and ( max-width: ${ variables.breakpoints.phone }px ) {
