@@ -349,12 +349,6 @@ class Home extends Component {
                             updateCurrent={this.updateCurrent}
                             handleClick={this.openProject}
                             isPhone />
-                        <div className='project-info'>
-                            <TextTransition
-                                text={this.getProjectData().meta.year + ' ~ ' + this.getProjectData().meta.category}
-                                style={{ height: '15px' }}
-                                ref={this.textTransitions.projectData} />
-                        </div>
                     </div>
                 </React.Fragment>
             )
