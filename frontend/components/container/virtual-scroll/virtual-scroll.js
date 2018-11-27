@@ -15,11 +15,8 @@ class VirtualScroll extends Component {
 
     componentDidMount() {
         addEventListener('wheel', this.handleWheel, { passive: false } );
-        
-        addEventListener('touchstart', this.handleTouchStart, { passive: false } );
         addEventListener('touchmove', this.handleTouchMove, { passive: false } );
-        addEventListener('touchend', this.handleTouchEnd, { passive: false } );
-
+        addEventListener('touchend', this.handleTouchEnd, { passive: false });
         addEventListener('keydown', this.handleTouch, { passive: false } );
     }
 
@@ -30,24 +27,28 @@ class VirtualScroll extends Component {
         TweenLite.set(this.child.current, { top: this.pos })
     }
 
-    handleTouchStart = ev => {
-        ev.preventDefault();
-
-        this.touchStart = ev.touches[0].clientY;
-    }
 
     handleTouchMove = ev => {
         ev.preventDefault();
-        let y = ev.touches[0].clientY;
 
-        this.pos -= ( this.touchStart - y );
+        let touchPos = ev.touches[0].clientY;
+        let difference;
+
+        if ( this.lastTouch !== 0 )
+            difference = ( touchPos - this.lastTouch ) / this.ratio ;
+        else
+            difference = 0;
+
+        this.pos += difference;
+        this.lastTouch = touchPos;
+
         TweenLite.set(this.child.current, { top: this.pos })
     }
 
     handleTouchEnd = ev => {
         ev.preventDefault();
 
-        this.touchStart = 0;
+        this.lastTouch = 0;
     }
 
     render() {
