@@ -64,7 +64,7 @@ class Hover extends Component {
         if( !this.props.isMobile )
             this.animation.play();
 
-        this.props.cursor.current.expand();
+        this.props.cursor.current.shrink();
     }
 
     handleMouseOut = () => {

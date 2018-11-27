@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-class ZwanzigGrad extends Component {
+class Reciper extends Component {
     render() {
         return (
             <a> this is my project reciper </a>
         )
     }
 }
-export default ZwanzigGrad;
+export default Reciper;
