@@ -67,7 +67,7 @@ function VirtualScroll(options) {
     this.bodyTouchAction = null;
 
     if (this.options.passive !== undefined) {
-        this.listenerOptions = {passive: this.options.passive};
+        this.listenerOptions = { passive: this.options.passive };
     }
 }
 
@@ -127,7 +127,7 @@ VirtualScroll.prototype._onTouchStart = function(e) {
 
 VirtualScroll.prototype._onTouchMove = function(e) {
     var options = this.options;
-    if(options.preventTouch
+    if( options.preventTouch
         && !e.target.classList.contains(options.unpreventTouchClass)) {
         e.preventDefault();
     }

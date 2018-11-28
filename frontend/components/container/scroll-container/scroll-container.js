@@ -13,7 +13,9 @@ class ScrollContainer extends Component {
     componentDidMount() {
         this.vs = new VirtualScroll({
             mouseMultiplier: 0.1,
-            touchMultiplier: 0.5
+            touchMultiplier: 0.5,
+            preventTouch: true,
+            passive: false
         });
 
         this.vs.on( ev => {
