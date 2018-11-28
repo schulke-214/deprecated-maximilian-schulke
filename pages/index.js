@@ -56,7 +56,7 @@ class Home extends Component {
         addEventListener('touchstart', this.handleTouch );
         addEventListener('keydown', this.handleKeyDown );
         
-        this.props.helper.preventScrolling();
+        // this.props.helper.preventScrolling();
     } 
 
     componentWillUnmount() {

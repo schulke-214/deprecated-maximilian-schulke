@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import VirtualScroll from '../virtual-scroll/virtual-scroll';
+import VirtualScroll from '../scroll-container/scroll-container';
 
 class Project extends Component {
     constructor( props ) {
