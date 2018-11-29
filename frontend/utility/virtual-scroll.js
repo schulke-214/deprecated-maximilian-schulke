@@ -9,15 +9,12 @@ I adapted the idea and much of his code - i just needed to change a few things
 
 'use strict';
 
-var objectAssign = require('object-assign');
-var Emitter = require('tiny-emitter');
-var Lethargy = require('lethargy').Lethargy;
-var bindAll = require('bindall-standalone');
-var EVT_ID = 'virtualscroll';
-
-var support;
-
-var keyCodes = {
+const objectAssign = require('object-assign');
+const Emitter = require('tiny-emitter');
+const Lethargy = require('lethargy').Lethargy;
+const bindAll = require('bindall-standalone');
+const EVT_ID = 'virtualscroll';
+const keyCodes = {
     LEFT: 37,
     UP: 38,
     RIGHT: 39,
@@ -25,117 +22,111 @@ var keyCodes = {
     SPACE: 32
 };
 
-function VirtualScroll(options) {
-    support = {
-        hasWheelEvent: 'onwheel' in document,
-        hasMouseWheelEvent: 'onmousewheel' in document,
-        hasTouch: 'ontouchstart' in document,
-        hasTouchWin: navigator.msMaxTouchPoints && navigator.msMaxTouchPoints > 1,
-        hasPointer: !!window.navigator.msPointerEnabled,
-        hasKeyDown: 'onkeydown' in document,
-        isFirefox: navigator.userAgent.indexOf('Firefox') > -1
+
+
+class VirtualScroll {
+    constructor( options ) {
+        bindAll(this, '_onWheel', '_onMouseWheel', '_onTouchStart', '_onTouchMove', '_onKeyDown');
+
+        this.support = {
+            hasWheelEvent: 'onwheel' in document,
+            hasMouseWheelEvent: 'onmousewheel' in document,
+            hasTouch: 'ontouchstart' in document,
+            hasTouchWin: navigator.msMaxTouchPoints && navigator.msMaxTouchPoints > 1,
+            hasPointer: !!window.navigator.msPointerEnabled,
+            hasKeyDown: 'onkeydown' in document,
+            isFirefox: navigator.userAgent.indexOf('Firefox') > -1
+        };
+        
+        if (options && options.el)
+            this.el = options.el;
+        else 
+            this.el = window;
+    
+        this.options = objectAssign({
+            vertical: true, // Affects last 5 saved Delta values
+            mouseMultiplier: 1,
+            touchMultiplier: 2,
+            firefoxMultiplier: 15,
+            keyStep: 120,
+            preventTouch: false,
+            unpreventTouchClass: 'vs-touchmove-allowed',
+            limitInertia: false, 
+            target: undefined
+        }, options);
+    
+        if (this.options.limitInertia) this._lethargy = new Lethargy();
+        if (this.options.target) this._target = this.options.target;
+        if (this.options.passive !== undefined) this.listenerOptions = { passive: this.options.passive };
+    
+        // Emitter and Basic Event 
+        this._emitter = new Emitter();
+        this._event = {
+            y: 0,
+            x: 0,
+            deltaX: 0,
+            deltaY: 0
+        };
+    
+        this.touchStartX = null;
+        this.touchStartY = null;
+        this.bodyTouchAction = null;
+    
+        // Save last 5 DeltaY Values
+        this.lastDelta = [];
+    }
+
+    _notify = ev => {
+        this._event.x += this._event.deltaX;
+        this._event.y += this._event.deltaY;
+    
+        this._emitter.emit(EVT_ID, {
+            ...this._event,
+            originalEvent: ev
+        });
     };
     
-    bindAll(this, '_onWheel', '_onMouseWheel', '_onTouchStart', '_onTouchMove', '_onKeyDown');
-
-    this.el = window;
-    if (options && options.el) {
-        this.el = options.el;
-        delete options.el;
-    }
-
-    this.options = objectAssign({
-        mouseMultiplier: 1,
-        touchMultiplier: 2,
-        firefoxMultiplier: 15,
-        keyStep: 120,
-        preventTouch: false,
-        unpreventTouchClass: 'vs-touchmove-allowed',
-        limitInertia: false, 
-        target: undefined
-    }, options);
-
-    if (this.options.limitInertia) this._lethargy = new Lethargy();
-    if (this.options.target) this._target = this.options.target;
-
-    this._emitter = new Emitter();
-    this._event = {
-        y: 0,
-        x: 0,
-        deltaX: 0,
-        deltaY: 0
+    _onWheel = ev => {
+        if (this._lethargy && this._lethargy.check(ev) === false) 
+            return;
+    
+        // In Chrome and in Firefox (at least the new one)
+        this._event.deltaX = ev.wheelDeltaX || ev.deltaX * -1;
+        this._event.deltaY = ev.wheelDeltaY || ev.deltaY * -1;
+    
+        // for our purpose deltamode = 1 means user is on a wheel mouse, not touch pad
+        if( this.support.isFirefox && ev.deltaMode == 1 ) {
+            this._event.deltaX *= this.options.firefoxMultiplier;
+            this._event.deltaY *= this.options.firefoxMultiplier;
+        }
+    
+        this._event.deltaX *= this.options.mouseMultiplier;
+        this._event.deltaY *= this.options.mouseMultiplier;
+    
+        this._notify(ev);
     };
-    this.touchStartX = null;
-    this.touchStartY = null;
 
-    // own
-    this.touchInitX = null;
-    this.touchInitY = null;
-    this.touchAmountX = 0;
-    this.touchAmountY = 0;
-    this.lastTouchY = 0;
-    this.lastTouchX = 0;
+    _onMouseWheel = ev => {
+        if (this.options.limitInertia && this._lethargy.check(e) === false) 
+            return;
+    
+        // In Safari, IE and in Chrome if 'wheel' isn't defined
+        this._event.deltaX = (ev.wheelDeltaX) ? ev.wheelDeltaX : 0;
+        this._event.deltaY = (ev.wheelDeltaY) ? ev.wheelDeltaY : ev.wheelDelta;
+    
+        this._notify(ev);
+    };
+    
+    _onTouchStart = ev => {
+        const touch = ev.targetTouches ? ev.targetTouches[0] : ev;
 
-    this.bodyTouchAction = null;
-
-    if (this.options.passive !== undefined) {
-        this.listenerOptions = { passive: this.options.passive };
-    }
+        this.touchStartX = touch.pageX;
+        this.touchStartY = touch.pageY;
+    };
 }
 
-VirtualScroll.prototype._notify = function(e) {
-    var evt = this._event;
-    evt.x += evt.deltaX;
-    evt.y += evt.deltaY;
 
-   this._emitter.emit(EVT_ID, {
-        x: evt.x,
-        y: evt.y,
-        deltaX: evt.deltaX,
-        deltaY: evt.deltaY,
-        originalEvent: e
-   });
-};
 
-VirtualScroll.prototype._onWheel = function(e) {
-    var options = this.options;
-    if (this._lethargy && this._lethargy.check(e) === false) return;
-    var evt = this._event;
-
-    // In Chrome and in Firefox (at least the new one)
-    evt.deltaX = e.wheelDeltaX || e.deltaX * -1;
-    evt.deltaY = e.wheelDeltaY || e.deltaY * -1;
-
-    // for our purpose deltamode = 1 means user is on a wheel mouse, not touch pad
-    // real meaning: https://developer.mozilla.org/en-US/docs/Web/API/WheelEvent#Delta_modes
-    if( support.isFirefox && e.deltaMode == 1 ) {
-        evt.deltaX *= options.firefoxMultiplier;
-        evt.deltaY *= options.firefoxMultiplier;
-    }
-
-    evt.deltaX *= options.mouseMultiplier;
-    evt.deltaY *= options.mouseMultiplier;
-
-    this._notify(e);
-};
-
-VirtualScroll.prototype._onMouseWheel = function(e) {
-    if (this.options.limitInertia && this._lethargy.check(e) === false) return;
-
-    var evt = this._event;
-
-    // In Safari, IE and in Chrome if 'wheel' isn't defined
-    evt.deltaX = (e.wheelDeltaX) ? e.wheelDeltaX : 0;
-    evt.deltaY = (e.wheelDeltaY) ? e.wheelDeltaY : e.wheelDelta;
-
-    this._notify(e);
-};
-
-VirtualScroll.prototype._onTouchStart = function(e) {
-    var t = (e.targetTouches) ? e.targetTouches[0] : e;
-    this.touchStartX = t.pageX;
-    this.touchStartY = t.pageY;
-};
 
 VirtualScroll.prototype._onTouchMove = function(e) {
     var options = this.options;
@@ -153,6 +144,12 @@ VirtualScroll.prototype._onTouchMove = function(e) {
 
     this.touchStartX = t.pageX;
     this.touchStartY = t.pageY;
+
+    // push delta value depending on the direction of the virtual-scroll instance
+    if( this.options.vertical ) 
+        this._saveDelta( evt.deltaY );
+    else 
+        this._saveDelta( evt.deltaX );
 
     this._notify(e);
 };

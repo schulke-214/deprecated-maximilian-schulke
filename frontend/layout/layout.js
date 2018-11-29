@@ -95,7 +95,7 @@ class Layout extends Component {
                             <Sticky style={{ left: `${-25 + 7.5}px`}} cursor={ this.cursor } newTab='https://github.com/schulke-214/' >
                                 <a className='clickable git-link' >github</a>
                             </Sticky>
-                            { this.page.current && this.props.router.pathname === '/' ? <Arrows prev={ () => this.page.current.handleClick('prev') } next={ () => this.page.current.handleClick('next') } cursor={ this.cursor }/> : null }
+                            { this.page.current ? <Arrows prev={ () => this.page.current.handleClick('prev') } next={ () => this.page.current.handleClick('next') } cursor={ this.cursor }/> : null }
                         </div>
                         <div className='low flex space-between'>
                             <Sticky handleClick={ () => this.changePage('/info') } cursor={ this.cursor }>
