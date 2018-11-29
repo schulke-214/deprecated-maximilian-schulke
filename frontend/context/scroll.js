@@ -15,18 +15,18 @@ export class ScrollProvider extends Component {
     }
 
     componentDidMount() {
-        addEventListener('mousewheel', this.handleScroll, false );
-        addEventListener('DOMMouseScroll', this.handleScroll, false );
-        addEventListener('wheel', this.handleScroll, false );
-        addEventListener('MozMousePixelScroll', this.handleScroll, false );
+        addEventListener('mousewheel', this.handleScroll, { passive:false });
+        addEventListener('DOMMouseScroll', this.handleScroll, { passive:false });
+        addEventListener('wheel', this.handleScroll, { passive:false });
+        addEventListener('MozMousePixelScroll', this.handleScroll, { passive:false });
 
     }
 
     componentWillUnmount() {
-        removeEventListener('mousewheel', this.handleScroll, false );
-        removeEventListener('DOMMouseScroll', this.handleScroll, false );
-        removeEventListener('wheel', this.handleScroll, false );
-        removeEventListener('MozMousePixelScroll', this.handleScroll, false );
+        removeEventListener('mousewheel', this.handleScroll, { passive:false });
+        removeEventListener('DOMMouseScroll', this.handleScroll, { passive:false });
+        removeEventListener('wheel', this.handleScroll, { passive:false });
+        removeEventListener('MozMousePixelScroll', this.handleScroll, { passive:false });
     }
 
     handleScroll = e => {
