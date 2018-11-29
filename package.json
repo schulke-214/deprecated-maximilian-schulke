@@ -27,7 +27,6 @@
     "bindall-standalone": "^1.0.5",
     "compression": "^1.7.3",
     "express": "^4.16.3",
-    "gsap": "^2.0.2",
     "lethargy": "^1.0.4",
     "next": "^6.1.2",
     "react": "^16.5.2",

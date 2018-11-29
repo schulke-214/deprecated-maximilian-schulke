@@ -43,6 +43,7 @@ function VirtualScroll(options) {
         this.el = options.el;
         delete options.el;
     }
+
     this.options = objectAssign({
         mouseMultiplier: 1,
         touchMultiplier: 2,
@@ -50,10 +51,12 @@ function VirtualScroll(options) {
         keyStep: 120,
         preventTouch: false,
         unpreventTouchClass: 'vs-touchmove-allowed',
-        limitInertia: false
+        limitInertia: false, 
+        target: undefined
     }, options);
 
     if (this.options.limitInertia) this._lethargy = new Lethargy();
+    if (this.options.target) this._target = this.options.target;
 
     this._emitter = new Emitter();
     this._event = {
@@ -64,6 +67,15 @@ function VirtualScroll(options) {
     };
     this.touchStartX = null;
     this.touchStartY = null;
+
+    // own
+    this.touchInitX = null;
+    this.touchInitY = null;
+    this.touchAmountX = 0;
+    this.touchAmountY = 0;
+    this.lastTouchY = 0;
+    this.lastTouchX = 0;
+
     this.bodyTouchAction = null;
 
     if (this.options.passive !== undefined) {
@@ -96,7 +108,7 @@ VirtualScroll.prototype._onWheel = function(e) {
 
     // for our purpose deltamode = 1 means user is on a wheel mouse, not touch pad
     // real meaning: https://developer.mozilla.org/en-US/docs/Web/API/WheelEvent#Delta_modes
-    if(support.isFirefox && e.deltaMode == 1) {
+    if( support.isFirefox && e.deltaMode == 1 ) {
         evt.deltaX *= options.firefoxMultiplier;
         evt.deltaY *= options.firefoxMultiplier;
     }
@@ -145,6 +157,14 @@ VirtualScroll.prototype._onTouchMove = function(e) {
     this._notify(e);
 };
 
+VirtualScroll.prototype._onTouchEnd = function(e) {
+    var t = (e.changedTouches) ? e.changedTouches[0] : e;
+
+    console.log(t.pageY, this.touchStartY )
+
+    // TweenLite.set(this._target, '')
+}
+
 VirtualScroll.prototype._onKeyDown = function(e) {
     var evt = this._event;
     evt.deltaX = evt.deltaY = 0;
@@ -177,10 +197,9 @@ VirtualScroll.prototype._bind = function() {
     if(support.hasWheelEvent) this.el.addEventListener('wheel', this._onWheel, this.listenerOptions);
     if(support.hasMouseWheelEvent) this.el.addEventListener('mousewheel', this._onMouseWheel, this.listenerOptions);
 
-    if(support.hasTouch) {
-        this.el.addEventListener('touchstart', this._onTouchStart, this.listenerOptions);
-        this.el.addEventListener('touchmove', this._onTouchMove, this.listenerOptions);
-    }
+    this.el.addEventListener('touchstart', this._onTouchStart, this.listenerOptions);
+    this.el.addEventListener('touchmove', this._onTouchMove, this.listenerOptions);
+    this.el.addEventListener('touchend', this._onTouchEnd, this.listenerOptions);
 
     if(support.hasPointer && support.hasTouchWin) {
         this.bodyTouchAction = document.body.style.msTouchAction;

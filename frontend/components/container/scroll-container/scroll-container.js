@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import VirtualScroll from '../../../utility/virtual-scroll';
-import { TweenLite } from 'gsap';
 
 class ScrollContainer extends Component {
     constructor( props ) {
@@ -14,8 +13,10 @@ class ScrollContainer extends Component {
         this.vs = new VirtualScroll({
             mouseMultiplier: 0.1,
             touchMultiplier: 0.5,
+            keyStep: 25,
             preventTouch: true,
-            passive: false
+            passive: false,
+            target: this.child.current
         });
 
         this.vs.on( ev => {
@@ -23,6 +24,10 @@ class ScrollContainer extends Component {
 
             TweenLite.set(this.child.current, { y: ev.y })
         });
+    }
+
+    componentWillUnmount() {
+        this.vs.destroy();
     }
 
     render() {
