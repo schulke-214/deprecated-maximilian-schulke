@@ -70,10 +70,9 @@ class VirtualScroll {
         this.firstTouchY = null;
         this.touchStartX = null;
         this.touchStartY = null;
-        this.bodyTouchAction = null;
-    
-        // Save last 5 DeltaY Values
         this.lastDelta = [];
+
+        this.bodyTouchAction = null;
     }
 
     _notify = ev => {
@@ -171,10 +170,21 @@ class VirtualScroll {
 
         if( this.lastDelta.length >= 5 ) {
             console.log("animating based on values")
+            // let dur = 0.25;
+
+            // TweenLite.to(this._target, dur, { y: '100px', onUpdate: () => {
+            //     this._event.deltaX = (touch.pageX - this.touchStartX) * this.options.touchMultiplier;
+            //     this._event.deltaY = (touch.pageY - this.touchStartY) * this.options.touchMultiplier;
+
+
+            //     console.log( (touch.pageY - this.touchStartY) * this.options.touchMultiplier ) 
+            //     // this._notify(ev);
+            // }})
         } 
         
         else if ( this.lastDelta.length > 0 ) {
             // handle short touch
+            
         } 
     }
 
