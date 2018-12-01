@@ -167,7 +167,6 @@ class VirtualScroll {
         if( ( pos && neg ) || zero ) 
             return;
 
-
         if( this.lastDelta.length >= 5 ) {
             console.log("animating based on values")
             // let dur = 0.25;
