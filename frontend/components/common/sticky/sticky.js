@@ -11,6 +11,7 @@ const styles = css`
     #trigger {
         position: absolute;
         border-radius: 100%;
+        cursor: pointer;
     };
     
     span {

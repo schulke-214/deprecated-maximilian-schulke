@@ -91,7 +91,7 @@ class Hover extends Component {
                 <Link href={this.props.to} >
                     <a style={{...this.props.style, position: 'relative' }}>
                         <span ref={this.content} style={{ position: 'relative' }} />
-                        <div id='trigger' style={{ width: this.size, height: this.size, position: 'absolute', borderRadius: '100%' }} ref={ this.trigger } />
+                        <div id='trigger' style={{ width: this.size, height: this.size, position: 'absolute', borderRadius: '100%', cursor: 'pointer' }} ref={ this.trigger } />
                     </a>
                 </Link>
             );
@@ -101,7 +101,7 @@ class Hover extends Component {
             return (
                 <a style={{...this.props.style, position: 'relative' }}>
                     <span ref={this.content} style={{ position: 'relative' }} />
-                    <div id='trigger' style={{ width: this.size, height: this.size, position: 'absolute', borderRadius: '100%' }} ref={ this.trigger } />
+                    <div id='trigger' style={{ width: this.size, height: this.size, position: 'absolute', borderRadius: '100%', cursor: 'pointer' }} ref={ this.trigger } />
                 </a>
             );
         }

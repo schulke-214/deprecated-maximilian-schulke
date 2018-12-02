@@ -294,6 +294,7 @@ class Home extends Component {
                                 ref={this.textTransitions.projectData} />
                         </div>
                     </div>
+
                 </React.Fragment>
             )
         }
