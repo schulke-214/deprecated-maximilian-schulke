@@ -7,7 +7,7 @@ export default css`
         padding: 0;
         box-sizing: border-box;
 
-        font-family: 'Noto Sans', 'Helvetica', 'Montserrat', 'Arial';
+        font-family: 'Lato', 'Noto Sans', 'Helvetica', 'Montserrat', 'Arial';
         font-weight: 400;
         outline: none;
 
