@@ -33,6 +33,8 @@ class Home extends Component {
         // VARIABLES
         this.threshold = 50;
         this.running = false;
+        this.touchStartX = null;
+        this.touchStartY = null;
 
         // MAP JSON TO ARRAY
         const projects = [];
@@ -55,7 +57,8 @@ class Home extends Component {
         addEventListener('wheel', this.handleScroll );
         addEventListener('touchstart', this.handleTouch );
         addEventListener('keydown', this.handleKeyDown );
-        
+        addEventListener('touchstart', this.handleTouchStart );
+        addEventListener('touchend', this.handleTouchEnd );
         // this.props.helper.preventScrolling();
     } 
 
@@ -63,6 +66,8 @@ class Home extends Component {
         removeEventListener('wheel', this.handleScroll );
         removeEventListener('touchstart', this.handleTouch );
         removeEventListener('keydown', this.handleKeyDown );
+        removeEventListener('touchstart', this.handleTouchStart );
+        removeEventListener('touchend', this.handleTouchEnd );
 
         removeEventListener('wheel', this.resetRunningState );
         removeEventListener('mousemove', this.resetRunningState );
@@ -200,39 +205,39 @@ class Home extends Component {
         }
     }
 
-    handleTouch = ev => {
-        let startX = ev.touches[0].clientX;
-        let startY = ev.touches[0].clientY;
-        
-        window.ontouchend = ev => {
-            let deltaX, deltaY;
+    handleTouchStart = ev => {
+        this.touchStartX = ev.touches[0].clientX;
+        this.touchStartY = ev.touches[0].clientY;
+    }
 
-            deltaX = ev.changedTouches[0].clientX - startX;
-            deltaY = ev.changedTouches[0].clientY - startY;
+    handleTouchEnd = ev => {
+        let deltaX, deltaY;
 
-            // VERTICAL
-            if( Math.abs(deltaY) > Math.abs(deltaX) ) {
-                if( Math.abs(deltaY) > this.threshold && !this.running ) {
-                    if( deltaY > 0 )
-                        this.prevProject('TOUCH');
-    
-                    if( deltaY < 0 )
-                        this.nextProject('TOUCH');
-                }
-            }
+        deltaX = ev.changedTouches[0].clientX - this.touchStartX;
+        deltaY = ev.changedTouches[0].clientY - this.touchStartY;
 
-            // HORIZONTAL
-            else {
-                if( Math.abs(deltaX) > this.threshold && !this.running ) {
-                    if( deltaX > 0 )
-                        this.prevProject('TOUCH');
-    
-                    if( deltaX < 0 )
-                        this.nextProject('TOUCH');
-                }
+        // VERTICAL
+        if( Math.abs(deltaY) > Math.abs(deltaX) ) {
+            if( Math.abs(deltaY) > this.threshold && !this.running ) {
+                if( deltaY > 0 )
+                    this.prevProject('TOUCH');
+
+                if( deltaY < 0 )
+                    this.nextProject('TOUCH');
             }
         }
-    }
+
+        // HORIZONTAL
+        else {
+            if( Math.abs(deltaX) > this.threshold && !this.running ) {
+                if( deltaX > 0 )
+                    this.prevProject('TOUCH');
+
+                if( deltaX < 0 )
+                    this.nextProject('TOUCH');
+            }
+        }
+    } 
 
     handleKeyDown = ev => {
         if( !this.running ) {
@@ -341,7 +346,7 @@ class Home extends Component {
                 <React.Fragment>
                     <div className='inner' >
                         <style jsx>{mobileStyles}</style>
-                        <Title ref={this.projectTitle} titles={ this.state.projectTitles } isPhone />
+                        <Title ref={this.projectTitle} titles={ this.state.projectTitles } handleClick={this.openProject} isPhone />
                         <div id='shadow' className="unclickable" />
                         <Slider
                             ref={this.slider}

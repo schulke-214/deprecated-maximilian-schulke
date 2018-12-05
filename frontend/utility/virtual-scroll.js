@@ -7,7 +7,6 @@ I adapted the idea and much of his code - i just needed to change a few things
 @repo: https://github.com/ayamflow/virtual-scroll
 */
 
-import objectAssign from 'object-assign';
 import Emitter from 'tiny-emitter';
 import { Lethargy } from 'lethargy';
 
@@ -38,7 +37,7 @@ class VirtualScroll {
         else 
             this.el = window;
     
-        this.options = objectAssign({
+        this.options = {
             vertical: true, // Affects last 5 saved Delta values
             mouseMultiplier: 1,
             touchMultiplier: 2,
@@ -47,8 +46,9 @@ class VirtualScroll {
             preventTouch: false,
             unpreventTouchClass: 'vs-touchmove-allowed',
             limitInertia: false, 
-            target: undefined
-        }, options);
+            target: undefined,
+            ...options
+        };
     
         if (this.options.limitInertia) this._lethargy = new Lethargy();
         if (this.options.target) this._target = this.options.target;
@@ -70,6 +70,7 @@ class VirtualScroll {
         this.lastDelta = [];
 
         this.bodyTouchAction = null;
+        this.touchHandled = false;
     }
 
     _notify = ev => {
@@ -123,6 +124,9 @@ class VirtualScroll {
 
         this.touchStartX = touch.pageX;
         this.touchStartY = touch.pageY;
+
+        console.log("LISTENING!!!")
+        this.touchHandled = false;
     };
 
     _onTouchMove = ev => {
@@ -147,6 +151,9 @@ class VirtualScroll {
     };
 
     _onTouchEnd = ev => {
+        if( this.touchHandled ) return;
+        else this.touchHandled = true;
+
         const touch = ev.changedTouches ? ev.changedTouches[0] : ev;
 
         let pos = 0; 
@@ -159,7 +166,10 @@ class VirtualScroll {
             else zero++;
         })
 
+        console.log("STOPPING!!!")
+
         console.log(pos,neg,zero)
+        
         if( ( pos && neg ) || zero ) 
             return;
 
@@ -250,6 +260,7 @@ class VirtualScroll {
     _unbind = () => {
         if (this.support.hasWheelEvent) 
             this.el.removeEventListener('wheel', this._onWheel);
+            
         if (this.support.hasMouseWheelEvent) 
             this.el.removeEventListener('mousewheel', this._onMouseWheel);
     
