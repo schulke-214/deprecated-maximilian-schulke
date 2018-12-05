@@ -12,7 +12,7 @@ class ScrollContainer extends Component {
     componentDidMount() {
         this.vs = new VirtualScroll({
             mouseMultiplier: 0.1,
-            touchMultiplier: 0.5,
+            touchMultiplier: 1,
             keyStep: 25,
             preventTouch: true,
             passive: false,
@@ -21,6 +21,7 @@ class ScrollContainer extends Component {
 
         this.vs.on( ev => {
             TweenLite.set(this.child.current, { y: ev.y })
+            // console.log('EV FIRED', ev )
         });
     }
 

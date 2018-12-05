@@ -9,13 +9,10 @@ I adapted the idea and much of his code - i just needed to change a few things
 
 import objectAssign from 'object-assign';
 import Emitter from 'tiny-emitter';
-// import bindAll from 'bindall-standalone';
 import { Lethargy } from 'lethargy';
 
 class VirtualScroll {
     constructor( options ) {
-        // bindAll(this, '_onWheel', '_onMouseWheel', '_onTouchStart', '_onTouchMove', '_onKeyDown');
-
         this.support = {
             hasWheelEvent: 'onwheel' in document,
             hasMouseWheelEvent: 'onmousewheel' in document,
@@ -128,7 +125,6 @@ class VirtualScroll {
         this.touchStartY = touch.pageY;
     };
 
-
     _onTouchMove = ev => {
         if( this.options.preventTouch && !ev.target.classList.contains(this.options.unpreventTouchClass) )
             ev.preventDefault();
@@ -169,16 +165,26 @@ class VirtualScroll {
 
         if( this.lastDelta.length >= 5 ) {
             console.log("animating based on values")
-            // let dur = 0.25;
 
-            // TweenLite.to(this._target, dur, { y: '100px', onUpdate: () => {
-            //     this._event.deltaX = (touch.pageX - this.touchStartX) * this.options.touchMultiplier;
-            //     this._event.deltaY = (touch.pageY - this.touchStartY) * this.options.touchMultiplier;
+            // this._event.deltaX = (touch.pageX - this.touchStartX) * this.options.touchMultiplier;
 
+            let dist = 0;
 
-            //     console.log( (touch.pageY - this.touchStartY) * this.options.touchMultiplier ) 
-            //     // this._notify(ev);
-            // }})
+            for( let i = 0; i < this.lastDelta.length; i++ ) {
+                if( i !== this.lastDelta.length - 1 )
+                    dist += this.lastDelta[i] - this.lastDelta[i + 1];
+            }
+
+            dist += 2.5;
+
+            let dur = Math.abs(dist * 0.005);
+
+            console.log( dist, dur )
+            TweenLite.to(this._event, dur, { y: this._event.y + dist, ease: Power1.easeOut ,onUpdate: () => {
+
+                // console.log( (touch.pageY - this.firstTouchY) ) //, touch.pageY, this.firstTouchY ) 
+                this._notify(ev);
+            }})
         } 
         
         else if ( this.lastDelta.length > 0 ) {
