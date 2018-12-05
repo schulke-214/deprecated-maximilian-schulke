@@ -44,15 +44,15 @@ class Slider extends Component {
         this.handleResize();
         this.animate();
 
-        addEventListener('load', this.handleResize);
-        addEventListener('resize', this.handleResize);
+        addEventListener('load', this.handleResize, { passive: true });
+        addEventListener('resize', this.handleResize, { passive: true });
     }
 
     componentWillUnmount() {
         cancelAnimationFrame( this.raf );
 
-        removeEventListener('load', this.handleResize);
-        removeEventListener('resize', this.handleResize);
+        removeEventListener('load', this.handleResize, { passive: true });
+        removeEventListener('resize', this.handleResize, { passive: true });
     }
 
     sortImages = () => {

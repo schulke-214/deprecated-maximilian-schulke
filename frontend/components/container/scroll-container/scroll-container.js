@@ -15,7 +15,7 @@ class ScrollContainer extends Component {
             touchMultiplier: 1,
             keyStep: 25,
             preventTouch: true,
-            passive: false,
+            passive: true,
             target: this.child.current
         });
 

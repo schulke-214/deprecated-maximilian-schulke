@@ -84,6 +84,8 @@ class VirtualScroll {
     };
     
     _onWheel = ev => {
+        ev.preventDefault();
+        
         if (this._lethargy && this._lethargy.check(ev) === false) 
             return;
     

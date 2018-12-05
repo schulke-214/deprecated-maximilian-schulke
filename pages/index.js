@@ -54,20 +54,20 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        addEventListener('wheel', this.handleScroll );
-        addEventListener('touchstart', this.handleTouch );
-        addEventListener('keydown', this.handleKeyDown );
-        addEventListener('touchstart', this.handleTouchStart );
-        addEventListener('touchend', this.handleTouchEnd );
+        addEventListener('wheel', this.handleScroll, { passive: true } );
+        addEventListener('touchstart', this.handleTouch, { passive: true });
+        addEventListener('keydown', this.handleKeyDown, { passive: true } );
+        addEventListener('touchstart', this.handleTouchStart, { passive: true } );
+        addEventListener('touchend', this.handleTouchEnd, { passive: true } );
         // this.props.helper.preventScrolling();
     } 
 
     componentWillUnmount() {
-        removeEventListener('wheel', this.handleScroll );
-        removeEventListener('touchstart', this.handleTouch );
-        removeEventListener('keydown', this.handleKeyDown );
-        removeEventListener('touchstart', this.handleTouchStart );
-        removeEventListener('touchend', this.handleTouchEnd );
+        removeEventListener('wheel', this.handleScroll, { passive: true } );
+        removeEventListener('touchstart', this.handleTouch, { passive: true } );
+        removeEventListener('keydown', this.handleKeyDown, { passive: true } );
+        removeEventListener('touchstart', this.handleTouchStart, { passive: true });
+        removeEventListener('touchend', this.handleTouchEnd, { passive: true } );
 
         removeEventListener('wheel', this.resetRunningState );
         removeEventListener('mousemove', this.resetRunningState );
