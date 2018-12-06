@@ -4,13 +4,13 @@ import React, { Component } from 'react';
 import Project from '../../frontend/components/container/project/project';
 
 // JSON IMPORT
-import data from '../../static/project.json';
+// import data from '../../static/project.json';
 
 class Example extends Component {
     constructor ( props ) {
         super(props);
 
-        this.project = data["example"];
+        // this.project = data["example"];
     }
 
     componentDidMount ( ) {
