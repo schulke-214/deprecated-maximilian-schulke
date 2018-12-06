@@ -1,27 +1,32 @@
 import React, { Component } from 'react'
-import VirtualScroll from '../scroll-container/scroll-container';
+
+import ScrollContainer from '../scroll-container/scroll-container';
+import MetaData from '../../pages/work/metaData/metaData';
+import Title from '../../common/title/title';
 
 class Project extends Component {
     constructor( props ) {
         super( props );
 
         this.child = React.createRef();
+    }
 
-        this.pos = 0;
+    componentDidMount() {
+    }
+
+    componentWillUnmount() {
+
     }
 
     render() {
         return (
-            <VirtualScroll>
+            <ScrollContainer>
+                <MetaData meta={this.props.data.meta} />
+                <Title static title={this.props.data.meta.title} />
                 <div>
-                    <h1>
-                        ola amigos am a project
-                    </h1>
-                    <div>
-                        { this.props.children }
-                    </div>
+                    { this.props.children }
                 </div>
-            </VirtualScroll>
+            </ScrollContainer>
         )
     }
 }

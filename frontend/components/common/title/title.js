@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 
-import styles from "../../../../styles/components/title/title-common";
-
-import dekstopStyles from "../../../../styles/components/title/title-desktop";
-import tabletStyles  from "../../../../styles/components/title/title-tablet";
-import mobileStyles from "../../../../styles/components/title/title-mobile";
+import styles from "../../../styles/components/title/title-common";
+import dekstopStyles from "../../../styles/components/title/title-desktop";
+import tabletStyles  from "../../../styles/components/title/title-tablet";
+import mobileStyles from "../../../styles/components/title/title-mobile";
 
 class Title extends Component {
     constructor ( props ) {
@@ -13,10 +12,13 @@ class Title extends Component {
         this.container = React.createRef();
 
         // DYNAMICLY CREATE REFS
-        this.projects = []
-        this.props.titles.forEach( (title, index) => {
-            this.projects[index] = React.createRef();
-        })
+        if( !this.props.static ) { 
+            this.projects = [];
+
+            this.props.titles.forEach( (title, index) => {
+                this.projects[index] = React.createRef();
+            })
+        }
 
         this.active = 0;
     }
@@ -27,6 +29,8 @@ class Title extends Component {
     }
 
     next = () => {
+        if( this.props.static ) return;
+
         let next = this.active + 1; 
         
         if( this.active === this.props.titles.length - 1 )
@@ -62,6 +66,8 @@ class Title extends Component {
     }
 
     prev = () => {
+        if( this.props.static ) return;
+
         let prev = this.active - 1;        
         
         if( this.active === 0 )
@@ -97,6 +103,8 @@ class Title extends Component {
     }
 
     update = () => {
+        if( this.props.static ) return;
+
         this.projects.forEach( ( project, index ) => {
             if( this.active === index )
                 TweenLite.set(this.projects[ index ].current, {
@@ -124,33 +132,64 @@ class Title extends Component {
         else
             dynamicStyles = dekstopStyles;
 
-        return (
-            <React.Fragment>
-                <style jsx>{styles}</style>
-                <style jsx>{dynamicStyles}</style>
-                <span ref={this.container} onClick={this.props.handleClick} className="spectral clickable" id="container" >
-                    { this.props.titles.map( (title, index) => {
-                        title = (title + "");
 
-                        return ( 
-                            <span className="title-parent" ref={this.projects[index]} key={title}>
-                                { title.split('').map( (letter, index) => {
-                                    let classes = "hover-link-span spectral";
-                                    if( letter === " " )
-                                        classes += " hover-link-space";
-                                    
-                                    return (
-                                        <span className={classes} key={letter + index}>
-                                            { letter }
-                                        </span>
-                                    )
-                                }) }
-                            </span>
-                        );
-                    }) }
-                </span>
-            </React.Fragment>
-        );
+        let component;
+
+        if( this.props.static ) {
+            component = (
+                <React.Fragment>
+                    <style jsx>{styles}</style>
+                    <style jsx>{dynamicStyles}</style>
+                    <span ref={this.container} onClick={this.props.handleClick} className="spectral clickable" id="container" >
+                        <span className="title-parent" key={this.props.title}>
+                            { this.props.title.split('').map( (letter, index) => {
+                                let classes = "hover-link-span spectral";
+                                if( letter === " " )
+                                    classes += " hover-link-space";
+                            
+                                return (
+                                    <span className={classes} key={letter + index}>
+                                        { letter }
+                                    </span>
+                                )
+                            }) }
+                        </span>
+                    </span>
+                </React.Fragment>
+            );
+        }
+
+        else {
+            component = (
+                <React.Fragment>
+                    <style jsx>{styles}</style>
+                    <style jsx>{dynamicStyles}</style>
+                    <span ref={this.container} onClick={this.props.handleClick} className="spectral clickable" id="container" >
+                        { this.props.titles.map( (title, index) => {
+                            title = (title + "");
+
+                            return ( 
+                                <span className="title-parent" ref={this.projects[index]} key={title}>
+                                    { title.split('').map( (letter, index) => {
+                                        let classes = "hover-link-span spectral";
+                                        if( letter === " " )
+                                            classes += " hover-link-space";
+
+                                        return (
+                                            <span className={classes} key={letter + index}>
+                                                { letter }
+                                            </span>
+                                        )
+                                    }) }
+                                </span>
+                            );
+                        })}
+                    </span>
+                </React.Fragment>
+            )
+        }
+       
+        return component;
     }
 }
 

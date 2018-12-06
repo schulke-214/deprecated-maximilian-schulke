@@ -6,10 +6,10 @@ import Slider from '../frontend/components/pages/home/slider/slider';
 import Circle from '../frontend/components/common/circle/circle';
 import TextTransition from '../frontend/components/common/textTransition/textTransition';
 import Hover from '../frontend/components/common/hover/hover';
-import Title from '../frontend/components/pages/home/title/title';
+import Title from '../frontend/components/common/title/title';
 
 // JSON IMPORTS
-import projectsJson from '../static/Project.json';
+import data from '../static/project.json';
 
 // STYLE IMPORTS
 import commonStyles from '../frontend/styles/pages/home-common';
@@ -38,7 +38,7 @@ class Home extends Component {
 
         // MAP JSON TO ARRAY
         const projects = [];
-        Object.keys(projectsJson).map( key => projects.push(projectsJson[key]) );
+        Object.keys(data).map( key => projects.push(data[key]) );
 
         const projectTitles = [];
         projects.map( project => projectTitles.push( project.meta.title ));

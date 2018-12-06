@@ -13,7 +13,7 @@ class ScrollContainer extends Component {
         this.vs = new VirtualScroll({
             mouseMultiplier: 0.1,
             touchMultiplier: 1,
-            keyStep: 25,
+            keyStep: 15,
             preventTouch: true,
             passive: true,
             target: this.child.current
@@ -33,10 +33,6 @@ class ScrollContainer extends Component {
         return (
             <div ref={this.child} style={{ position: "absolute", top: 0, width: "100vw", height: "100vh", display: "block" }} >
                 { this.props.children }
-
-                <h1>
-                    Ola amigo como estas
-                </h1>
             </div>
         )
     }

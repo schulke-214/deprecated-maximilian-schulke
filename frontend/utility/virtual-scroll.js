@@ -84,8 +84,6 @@ class VirtualScroll {
     };
     
     _onWheel = ev => {
-        ev.preventDefault();
-        
         if (this._lethargy && this._lethargy.check(ev) === false) 
             return;
     
@@ -214,7 +212,7 @@ class VirtualScroll {
         switch(ev.keyCode) {
             case this.keyCodes.LEFT:
             case this.keyCodes.UP:
-                evt.deltaY = this.options.keyStep;
+                this._event.deltaY = this.options.keyStep;
                 break;
     
             case this.keyCodes.RIGHT:
@@ -234,7 +232,7 @@ class VirtualScroll {
                 return;
         }
     
-        this._notify(e);
+        this._notify(ev);
     };
 
     _bind = () => {
