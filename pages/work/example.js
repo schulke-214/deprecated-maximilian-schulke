@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import Project from '../../frontend/components/container/project/project';
 
 // JSON IMPORT
-import data from '../../static/project.json';
+import data from '../../static/work.json';
 
 class Example extends Component {
     constructor ( props ) {
