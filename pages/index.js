@@ -9,7 +9,7 @@ import Hover from '../frontend/components/common/hover/hover';
 import Title from '../frontend/components/common/title/title';
 
 // JSON IMPORTS
-import data from '../static/project.json';
+import data from '../static/work.json';
 
 // STYLE IMPORTS
 import commonStyles from '../frontend/styles/pages/home-common';
