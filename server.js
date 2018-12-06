@@ -15,10 +15,22 @@ app.prepare().then(() => {
 
     server.use(compression());
 
-    server.get('*', (req, res) => {
-        const parsedUrl = parse(req.url, true);
+    server.get('*', (req,res) => {
+        const url = parse(req.url, true);
+        const { pathname, query } = url;
+
+        console.log( "RUNS" );
+
         return handle(req, res, parsedUrl);
-    });
+
+
+        // console.log( pathname, query );
+
+        // if ( pathname !== route('/work/:id') ) return handle(req, res);
+
+        
+        // app.render(req, res, '/work', { ...params, ...query });
+    })
 
     server.listen(PORT, err => {
         if (err) throw err;
