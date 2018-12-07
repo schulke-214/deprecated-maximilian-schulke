@@ -1,36 +1,36 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 
-// COMPONENT IMPORTS
-import Project from '../frontend/components/container/project/project';
+// // COMPONENT IMPORTS
+// import Project from '../frontend/components/container/project/project';
 
-// JSON IMPORT
-import data from '../../static/work.json';
+// // JSON IMPORT
+// import data from '../../static/work.json';
 
-class Work extends Component {
-    static getInitialProps = ({ query: { id } }) => ({ id });
+// class Work extends Component {
+//     static getInitialProps = ({ query: { id } }) => ({ id });
 
-    constructor ( props ) {
-        super(props);
+//     constructor ( props ) {
+//         super(props);
 
-        if( this.props.id in data )
-            this.project = data[this.props.id];
-    }
+//         if( this.props.id in data )
+//             this.project = data[this.props.id];
+//     }
 
 
-    componentDidMount ( ) {
+//     componentDidMount ( ) {
 
-    }
+//     }
 
-    componentWillUnmount ( ) {
+//     componentWillUnmount ( ) {
 
-    }
+//     }
 
-    render() {
-        return (
-            <Project data={ this.project } device={ this.props.device }>
-                is a child
-            </Project>
-        )
-    }
-}
-export default Work;
+//     render() {
+//         return (
+//             <Project data={ this.project } device={ this.props.device }>
+//                 is a child
+//             </Project>
+//         )
+//     }
+// }
+// export default Work;
