@@ -5,7 +5,6 @@
 	"main": "index.js",
 	"scripts": {
 		"dev": "node server.js",
-		"dev:server": "nodemon --exec \"yarn dev\"",
 		"build": "next build --mode production",
 		"heroku-postbuild": "next build -mode production",
 		"start": "NODE_ENV=production node server.js"
