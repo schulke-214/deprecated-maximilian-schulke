@@ -12,7 +12,7 @@ import Title from '../frontend/components/common/title/title';
 import data from '../static/work.json';
 
 // STYLE IMPORTS
-import commonStyles from '../frontend/styles/pages/home-common';
+import commonStyles from '../frontend/styles/pages/home/home-common';
 import desktopStyles from '../frontend/styles/pages/home-desktop';
 import tabletStyles from '../frontend/styles/pages/home-tablet';
 import mobileStyles from '../frontend/styles/pages/home-mobile';
@@ -261,11 +261,11 @@ class Home extends Component {
     }
 
     render() {
-        let Content;
+        let content;
         
         // DESKTOP LAYOUT
         if( !this.props.device.isSmall && !this.props.device.isMobile ) {
-            Content = (
+            content = (
                 <React.Fragment>
                     <style jsx>{desktopStyles}</style>
                     <div className='inner'>
@@ -306,7 +306,7 @@ class Home extends Component {
 
         // TABLET LAYOUT
         else if ( !this.props.device.isPhone && ( this.props.device.isMobile || this.props.device.isSmall ) ) {
-            Content = ( 
+            content = ( 
                 <React.Fragment>
                     <div className='inner' >
                         <style jsx>{tabletStyles}</style>
@@ -342,7 +342,7 @@ class Home extends Component {
 
         // MOBILE LAYOUT
         else if ( this.props.device.isPhone ) {
-            Content = (
+            content = (
                 <React.Fragment>
                     <div className='inner' >
                         <style jsx>{mobileStyles}</style>
@@ -361,7 +361,7 @@ class Home extends Component {
         }
 
         else {
-            Content = (
+            content = (
                 <React.Fragment>
                     <p>Please use a bigger device</p>
                 </React.Fragment>
