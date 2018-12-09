@@ -19,7 +19,6 @@ export default css`
     .path {
         fill: none;
         stroke-width: 2;
-        mix-blend-mode: exclusion;
         stroke: ${ variables.colors.highlight };
     }
 

@@ -80,7 +80,8 @@ class Application extends App {
 
     render() {
         const { Component, pageProps } = this.props;
-        
+        const blendMode = /([/])(work)([/])([\w-]+)/i.test(this.props.router.pathname);
+
         return (
             <DeviceProvider>
                 <ScrollProvider>
@@ -98,7 +99,7 @@ class Application extends App {
                         
                         <DeviceContext.Consumer>
                             { state => (
-                                <Layout device={state}>
+                                <Layout device={state} blendMode={ blendMode } >
                                     <Component {...pageProps} />
                                 </Layout>
                             )}

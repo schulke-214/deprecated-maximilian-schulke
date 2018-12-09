@@ -70,7 +70,6 @@ export default css`
     .logo {
         width: 20px;
         height: 10px;
-        mix-blend-mode: exclusion;
     }
 
     img {

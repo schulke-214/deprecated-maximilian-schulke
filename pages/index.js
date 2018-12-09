@@ -13,9 +13,9 @@ import data from '../static/work.json';
 
 // STYLE IMPORTS
 import commonStyles from '../frontend/styles/pages/home/home-common';
-import desktopStyles from '../frontend/styles/pages/home-desktop';
-import tabletStyles from '../frontend/styles/pages/home-tablet';
-import mobileStyles from '../frontend/styles/pages/home-mobile';
+import desktopStyles from '../frontend/styles/pages/home/home-desktop';
+import tabletStyles from '../frontend/styles/pages/home/home-tablet';
+import mobileStyles from '../frontend/styles/pages/home/home-mobile';
 
 class Home extends Component {
     constructor( props ) {
@@ -299,7 +299,6 @@ class Home extends Component {
                                 ref={this.textTransitions.projectData} />
                         </div>
                     </div>
-
                 </React.Fragment>
             )
         }
@@ -372,7 +371,7 @@ class Home extends Component {
             <React.Fragment>
                 <style jsx>{commonStyles}</style>
                 <div id='home-wrapper'>
-                    { Content }
+                    { content }
                 </div>
             </React.Fragment>
         )

@@ -77,7 +77,7 @@ class Layout extends Component {
         return (
             <React.Fragment>
                 <style jsx>{styles}</style>
-                <div id='layout-layer' className='unclickable' >
+                <div id='layout-layer' className='unclickable' style={{ mixBlendMode: this.props.blendMode ? 'exclusion' : '' }} >
                     <div id='gui-layer'>
                         <div className='top flex space-between' >
                             <Sticky handleClick={ () => this.changePage('/') } cursor={ this.cursor } >

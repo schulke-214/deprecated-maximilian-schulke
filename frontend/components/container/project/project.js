@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import ScrollContainer from '../scroll-container/scroll-container';
 import MetaData from '../../pages/work/metaData/metaData';
+import Picture from '../../pages/work/picture/picture';
 import Title from '../../common/title/title';
 
 // STYLE IMPORTS
@@ -34,6 +35,7 @@ class Project extends Component {
                     {/* <style jsx>{desktopStyles}</style> */}
                     <MetaData meta={this.props.data.meta} />
                     <Title static title={this.props.data.meta.title} />
+                    <Picture src={this.props.data.meta.projectImg} />
                     <div>
                         { this.props.children }
                     </div>
@@ -48,6 +50,7 @@ class Project extends Component {
                     {/* <style jsx>{tabletStyles}</style> */}
                     <MetaData meta={this.props.data.meta} />
                     <Title static isSmall title={this.props.data.meta.title} />
+                    <Picture src={this.props.data.meta.projectImg} />
                     <div>
                         { this.props.children }
                     </div>
@@ -62,6 +65,7 @@ class Project extends Component {
                     {/* <style jsx>{mobileStyles}</style> */}
                     <MetaData meta={this.props.data.meta} />
                     <Title static isPhone title={this.props.data.meta.title} />
+                    <Picture src={this.props.data.meta.projectImg} />
                     <div>
                         { this.props.children }
                     </div>

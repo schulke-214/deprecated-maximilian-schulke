@@ -10,7 +10,7 @@
                 "ux",
                 "art direction"
             ],
-            "projectImg": "static/projects/zwanzig-grad/main.jpg"
+            "projectImg": "../static/projects/example/main.jpg"
         },
         "images": [
             "static/projects/zwanzig-grad/page-images/",
@@ -30,7 +30,7 @@
                 "organisation",
                 "creative leading"
             ],
-            "projectImg": "static/projects/zwanzig-grad/main.jpg"
+            "projectImg": "../static/projects/zwanzig-grad/main.jpg"
         }
     },
     "reciper": {
@@ -44,7 +44,7 @@
                 "organisation",
                 "creative leading"
             ],
-            "projectImg": "static/projects/zwanzig-grad/main.jpg"
+            "projectImg": "../static/projects/reciper/main.jpg"
         }
     }
 }
