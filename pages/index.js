@@ -345,7 +345,7 @@ class Home extends Component {
                 <React.Fragment>
                     <div className='inner' >
                         <style jsx>{mobileStyles}</style>
-                        <Title ref={this.projectTitle} titles={ this.state.projectTitles } handleClick={this.openProject} isPhone />
+                        <Title ref={this.projectTitle} titles={ this.state.projectTitles } isPhone />
                         <div id='shadow' className="unclickable" />
                         <Slider
                             ref={this.slider}

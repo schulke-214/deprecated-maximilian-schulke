@@ -140,7 +140,7 @@ class Title extends Component {
                 <React.Fragment>
                     <style jsx>{styles}</style>
                     <style jsx>{dynamicStyles}</style>
-                    <span ref={this.container} onClick={this.props.handleClick} className="spectral clickable" id="container" >
+                    <span ref={this.container} onClick={this.props.handleClick} className="spectral unclickable" id="container" >
                         <span className="title-parent" key={this.props.title}>
                             { this.props.title.split('').map( (letter, index) => {
                                 let classes = "hover-link-span spectral";
@@ -164,7 +164,7 @@ class Title extends Component {
                 <React.Fragment>
                     <style jsx>{styles}</style>
                     <style jsx>{dynamicStyles}</style>
-                    <span ref={this.container} onClick={this.props.handleClick} className="spectral clickable" id="container" >
+                    <span ref={this.container} onClick={this.props.handleClick} className="spectral unclickable" id="container" >
                         { this.props.titles.map( (title, index) => {
                             title = (title + "");
 
