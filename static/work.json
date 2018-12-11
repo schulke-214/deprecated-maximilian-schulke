@@ -11,13 +11,7 @@
                 "art direction"
             ],
             "projectImg": "../static/projects/example/main.jpg"
-        },
-        "images": [
-            "static/projects/zwanzig-grad/page-images/",
-            "static/projects/zwanzig-grad/page-images/",
-            "static/projects/zwanzig-grad/page-images/",
-            "static/projects/zwanzig-grad/page-images/"
-        ]
+        }
     },
     "zwanzig-grad": { 
         "meta": {
@@ -31,7 +25,13 @@
                 "creative leading"
             ],
             "projectImg": "../static/projects/zwanzig-grad/main.jpg"
-        }
+        },
+        "images": [
+            "static/projects/zwanzig-grad/1.png",
+            "static/projects/zwanzig-grad/2.png",
+            "static/projects/zwanzig-grad/3.png",
+            "static/projects/zwanzig-grad/4.png"
+        ]
     },
     "reciper": {
         "meta": {
