@@ -3,6 +3,7 @@
         "meta": {
             "title": "Example",
             "link": "example",
+            "projectLink": "https://de.wikipedia.org/",
             "category": "design",
             "year": 2017,
             "roles": [
@@ -17,6 +18,7 @@
         "meta": {
             "title": "Zwanzig Grad",
             "link": "zwanzig-grad",
+            "projectLink": "https://de.wikipedia.org/",
             "category": "frontend",
             "year": 2018,
             "roles": [
@@ -30,13 +32,14 @@
             "static/projects/zwanzig-grad/1.png",
             "static/projects/zwanzig-grad/2.png",
             "static/projects/zwanzig-grad/3.png",
-            "static/projects/zwanzig-grad/4.png"
+            "static/projects/zwanzig-grad/4.png" 
         ]
     },
     "reciper": {
         "meta": {
             "title": "Reciper",
             "link": "reciper",
+            "projectLink": "https://de.wikipedia.org/",
             "category": "fullstack",
             "year": 2019,
             "roles": [
