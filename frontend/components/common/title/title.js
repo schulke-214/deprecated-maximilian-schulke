@@ -123,10 +123,10 @@ class Title extends Component {
     render() {
         let dynamicStyles;
 
-        if ( this.props.isSmall )
+        if ( this.props.isTablet )
             dynamicStyles = tabletStyles;
 
-        else if ( this.props.isPhone )
+        else if ( this.props.isMobile )
             dynamicStyles = mobileStyles;
         
         else

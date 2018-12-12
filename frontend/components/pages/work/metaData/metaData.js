@@ -4,62 +4,52 @@ import css from 'styled-jsx/css';
 import Hover from '../../../common/hover/hover';
 import { newTab } from '../../../../utility/windowLocation';
 
-const styles = css`
-    #container {
-        width: 100%;
-        height: 50vh;
-        display: block;
-        position: relative;
-    }
+// STYLE IMPORTS
+import commonStyles from '../../../../styles/components/metaData/metaData-common';
+import desktopStyles from '../../../../styles/components/metaData/metaData-desktop';
+import tabletStyles from '../../../../styles/components/metaData/metaData-tablet';
+import mobileStyles from '../../../../styles/components/metaData/metaData-mobile';
 
-    #wrap {
-        position: relative;
-        left: 25vw;
-        top: 25vh;
-    }
-
-    #visit-project {
-        position: absolute;
-        top: 0;
-        left: 25vw;
-        font-weight: 700;
-    }
-
-    ul {
-        display: flex;
-        width: 25vw;
-        list-style: none;
-    }
-
-    li {
-        margin-right: 50px;
-    }
-
-    span:first-child {
-        font-weight: 700;
-    }
-`;
 
 export default props => {
+    let dynamicStyles;
+
+    if ( this.props.isTablet )
+        dynamicStyles = tabletStyles;
+
+    else if ( this.props.isMobile )
+        dynamicStyles = mobileStyles;
+    
+    else
+        dynamicStyles = dekstopStyles;
+
     return (
         <React.Fragment>
-            <style jsx>{ styles }</style>
+            <style jsx>{ commonStyles }</style>
+            <style jsx>{ dynamicStyles }</style>
             <div id="container" >
-                <div id="wrap" >
-                    <ul>
-                        <li>
-                            <span>category</span>                            
-                        </li>
-                        <li>
-                            <span>year</span>                            
-                        </li>
-                        <li>
-                            <span>role</span>                        
-                        </li>
-                    </ul>
-                    <Hover handleClick={ () => newTab(props.meta.projectLink) } cursor={this.props.cursor} text='visit project' />
+                    <div id="wrap" >
+                        <ul>
+                            <li>
+                                <span>category</span>
+                                <span>{props.meta.category}</span>                         
+                            </li>
+                            <li>
+                                <span>year</span>
+                                <span>{props.meta.year}</span>                         
+                            </li>
+                            <li>
+                                <span>role</span>
+                                { props.meta.roles.map( role => (
+                                    <span key={role} >{role}</span>
+                                )) }                     
+                            </li>
+                        </ul>
+                        <span id="visit-project">
+                            <Hover handleClick={ () => newTab(props.meta.projectLink) } cursor={ props.cursor } text='visit project' style={{ fontWeight: 700 }} />
+                        </span>
+                    </div>
                 </div>
-            </div>
         </React.Fragment>
     );
 }

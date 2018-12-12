@@ -24,7 +24,7 @@ class Example extends Component {
 
     render() {
         return (
-            <Project data={ this.project } device={ this.props.device }>
+            <Project data={ this.project } device={ this.props.device } cursor={ this.props.cursor }>
                 is a child
             </Project>
         )

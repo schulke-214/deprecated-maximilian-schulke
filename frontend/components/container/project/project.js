@@ -33,7 +33,7 @@ class Project extends Component {
             content = (
                 <React.Fragment>
                     {/* <style jsx>{desktopStyles}</style> */}
-                    <MetaData meta={this.props.data.meta} />
+                    <MetaData meta={this.props.data.meta} cursor={this.props.cursor} />
                     <Title static title={this.props.data.meta.title} />
                     <Picture src={this.props.data.meta.projectImg} />
                     <div>
@@ -48,7 +48,7 @@ class Project extends Component {
             content = ( 
                 <React.Fragment>
                     {/* <style jsx>{tabletStyles}</style> */}
-                    <MetaData meta={this.props.data.meta} />
+                    <MetaData meta={this.props.data.meta} cursor={this.props.cursor} isTablet />
                     <Title static isSmall title={this.props.data.meta.title} />
                     <Picture src={this.props.data.meta.projectImg} />
                     <div>
@@ -63,7 +63,7 @@ class Project extends Component {
             content = (
                 <React.Fragment>
                     {/* <style jsx>{mobileStyles}</style> */}
-                    <MetaData meta={this.props.data.meta} />
+                    <MetaData meta={this.props.data.meta} cursor={this.props.cursor} isMobile />
                     <Title static isPhone title={this.props.data.meta.title} />
                     <Picture src={this.props.data.meta.projectImg} />
                     <div>

@@ -80,6 +80,7 @@ export default css`
     /* CLASSES FOR SPAN ANIMATION */
     .hover-link-span {
         display: inline-block;
+        font-weight: inherit;
     }
     
     .hover-link-space {
