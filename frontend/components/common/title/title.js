@@ -9,6 +9,7 @@ class Title extends Component {
     constructor ( props ) {
         super( props );
 
+        
         this.container = React.createRef();
 
         // DYNAMICLY CREATE REFS
