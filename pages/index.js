@@ -309,7 +309,7 @@ class Home extends Component {
                 <React.Fragment>
                     <div className='inner' >
                         <style jsx>{tabletStyles}</style>
-                        <Title ref={this.projectTitle} titles={ this.state.projectTitles } isSmall />
+                        <Title ref={this.projectTitle} titles={ this.state.projectTitles } isTablet />
                         <div className='inner-wrap flex column'>
                             <div className='top flex' >
                                 <span className='flex projectNum'>
@@ -345,7 +345,7 @@ class Home extends Component {
                 <React.Fragment>
                     <div className='inner' >
                         <style jsx>{mobileStyles}</style>
-                        <Title ref={this.projectTitle} titles={ this.state.projectTitles } isPhone />
+                        <Title ref={this.projectTitle} titles={ this.state.projectTitles } isMobile />
                         <div id='shadow' className="unclickable" />
                         <Slider
                             ref={this.slider}

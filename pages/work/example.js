@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 // COMPONENT IMPORTS
 import Project from '../../frontend/components/container/project/project';
@@ -6,7 +6,7 @@ import Project from '../../frontend/components/container/project/project';
 // JSON IMPORT
 import data from '../../static/work.json';
 
-class Example extends Component {
+class Example extends PureComponent {
     constructor ( props ) {
         super(props);
 

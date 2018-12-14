@@ -1,5 +1,4 @@
-import React from 'react';
-import css from 'styled-jsx/css';
+import React, { PureComponent } from 'react';
 
 import Hover from '../../../common/hover/hover';
 import { newTab } from '../../../../utility/windowLocation';
@@ -10,46 +9,51 @@ import desktopStyles from '../../../../styles/components/metaData/metaData-deskt
 import tabletStyles from '../../../../styles/components/metaData/metaData-tablet';
 import mobileStyles from '../../../../styles/components/metaData/metaData-mobile';
 
+class MetaData extends PureComponent {
+    render() {
+        console.log("rendered")
 
-export default props => {
-    let dynamicStyles;
+        let dynamicStyles;
 
-    if ( this.props.isTablet )
-        dynamicStyles = tabletStyles;
-
-    else if ( this.props.isMobile )
-        dynamicStyles = mobileStyles;
+        if ( this.props.isTablet )
+            dynamicStyles = tabletStyles;
     
-    else
-        dynamicStyles = dekstopStyles;
+        else if ( this.props.isMobile )
+            dynamicStyles = mobileStyles;
+        
+        else
+            dynamicStyles = desktopStyles;
 
-    return (
-        <React.Fragment>
+        return (
+            <React.Fragment>
             <style jsx>{ commonStyles }</style>
             <style jsx>{ dynamicStyles }</style>
-            <div id="container" >
+            <div id="container" className="unclickable" >
                     <div id="wrap" >
                         <ul>
                             <li>
                                 <span>category</span>
-                                <span>{props.meta.category}</span>                         
+                                <span>{this.props.meta.category}</span>                         
                             </li>
                             <li>
                                 <span>year</span>
-                                <span>{props.meta.year}</span>                         
+                                <span>{this.props.meta.year}</span>                         
                             </li>
                             <li>
                                 <span>role</span>
-                                { props.meta.roles.map( role => (
+                                { this.props.meta.roles.map( role => (
                                     <span key={role} >{role}</span>
                                 )) }                     
                             </li>
                         </ul>
                         <span id="visit-project">
-                            <Hover handleClick={ () => newTab(props.meta.projectLink) } cursor={ props.cursor } text='visit project' style={{ fontWeight: 700 }} />
+                            <Hover handleClick={ () => newTab(this.props.meta.projectLink) } cursor={ this.props.cursor } text='visit project' style={{ fontWeight: 700 }} />
                         </span>
                     </div>
                 </div>
         </React.Fragment>
-    );
+        )
+    }
 }
+
+export default MetaData;

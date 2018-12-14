@@ -11,21 +11,19 @@ export default css`
 
     #wrap {
         position: relative;
-        left: 25vw;
         top: 25vh;
     }
 
     #visit-project {
         position: absolute;
         top: 0;
-        left: 25vw;
         font-weight: 700;
     }
 
     ul {
         display: flex;
-        width: 25vw;
         list-style: none;
+        width: 25vw;
     }
 
     ul > li {
@@ -40,6 +38,7 @@ export default css`
     }
 
     span:not(:first-child) {
+        font-weight: 300;
         margin-bottom: 10px;
     }
 `;

@@ -89,7 +89,7 @@ class Hover extends Component {
         if( this.props.to && !this.props.handleClick ) {
             return (
                 <Link href={this.props.to} >
-                    <a style={{...this.props.style, position: 'relative' }}>
+                    <a style={{...this.props.style, position: 'relative' }} className="clickable">
                         <span ref={this.content} style={{ fontWeight: "inherit", position: 'relative' }} />
                         <div id='trigger' style={{ width: this.size, height: this.size, position: 'absolute', borderRadius: '100%', cursor: 'pointer' }} ref={ this.trigger } />
                     </a>
@@ -99,7 +99,7 @@ class Hover extends Component {
 
         else if ( this.props.handleClick && !this.props.to ) {
             return (
-                <a style={{...this.props.style, position: 'relative' }}>
+                <a style={{...this.props.style, position: 'relative' }} className="clickable" >
                     <span ref={this.content} style={{ fontWeight: "inherit", position: 'relative' }} />
                     <div id='trigger' style={{ width: this.size, height: this.size, position: 'absolute', borderRadius: '100%', cursor: 'pointer' }} ref={ this.trigger } />
                 </a>

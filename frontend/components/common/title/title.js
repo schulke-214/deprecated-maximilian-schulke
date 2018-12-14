@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React, { PureComponent } from 'react';
 
 import styles from "../../../styles/components/title/title-common";
 import dekstopStyles from "../../../styles/components/title/title-desktop";
 import tabletStyles  from "../../../styles/components/title/title-tablet";
 import mobileStyles from "../../../styles/components/title/title-mobile";
 
-class Title extends Component {
+class Title extends PureComponent {
     constructor ( props ) {
         super( props );
 
@@ -132,7 +132,6 @@ class Title extends Component {
         
         else
             dynamicStyles = dekstopStyles;
-
 
         let component;
 
