@@ -8,6 +8,10 @@ export default css`
         left: 12.5vw;
     }
 
+    #wrap > ul {
+        width: auto;
+    }
+
     #visit-project {
         position: relative;
         left: 0;

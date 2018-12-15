@@ -34,14 +34,14 @@ class Arrows extends Component {
             <React.Fragment>
                 <style jsx>{styles}</style>
                 <span className="arrow-container" ref={this.trigger}>
-                    <Sticky size={80} clickHandler={this.props.prev} hoverClass="black-arrow" >
+                    <Sticky size={80} clickHandler={this.props.prev} hoverClass="blacck-arrow" >
                         <span style={{ transformOrigin: "center" }} className="arrow-box" >
                             <svg viewBox="0 0 40 40" >
                                 <polyline className="path" points="25.4 22.55 20 17.15 14.6 22.55"></polyline>
                             </svg>
                         </span>
                     </Sticky>
-                    <Sticky size={80} clickHandler={this.props.next} hoverClass="black-arrow" >
+                    <Sticky size={80} clickHandler={this.props.next} hoverClass="blacck-arrow" >
                         <span className="arrow-box">
                             <svg viewBox="0 0 40 40" style={{transform: "rotate(180deg)"}} >
                                 <polyline className="path" points="25.4 22.55 20 17.15 14.6 22.55"></polyline>
