@@ -11,7 +11,7 @@
                 "ux",
                 "art direction"
             ],
-            "projectImg": "../static/projects/example/main.jpg"
+            "projectImg": "../static/slider/1.jpg"
         }
     },
     "zwanzig-grad": { 
@@ -26,7 +26,7 @@
                 "organisation",
                 "creative leading"
             ],
-            "projectImg": "../static/projects/zwanzig-grad/main.jpg"
+            "projectImg": "../static/slider/2.jpg"
         },
         "images": [
             "static/projects/zwanzig-grad/1.png",
@@ -47,7 +47,7 @@
                 "organisation",
                 "creative leading"
             ],
-            "projectImg": "../static/projects/reciper/main.jpg"
+            "projectImg": "../static/slider/3.jpg"
         }
     }
 }

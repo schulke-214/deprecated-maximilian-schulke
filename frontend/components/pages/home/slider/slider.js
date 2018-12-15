@@ -20,8 +20,8 @@ class Slider extends Component {
             displacementSprite: null,
             displacementFilter: null,
 
-            delta_scale: 25,
-            delta_offset: 2,
+            delta_scale: 20,
+            delta_offset: 1,
 
             width: 1000,
             height: 1500
