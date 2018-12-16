@@ -16,6 +16,7 @@ class Slider extends Component {
             stage: null,
             renderer: null,
             container: null,
+            loader: null,
 
             displacementSprite: null,
             displacementFilter: null,
@@ -37,11 +38,10 @@ class Slider extends Component {
         this.initPixi();
 
         for( let i = 1; i <= this.props.length; i++ )
-            this.addImg( i );
-
+            await this.addImg( i );
+        
         this.sortImages();
         this.setAlpha();
-        this.handleResize();
         this.animate();
 
         addEventListener('load', this.handleResize, { passive: true });
@@ -75,6 +75,7 @@ class Slider extends Component {
         this.pixi.stage = new PIXI.Container();
 
         this.pixi.container = new PIXI.Container();
+        this.pixi.loader = new PIXI.loaders.Loader();
         this.pixi.stage.addChild( this.pixi.container );
 
         this.pixi.displacementSprite = new PIXI.Sprite.fromImage('static/slider/map.jpg');
@@ -83,27 +84,36 @@ class Slider extends Component {
 
         this.pixi.stage.addChild( this.pixi.displacementSprite );
         this.pixi.container.filters = [ this.pixi.displacementFilter ];
+
     }
 
     addImg = num => {
-        let sprite = new PIXI.Sprite.fromImage(`static/slider/${num}.jpg`);
+        return new Promise((resolve, reject) => {
+            this.pixi.loader.add('picture-' + num, `static/slider/${num}.jpg`);
+            this.pixi.loader.load((_, resources) => {
+                const texture = resources['picture-' + num].texture
+                const sprite = new PIXI.Sprite(texture);
+    
+                const spriteSize = this.calcSize({
+                    width: sprite.texture.baseTexture.realWidth,
+                    height: sprite.texture.baseTexture.realHeight
+                }, 1.25 );
+        
+                sprite.width = spriteSize.width;
+                sprite.height = spriteSize.height;
+                sprite.x = spriteSize.x;
+                sprite.y = spriteSize.y;
+        
+                sprite.zIndex = num;
+        
+                if( num !== this.props.current )
+                    sprite.alpha = 0;
+        
+                this.pixi.container.addChild(sprite);
 
-        let spriteSize = this.calcSize({
-            width: sprite.texture.baseTexture.realWidth,
-            height: sprite.texture.baseTexture.realHeight
-        }, 1.25 );
-
-        sprite.width = spriteSize.width;
-        sprite.height = spriteSize.height;
-        sprite.x = spriteSize.x;
-        sprite.y = spriteSize.y;
-
-        sprite.zIndex = num;
-
-        if( num !== this.props.current )
-            sprite.alpha = 0;
-
-        this.pixi.container.addChild(sprite);
+                resolve();
+            });
+        });
     }
 
     calcSize = ( size, scale = 1 ) => {
@@ -116,14 +126,14 @@ class Slider extends Component {
 
         let width, height, offsetX, offsetY;
 
+        // CALC THE SMALLER SIDE TO FIT & THEN SCALE UP THE OTHER SITE PROPORTIONAL
         if ( widthFactor > heightFactor ) {
-            // CALC THE SMALLER SIDE TO FIT & THEN SCALE UP THE OTHER SITE PROPORTIONAL
             width = size.width * widthFactor;
             height = width * widthProportion;
         }
 
+        // CALC THE SMALLER SIDE TO FIT & THEN SCALE UP THE OTHER SITE PROPORTIONAL
         else {
-            // CALC THE SMALLER SIDE TO FIT & THEN SCALE UP THE OTHER SITE PROPORTIONAL
             height = size.height * heightFactor;
             width = height * heightProportion;
         }
@@ -176,7 +186,6 @@ class Slider extends Component {
 
             else
                 this.imageTransition(this.pixi.container.children[ this.props.current - 1 ], 1, callback);
-
         });
     }
 
@@ -196,7 +205,8 @@ class Slider extends Component {
 
     handleResize = () => {
         let { width, height } = this.pixi;
-        let rect =  this.wrapper.current.getBoundingClientRect();
+
+        let rect = this.wrapper.current.getBoundingClientRect();
         let factor = 1;
 
         // SET THE FACTOR BY THE VALUE WHICH IS SMALLER

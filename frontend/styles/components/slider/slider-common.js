@@ -5,7 +5,7 @@ export default css`
         cursor: pointer;
         position: relative;
         z-index: -10;
-        overflow: hidden;
+        /* overflow: hidden; */
     }
 
     canvas {
