@@ -84,7 +84,6 @@ class Slider extends Component {
 
         this.pixi.stage.addChild( this.pixi.displacementSprite );
         this.pixi.container.filters = [ this.pixi.displacementFilter ];
-
     }
 
     addImg = num => {
