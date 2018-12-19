@@ -17,6 +17,7 @@ import { ScrollContext } from '../context/scroll';
 class Layout extends Component {
     constructor( props ) {
         super( props );
+        
         this.page = React.createRef();
         this.cursor = React.createRef();
         this.state = {
