@@ -82,6 +82,7 @@ class Application extends App {
         const { Component, pageProps } = this.props;
         const isProject = /([/])(work)([/])([\w-]+)/i.test(this.props.router.pathname);
 
+
         return (
             <DeviceProvider>
                 <ScrollProvider>

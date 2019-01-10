@@ -54,6 +54,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
+
         addEventListener('wheel', this.handleScroll, { passive: true } );
         addEventListener('touchstart', this.handleTouch, { passive: true });
         addEventListener('keydown', this.handleKeyDown, { passive: true } );
@@ -184,6 +185,9 @@ class Home extends Component {
     }
     // SLIDER FUNCTIONALITY
     handleScroll = ev => {
+
+        console.log(this.props.scroll)
+        
         let delta = ev.deltaY;
 
         if( !this.running && this.props.scroll.status !== false ) {

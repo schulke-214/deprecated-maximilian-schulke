@@ -38,6 +38,7 @@ export class DeviceProvider extends Component {
     }
 
     render() {
+        console.log(this.state)
         return (
             <DeviceContext.Provider value={this.state}>
                 {this.props.children}

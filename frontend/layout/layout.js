@@ -17,7 +17,7 @@ import { ScrollContext } from '../context/scroll';
 class Layout extends Component {
     constructor( props ) {
         super( props );
-        
+
         this.page = React.createRef();
         this.cursor = React.createRef();
         this.state = {
@@ -35,14 +35,14 @@ class Layout extends Component {
         removeEventListener('resize', this.handleResize );
     }
 
-    shouldComponentUpdate( nextProps ) {
-        return (
-            this.props.device.hideDesktop !== nextProps.device.hideDesktop ||
-            this.props.device.isMobile !== nextProps.device.isMobile ||
-            this.props.device.isSmall !== nextProps.device.isSmall ||
-            this.props.router.route !== nextProps.router.route
-        )
-    }
+    // shouldComponentUpdate( nextProps ) {
+    //     return (
+    //         this.props.device.hideDesktop !== nextProps.device.hideDesktop ||
+    //         this.props.device.isMobile !== nextProps.device.isMobile ||
+    //         this.props.device.isSmall !== nextProps.device.isSmall ||
+    //         this.props.router.route !== nextProps.router.route
+    //     )
+    // }
 
     handleResize = () => {
         TweenLite.set('body, main, #layout-layer', {
@@ -75,6 +75,8 @@ class Layout extends Component {
     preventDefault = ev => ev.preventDefault(); 
 
     render() {
+        console.log("renders layout",this.props.device);
+
         return (
             <React.Fragment>
                 <style jsx>{styles}</style>
@@ -115,25 +117,21 @@ class Layout extends Component {
                     </DeviceContext.Consumer>
                 </div>
                 <main>
-                    <DeviceContext.Consumer>
-                        { deviceState => (
-                            <ScrollContext.Consumer>
-                                { scrollState => (
-                                    React.cloneElement(this.props.children, { 
-                                        device: deviceState,
-                                        scroll: scrollState,
-                                        helper: {
-                                            changePage: this.changePage,
-                                            allowScrolling: this.allowScrolling, 
-                                            preventScrolling: this.preventScrolling, 
-                                        },
-                                        cursor: this.cursor,
-                                        ref: this.page 
-                                    })
-                                )}
-                            </ScrollContext.Consumer> 
+                    <ScrollContext.Consumer>
+                        { scrollState => (
+                            React.cloneElement(this.props.children, { 
+                                device: this.props.device,
+                                scroll: scrollState,
+                                helper: {
+                                    changePage: this.changePage,
+                                    allowScrolling: this.allowScrolling, 
+                                    preventScrolling: this.preventScrolling, 
+                                },
+                                cursor: this.cursor,
+                                ref: this.page 
+                            })
                         )}
-                    </DeviceContext.Consumer>
+                    </ScrollContext.Consumer> 
                 </main>
             </React.Fragment>
         )    
