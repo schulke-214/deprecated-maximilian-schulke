@@ -2,102 +2,112 @@ import css from 'styled-jsx/css';
 import variables from '../var';
 
 export default css`
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
 
-        font-family: 'Lato', 'Noto Sans', 'Helvetica', 'Montserrat', 'Arial';
-        font-weight: 400;
-        outline: none;
+		font-family: 'Lato', 'Noto Sans', 'Helvetica', 'Montserrat', 'Arial';
+		font-weight: 400;
+		outline: none;
 
-        color: ${ variables.colors.highlight };
-        
-        font-smoothing: antialiased;
-        tap-highlight-color: rgba(0,0,0,0);
-        -webkit-font-smoothing: antialiased;
-        -webkit-tap-highlight-color: rgba(0,0,0,0);
-    } 
+		color: ${variables.colors.highlight};
 
-    html {
-        overflow-y: -ms-autohiding-scrollbar;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;  
-    }
+		font-smoothing: antialiased;
+		tap-highlight-color: rgba(0, 0, 0, 0);
+		-webkit-font-smoothing: antialiased;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	}
 
-    ::-webkit-scrollbar {
-        display: none;  
-    }
+	html {
+		overflow-y: -ms-autohiding-scrollbar;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
 
-    html, body {
-        background-color: ${ variables.colors.main };
-    }
+	::-webkit-scrollbar {
+		display: none;
+	}
 
-    body {
-        position: fixed;
-        top: 0px;
-        left: 0px;
-        overflow: hidden;
-    }
+	html,
+	body {
+		background-color: ${variables.colors.main};
+	}
 
-    h1, h2, h3, h4, h5, h6, a, p, span, div {
-        user-select: none;
-        font-size: ${ variables.font.text.medium };
-        line-height: 80%;
-        font-weight: 400;
-        text-decoration: none;
-    }
+	body {
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		overflow: hidden;
+	}
 
-    a {
-        text-transform: lowercase;
-        white-space: nowrap;
-    }
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	a,
+	p,
+	span,
+	div {
+		user-select: none;
+		font-size: ${variables.font.text.medium};
+		line-height: 80%;
+		font-weight: 400;
+		text-decoration: none;
+	}
 
-    span {
-        white-space: nowrap;
-    }
+	a {
+		text-transform: lowercase;
+		white-space: nowrap;
+	}
 
-    /* HANDLING MOUSE EVENTS */
-    .clickable {
-        pointer-events: all;
-    }
+	span {
+		white-space: nowrap;
+	}
 
-    .unclickable {
-        pointer-events: none;
-    }
+	/* HANDLING MOUSE EVENTS */
+	.clickable {
+		pointer-events: all;
+	}
 
-    /* LOGO CLASSES */
-    .logo {
-        width: 20px;
-        height: 10px;
-    }
+	.unclickable {
+		pointer-events: none;
+	}
 
-    img {
-        object-fit: cover;
-        display: block;
-    }
-    
-    /* CLASSES FOR SPAN ANIMATION */
-    .hover-link-span {
-        display: inline-block;
-        font-weight: inherit;
-    }
-    
-    .hover-link-space {
-        width: 5px
-    }
+	/* LOGO CLASSES */
+	.logo {
+		width: 20px;
+		height: 10px;
+	}
 
-    .black-arrow polyline {
-        transition: all .25s ease-in-out; 
-        stroke: ${ variables.colors.main }!important;
-    }
-    
-    /* HIDE SCROLLBAR */
-    html::-webkit-scrollbar {
-        width: 0px;
-    }
+	img {
+		object-fit: cover;
+		display: block;
+	}
 
-    html::-webkit-scrollbar-thumb {
-        background-color: rgba(255,255,255,0);
-    }
-`
+	/* CLASSES FOR SPAN ANIMATION */
+	.hover-link-span {
+		display: inline-block;
+		font-weight: inherit;
+	}
+
+	.hover-link-space {
+		width: 5px;
+	}
+
+	.black-arrow polyline {
+		transition: all 0.25s ease-in-out;
+		stroke: ${variables.colors.main}!important;
+	}
+
+	/* HIDE SCROLLBAR */
+	html::-webkit-scrollbar {
+		width: 0px;
+	}
+
+	html::-webkit-scrollbar-thumb {
+		background-color: rgba(255, 255, 255, 0);
+	}
+`;

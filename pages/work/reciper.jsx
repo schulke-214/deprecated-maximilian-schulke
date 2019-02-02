@@ -7,27 +7,22 @@ import Project from '../../frontend/components/container/project/project';
 import data from '../../static/work.json';
 
 class Example extends Component {
-    constructor ( props ) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.project = data["reciper"];
-    }
+		this.project = data['reciper'];
+	}
 
+	componentDidMount() {}
 
-    componentDidMount ( ) {
+	componentWillUnmount() {}
 
-    }
-
-    componentWillUnmount ( ) {
-
-    }
-
-    render() {
-        return (
-            <Project data={ this.project } device={ this.props.device } cursor={ this.props.cursor }>
-                is a child
-            </Project>
-        )
-    }
+	render() {
+		return (
+			<Project data={this.project} device={this.props.device} cursor={this.props.cursor}>
+				is a child
+			</Project>
+		);
+	}
 }
 export default Example;

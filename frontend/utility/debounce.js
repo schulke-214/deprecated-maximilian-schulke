@@ -6,10 +6,9 @@ export default class Debouncer {
     call(callback, interval) {
         let currentTime = new Date().getTime();
 
-        if( currentTime - this.oldTime > interval ) {
+        if (currentTime - this.oldTime > interval) {
             this.oldTime = new Date().getTime();
             callback();
         }
     }
 };
-

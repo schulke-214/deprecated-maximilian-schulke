@@ -1,3 +1,3 @@
 export const newTab = link => {
-    window.open( link );
+    window.open(link);
 }

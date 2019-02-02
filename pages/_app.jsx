@@ -20,96 +20,98 @@ import styles from '../frontend/styles/common/index';
 import utility from '../frontend/styles/common/utility';
 
 class Application extends App {
-    constructor( props ) {
-        super( props );
+	constructor(props) {
+		super(props);
 
-        this.state = {
-            pageLoader: {
-                isOpen: false
-            }
-        };
-    }
+		this.state = {
+			pageLoader: {
+				isOpen: false
+			}
+		};
+	}
 
-    componentDidMount() {
-        document.querySelector('body').classList.remove('loading');
-    }
+	componentDidMount() {
+		document.querySelector('body').classList.remove('loading');
+	}
 
-    removePageLoader = () => {
-        this.setState({
-            pageLoader: {
-                isOpen: false
-            }
-        })
-    }
+	removePageLoader = () => {
+		this.setState({
+			pageLoader: {
+				isOpen: false
+			}
+		});
+	};
 
-    dynamicPageTitle = () => {
-        let url = this.props.router.pathname;
-        url = url.slice(1, url.length);
-        url = url.split('/', 2);
+	dynamicPageTitle = () => {
+		let url = this.props.router.pathname;
+		url = url.slice(1, url.length);
+		url = url.split('/', 2);
 
-        if( url.length === 2 ) {
-            let projectName = url[1];
-            projectName = projectName.split('-', 3);
-            
-            for( let i = 0; i < projectName.length; i++)
-                projectName[i] = capitalize( projectName[i] ) ;
+		if (url.length === 2) {
+			let projectName = url[1];
+			projectName = projectName.split('-', 3);
 
-            url[1] = projectName.join(' ');
-        }
+			for (let i = 0; i < projectName.length; i++)
+				projectName[i] = capitalize(projectName[i]);
 
-        if ( url[0] === '' )
-            url.shift();
+			url[1] = projectName.join(' ');
+		}
 
-        let pageTitle;
-        switch( url.length ) {
-            case 1: 
-                pageTitle = capitalize( url[0] );
-                break;
-            
-            case 2:
-                pageTitle = capitalize( url[0] ) +  ' - ' + url[1];
-                break;
+		if (url[0] === '') url.shift();
 
-            default:
-                pageTitle = 'Maximilian Schulke - Creative Developer';
-                break;
-        }
-        
-        return <title>{pageTitle}</title>;
-    }
+		let pageTitle;
+		switch (url.length) {
+			case 1:
+				pageTitle = capitalize(url[0]);
+				break;
 
-    render() {
-        const { Component, pageProps } = this.props;
-        const isProject = /([/])(work)([/])([\w-]+)/i.test(this.props.router.pathname);
+			case 2:
+				pageTitle = capitalize(url[0]) + ' - ' + url[1];
+				break;
 
+			default:
+				pageTitle = 'Maximilian Schulke - Creative Developer';
+				break;
+		}
 
-        return (
-            <DeviceProvider>
-                <ScrollProvider>
-                    <Container >
-                        <Head>
-                            { this.dynamicPageTitle() }
-                        </Head>
+		return <title>{pageTitle}</title>;
+	};
 
-                        {/* ADDING GLOBAL STYLES */}
-                        <style jsx global>{styles}</style>
-                        <style jsx global>{utility}</style>
+	render() {
+		const { Component, pageProps } = this.props;
+		const isProject = /([/])(work)([/])([\w-]+)/i.test(this.props.router.pathname);
 
-                        {/* PAGELOADER */}
-                        { this.state.pageLoader.isOpen ? <PageLoader finished={ this.removePageLoader } /> : null }
-                        
-                        <DeviceContext.Consumer>
-                            { state => (
-                                <Layout device={state} blendMode={ isProject } >
-                                    <Component {...pageProps} />
-                                </Layout>
-                            )}
-                        </DeviceContext.Consumer>
-                    </Container>
-                </ScrollProvider>
-            </DeviceProvider>
-        )
-    }
+		return (
+			// <DeviceProvider>
+			//     <ScrollProvider>
+			<Container>
+				<Head>{this.dynamicPageTitle()}</Head>
+
+				{/* ADDING GLOBAL STYLES */}
+				<style jsx global>
+					{styles}
+				</style>
+				<style jsx global>
+					{utility}
+				</style>
+
+				{/* PAGELOADER */}
+				{this.state.pageLoader.isOpen ? (
+					<PageLoader finished={this.removePageLoader} />
+				) : null}
+
+				{/* <DeviceContext.Consumer> */}
+				{/* { state => ( @Layout device={state} */}
+				<Layout blendMode={isProject}>
+					<Component {...pageProps} />
+				</Layout>
+				{/* )} */}
+				{/* </DeviceContext.Consumer> */}
+			</Container>
+			//     </ScrollProvider>
+			// </DeviceProvider>
+		);
+	}
 }
 
 export default Application;

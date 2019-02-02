@@ -2,45 +2,44 @@ import css from 'styled-jsx/css';
 import variables from '../var';
 
 export default css`
-    
-    /* POSITION CLASSES */
-    .block {
-        display: block;
-    }
+	/* POSITION CLASSES */
+	.block {
+		display: block;
+	}
 
-    .relative {
-        position: relative;
-    }
+	.relative {
+		position: relative;
+	}
 
-    /* FLEXBOX CLASSES */
-    .flex {
-        display: flex;
-    }
+	/* FLEXBOX CLASSES */
+	.flex {
+		display: flex;
+	}
 
-    .row {
-        flex-direction: row;
-    }
+	.row {
+		flex-direction: row;
+	}
 
-    .column {
-        flex-direction: column;
-    }
+	.column {
+		flex-direction: column;
+	}
 
-    .center {
-        align-items: center;
-        justify-content: center;
-    } 
-    
-    .space-around {
-        justify-content: space-around;
-    }
+	.center {
+		align-items: center;
+		justify-content: center;
+	}
 
-    .space-between {
-        justify-content: space-between;
-    }
+	.space-around {
+		justify-content: space-around;
+	}
 
-    /* FONT CLASSES */
+	.space-between {
+		justify-content: space-between;
+	}
 
-    .spectral {
-        font-family: 'Spectral';
-    }
+	/* FONT CLASSES */
+
+	.spectral {
+		font-family: 'Spectral';
+	}
 `;
