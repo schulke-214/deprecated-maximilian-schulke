@@ -20,7 +20,7 @@ class ScrollContainer extends Component {
         });
 
         this.vs.on( ev => {
-            TweenLite.set(this.child.current, { y: ev.y })
+            // TweenLite.set(this.child.current, { y: ev.y })
             // console.log('EV FIRED', ev )
         });
     }
