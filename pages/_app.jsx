@@ -82,34 +82,32 @@ class Application extends App {
 		const isProject = /([/])(work)([/])([\w-]+)/i.test(this.props.router.pathname);
 
 		return (
-			// <DeviceProvider>
-			//     <ScrollProvider>
-			<Container>
-				<Head>{this.dynamicPageTitle()}</Head>
+			<DeviceProvider>
+				{/* //     <ScrollProvider> */}
+				<Container>
+					<Head>{this.dynamicPageTitle()}</Head>
+					<style jsx global>
+						{styles}
+					</style>
+					<style jsx global>
+						{utility}
+					</style>
 
-				{/* ADDING GLOBAL STYLES */}
-				<style jsx global>
-					{styles}
-				</style>
-				<style jsx global>
-					{utility}
-				</style>
+					{/* PAGELOADER */}
+					{this.state.pageLoader.isOpen ? (
+						<PageLoader finished={this.removePageLoader} />
+					) : null}
 
-				{/* PAGELOADER */}
-				{this.state.pageLoader.isOpen ? (
-					<PageLoader finished={this.removePageLoader} />
-				) : null}
-
-				{/* <DeviceContext.Consumer> */}
-				{/* { state => ( @Layout device={state} */}
-				<Layout blendMode={isProject}>
-					<Component {...pageProps} />
-				</Layout>
-				{/* )} */}
-				{/* </DeviceContext.Consumer> */}
-			</Container>
-			//     </ScrollProvider>
-			// </DeviceProvider>
+					<DeviceContext.Consumer>
+						{state => (
+							<Layout device={state} blendMode={isProject}>
+								<Component {...pageProps} />
+							</Layout>
+						)}
+					</DeviceContext.Consumer>
+				</Container>
+				{/* //     </ScrollProvider> */}
+			</DeviceProvider>
 		);
 	}
 }

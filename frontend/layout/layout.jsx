@@ -108,13 +108,11 @@ class Layout extends Component {
 								newTab='https://github.com/schulke-214/'>
 								<a className='clickable git-link'>github</a>
 							</Sticky>
-							{this.page.current ? (
-								<Arrows
-									prev={() => this.page.current.handleClick('prev')}
-									next={() => this.page.current.handleClick('next')}
-									cursor={this.cursor}
-								/>
-							) : null}
+							<Arrows
+								prev={() => this.page.current.handleClick('prev')}
+								next={() => this.page.current.handleClick('next')}
+								cursor={this.cursor}
+							/>
 						</div>
 						<div className='low flex space-between'>
 							<Sticky

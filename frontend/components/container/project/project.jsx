@@ -74,10 +74,12 @@ class Project extends Component {
 		}
 
 		return (
-			<ScrollContainer>
+			// <ScrollContainer>
+			<div>
 				<style jsx>{commonStyles}</style>
 				{content}
-			</ScrollContainer>
+			</div>
+			// </ScrollContainer>
 		);
 	}
 }

@@ -28,6 +28,7 @@
 		"compression": "^1.7.3",
 		"express": "^4.16.3",
 		"lethargy": "^1.0.4",
+		"lodash": "^4.17.11",
 		"next": "^6.1.2",
 		"react": "^16.6.3",
 		"react-dom": "^16.5.2",
