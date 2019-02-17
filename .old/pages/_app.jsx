@@ -4,20 +4,16 @@ import React from 'react';
 import App, { Container } from 'next/app';
 import Head from 'next/head';
 
-// CONTEXT PROVIDER IMPORTS
-import { ScrollProvider } from '../frontend/context/scroll';
-import { DeviceContext, DeviceProvider } from '../frontend/context/device';
-
 // COMPONENT IMPORTS
 import Layout from '../frontend/layout/layout';
-import PageLoader from '../frontend/components/common/pageLoader/pageLoader';
+import PageLoader from 'components/common/pageLoader/pageLoader';
 
 // UTILITY IMPORTS
-import { capitalize } from '../frontend/utility/stringHelper';
+import { capitalize } from 'utility/stringHelper';
 
 // STYLE IMPORTS
-import styles from '../frontend/styles/common/index';
-import utility from '../frontend/styles/common/utility';
+import styles from 'styles/common/index';
+import utility from 'styles/common/utility';
 
 class Application extends App {
 	constructor(props) {
@@ -78,12 +74,18 @@ class Application extends App {
 	};
 
 	render() {
+		return <h1>ola</h1>
+	}
+}
+
+/*
+
+	render() {
 		const { Component, pageProps } = this.props;
 		const isProject = /([/])(work)([/])([\w-]+)/i.test(this.props.router.pathname);
 
 		return (
 			<DeviceProvider>
-				{/* //     <ScrollProvider> */}
 				<Container>
 					<Head>{this.dynamicPageTitle()}</Head>
 					<style jsx global>
@@ -93,7 +95,6 @@ class Application extends App {
 						{utility}
 					</style>
 
-					{/* PAGELOADER */}
 					{this.state.pageLoader.isOpen ? (
 						<PageLoader finished={this.removePageLoader} />
 					) : null}
@@ -106,10 +107,10 @@ class Application extends App {
 						)}
 					</DeviceContext.Consumer>
 				</Container>
-				{/* //     </ScrollProvider> */}
 			</DeviceProvider>
 		);
 	}
-}
+
+*/
 
 export default Application;

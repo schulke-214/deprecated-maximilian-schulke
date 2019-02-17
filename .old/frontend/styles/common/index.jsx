@@ -34,12 +34,12 @@ export default css`
 		background-color: ${variables.colors.main};
 	}
 
-	body {
+	/* body {
 		position: fixed;
 		top: 0px;
 		left: 0px;
 		overflow: hidden;
-	}
+	} */
 
 	h1,
 	h2,
