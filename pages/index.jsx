@@ -1,3 +1,3 @@
-import '../frontend/styles/default.scss';
+import "@/ressources/pages/index.scss";
 
-export default () => <h1>ola</h1>
+export default () => <h1>ola</h1>;
