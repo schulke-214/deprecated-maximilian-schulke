@@ -1,0 +1,13 @@
+@mixin media-breakpoint-up($breakpoint) {
+    @if $breakpoint=="xl" {
+        @media screen and (min-width: $breakpoint) {
+            @content;
+        }
+    }
+}
+
+@mixin media-breakpoint-only($breakpoint) {
+    @media screen and (min-width: $breakpoint) {
+        @content;
+    }
+}
