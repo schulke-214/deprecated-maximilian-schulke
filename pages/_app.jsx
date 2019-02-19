@@ -2,38 +2,25 @@ import App, { Container } from 'next/app';
 import Head from 'next/head';
 
 // COMPONENT IMPORTS
-// import Layout from "../frontend/layout/layout";
+import Layout from '@/components/container/layout';
 // import PageLoader from "components/common/pageLoader/pageLoader";
 
-// UTILITY IMPORTS
-// import { capitalize } from "utility/stringHelper";
-
-// STYLE IMPORTS
-// import styles from "styles/common/index";
-// import utility from "styles/common/utility";
+import { capitalize } from '@/utility/strings';
 
 class Application extends App {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			pageLoader: {
-				isOpen: false
-			}
-		};
-	}
-
-	componentDidMount() {
-		document.querySelector('body').classList.remove('loading');
-	}
-
-	removePageLoader = () => {
-		this.setState({
-			pageLoader: {
-				isOpen: false
-			}
-		});
+	state = {
+		// pageLoader: {
+		// 	isOpen: false
+		// }
 	};
+
+	// removePageLoader = () => {
+	// 	this.setState({
+	// 		pageLoader: {
+	// 			isOpen: false
+	// 		}
+	// 	});
+	// };
 
 	dynamicPageTitle = () => {
 		let url = this.props.router.pathname;
@@ -73,7 +60,19 @@ class Application extends App {
 	render() {
 		const { Component, pageProps } = this.props;
 
-		return <Component {...pageProps} />;
+		return (
+			<Container>
+				<Head>{this.dynamicPageTitle()}</Head>
+
+				{/* {this.state.pageLoader.isOpen ? (
+					<PageLoader finished={this.removePageLoader} />
+				) : null} */}
+
+				<Layout>
+					<Component {...pageProps} />
+				</Layout>
+			</Container>
+		);
 	}
 }
 
