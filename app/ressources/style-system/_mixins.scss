@@ -1,13 +1,39 @@
 @mixin media-breakpoint-up($breakpoint) {
-    @if $breakpoint=="xl" {
-        @media screen and (min-width: $breakpoint) {
+    @if $breakpoint==xl {
+        @media screen and (min-width: $media-breakpoint-xl) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint==md {
+        @media screen and (min-width: $media-breakpoint-md) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint==xs {
+        @media screen and (min-width: $media-breakpoint-xs) {
             @content;
         }
     }
 }
 
-@mixin media-breakpoint-only($breakpoint) {
-    @media screen and (min-width: $breakpoint) {
-        @content;
+@mixin media-breakpoint-down($breakpoint) {
+    @if $breakpoint==xl {
+        @media screen and (max-width: $media-breakpoint-xl - 1px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint==md {
+        @media screen and (max-width: $media-breakpoint-md - 1px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint==xs {
+        @media screen and (max-width: $media-breakpoint-xs - 1px) {
+            @content;
+        }
     }
 }
