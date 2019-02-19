@@ -6,7 +6,6 @@
     "scripts": {
         "dev": "next",
         "build": "next build",
-        "heroku-postbuild": "next build",
         "start": "next start"
     },
     "engines": {
@@ -24,21 +23,27 @@
     },
     "homepage": "https://github.com/schulke-214/maximilian-schulke#readme",
     "dependencies": {
-        "@zeit/next-sass": "^1.0.1",
-        "compression": "^1.7.3",
-        "express": "^4.16.3",
+        "gsap": "^2.1.0",
         "lethargy": "^1.0.4",
         "next": "^8.0.1",
-        "node-sass": "^4.11.0",
-        "react": "^16.6.3",
-        "react-dom": "^16.5.2",
-        "styled-jsx": "^2.2.7"
+        "pixi.js": "^5.0.0-rc.2",
+        "react": "^16.8.2",
+        "react-dom": "^16.8.2"
     },
     "devDependencies": {
+        "@zeit/next-sass": "^1.0.1",
         "babel-cli": "^6.26.0",
         "babel-preset-es2016": "^6.24.1",
         "babel-preset-es2017": "^6.24.1",
         "babel-preset-react": "^6.24.1",
-        "sass-resources-loader": "^2.0.0"
+        "braces": "^2.3.2",
+        "node-sass": "^4.11.0",
+        "sass-resources-loader": "^2.0.0",
+        "stylis": "^3.5.4"
+    },
+    "babel": {
+        "presets": [
+            "next/babel"
+        ]
     }
 }
