@@ -1,3 +1,7 @@
-import "@/ressources/pages/index.scss";
+import styles from '@/ressources/pages/index.scss';
 
-export default () => <h1>ola</h1>;
+export default class Home extends React.Component {
+	render() {
+		return <h1 className={styles.test}>ola</h1>;
+	}
+}
