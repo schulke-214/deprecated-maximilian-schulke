@@ -1,9 +1,10 @@
-import styles from './layout.scss';
-
-console.log(styles);
-
+import Link from 'next/link';
 import { withRouter } from 'next/router';
 import { TweenLite } from 'gsap';
+
+import Sticky from '@/components/ui/sticky';
+
+import styles from './layout.scss';
 
 // import Logo from '../components/common/logo/logo';
 // import Arrows from '../components/common/arrows/arrows';
@@ -70,24 +71,32 @@ class Layout extends React.Component {
 					// style={{ mixBlendMode: this.props.blendMode ? 'exclusion' : '' }}
 				>
 					<div className={styles.gui_layer}>
-						<div className={`flex ${styles.top} ${styles.space_between}`}>
+						<div className={`flex ${styles.space_between}`}>
 							{/* <Sticky handleClick={() => this.changePage('/')} cursor={this.cursor}>
 								<a>
 									<Logo className='logo' />
 								</a>
-							</Sticky> */}
+                            </Sticky> */}
+							<Link href='/'>
+								<a>Maximilian Schulke</a>
+							</Link>
 
 							{/* ONLY RENDER THIS WHILE BEEING A DESKTOP */}
 							{/* {!this.props.device.isMobile ? <span> creative developer </span> : null} */}
-							<span> creative developer </span>
 
-							{/* <Sticky
+							<Link href='/info'>
+								<a>Info</a>
+							</Link>
+
+							<Sticky
 								handleClick={() => this.changePage('/work')}
 								cursor={this.cursor}>
 								<a>work</a>
-							</Sticky> */}
+							</Sticky>
 						</div>
-						<div className={`flex ${styles.mid} ${styles.space_between}`}>
+						<div className={`flex ${styles.space_between}`}>
+							<p className={`${styles.scroll_advice}`}>Scroll to explore</p>
+
 							{/* <Sticky
 								style={{ left: `${-25 + 7.5}px` }}
 								cursor={this.cursor}
@@ -100,16 +109,17 @@ class Layout extends React.Component {
 								cursor={this.cursor}
 							/> */}
 						</div>
-						<div className={`flex ${styles.low} ${styles.space_between}`}>
+						<div className={`flex ${styles.space_between}`}>
+							<p>Creative Developer</p>
 							{/* <Sticky
 								handleClick={() => this.changePage('/info')}
 								cursor={this.cursor}>
 								<a>info</a>
-							</Sticky>
+                            </Sticky> */}
 
-							<Sticky mailto='info@domain.de' cursor={this.cursor}>
-								<a>contact</a>
-							</Sticky> */}
+							<a target='_blank' href='https://github.com/schulke-214'>
+								Github
+							</a>
 						</div>
 					</div>
 				</div>

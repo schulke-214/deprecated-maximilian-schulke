@@ -17,9 +17,9 @@
 
     padding: $spacing-layout-xl;
 
-    @include media-breakpoint-down(md) {
-        padding: $spacing-layout-md;
-    }
+    // @include media-breakpoint-down(md) {
+    //     padding: $spacing-layout-md;
+    // }
 
     @include media-breakpoint-down(xs) {
         padding: $spacing-layout-xs;
@@ -54,48 +54,14 @@
     height: min-content;
 }
 
-.top {
-    height: 25px;
-}
-
-.top>span {
-    @include media-breakpoint-up(xl) {
-        position: absolute;
-        left: calc(25vw - $spacing-layout-xl);
-        white-space: nowrap;
-    }
-
-    @include media-breakpoint-down(xl) {
-        display: none;
-    }
-}
-
-.git_link {
+.scroll_advice {
     position: relative;
     display: block;
     transform-origin: center;
     transform: rotate(-90deg);
+    font-size: 10px;
     height: 15px;
-    width: 50px;
+    width: 150px;
+    left: -75px + 7.5px;
     text-align: center;
 }
-
-
-//     #layout-layer {
-//         padding: 50px;
-//     }
-
-//     .top>span {
-//         display: none;
-//     }
-// }
-
-// @media screen and (max-width: $ {
-//     variables.breakpoints.phone
-// }
-
-// px) {
-//     #layout-layer {
-//         padding: 37.5px;
-//     }
-// }
