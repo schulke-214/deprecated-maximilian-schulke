@@ -1,18 +1,27 @@
 import App, { Container } from 'next/app';
 import Head from 'next/head';
 
-// COMPONENT IMPORTS
 import Layout from '@/components/container/layout';
+import { capitalize } from '@/utility/strings';
 // import PageLoader from "components/common/pageLoader/pageLoader";
 
-import { capitalize } from '@/utility/strings';
+import initializeStore from 'store/store';
+import LocalStorageService from 'store/local-storage-service';
+
+const store = initializeStore();
+
+// store.subscribe(() => {
+// const { test } = store.getState();
+
+// LocalStorageService.setState({ test });
+// });
 
 class Application extends App {
-	state = {
-		// pageLoader: {
-		// 	isOpen: false
-		// }
-	};
+	// state = {
+	// 	// pageLoader: {
+	// 	// 	isOpen: false
+	// 	// }
+	// };
 
 	// removePageLoader = () => {
 	// 	this.setState({
