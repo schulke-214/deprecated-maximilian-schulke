@@ -28,7 +28,10 @@
         "next": "^8.0.1",
         "pixi.js": "^5.0.0-rc.2",
         "react": "^16.8.2",
-        "react-dom": "^16.8.2"
+        "react-dom": "^16.8.2",
+        "react-redux": "^6.0.1",
+        "redux": "^4.0.1",
+        "redux-thunk": "^2.3.0"
     },
     "devDependencies": {
         "@zeit/next-sass": "^1.0.1",
