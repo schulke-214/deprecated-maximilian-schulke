@@ -2,10 +2,8 @@ import Link from 'next/link';
 import { withRouter } from 'next/router';
 import { TweenLite } from 'gsap';
 
-import Sticky from '@/components/ui/sticky';
-
-import styles from './layout.scss';
-
+import Sticky from 'app/components/ui/sticky';
+import styles from 'app/ressources/container/layout.scss';
 // import Logo from '../components/common/logo/logo';
 // import Arrows from '../components/common/arrows/arrows';
 // import Sticky from '../components/common/sticky/sticky';
@@ -15,14 +13,14 @@ class Layout extends React.Component {
 	page = React.createRef();
 	cursor = React.createRef();
 
-	// componentDidMount() {
-	// 	this.handleResize();
-	// 	addEventListener('resize', this.handleResize);
-	// }
+	componentDidMount() {
+		this.handleResize();
+		addEventListener('resize', this.handleResize);
+	}
 
-	// componentWillUnmount() {
-	// removeEventListener('resize', this.handleResize);
-	// }
+	componentWillUnmount() {
+		removeEventListener('resize', this.handleResize);
+	}
 
 	// shouldComponentUpdate( nextProps ) {
 	//     return (
@@ -39,9 +37,9 @@ class Layout extends React.Component {
 		});
 	};
 
-	// changePage = url => {
-	// 	this.props.router.push(url);
-	// };
+	changePage = url => {
+		this.props.router.push(url);
+	};
 
 	// allowScrolling = () => {
 	// 	window.onwheel = ev => {
@@ -72,26 +70,14 @@ class Layout extends React.Component {
 				>
 					<div className={styles.gui_layer}>
 						<div className={`flex ${styles.space_between}`}>
-							{/* <Sticky handleClick={() => this.changePage('/')} cursor={this.cursor}>
-								<a>
-									<Logo className='logo' />
-								</a>
-                            </Sticky> */}
-							<Link href='/'>
+							<Sticky handleClick={() => this.changePage('/')} cursor={this.cursor}>
 								<a>Maximilian Schulke</a>
-							</Link>
-
-							{/* ONLY RENDER THIS WHILE BEEING A DESKTOP */}
-							{/* {!this.props.device.isMobile ? <span> creative developer </span> : null} */}
-
-							<Link href='/info'>
-								<a>Info</a>
-							</Link>
+							</Sticky>
 
 							<Sticky
-								handleClick={() => this.changePage('/work')}
+								handleClick={() => this.changePage('/info')}
 								cursor={this.cursor}>
-								<a>work</a>
+								<a>Info</a>
 							</Sticky>
 						</div>
 						<div className={`flex ${styles.space_between}`}>
