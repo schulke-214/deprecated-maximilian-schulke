@@ -5,7 +5,7 @@
     padding: 0;
     box-sizing: border-box !important;
     font-family: $font-family-primary;
-    font-weight: $font-weight-bold !important;
+    font-weight: $font-weight-regular !important;
     outline: none;
     color: $color-secundary;
     -webkit-font-smoothing: antialiased;
@@ -21,7 +21,6 @@ html {
     line-height: $line-height;
     background-color: $color-primary;
     overflow-y: -ms-autohiding-scrollbar;
-    min-width: 280px !important;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-font-smoothing: antialiased;
@@ -153,6 +152,7 @@ a,
 p,
 span,
 div {
+    text-transform: lowercase;
     user-select: none;
     font-size: $font-size-text-medium;
     line-height: 0.8;

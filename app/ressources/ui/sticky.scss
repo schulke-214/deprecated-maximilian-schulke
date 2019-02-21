@@ -1,0 +1,16 @@
+.container {
+    position: relative;
+}
+
+.trigger {
+    position: absolute;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.content {
+    display: block;
+    transform-origin: center;
+    height: min-content;
+    width: min-content;
+}
