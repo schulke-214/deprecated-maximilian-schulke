@@ -25,12 +25,14 @@
     "dependencies": {
         "gsap": "^2.1.0",
         "lethargy": "^1.0.4",
+        "lodash": "^4.17.11",
         "next": "^8.0.1",
         "pixi.js": "^5.0.0-rc.2",
         "react": "^16.8.2",
         "react-dom": "^16.8.2",
         "react-redux": "^6.0.1",
         "redux": "^4.0.1",
+        "redux-devtools-extension": "^2.13.8",
         "redux-thunk": "^2.3.0"
     },
     "devDependencies": {
