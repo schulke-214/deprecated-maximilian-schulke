@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 
 // import { DeviceContext } from '../../../context/device';
-import styles from './sticky.scss';
+import styles from 'app/ressources/ui/sticky.scss';
 
 class Sticky extends PureComponent {
 	container = React.createRef();
