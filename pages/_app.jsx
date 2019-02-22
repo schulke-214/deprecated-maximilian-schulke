@@ -47,7 +47,6 @@ class Application extends App {
 				<Head>
 					<title>{generateTitle(this.props.router.pathname)}</title>
 				</Head>
-
 				{/* {this.state.pageLoader.isOpen ? (
 					<PageLoader finished={this.removePageLoader} />
 				) : null} */}
