@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import { withRouter } from 'next/router';
+import { connect } from 'react-redux';
 import { TweenLite } from 'gsap';
 
 import Sticky from 'app/components/ui/sticky';
+
 import styles from 'app/ressources/container/layout.scss';
 // import Logo from '../components/common/logo/logo';
 // import Arrows from '../components/common/arrows/arrows';
@@ -14,6 +16,8 @@ class Layout extends React.Component {
 	cursor = React.createRef();
 
 	componentDidMount() {
+		console.log(this.props.device.size.width);
+
 		this.handleResize();
 		addEventListener('resize', this.handleResize);
 	}
@@ -32,8 +36,8 @@ class Layout extends React.Component {
 	// }
 
 	handleResize = () => {
-		TweenLite.set('body, main, #layout-layer', {
-			height: window.innerHeight
+		TweenLite.set('body, main, #__next', {
+			height: this.props.device.size.height
 		});
 	};
 
@@ -69,7 +73,7 @@ class Layout extends React.Component {
 					// style={{ mixBlendMode: this.props.blendMode ? 'exclusion' : '' }}
 				>
 					<div className={styles.gui_layer}>
-						<div className={`flex ${styles.space_between}`}>
+						<div className={`flex space-between`}>
 							<Sticky handleClick={() => this.changePage('/')} cursor={this.cursor}>
 								<a>Maximilian Schulke</a>
 							</Sticky>
@@ -80,9 +84,9 @@ class Layout extends React.Component {
 								<a>Info</a>
 							</Sticky>
 						</div>
-						<div className={`flex ${styles.space_between}`}>
+						<div className={`flex space-bewteen`}>
 							<p className={`${styles.scroll_advice}`}>Scroll to explore</p>
-
+							{this.props.device.size.width}
 							{/* <Sticky
 								style={{ left: `${-25 + 7.5}px` }}
 								cursor={this.cursor}
@@ -95,7 +99,7 @@ class Layout extends React.Component {
 								cursor={this.cursor}
 							/> */}
 						</div>
-						<div className={`flex ${styles.space_between}`}>
+						<div className={`flex space-between`}>
 							<p>Creative Developer</p>
 							{/* <Sticky
 								handleClick={() => this.changePage('/info')}
@@ -121,4 +125,17 @@ class Layout extends React.Component {
 	}
 }
 
-export default withRouter(Layout);
+const mapStateToProps = state => ({
+	device: state.device
+});
+
+const mapDispatchToProps = dispatch => {
+	return {
+		shit: () => {}
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(withRouter(Layout));
