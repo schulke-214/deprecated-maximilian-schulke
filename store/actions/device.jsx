@@ -1,15 +1,24 @@
 import { DEVICE_SIZE_CHANGE, DEVICE_TYPE_CHANGE } from './_types';
 
-export const device_size_change = size => {
+export const deviceSizeChange = data => {
 	return {
 		type: DEVICE_SIZE_CHANGE,
-		size
+		size: {
+			...data
+		}
 	};
 };
 
-export const device_type_change = type => {
+export const deviceTypeChange = (phone, tablet, desktop, browser) => {
 	return {
 		type: DEVICE_TYPE_CHANGE,
-		type
+		data: {
+			phone,
+			tablet,
+			desktop,
+			browser: {
+				...browser
+			}
+		}
 	};
 };
