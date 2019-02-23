@@ -4,9 +4,19 @@ import { DEVICE_SIZE_CHANGE, DEVICE_TYPE_CHANGE } from '../actions/_types';
 const initialState = {
 	size: {
 		width: 0,
-		height: 0
+		height: 0,
+		phone: false,
+		tablet: false,
+		desktop: false,
+		supported: true
 	},
-	type: {}
+	type: {
+		browser: {
+			engine: 'blink',
+			name: 'chrome',
+			supported: true
+		}
+	}
 };
 
 export const device_reducer = (state = initialState, action) => {
@@ -14,7 +24,9 @@ export const device_reducer = (state = initialState, action) => {
 		case DEVICE_SIZE_CHANGE:
 			let updated = cloneDeep(state);
 
-			console.log(action.size);
+			updated.size = {
+				...action.size
+			};
 
 			return updated;
 		default:
