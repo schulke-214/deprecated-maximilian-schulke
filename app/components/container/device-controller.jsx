@@ -9,18 +9,19 @@ class DeviceController extends React.PureComponent {
 	}
 
 	handleResize = ev => {
+		console.log('update size');
 		this.props.updateSize({
 			width: window.innerWidth,
 			height: window.innerHeight,
 
 			phone: window.innerWidth < 620,
-			tablet: window.innerWidth >= 620 && window.innerWidth < 1024,
-			desktop: window.innerWidth >= 1280,
-
-			supported: window.innerWidth > 240 && window.innerHeight > 420
+			tablet: window.innerWidth >= 620 && window.innerWidth < 1280,
+			desktop: window.innerWidth >= 1280
 		});
 
-		this.props.updateType({});
+		this.props.updateType({
+			supported: window.innerWidth > 240 && window.innerHeight > 420
+		});
 	};
 
 	render() {
