@@ -7,25 +7,25 @@ const initialState = {
 		height: 0,
 		phone: false,
 		tablet: false,
-		desktop: false,
-		supported: true
+		desktop: false
 	},
 	type: {
+		supported: true,
 		browser: {
-			engine: 'blink',
-			name: 'chrome',
+			engine: null,
+			name: null,
 			supported: true
 		}
 	}
 };
 
-export const device_reducer = (state = initialState, action) => {
-	switch (action.type) {
-		case DEVICE_SIZE_CHANGE:
-			let updated = cloneDeep(state);
+export const device_reducer = (state = initialState, { type, data }) => {
+	const updated = cloneDeep(state);
 
+	switch (type) {
+		case DEVICE_SIZE_CHANGE:
 			updated.size = {
-				...action.size
+				...data
 			};
 
 			return updated;
