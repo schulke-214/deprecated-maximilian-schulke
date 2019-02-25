@@ -1,16 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { deviceSizeChange, deviceTypeChange } from 'store/actions/device';
+import { setDeviceSize, setDeviceType } from 'store/device';
 
 class DeviceController extends React.PureComponent {
 	componentDidMount() {
-		this.handleResize();
-		addEventListener('resize', this.handleResize);
+		this.target();
+
+		addEventListener('resize', this.target);
 	}
 
-	handleResize = ev => {
-		console.log('update size');
-		this.props.updateSize({
+	target = ev => {
+		this.props.setSize({
 			width: window.innerWidth,
 			height: window.innerHeight,
 
@@ -19,8 +19,8 @@ class DeviceController extends React.PureComponent {
 			desktop: window.innerWidth >= 1280
 		});
 
-		this.props.updateType({
-			supported: window.innerWidth > 240 && window.innerHeight > 420
+		this.props.setType({
+			// touch:
 		});
 	};
 
@@ -29,14 +29,12 @@ class DeviceController extends React.PureComponent {
 	}
 }
 
-const mapStateToProps = state => ({});
-
 const mapDispatchToProps = dispatch => ({
-	updateSize: (width, height) => dispatch(deviceSizeChange(width, height)),
-	updateType: () => dispatch(deviceTypeChange({}))
+	setSize: data => dispatch(setDeviceSize(data)),
+	setType: data => dispatch(setDeviceType(data))
 });
 
 export default connect(
-	mapStateToProps,
+	null,
 	mapDispatchToProps
 )(DeviceController);
