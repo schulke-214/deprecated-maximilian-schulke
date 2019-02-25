@@ -1,11 +1,13 @@
 import * as Redux from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
-
 import LocalStorageService from 'services/local-storage';
-import reducers from 'store/reducers';
+import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-const rootReducer = Redux.combineReducers(reducers);
+import device from './device';
+
+const rootReducer = Redux.combineReducers({
+	device
+});
 
 export default () =>
 	Redux.createStore(
