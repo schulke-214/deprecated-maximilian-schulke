@@ -23,6 +23,7 @@
     },
     "homepage": "https://github.com/schulke-214/maximilian-schulke#readme",
     "dependencies": {
+        "clientjs": "^0.1.11",
         "gsap": "^2.1.0",
         "lethargy": "^1.0.4",
         "lodash": "^4.17.11",
