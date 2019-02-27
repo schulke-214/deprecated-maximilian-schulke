@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 
-// import { DeviceContext } from '../../../context/device';
 import styles from 'app/ressources/ui/sticky.scss';
 
 class Sticky extends PureComponent {
@@ -28,19 +28,19 @@ class Sticky extends PureComponent {
 
 		addEventListener('load', this.setRect);
 
-		// this.trigger.current.addEventListener('mousemove', this.handleMouseMove);
-		// this.trigger.current.addEventListener('mouseenter', this.handleMouseEnter);
-		// this.trigger.current.addEventListener('mouseout', this.handleMouseOut);
-		// this.trigger.current.addEventListener('click', this.props.handleClick);
+		this.trigger.current.addEventListener('mousemove', this.handleMouseMove);
+		this.trigger.current.addEventListener('mouseenter', this.handleMouseEnter);
+		this.trigger.current.addEventListener('mouseout', this.handleMouseOut);
+		this.trigger.current.addEventListener('click', this.props.handleClick);
 	}
 
 	componentWillUnmount() {
 		removeEventListener('load', this.setRect);
 
-		// this.trigger.current.removeEventListener('mousemove', this.handleMouseMove);
-		// this.trigger.current.removeEventListener('mouseenter', this.handleMouseEnter);
-		// this.trigger.current.removeEventListener('mouseout', this.handleMouseOut);
-		// this.trigger.current.removeEventListener('click', this.props.handleClick);
+		this.trigger.current.removeEventListener('mousemove', this.handleMouseMove);
+		this.trigger.current.removeEventListener('mouseenter', this.handleMouseEnter);
+		this.trigger.current.removeEventListener('mouseout', this.handleMouseOut);
+		this.trigger.current.removeEventListener('click', this.props.handleClick);
 	}
 
 	setRect = () => {
@@ -59,7 +59,7 @@ class Sticky extends PureComponent {
 	};
 
 	handleMouseMove = ev => {
-		if (this.props.device.isPhone || this.props.device.isMobile) return;
+		if (this.props.device.size.phone || this.props.device.type.touch) return;
 
 		this.setMouse(ev);
 
@@ -84,7 +84,9 @@ class Sticky extends PureComponent {
 		this.entered = true;
 
 		if (!this.props.device.isPhone && !this.props.device.isMobile) {
-			if (this.props.cursor) this.props.cursor.current.shrink();
+			console.log('STICKY Line 100 FIX');
+
+			// if (this.props.cursor) this.props.cursor.current.shrink();
 
 			if (this.props.hoverClass) this.content.current.classList.add(this.props.hoverClass);
 		}
@@ -97,7 +99,8 @@ class Sticky extends PureComponent {
 		this.entered = false;
 
 		if (!this.props.device.isPhone && !this.props.device.isMobile) {
-			if (this.props.cursor) this.props.cursor.current.reset();
+			console.log('STICKY Line 100 FIX');
+			// if (this.props.cursor) this.props.cursor.current.reset();
 
 			if (this.props.hoverClass) this.content.current.classList.remove(this.props.hoverClass);
 		}
@@ -114,8 +117,11 @@ class Sticky extends PureComponent {
 	handleClick = () => {
 		if (this.props.to) {
 			// PROGRAMATICALLY ROUTING ( USING A INTERFACE OR THE LAYOUT COMPONENT )
-		} else if (this.props.newTab) window.open(this.props.newTab, '_blank');
-		else if (this.props.mailto) location.href = 'mailto:' + this.props.mailto;
+		} else if (this.props.newTab) {
+			window.open(this.props.newTab, '_blank');
+		} else if (this.props.mailto) {
+			location.href = 'mailto:' + this.props.mailto;
+		}
 	};
 
 	// sticky methods
@@ -149,7 +155,11 @@ class Sticky extends PureComponent {
 	}
 }
 
-export default Sticky;
+const mapStateToProps = ({ device }) => ({
+	device
+});
+
+export default connect(mapStateToProps)(Sticky);
 
 // export default props => (
 // 	<DeviceContext.Consumer>{state => <Sticky device={state} {...props} />}</DeviceContext.Consumer>
