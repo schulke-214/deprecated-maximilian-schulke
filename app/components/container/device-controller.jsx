@@ -1,10 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setDeviceSize, setDeviceType } from 'store/device';
+import { setDeviceSize } from 'store/device';
+
+import DeviceDetectionService from 'services/device-detection';
 
 class DeviceController extends React.PureComponent {
 	componentDidMount() {
 		this.target();
+
+		console.log(DeviceDetectionService.browser);
 
 		addEventListener('resize', this.target);
 	}
@@ -19,9 +23,9 @@ class DeviceController extends React.PureComponent {
 			desktop: window.innerWidth >= 1280
 		});
 
-		this.props.setType({
-			// touch:
-		});
+		// this.props.setType({
+		// 	// touch:
+		// });
 	};
 
 	render() {
@@ -30,8 +34,8 @@ class DeviceController extends React.PureComponent {
 }
 
 const mapDispatchToProps = dispatch => ({
-	setSize: data => dispatch(setDeviceSize(data)),
-	setType: data => dispatch(setDeviceType(data))
+	setSize: data => dispatch(setDeviceSize(data))
+	// setType: data => dispatch(setDeviceType(data))
 });
 
 export default connect(

@@ -2,14 +2,6 @@ import { cloneDeep } from 'lodash';
 
 const SET_SIZE = 'app/device/SET_SIZE';
 // const SET_TYPE = 'app/device/SET_TYPE';
-// type: {
-// 	supported: true,
-// 	browser: {
-// 		engine: null,
-// 		name: null,
-// 		supported: true
-// 	}
-// }
 
 const initialState = {
 	size: {
@@ -18,6 +10,14 @@ const initialState = {
 		phone: false,
 		tablet: false,
 		desktop: false
+	},
+	type: {
+		supported: true,
+
+		browser: {
+			engine: null,
+			name: null
+		}
 	}
 };
 
