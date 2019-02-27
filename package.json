@@ -23,7 +23,6 @@
     },
     "homepage": "https://github.com/schulke-214/maximilian-schulke#readme",
     "dependencies": {
-        "clientjs": "^0.1.11",
         "gsap": "^2.1.0",
         "lethargy": "^1.0.4",
         "lodash": "^4.17.11",
@@ -34,7 +33,7 @@
         "react-redux": "^6.0.1",
         "redux": "^4.0.1",
         "redux-devtools-extension": "^2.13.8",
-        "redux-thunk": "^2.3.0"
+        "ua-parser-js": "^0.7.19"
     },
     "devDependencies": {
         "@zeit/next-sass": "^1.0.1",
