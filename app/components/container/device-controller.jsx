@@ -2,13 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setDeviceSize } from 'store/device';
 
-import DeviceDetectionService from 'services/device-detection';
+import DeviceService from 'services/device';
 
 class DeviceController extends React.PureComponent {
 	componentDidMount() {
 		this.target();
 
-		console.log(DeviceDetectionService.browser);
+		console.log(DeviceService.browser);
+		console.log(DeviceService.device);
+		console.log(DeviceService.engine);
+		console.log(DeviceService.os);
 
 		addEventListener('resize', this.target);
 	}
