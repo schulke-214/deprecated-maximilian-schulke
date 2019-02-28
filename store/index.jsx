@@ -1,6 +1,5 @@
 import * as Redux from 'redux';
 import LocalStorageService from 'services/local-storage';
-import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import device from './device';
@@ -10,8 +9,4 @@ const rootReducer = Redux.combineReducers({
 });
 
 export default () =>
-	Redux.createStore(
-		rootReducer,
-		LocalStorageService.getState(),
-		composeWithDevTools(Redux.applyMiddleware(thunk))
-	);
+	Redux.createStore(rootReducer, LocalStorageService.getState(), composeWithDevTools());
