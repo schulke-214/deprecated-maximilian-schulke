@@ -17,7 +17,7 @@ export default class DeviceDetectionService {
 	}
 
 	static get engine() {
-		return { ...data.engine };
+		return data.engine;
 	}
 
 	static get os() {
@@ -33,8 +33,6 @@ export default class DeviceDetectionService {
 	}
 
 	static get device() {
-		return {
-			...data.device
-		};
+		return data.device;
 	}
 }
