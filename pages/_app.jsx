@@ -12,6 +12,9 @@ import { generateTitle } from 'app/utility/strings';
 
 // import PageLoader from "components/common/pageLoader/pageLoader";
 
+import 'app/ressources/global/_reboot.scss';
+import 'app/ressources/global/_utilities.scss';
+
 const store = initStore();
 
 store.subscribe(() => {
