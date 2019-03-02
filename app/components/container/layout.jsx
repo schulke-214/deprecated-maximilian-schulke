@@ -69,10 +69,10 @@ class Layout extends React.Component {
 		return (
 			<React.Fragment>
 				<div
-					className={styles.layout_layer}
+					className={`${styles.layout_layer} unclickable`}
 					// style={{ mixBlendMode: this.props.blendMode ? 'exclusion' : '' }}
 				>
-					<div className={styles.gui_layer}>
+					<div className={`${styles.gui_layer}`}>
 						<div className={`flex space-between`}>
 							<Sticky handleClick={() => this.changePage('/')} cursor={this.cursor}>
 								<a>Maximilian Schulke</a>
@@ -85,8 +85,8 @@ class Layout extends React.Component {
 							</Sticky>
 						</div>
 						<div className={`flex space-bewteen`}>
-							<p className={`${styles.scroll_advice}`}>Scroll to explore</p>
-							{this.props.device.size.width}
+							{/* <p className={`${styles.scroll_advice}`}>Scroll to explore</p> */}
+							{/* {this.props.device.size.width} */}
 							{/* <Sticky
 								style={{ left: `${-25 + 7.5}px` }}
 								cursor={this.cursor}
@@ -100,16 +100,16 @@ class Layout extends React.Component {
 							/> */}
 						</div>
 						<div className={`flex space-between`}>
-							<p>Creative Developer</p>
+							{/* <p>Creative Developer</p> */}
 							{/* <Sticky
 								handleClick={() => this.changePage('/info')}
 								cursor={this.cursor}>
 								<a>info</a>
                             </Sticky> */}
 
-							<a target='_blank' href='https://github.com/schulke-214'>
+							{/* <a target='_blank' href='https://github.com/schulke-214'>
 								Github
-							</a>
+							</a> */}
 						</div>
 					</div>
 				</div>
