@@ -1,44 +1,46 @@
-.clickable {
-    pointer-events: all;
-}
+:global {
+    .clickable {
+        pointer-events: all;
+    }
 
-.unclickable {
-    pointer-events: none;
-}
+    .unclickable {
+        pointer-events: none;
+    }
 
-.block {
-    display: block;
-}
+    .block {
+        display: block;
+    }
 
-.relative {
-    position: relative;
-}
+    .relative {
+        position: relative;
+    }
 
-.flex {
-    display: flex;
-}
+    .flex {
+        display: flex;
+    }
 
-.row {
-    flex-direction: row;
-}
+    .row {
+        flex-direction: row;
+    }
 
-.column {
-    flex-direction: column;
-}
+    .column {
+        flex-direction: column;
+    }
 
-.center {
-    align-items: center;
-    justify-content: center;
-}
+    .center {
+        align-items: center;
+        justify-content: center;
+    }
 
-.space-around {
-    justify-content: space-around;
-}
+    .space-around {
+        justify-content: space-around;
+    }
 
-.space-between {
-    justify-content: space-between;
-}
+    .space-between {
+        justify-content: space-between;
+    }
 
-.spectral {
-    font-family: 'Spectral';
+    .spectral {
+        font-family: 'Spectral';
+    }
 }
