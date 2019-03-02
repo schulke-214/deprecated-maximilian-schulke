@@ -3,9 +3,9 @@
 *::after {
     margin: 0;
     padding: 0;
-    box-sizing: border-box !important;
+    box-sizing: border-box;
     font-family: $font-family-primary;
-    font-weight: $font-weight-regular !important;
+    font-weight: $font-weight-regular;
     outline: none;
     color: $color-secundary;
     -webkit-font-smoothing: antialiased;
@@ -59,7 +59,7 @@ body {
 }
 
 [tabindex="-1"]:focus {
-    outline: 0 !important;
+    outline: 0;
 }
 
 hr {
@@ -75,6 +75,7 @@ h5,
 h6 {
     font-family: $font-family-secundary;
     font-size: $font-size-title-medium;
+    font-weight: $font-weight-bold;
     margin: 0;
 }
 
@@ -152,7 +153,6 @@ a,
 p,
 span,
 div {
-    text-transform: lowercase;
     user-select: none;
     font-size: $font-size-text-medium;
     line-height: 0.8;
@@ -326,7 +326,7 @@ template {
 }
 
 [hidden] {
-    display: none !important;
+    display: none;
 }
 
 img {
