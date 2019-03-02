@@ -14,7 +14,6 @@
     top: 0;
     left: 0;
     z-index: 1000;
-
     padding: $spacing-layout-xl;
 
     @include media-breakpoint-down(md) {
@@ -24,35 +23,37 @@
     @include media-breakpoint-down(xs) {
         padding: $spacing-layout-xs;
     }
+
+    .mouse_layer {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 499;
+    }
+
+    .gui_layer {
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        z-index: 500;
+
+        >div {
+            display: flex;
+            position: relative;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            height: min-content;
+        }
+    }
+
 }
 
-.mouse_layer {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 499;
-}
-
-.gui_layer {
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    z-index: 500;
-}
-
-.gui_layer>div {
-    display: flex;
-    position: relative;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    height: min-content;
-}
 
 .scroll_advice {
     position: relative;
