@@ -14,7 +14,7 @@ class Sticky extends PureComponent {
 	};
 
 	size = this.props.size || 100;
-	stickyRatio = 0.5;
+	stickyRatio = 0.25;
 	entered = false;
 	duration = 0;
 
@@ -80,7 +80,7 @@ class Sticky extends PureComponent {
 	handleMouseEnter = ev => {
 		this.setRect();
 		this.setMouse(ev);
-		this.duration = 2;
+		this.duration = 1.5;
 		this.entered = true;
 
 		if (!this.props.device.isPhone && !this.props.device.isMobile) {
