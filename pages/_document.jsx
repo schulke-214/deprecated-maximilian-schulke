@@ -17,11 +17,7 @@ class AppDocument extends Document {
 					/>
 					<meta name='theme-color' content='#060606' />
 
-					<link
-						rel='shortcut icon'
-						type='image/png'
-						href='/static/icons/logo-dark-48.png'
-					/>
+					<link rel='shortcut icon' type='image/png' href='/static/favicon.png' />
 					<link rel='manifest' href='/static/manifest.json' />
 					<link rel='stylesheet' href='/static/fonts/fonts.css' />
 
