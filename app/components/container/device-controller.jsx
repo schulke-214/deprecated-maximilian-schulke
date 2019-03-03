@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setDeviceSize } from 'store/device';
+import { setMeta, setScreen, setBrowser, setEngine, setOs } from 'store/device';
 
 import DeviceService from 'services/device';
 
@@ -17,18 +17,28 @@ class DeviceController extends React.PureComponent {
 	}
 
 	target = ev => {
-		this.props.setSize({
-			width: window.innerWidth,
-			height: window.innerHeight,
+		this.props.setMeta({
+			supported: 'EHEHEHEH',
 
 			phone: window.innerWidth < 620,
 			tablet: window.innerWidth >= 620 && window.innerWidth < 1280,
 			desktop: window.innerWidth >= 1280
 		});
 
-		// this.props.setType({
-		// 	// touch:
-		// });
+		this.props.setScreen({
+			width: window.innerWidth,
+			height: window.innerHeight
+		});
+
+		this.props.setBrowser(DeviceService.browser);
+
+		this.props.setEngine(DeviceService.engine);
+
+		this.props.setOs(DeviceService.os);
+
+		/*
+
+        */
 	};
 
 	render() {
@@ -37,8 +47,11 @@ class DeviceController extends React.PureComponent {
 }
 
 const mapDispatchToProps = dispatch => ({
-	setSize: data => dispatch(setDeviceSize(data))
-	// setType: data => dispatch(setDeviceType(data))
+	setMeta: data => dispatch(setMeta(data)),
+	setScreen: data => dispatch(setScreen(data)),
+	setBrowser: data => dispatch(setBrowser(data)),
+	setEngine: data => dispatch(setEngine(data)),
+	setOs: data => dispatch(setOs(data))
 });
 
 export default connect(
