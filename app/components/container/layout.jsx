@@ -16,8 +16,6 @@ class Layout extends React.Component {
 	cursor = React.createRef();
 
 	componentDidMount() {
-		console.log(this.props.device.size.width);
-
 		this.handleResize();
 		addEventListener('resize', this.handleResize);
 	}
@@ -36,9 +34,9 @@ class Layout extends React.Component {
 	// }
 
 	handleResize = () => {
-		TweenLite.set('body, main, #__next', {
-			height: this.props.device.size.height
-		});
+		// TweenLite.set('body, main, #__next', {
+		// 	height: this.props.device.size.height
+		// });
 	};
 
 	changePage = url => {
@@ -67,22 +65,25 @@ class Layout extends React.Component {
 
 	render() {
 		return (
-			<React.Fragment>
+			<>
 				<div
 					className={`${styles.layout_layer} unclickable`}
 					// style={{ mixBlendMode: this.props.blendMode ? 'exclusion' : '' }}
 				>
 					<div className={`${styles.gui_layer}`}>
 						<div className={`flex space-between`}>
-							<Sticky handleClick={() => this.changePage('/')} cursor={this.cursor}>
-								<a>Maximilian Schulke</a>
-							</Sticky>
+							<a>Maximilian Schulke</a>
 
-							<Sticky
+							{/* <Sticky handleClick={() => this.changePage('/')} cursor={this.cursor}>
+								<a>Maximilian Schulke</a>
+							</Sticky> */}
+
+							{/* <Sticky
 								handleClick={() => this.changePage('/info')}
 								cursor={this.cursor}>
 								<a>Info</a>
-							</Sticky>
+                            </Sticky> */}
+							<a>Info</a>
 						</div>
 						<div className={`flex space-bewteen`}>
 							{/* <p className={`${styles.scroll_advice}`}>Scroll to explore</p> */}
@@ -120,7 +121,7 @@ class Layout extends React.Component {
 						ref: this.page
 					})}
 				</main>
-			</React.Fragment>
+			</>
 		);
 	}
 }
@@ -130,9 +131,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => {
-	return {
-		shit: () => {}
-	};
+	return {};
 };
 
 export default connect(

@@ -59,7 +59,7 @@ class Sticky extends PureComponent {
 	};
 
 	handleMouseMove = ev => {
-		if (this.props.device.size.phone || this.props.device.type.touch) return;
+		if (this.props.device.size.phone || this.props.device.meta.touch) return;
 
 		this.setMouse(ev);
 
@@ -85,9 +85,7 @@ class Sticky extends PureComponent {
 
 		if (!this.props.device.isPhone && !this.props.device.isMobile) {
 			console.log('STICKY Line 100 FIX');
-
 			// if (this.props.cursor) this.props.cursor.current.shrink();
-
 			if (this.props.hoverClass) this.content.current.classList.add(this.props.hoverClass);
 		}
 
