@@ -9,4 +9,4 @@ const rootReducer = Redux.combineReducers({
 });
 
 export default () =>
-	Redux.createStore(rootReducer, LocalStorageService.getState(), composeWithDevTools());
+	Redux.createStore(rootReducer, LocalStorageService.get('state'), composeWithDevTools());

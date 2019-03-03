@@ -1,16 +1,16 @@
 export default class LocalStorageService {
-	static getState() {
-		console.log('get state');
+	static get(key) {
+		console.log('GET:', key);
 		try {
-			return JSON.parse(localStorage.getItem('state')) || {};
+			return JSON.parse(localStorage.getItem(key)) || {};
 		} catch (e) {
 			return {};
 		}
 	}
 
-	static setState(state) {
+	static set(key, data) {
 		try {
-			localStorage.setItem('state', JSON.stringify(state));
+			localStorage.setItem(key, JSON.stringify(data));
 		} catch (e) {}
 	}
 }
