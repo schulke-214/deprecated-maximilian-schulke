@@ -19,7 +19,7 @@ const store = initStore();
 
 store.subscribe(() => {
 	const { location } = store.getState();
-	LocalStorageService.setState({ location });
+	LocalStorageService.set('state', { location });
 });
 
 // import { device_size_change } from 'store/actions';
