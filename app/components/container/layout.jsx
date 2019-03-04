@@ -72,18 +72,15 @@ class Layout extends React.Component {
 				>
 					<div className={`${styles.gui_layer}`}>
 						<div className={`flex space-between`}>
-							<a>Maximilian Schulke</a>
-
-							{/* <Sticky handleClick={() => this.changePage('/')} cursor={this.cursor}>
+							<Sticky handleClick={() => this.changePage('/')} cursor={this.cursor}>
 								<a>Maximilian Schulke</a>
-							</Sticky> */}
+							</Sticky>
 
-							{/* <Sticky
+							<Sticky
 								handleClick={() => this.changePage('/info')}
 								cursor={this.cursor}>
 								<a>Info</a>
-                            </Sticky> */}
-							<a>Info</a>
+							</Sticky>
 						</div>
 						<div className={`flex space-bewteen`}>
 							{/* <p className={`${styles.scroll_advice}`}>Scroll to explore</p> */}
@@ -102,15 +99,15 @@ class Layout extends React.Component {
 						</div>
 						<div className={`flex space-between`}>
 							{/* <p>Creative Developer</p> */}
-							{/* <Sticky
-								handleClick={() => this.changePage('/info')}
+							<Sticky
+								handleClick={() => this.changePage('/archive')}
 								cursor={this.cursor}>
-								<a>info</a>
-                            </Sticky> */}
+								<a>archive</a>
+							</Sticky>
 
-							{/* <a target='_blank' href='https://github.com/schulke-214'>
-								Github
-							</a> */}
+							<Sticky cursor={this.cursor} newTab='https://github.com/schulke-214/'>
+								<a>github</a>
+							</Sticky>
 						</div>
 					</div>
 				</div>

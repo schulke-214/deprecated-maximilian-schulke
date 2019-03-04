@@ -65,6 +65,8 @@ class DeviceController extends React.PureComponent {
 	};
 
 	touch = () => {
+		// CHECK IF TOUCH EVENTS R AVAILABLE
+
 		return false;
 	};
 
@@ -81,9 +83,9 @@ class DeviceController extends React.PureComponent {
 			return true;
 		}
 
-		// check for touch events -> true
-
-		// check for screensize
+		if (this.touch()) {
+			return true;
+		}
 
 		return false;
 	};
