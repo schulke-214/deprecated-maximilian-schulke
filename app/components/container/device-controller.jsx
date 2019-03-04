@@ -8,22 +8,27 @@ class DeviceController extends React.PureComponent {
 	componentDidMount() {
 		this.target();
 
-		console.log(DeviceService.browser);
-		console.log(DeviceService.device);
-		console.log(DeviceService.engine);
-		console.log(DeviceService.os);
-
 		addEventListener('resize', this.target);
+	}
+
+	componentWillUnmount() {
+		removeEventListener('resize', this.target);
 	}
 
 	target = ev => {
 		this.props.setMeta({
-			supported: 'EHEHEHEH',
+			...DeviceService.device,
+
+			supported: this.support(),
+			mobile: this.mobile(),
+			touch: this.touch(),
 
 			phone: window.innerWidth < 620,
 			tablet: window.innerWidth >= 620 && window.innerWidth < 1280,
 			desktop: window.innerWidth >= 1280
 		});
+
+		console.log(this.mobile(), 'IS MOBILE');
 
 		this.props.setScreen({
 			width: window.innerWidth,
@@ -35,10 +40,52 @@ class DeviceController extends React.PureComponent {
 		this.props.setEngine(DeviceService.engine);
 
 		this.props.setOs(DeviceService.os);
+	};
 
-		/*
+	support = () => {
+		const { browser } = DeviceService;
 
-        */
+		if (browser.type.chrome && +browser.major < 15) {
+			return false;
+		}
+
+		if (browser.type.firefox && +browser.major < 10) {
+			return false;
+		}
+
+		if (browser.type.safari && +browser.major < 5) {
+			return false;
+		}
+
+		if (browser.type.ie || browser.type.edge || browser.type.opera) {
+			return false;
+		}
+
+		return true;
+	};
+
+	touch = () => {
+		return false;
+	};
+
+	mobile = () => {
+		const { device } = DeviceService;
+		const mobileDevices = ['iPhone', 'iPad', 'iPod'];
+		console.log(device, 'FROM MOBILE');
+
+		if (device.type === 'mobile') {
+			return true;
+		}
+
+		if (mobileDevices.includes(device.model)) {
+			return true;
+		}
+
+		// check for touch events -> true
+
+		// check for screensize
+
+		return false;
 	};
 
 	render() {
