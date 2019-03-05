@@ -18,8 +18,7 @@ import 'app/ressources/global/_utilities.scss';
 const store = initStore();
 
 store.subscribe(() => {
-	const { location } = store.getState();
-	LocalStorageService.set('state', { location });
+	LocalStorageService.set('state', store.getState());
 });
 
 // import { device_size_change } from 'store/actions';
