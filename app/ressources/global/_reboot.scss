@@ -17,6 +17,7 @@
 }
 
 html {
+    font-size: $font-base;
     font-family: $font-family-primary;
     line-height: $line-height;
     background-color: $color-primary;
@@ -74,7 +75,7 @@ h4,
 h5,
 h6 {
     font-family: $font-family-secundary;
-    font-size: $font-size-title-medium;
+    font-size: $font-size-title;
     font-weight: $font-weight-bold;
     margin: 0;
 }
@@ -154,7 +155,7 @@ p,
 span,
 div {
     user-select: none;
-    font-size: $font-size-text-medium;
+    font-size: $font-size-text;
     line-height: 0.8;
     font-weight: $font-weight-regular;
     text-decoration: none;
