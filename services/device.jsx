@@ -10,6 +10,8 @@ export default class DeviceDetectionService {
 				chrome: /Chrome/i.test(data.browser.name),
 				firefox: /Firefox/i.test(data.browser.name),
 				safari: /Safari/i.test(data.browser.name),
+				ie: /IE/i.test(data.browser.name),
+				edge: /Edge/i.test(data.browser.name),
 				mobileSafari: /Mobile\sSafari/i.test(data.browser.name),
 				opera: /Opera/i.test(data.browser.name)
 			}
