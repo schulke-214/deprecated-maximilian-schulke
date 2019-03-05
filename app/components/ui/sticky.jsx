@@ -59,7 +59,7 @@ class Sticky extends PureComponent {
 	};
 
 	handleMouseMove = ev => {
-		if (this.props.device.size.phone || this.props.device.meta.touch) return;
+		if (this.props.device.meta.phone || this.props.device.meta.touch) return;
 
 		this.setMouse(ev);
 
@@ -83,7 +83,7 @@ class Sticky extends PureComponent {
 		this.duration = 1.5;
 		this.entered = true;
 
-		if (!this.props.device.isPhone && !this.props.device.isMobile) {
+		if (!this.props.device.meta.phone && !this.props.device.meta.mobile) {
 			console.log('STICKY Line 100 FIX');
 			// if (this.props.cursor) this.props.cursor.current.shrink();
 			if (this.props.hoverClass) this.content.current.classList.add(this.props.hoverClass);
@@ -96,7 +96,7 @@ class Sticky extends PureComponent {
 		this.setMouse(ev);
 		this.entered = false;
 
-		if (!this.props.device.isPhone && !this.props.device.isMobile) {
+		if (!this.props.device.meta.phone && !this.props.device.meta.mobile) {
 			console.log('STICKY Line 100 FIX');
 			// if (this.props.cursor) this.props.cursor.current.reset();
 
@@ -116,6 +116,7 @@ class Sticky extends PureComponent {
 		if (this.props.to) {
 			// PROGRAMATICALLY ROUTING ( USING A INTERFACE OR THE LAYOUT COMPONENT )
 		} else if (this.props.newTab) {
+			console.log('EH');
 			window.open(this.props.newTab, '_blank');
 		} else if (this.props.mailto) {
 			location.href = 'mailto:' + this.props.mailto;
@@ -145,6 +146,7 @@ class Sticky extends PureComponent {
 				</span>
 				<div
 					className={`${styles.trigger}`}
+					onClick={this.handleClick}
 					style={{ width: this.size, height: this.size }}
 					ref={this.trigger}
 				/>
@@ -153,12 +155,6 @@ class Sticky extends PureComponent {
 	}
 }
 
-const mapStateToProps = ({ device }) => ({
-	device
-});
+const mapStateToProps = ({ device }) => ({ device });
 
 export default connect(mapStateToProps)(Sticky);
-
-// export default props => (
-// 	<DeviceContext.Consumer>{state => <Sticky device={state} {...props} />}</DeviceContext.Consumer>
-// );
