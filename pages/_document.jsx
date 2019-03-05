@@ -19,14 +19,12 @@ class AppDocument extends Document {
 
 					<link rel='shortcut icon' type='image/png' href='/static/favicon.png' />
 					<link rel='manifest' href='/static/manifest.json' />
-					<link rel='stylesheet' href='/static/fonts/fonts.css' />
-
-					<script />
+					<link rel='stylesheet' href='/static/assets/fonts/fonts.css' />
 
 					<noscript>
 						<meta
 							httpEquiv='Refresh'
-							content='0; URL=https://domain.com/lightweight/' /* REMINDER FOR FUTURE ME: CHANGE THIS*/
+							content='0; URL=/lightweight/' /* REMINDER FOR FUTURE ME: CHANGE THIS*/
 						/>
 					</noscript>
 				</Head>
