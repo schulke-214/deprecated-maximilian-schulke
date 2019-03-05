@@ -1,6 +1,5 @@
 export default class LocalStorageService {
 	static get(key) {
-		console.log('GET:', key);
 		try {
 			return JSON.parse(localStorage.getItem(key)) || {};
 		} catch (e) {

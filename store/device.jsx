@@ -9,6 +9,7 @@ const SET_OS = 'app/device/SET_OS';
 const initialState = {
 	meta: {
 		supported: true,
+		mobile: false,
 		model: 'MacBook',
 		vendor: 'Apple',
 		category: 'desktop',
@@ -30,6 +31,8 @@ const initialState = {
 			firefox: false,
 			opera: false,
 			safari: false,
+			ie: false,
+			edge: false,
 			mobileSafari: false
 		}
 	},
