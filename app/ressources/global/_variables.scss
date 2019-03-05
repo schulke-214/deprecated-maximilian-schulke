@@ -3,8 +3,7 @@ $color-primary: #ffffff; //#F2F2F2;
 $color-secundary: #060606;
 
 // fonts
-$font-family-primary: "Karla",
--apple-system,
+$font-family-primary: -apple-system,
 BlinkMacSystemFont,
 "Segoe UI",
 Roboto,
@@ -21,19 +20,13 @@ $font-family-secundary: "Spectral";
 $font-weight-bold: 700;
 $font-weight-medium: 500;
 $font-weight-regular: 400;
-$font-weight-light: 300;
 
 // font sizes
 $font-base: 16px;
 $line-height: 1.2;
 
-$font-size-text-large: 0.925rem;
-$font-size-text-medium: 0.8rem;
-$font-size-text-small: 0.75rem;
-
-$font-size-title-large: 4rem;
-$font-size-title-medium: 3.5rem;
-$font-size-title-small: 2.25rem;
+$font-size-text: 0.8rem;
+$font-size-title: 3.5rem;
 
 $margin-large: 2.5rem;
 $margin-medium: 1.75rem;
