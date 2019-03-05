@@ -2,6 +2,10 @@ import { cloneDeep } from 'lodash';
 
 const SET = 'app/location/SET';
 
+const initalState = {
+	firstVisit: true
+};
+
 export default (state, { type, data }) => {
 	const updated = cloneDeep(state);
 
