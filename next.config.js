@@ -19,7 +19,7 @@ module.exports = withSass({
             use: [{
                 loader: 'sass-resources-loader',
                 options: {
-                    resources: path.join(process.cwd(), '/app/ressources/global/default.scss')
+                    resources: path.join(process.cwd(), '/app/scss/global/default.scss')
                 },
             }, ],
         })
