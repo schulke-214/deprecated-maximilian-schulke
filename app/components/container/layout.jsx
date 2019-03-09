@@ -5,7 +5,7 @@ import { TweenLite } from 'gsap';
 
 import Sticky from 'app/components/ui/sticky';
 
-import styles from 'app/ressources/container/layout.scss';
+import styles from 'app/scss/container/layout.scss';
 // import Logo from '../components/common/logo/logo';
 // import Arrows from '../components/common/arrows/arrows';
 // import Sticky from '../components/common/sticky/sticky';

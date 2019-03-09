@@ -6,14 +6,14 @@ import LocalStorageService from 'services/local-storage';
 import { Provider } from 'react-redux';
 
 import Layout from 'app/components/container/layout';
-import DeviceController from 'app/components/container/device-controller';
+import DeviceController from 'app/components/data/device-controller';
 
 import { generateTitle } from 'app/utility/strings';
 
 // import PageLoader from "components/common/pageLoader/pageLoader";
 
-import 'app/ressources/global/_reboot.scss';
-import 'app/ressources/global/_utilities.scss';
+import 'app/scss/global/_reboot.scss';
+import 'app/scss/global/_utilities.scss';
 
 const store = initStore();
 

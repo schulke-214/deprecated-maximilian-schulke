@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
-import styles from 'app/ressources/ui/sticky.scss';
+import styles from 'app/scss/ui/sticky.scss';
 
 class Sticky extends PureComponent {
 	container = React.createRef();
