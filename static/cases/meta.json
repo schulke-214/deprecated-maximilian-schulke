@@ -1,0 +1,52 @@
+[{
+        "meta": {
+            "title": "example",
+            "route": "/cases/example",
+            "url": "https://de.wikipedia.org/",
+            "category": "design",
+            "year": 2017,
+            "roles": [
+                "ui",
+                "ux",
+                "art direction"
+            ],
+            "stage": "/static/cases/example/stage.jpg"
+        }
+    },
+    {
+        "meta": {
+            "title": "zwanzig grad",
+            "route": "/cases/zwanzig-grad",
+            "url": "https://de.wikipedia.org/",
+            "category": "frontend",
+            "year": 2018,
+            "roles": [
+                "fullstack dev",
+                "organisation",
+                "creative leading"
+            ],
+            "stage": "/static/cases/zwanzig-grad/stage.jpg"
+        },
+        "images": [
+            "static/cases/zwanzig-grad/1.png",
+            "static/cases/zwanzig-grad/2.png",
+            "static/cases/zwanzig-grad/3.png",
+            "static/cases/zwanzig-grad/4.png"
+        ]
+    },
+    {
+        "meta": {
+            "title": "recipy",
+            "route": "/cases/recipy",
+            "url": "https://de.wikipedia.org/",
+            "category": "fullstack",
+            "year": 2019,
+            "roles": [
+                "fullstack dev",
+                "organisation",
+                "creative leading"
+            ],
+            "stage": "/static/cases/recipy/stage.jpg"
+        }
+    }
+]
