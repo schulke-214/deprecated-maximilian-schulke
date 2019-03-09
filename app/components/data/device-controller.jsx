@@ -15,7 +15,7 @@ class DeviceController extends React.PureComponent {
 		removeEventListener('resize', this.target);
 	}
 
-	target = ev => {
+	target = () => {
 		this.props.setMeta({
 			...DeviceService.device,
 
@@ -27,8 +27,6 @@ class DeviceController extends React.PureComponent {
 			tablet: window.innerWidth >= 620 && window.innerWidth < 1280,
 			desktop: window.innerWidth >= 1280
 		});
-
-		console.log(this.mobile(), 'IS MOBILE');
 
 		this.props.setScreen({
 			width: window.innerWidth,
@@ -65,7 +63,9 @@ class DeviceController extends React.PureComponent {
 	};
 
 	touch = () => {
-		// CHECK IF TOUCH EVENTS R AVAILABLE
+		if ('ontouchstart' in document.documentElement) {
+			return true;
+		}
 
 		return false;
 	};
@@ -73,7 +73,6 @@ class DeviceController extends React.PureComponent {
 	mobile = () => {
 		const { device } = DeviceService;
 		const mobileDevices = ['iPhone', 'iPad', 'iPod'];
-		console.log(device, 'FROM MOBILE');
 
 		if (device.type === 'mobile') {
 			return true;
