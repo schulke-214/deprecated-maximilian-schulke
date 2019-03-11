@@ -22,6 +22,10 @@ export default class DeviceDetectionService {
 		return data.engine;
 	}
 
+	static get ua() {
+		return data.ua;
+	}
+
 	static get os() {
 		return {
 			...data.os,
