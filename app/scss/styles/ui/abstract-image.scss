@@ -1,0 +1,15 @@
+.wrapper {
+    cursor: pointer;
+    overflow: hidden;
+    position: absolute;
+    left: 25%;
+    top: 0;
+
+    width: 50%;
+    height: 100%;
+
+    canvas {
+        transform-origin: center;
+        position: absolute;
+    }
+}
