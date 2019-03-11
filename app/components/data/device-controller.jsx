@@ -63,11 +63,9 @@ class DeviceController extends React.PureComponent {
 	};
 
 	touch = () => {
-		if ('ontouchstart' in document.documentElement) {
-			return true;
-		}
-
-		return false;
+		return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+			DeviceService.ua
+		);
 	};
 
 	mobile = () => {
