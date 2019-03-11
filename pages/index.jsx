@@ -1,4 +1,4 @@
-import Router from 'next/router';
+// import Router from 'next/router';
 
 // // COMPONENT IMPORTS
 // import Slider from '../frontend/components/pages/home/slider/slider';
@@ -16,77 +16,78 @@ import cases from '../static/cases/meta.json';
 // import tabletStyles from '../frontend/styles/pages/home/home-tablet';
 // import mobileStyles from '../frontend/styles/pages/home/home-mobile';
 
-import styles from 'app/scss/pages/index.scss';
+import styles from 'app/scss/styles/pages/index.scss';
 
 // 		// MAP JSON TO ARRAY
 // 		const projects = [];
 // 		Object.keys(data).map(key => projects.push(data[key]));
-
 // 		const projectTitles = [];
 // 		projects.map(project => projectTitles.push(project.meta.title));
 
+import AbstractImage from 'app/components/ui/abstract-image';
+
 class Home extends React.Component {
-	slider = React.createRef();
-	circle = React.createRef();
-	title = React.createRef();
-	counter = React.createRef();
+	// slider = React.createRef();
+	// circle = React.createRef();
+	// title = React.createRef();
+	// counter = React.createRef();
 
-	threshold = 50;
-	animating = false;
+	// threshold = 50;
+	// animating = false;
 
-	touchStart = {
-		x: null,
-		y: null
-	};
+	// touchStart = {
+	// 	x: null,
+	// 	y: null
+	// };
 
-	state = {
-		cases,
-		slider: {
-			current: 0,
-			length: cases.length
-		}
-	};
+	// state = {
+	// 	cases,
+	// 	slider: {
+	// 		current: 0,
+	// 		length: cases.length
+	// 	}
+	// };
 
-	componentDidMount() {
-		addEventListener('wheel', this.handleScroll, { passive: true });
-		addEventListener('touchstart', this.handleTouch, { passive: true });
-		addEventListener('keydown', this.handleKeyDown, { passive: true });
-		addEventListener('touchstart', this.handleTouchStart, { passive: true });
-		addEventListener('touchend', this.handleTouchEnd, { passive: true });
-	}
+	// // componentDidMount() {
+	// 	addEventListener('wheel', this.handleScroll, { passive: true });
+	// 	addEventListener('touchstart', this.handleTouch, { passive: true });
+	// 	addEventListener('keydown', this.handleKeyDown, { passive: true });
+	// 	addEventListener('touchstart', this.handleTouchStart, { passive: true });
+	// 	addEventListener('touchend', this.handleTouchEnd, { passive: true });
+	// }
 
-	componentWillUnmount() {
-		removeEventListener('wheel', this.handleScroll, { passive: true });
-		removeEventListener('touchstart', this.handleTouch, { passive: true });
-		removeEventListener('keydown', this.handleKeyDown, { passive: true });
-		removeEventListener('touchstart', this.handleTouchStart, { passive: true });
-		removeEventListener('touchend', this.handleTouchEnd, { passive: true });
+	// componentWillUnmount() {
+	// 	removeEventListener('wheel', this.handleScroll, { passive: true });
+	// 	removeEventListener('touchstart', this.handleTouch, { passive: true });
+	// 	removeEventListener('keydown', this.handleKeyDown, { passive: true });
+	// 	removeEventListener('touchstart', this.handleTouchStart, { passive: true });
+	// 	removeEventListener('touchend', this.handleTouchEnd, { passive: true });
 
-		removeEventListener('wheel', this.resetRunningState);
-		removeEventListener('mousemove', this.resetRunningState);
-	}
+	// 	removeEventListener('wheel', this.resetRunningState);
+	// 	removeEventListener('mousemove', this.resetRunningState);
+	// }
 
-	get case() {
-		return this.state.cases[this.state.slider.current];
-	}
+	// get case() {
+	// 	return this.state.cases[this.state.slider.current];
+	// }
 
-	animate = () => {};
+	// animate = () => {};
 
-	next = () => {};
+	// next = () => {};
 
-	prev = () => {};
+	// prev = () => {};
 
-	handleScroll = ev => {
-		let delta = ev.deltaY;
+	// handleScroll = ev => {
+	// 	let delta = ev.deltaY;
 
-		// if (!this.animating && this.props.scroll.status !== false) {
-		// 	if (delta < 0) {
-		// 		this.prevProject('WHEEL');
-		// 	} else if (delta > 0) {
-		// 		this.nextProject('WHEEL');
-		// 	}
-		// }
-	};
+	// if (!this.animating && this.props.scroll.status !== false) {
+	// 	if (delta < 0) {
+	// 		this.prevProject('WHEEL');
+	// 	} else if (delta > 0) {
+	// 		this.nextProject('WHEEL');
+	// 	}
+	// }
+	// };
 
 	// 	handleClick = dir => {
 	// 		if (!this.running) {
@@ -148,7 +149,11 @@ class Home extends React.Component {
 	// 	};
 
 	render() {
-		return <p className={styles.test}>{'<3'}</p>;
+		return (
+			<>
+				<AbstractImage src='/static/abstract.png' />
+			</>
+		);
 	}
 }
 
