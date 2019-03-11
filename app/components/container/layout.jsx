@@ -5,7 +5,7 @@ import { TweenLite } from 'gsap';
 
 import Sticky from 'app/components/ui/sticky';
 
-import styles from 'app/scss/container/layout.scss';
+import styles from 'app/scss/styles/container/layout.scss';
 // import Logo from '../components/common/logo/logo';
 // import Arrows from '../components/common/arrows/arrows';
 // import Sticky from '../components/common/sticky/sticky';
@@ -99,7 +99,7 @@ class Layout extends React.Component {
 						</div>
 						<div className={`flex space-between`}>
 							{/* <p>Creative Developer</p> */}
-							<Sticky
+							{/* <Sticky
 								handleClick={() => this.changePage('/archive')}
 								cursor={this.cursor}>
 								<a>archive</a>
@@ -107,11 +107,11 @@ class Layout extends React.Component {
 
 							<Sticky cursor={this.cursor} newTab='https://github.com/schulke-214/'>
 								<a>github</a>
-							</Sticky>
+							</Sticky> */}
 						</div>
 					</div>
 				</div>
-				<div className={`unclickable ${styles.mouse_layer}`} />
+				<div className={`${styles.mouse_layer} unclickable`} />
 				<main className={styles.main}>
 					{React.cloneElement(this.props.children, {
 						cursor: this.cursor,
