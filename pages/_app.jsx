@@ -1,6 +1,9 @@
 import App, { Container } from 'next/app';
 import Head from 'next/head';
 
+import { pageTitle } from 'app/utility/strings';
+
+// refactor imports
 import initStore from 'store';
 import LocalStorageService from 'services/local-storage';
 import { Provider } from 'react-redux';
@@ -8,12 +11,10 @@ import { Provider } from 'react-redux';
 import Layout from 'app/components/container/layout';
 import DeviceController from 'app/components/data/device-controller';
 
-import { generateTitle } from 'app/utility/strings';
-
 // import PageLoader from "components/common/pageLoader/pageLoader";
 
-import 'app/scss/global/_reboot.scss';
-import 'app/scss/global/_utilities.scss';
+import 'app/scss/reset/reboot.scss';
+import 'app/scss/reset/utilities.scss';
 
 const store = initStore();
 
@@ -22,6 +23,7 @@ store.subscribe(() => {
 });
 
 // import { device_size_change } from 'store/actions';
+// import { utility } from 'styles/common/utility';
 // store.dispatch(
 // 	device_size_change({
 // 		width: 1020,
@@ -51,7 +53,7 @@ class Application extends App {
 			<Provider store={store}>
 				<Container>
 					<Head>
-						<title>{generateTitle(this.props.router.pathname)}</title>
+						<title>{pageTitle('Software Developer')}</title>
 					</Head>
 					{/* {this.state.pageLoader.isOpen ? (
                         <PageLoader finished={this.removePageLoader} />
@@ -100,11 +102,5 @@ render() {
 }
 
 */
-
-const mapDispatchToProps = dispatch => ({
-	setDeviceSize(width, height) {
-		dispatch();
-	}
-});
 
 export default Application;
