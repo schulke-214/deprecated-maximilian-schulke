@@ -1,6 +1,9 @@
 export const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1);
 
-export const generateTitle = url => {
+export const pageTitle = title => 'Maximilian Schulke — ' + capitalize(title);
+
+/*
+url => {
     url = url.slice(1, url.length);
     url = url.split('/', 2);
 
@@ -19,7 +22,7 @@ export const generateTitle = url => {
     let title;
     switch (url.length) {
         case 1:
-            title = capitalize(url[0]);
+            title = 'Maximilian Schulke — ' + capitalize(url[0]);
             break;
 
         case 2:
@@ -27,9 +30,10 @@ export const generateTitle = url => {
             break;
 
         default:
-            title = 'Maximilian Schulke - Creative Developer';
+            title = 'Maximilian Schulke — Software Developer';
             break;
     }
 
     return title;
 }
+*/
