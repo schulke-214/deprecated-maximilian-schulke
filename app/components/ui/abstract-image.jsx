@@ -139,20 +139,18 @@ class AbstractImage extends React.Component {
 		else if (rect.height <= rect.width) factor = rect.height / height;
 
 		// USE THE FACTOR TO CALC A FITTING POSITION
-		if (this.pixi.width * factor <= rect.width && width >= height) factor = rect.width / width;
+		if (width * factor <= rect.width && width >= height) factor = rect.width / width;
 
-		if (this.pixi.height * factor <= rect.height && width >= height)
-			factor = rect.height / height;
+		if (height * factor <= rect.height && width >= height) factor = rect.height / height;
 
-		if (this.pixi.height * factor <= rect.height && height >= width)
-			factor = rect.height / height;
+		if (height * factor <= rect.height && height >= width) factor = rect.height / height;
 
-		if (this.pixi.width * factor <= rect.width && height >= width) factor = rect.width / width;
+		if (width * factor <= rect.width && height >= width) factor = rect.width / width;
 
 		TweenLite.set(this.canvas.current, {
 			scale: factor,
-			left: (rect.width - this.width) / 2,
-			top: (rect.height - this.height) / 2
+			left: (rect.width - width) / 2,
+			top: (rect.height - height) / 2
 		});
 	};
 
