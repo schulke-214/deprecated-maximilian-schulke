@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setMeta, setScreen, setBrowser, setEngine, setOs } from 'store/device';
 
-import DeviceService from 'services/device';
+import DeviceService from 'services/device-detection';
 
 class DeviceController extends React.PureComponent {
 	componentDidMount() {
