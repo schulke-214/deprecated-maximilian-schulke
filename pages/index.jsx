@@ -151,7 +151,16 @@ class Home extends React.Component {
 	render() {
 		return (
 			<>
-				<AbstractImage src='/static/abstract.png' />
+				<div
+					style={{
+						position: 'absolute',
+						width: '375px',
+						height: '750px',
+						top: 'calc(50% - 375px)',
+						left: 'calc(50% - 187.5px)'
+					}}>
+					<AbstractImage src='/static/abstract-4.png' />
+				</div>
 			</>
 		);
 	}
