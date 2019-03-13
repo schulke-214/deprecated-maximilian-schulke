@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { TweenLite } from 'gsap';
 
 import styles from 'app/scss/styles/ui/sticky.scss';
 
