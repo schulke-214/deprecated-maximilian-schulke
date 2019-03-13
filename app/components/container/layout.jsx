@@ -1,9 +1,11 @@
-import Link from 'next/link';
-import { withRouter } from 'next/router';
 import { connect } from 'react-redux';
-import { TweenLite } from 'gsap';
+// import Link from 'next/link';
+// import { TweenLite } from 'gsap';
+
+import Router from 'services/router';
 
 import Sticky from 'app/components/ui/sticky';
+import PageTransition from 'app/components/ui/page-transition';
 
 import styles from 'app/scss/styles/container/layout.scss';
 // import Logo from '../components/common/logo/logo';
@@ -39,10 +41,6 @@ class Layout extends React.Component {
 		// });
 	};
 
-	changePage = url => {
-		this.props.router.push(url);
-	};
-
 	// allowScrolling = () => {
 	// 	window.onwheel = ev => {
 	// 		ev.preventDefault();
@@ -72,13 +70,11 @@ class Layout extends React.Component {
 				>
 					<div className={`${styles.gui_layer}`}>
 						<div className={`flex space-between`}>
-							<Sticky handleClick={() => this.changePage('/')} cursor={this.cursor}>
+							<Sticky handleClick={() => Router.push('/')} cursor={this.cursor}>
 								<a>Maximilian Schulke</a>
 							</Sticky>
 
-							<Sticky
-								handleClick={() => this.changePage('/info')}
-								cursor={this.cursor}>
+							<Sticky handleClick={() => Router.push('/info')} cursor={this.cursor}>
 								<a>Info</a>
 							</Sticky>
 						</div>
@@ -112,6 +108,7 @@ class Layout extends React.Component {
 					</div>
 				</div>
 				<div className={`${styles.mouse_layer} unclickable`} />
+				<PageTransition />
 				<main className={styles.main}>
 					{React.cloneElement(this.props.children, {
 						cursor: this.cursor,
@@ -134,4 +131,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(withRouter(Layout));
+)(Layout);
