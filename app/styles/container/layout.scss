@@ -14,15 +14,15 @@
     top: 0;
     left: 0;
     z-index: 1000;
-    padding: $spacing-layout-xl;
+    // padding: $spacing-layout-xl;
 
-    @include media-breakpoint-down(md) {
-        padding: $spacing-layout-md;
-    }
+    // @include media-breakpoint-down(md) {
+    //     padding: $spacing-layout-md;
+    // }
 
-    @include media-breakpoint-down(xs) {
-        padding: $spacing-layout-xs;
-    }
+    // @include media-breakpoint-down(xs) {
+    //     padding: $spacing-layout-xs;
+    // }
 
     .gui_layer {
         width: 100%;

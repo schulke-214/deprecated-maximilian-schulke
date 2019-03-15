@@ -79,7 +79,7 @@
     h5,
     h6 {
         font-family: $font-family-secundary;
-        font-size: $font-size-title;
+        // font-size: $font-size-title;
         font-weight: $font-weight-bold;
         line-height: 0.8;
         margin: 0;
@@ -160,7 +160,7 @@
     span,
     div {
         user-select: none;
-        font-size: $font-size-text;
+        // font-size: $font-size-text;
         line-height: 0.8;
         font-weight: $font-weight-regular;
         text-decoration: none;
@@ -200,7 +200,7 @@
 
     label {
         display: inline-block;
-        margin-bottom: $margin-small;
+        // margin-bottom: $margin-small;
     }
 
     button {
