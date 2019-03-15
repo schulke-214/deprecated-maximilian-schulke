@@ -16,7 +16,7 @@ class AppDocument extends Document {
 						content='Im a creative developer based in bielefeld, germany!' /* REMINDER FOR FUTURE ME: CHANGE THIS*/
 					/>
 					<meta name='theme-color' content='#060606' />
-					<link rel='shortcut icon' type='image/png' href='/static/favicon.png' />
+					<link rel='shortcut icon' type='image/jpg' href='/static/favicon.jpg' />
 					<link rel='manifest' href='/static/manifest.json' />
 					<link rel='stylesheet' href='/static/assets/fonts/fonts.css' />
 					<script src='https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.5.1/pixi.min.js' />

@@ -1,4 +1,6 @@
-import styles from 'app/scss/styles/ui/abstract-image.scss';
+// import styles from 'app/scss/styles/ui/abstract-image.scss';
+
+const styles = {};
 
 class AbstractImage extends React.Component {
 	canvas = React.createRef();
@@ -24,6 +26,7 @@ class AbstractImage extends React.Component {
 	async componentDidMount() {
 		await this.init();
 		await this.load(this.props.src);
+
 		this.animate();
 		this.resize();
 
@@ -130,6 +133,7 @@ class AbstractImage extends React.Component {
 	};
 
 	resize = () => {
+		console.log('on resize');
 		let { width, height } = this;
 		let rect = this.wrapper.current.getBoundingClientRect();
 		let factor = 1;
@@ -146,6 +150,12 @@ class AbstractImage extends React.Component {
 		if (height * factor <= rect.height && height >= width) factor = rect.height / height;
 
 		if (width * factor <= rect.width && height >= width) factor = rect.width / width;
+
+		console.log({
+			scale: factor,
+			left: (rect.width - width) / 2,
+			top: (rect.height - height) / 2
+		});
 
 		TweenLite.set(this.canvas.current, {
 			scale: factor,

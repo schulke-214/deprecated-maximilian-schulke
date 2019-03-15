@@ -13,8 +13,8 @@ import DeviceController from 'app/components/data/device-controller';
 
 // import PageLoader from "components/common/pageLoader/pageLoader";
 
-import 'app/scss/reset/reboot.scss';
-import 'app/scss/reset/utilities.scss';
+import 'app/styles/reboot.scss';
+// import 'app/scss/_utilities.scss';
 
 const store = initStore();
 

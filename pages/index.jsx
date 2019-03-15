@@ -16,7 +16,9 @@ import cases from '../static/cases/meta.json';
 // import tabletStyles from '../frontend/styles/pages/home/home-tablet';
 // import mobileStyles from '../frontend/styles/pages/home/home-mobile';
 
-import styles from 'app/scss/styles/pages/index.scss';
+// import styles from 'app/scss/styles/pages/index.scss';
+
+const styles = {};
 
 // 		// MAP JSON TO ARRAY
 // 		const projects = [];
@@ -24,7 +26,7 @@ import styles from 'app/scss/styles/pages/index.scss';
 // 		const projectTitles = [];
 // 		projects.map(project => projectTitles.push(project.meta.title));
 
-import AbstractImage from 'app/components/ui/abstract-image';
+import AbstractImage from 'app/components/interface/abstract-image';
 
 class Home extends React.Component {
 	// slider = React.createRef();

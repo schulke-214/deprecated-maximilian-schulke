@@ -2,12 +2,14 @@ import { connect } from 'react-redux';
 // import Link from 'next/link';
 // import { TweenLite } from 'gsap';
 
-import Router from 'services/router';
+// import Router from 'services/router';
 
-import Sticky from 'app/components/ui/sticky';
-import PageTransition from 'app/components/ui/page-transition';
+import Sticky from 'app/components/interface/sticky';
 
-import styles from 'app/scss/styles/container/layout.scss';
+import 'app/styles/container/layout.scss';
+
+const styles = {};
+
 // import Logo from '../components/common/logo/logo';
 // import Arrows from '../components/common/arrows/arrows';
 // import Sticky from '../components/common/sticky/sticky';
@@ -18,12 +20,12 @@ class Layout extends React.Component {
 	cursor = React.createRef();
 
 	componentDidMount() {
-		this.handleResize();
-		addEventListener('resize', this.handleResize);
+		// this.handleResize();
+		// addEventListener('resize', this.handleResize);
 	}
 
 	componentWillUnmount() {
-		removeEventListener('resize', this.handleResize);
+		// removeEventListener('resize', this.handleResize);
 	}
 
 	// shouldComponentUpdate( nextProps ) {
@@ -35,11 +37,11 @@ class Layout extends React.Component {
 	//     )
 	// }
 
-	handleResize = () => {
-		// TweenLite.set('body, main, #__next', {
-		// 	height: this.props.device.size.height
-		// });
-	};
+	// handleResize = () => {
+	// TweenLite.set('body, main, #__next', {
+	// 	height: this.props.device.size.height
+	// });
+	// };
 
 	// allowScrolling = () => {
 	// 	window.onwheel = ev => {
@@ -108,13 +110,12 @@ class Layout extends React.Component {
 					</div>
 				</div>
 				<div className={`${styles.mouse_layer} unclickable`} />
-				<PageTransition />
-				<main className={styles.main}>
+				{/* <main className={styles.main}>
 					{React.cloneElement(this.props.children, {
 						cursor: this.cursor,
 						ref: this.page
 					})}
-				</main>
+				</main> */}
 			</>
 		);
 	}
