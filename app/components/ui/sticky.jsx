@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { TweenLite } from 'gsap';
 
-import styles from 'app/styles/interface/sticky.scss';
+import 'app/styles/components/sticky.scss';
 
 class Sticky extends PureComponent {
 	container = React.createRef();
@@ -141,12 +141,12 @@ class Sticky extends PureComponent {
 
 	render() {
 		return (
-			<div className={`clickable ${styles.container}`} style={this.props.style}>
-				<span className={`${styles.content}`} ref={this.content}>
+			<div className={`clickable container`} style={this.props.style}>
+				<span className={`content`} ref={this.content}>
 					{this.props.children}
 				</span>
 				<div
-					className={`${styles.trigger}`}
+					className={`styles.trigger`}
 					onClick={this.handleClick}
 					style={{ width: this.size, height: this.size }}
 					ref={this.trigger}

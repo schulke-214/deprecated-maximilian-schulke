@@ -1,9 +1,7 @@
 const path = require('path')
-
 const withSass = require('@zeit/next-sass')
 
 module.exports = withSass({
-
     webpack(config) {
         config.resolve.alias['app'] = path.join(process.cwd(), '/app');
         config.resolve.alias['store'] = path.join(process.cwd(), '/store');
