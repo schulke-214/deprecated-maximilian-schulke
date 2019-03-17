@@ -1,14 +1,14 @@
-.container {
+.sticky {
     position: relative;
 }
 
-.trigger {
+.sticky__trigger {
     position: absolute;
     border-radius: 100%;
     cursor: pointer;
 }
 
-.content {
+.sticky__content {
     text-transform: lowercase;
     display: block;
     transform-origin: center;
