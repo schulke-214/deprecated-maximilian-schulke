@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 
 // import Router from 'services/router';
 
-import Sticky from 'app/components/interface/sticky';
+import Sticky from 'app/components/ui/sticky';
 
-import 'app/styles/container/layout.scss';
+import 'app/styles/components/layout.scss';
 
 const styles = {};
 
@@ -67,20 +67,23 @@ class Layout extends React.Component {
 		return (
 			<>
 				<div
-					className={`${styles.layout_layer} unclickable`}
+					className='layout' //unclickable'
 					// style={{ mixBlendMode: this.props.blendMode ? 'exclusion' : '' }}
 				>
-					<div className={`${styles.gui_layer}`}>
-						<div className={`flex space-between`}>
+					<div className='layout__gui'>
+						<div
+						//className='flex space-between;'>
+						>
 							<Sticky handleClick={() => Router.push('/')} cursor={this.cursor}>
 								<a>Maximilian Schulke</a>
 							</Sticky>
-
 							<Sticky handleClick={() => Router.push('/info')} cursor={this.cursor}>
 								<a>Info</a>
 							</Sticky>
 						</div>
-						<div className={`flex space-bewteen`}>
+						<div
+						//className='flex space-between;'>
+						>
 							{/* <p className={`${styles.scroll_advice}`}>Scroll to explore</p> */}
 							{/* {this.props.device.size.width} */}
 							{/* <Sticky
@@ -95,7 +98,9 @@ class Layout extends React.Component {
 								cursor={this.cursor}
 							/> */}
 						</div>
-						<div className={`flex space-between`}>
+						<div
+						//className='flex space-between;'>
+						>
 							{/* <p>Creative Developer</p> */}
 							{/* <Sticky
 								handleClick={() => this.changePage('/archive')}
@@ -109,13 +114,17 @@ class Layout extends React.Component {
 						</div>
 					</div>
 				</div>
-				<div className={`${styles.mouse_layer} unclickable`} />
-				{/* <main className={styles.main}>
+				<div
+					className='layout__cursor'
+					// unclickable
+					// className={`${styles.mouse_layer} unclickable`} />
+				/>
+				<main className={styles.main}>
 					{React.cloneElement(this.props.children, {
 						cursor: this.cursor,
 						ref: this.page
 					})}
-				</main> */}
+				</main>
 			</>
 		);
 	}

@@ -26,7 +26,7 @@ const styles = {};
 // 		const projectTitles = [];
 // 		projects.map(project => projectTitles.push(project.meta.title));
 
-import AbstractImage from 'app/components/interface/abstract-image';
+import AbstractImage from 'app/components/ui/abstract-image';
 
 class Home extends React.Component {
 	// slider = React.createRef();
@@ -153,6 +153,8 @@ class Home extends React.Component {
 	render() {
 		return (
 			<>
+				<h1>ola pouta</h1>
+
 				<div
 					style={{
 						position: 'absolute',
@@ -161,7 +163,7 @@ class Home extends React.Component {
 						top: 'calc(50% - 375px)',
 						left: 'calc(50% - 187.5px)'
 					}}>
-					<AbstractImage src='/static/abstract-4.png' />
+					{/* <AbstractImage src='/static/abstract-4.png' /> */}
 				</div>
 			</>
 		);
