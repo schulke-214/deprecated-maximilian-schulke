@@ -4,36 +4,39 @@
 //       MODULAR SCALE        //
 
 html {
-    font-size: 16px;
+    font-size: $base;
 } 
 
 $modularscale: (
-    base: 1rem,
+    base: 0.875rem,
     ratio: 1.25,
-    map-get($breakpoints, tablet): (
-        base: 0.75rem
+    map-get($breakpoints, phone): (
+        // base: 0.75rem
+        ratio: 1.15
     ),
-    map-get($breakpoints, desktop): (
-        base: 0.875rem
+    map-get($breakpoints, tablet): (
+        // base: 0.875rem
+        ratio: 1.2
     ),
     map-get($breakpoints, desktop-wide): (
-        base: 1rem
+        // base: 1rem
+        ratio: 1.25
     )
 );
 
 *, body, #__next {
-    @include ms-respond(font-size, 0);
+    @include font-size(0);
 }
 
 @for $i from 1 through 6 {
     h#{$i} {
-        @include ms-respond(font-size, 7 - $i );
+        @include font(secondary, 10 - $i, bold);
+        line-height: line-height(headline);
+        margin: 0;
     }
 }
 
 // -------------------------- //
-
-
 
 *,
 *::before,
@@ -41,10 +44,7 @@ $modularscale: (
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: $font-family-primary;
-    font-weight: $font-weight-regular;
     outline: none;
-    color: $color-secundary;
     -webkit-font-smoothing: antialiased;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -54,34 +54,32 @@ $modularscale: (
 }
 
 html {
-    font-family: $font-family-primary;
-    line-height: $line-height;
-    background-color: $color-primary;
+    @include font(primary, 0, regular);
+    line-height: line-height(content);
+    background-color: color(primary);
     overflow-y: -ms-autohiding-scrollbar;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
 
-html::-webkit-scrollbar {
-    width: 0px;
-}
+    &::-webkit-scrollbar {
+        width: 0px;
+    }
 
-html::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0);
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0);
+    }
 }
 
 body,
 #__next {
     margin: 0;
-    font-family: $font-family-primary;
-    font-weight: $font-weight-regular;
-    line-height: $line-height;
-    color: $color-secundary;
+    padding: 0;
     height: 100vh;
     text-align: left;
-    background-color: $color-primary;
+    color: color(secondary);
+    background-color: color(primary);
 }
 
 article,
@@ -105,19 +103,6 @@ hr {
     height: 0;
     overflow: visible;
 }
-
-// h1,
-// h2,
-// h3,
-// h4,
-// h5,
-// h6 {
-//     font-family: $font-family-secundary;
-//     // font-size: $font-size-title;
-//     font-weight: $font-weight-bold;
-//     line-height: 0.8;
-//     margin: 0;
-// }
 
 p {
     margin: 0;
@@ -151,7 +136,7 @@ ul ol {
 }
 
 dt {
-    font-weight: $font-weight-regular;
+    font-weight: font-weight(regular);
 }
 
 blockquote {
@@ -160,7 +145,7 @@ blockquote {
 
 b,
 strong {
-    font-weight: $font-weight-bold;
+    font-weight: font-weight(bold);
 }
 
 sub,
@@ -194,9 +179,7 @@ p,
 span,
 div {
     user-select: none;
-    // font-size: $font-size-text;
-    line-height: 0.8;
-    font-weight: $font-weight-regular;
+    font-weight: font-weight(regular);
     text-decoration: none;
 }
 
@@ -234,7 +217,7 @@ th {
 
 label {
     display: inline-block;
-    // margin-bottom: $margin-small;
+    @include margin(1, bottom);
 }
 
 button {
@@ -348,8 +331,8 @@ progress {
 }
 
 ::-webkit-file-upload-button {
-    font: inherit; // 2
-    -webkit-appearance: button; // 1
+    font: inherit;
+    -webkit-appearance: button;
 }
 
 output {
