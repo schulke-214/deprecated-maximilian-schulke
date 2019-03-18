@@ -241,7 +241,7 @@ class Slider extends React.Component {
 
 		return (
 			<React.Fragment>
-				<div ref={this.wrapper} className='clickable' onClick={this.props.handleClick}>
+				<div ref={this.wrapper} className='ev__all' onClick={this.props.handleClick}>
 					<style jsx>{commonStyles}</style>
 					<style jsx>{dynamicStyles}</style>
 					<canvas ref={this.canvas} />

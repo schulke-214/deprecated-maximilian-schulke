@@ -126,7 +126,7 @@ class Sticky extends PureComponent {
 	};
 
 	getHypotenuse = () => {
-		// pytagoras A^2 + B^2 = C^2
+		// pythagoras A^2 + B^2 = C^2
 
 		return Math.sqrt(
 			Math.pow(Math.abs(this.mousePos.x), 2) + Math.pow(Math.abs(this.mousePos.y), 2)
@@ -141,12 +141,12 @@ class Sticky extends PureComponent {
 
 	render() {
 		return (
-			<div className={`clickable container`} style={this.props.style}>
-				<span className={`content`} ref={this.content}>
+			<div className='sticky ev__all' style={this.props.style}>
+				<span className='sticky__content' ref={this.content}>
 					{this.props.children}
 				</span>
 				<div
-					className={`styles.trigger`}
+					className='sticky__trigger ev__all'
 					onClick={this.handleClick}
 					style={{ width: this.size, height: this.size }}
 					ref={this.trigger}
