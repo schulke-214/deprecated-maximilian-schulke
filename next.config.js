@@ -7,13 +7,16 @@ module.exports = withSass({
         config.resolve.alias['store'] = path.join(process.cwd(), '/store');
         config.resolve.alias['services'] = path.join(process.cwd(), '/services');
 
-
         config.module.rules.push({
             test: /\.(scss|sass)$/,
             use: [{
                 loader: 'sass-resources-loader',
                 options: {
-                    resources: [path.join(process.cwd(), '/app/styles/sass/index.scss')]
+                    resources: [
+                        path.join(process.cwd(), '/app/styles/sass/_variables.scss'),
+                        path.join(process.cwd(), '/app/styles/sass/_functions.scss'),
+                        path.join(process.cwd(), '/app/styles/sass/_mixins.scss')
+                    ]
                 },
             }],
         })
