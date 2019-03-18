@@ -1,6 +1,4 @@
-// import styles from 'app/scss/styles/ui/abstract-image.scss';
-
-const styles = {};
+import 'app/styles/components/abstract-image.scss';
 
 class AbstractImage extends React.Component {
 	canvas = React.createRef();
@@ -166,11 +164,9 @@ class AbstractImage extends React.Component {
 
 	render() {
 		return (
-			<>
-				<div ref={this.wrapper} className={`clickable ${styles.wrapper}`}>
-					<canvas ref={this.canvas} />
-				</div>
-			</>
+			<div ref={this.wrapper} className='abstract-image ev__all'>
+				<canvas ref={this.canvas} />
+			</div>
 		);
 	}
 }
