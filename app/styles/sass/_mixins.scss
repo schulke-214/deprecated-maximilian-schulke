@@ -1,3 +1,5 @@
+/* responsive */
+
 @mixin up($size) {
     @if map_has_key($breakpoints, $size) {
         $size: map_get($breakpoints, $size);
@@ -27,5 +29,40 @@
         @media screen and (min-width: $from) and (max-width: $to - 1px) {
             @content;
         }
+    }
+}
+
+/* fonts */
+
+@mixin font($family: primary, $size: 0, $weight: regular) {
+    @include font-size($size);
+
+    font-family: font-family($family);
+    font-weight: font-weight($weight);
+}
+
+@mixin font-size($size: 0) {
+    @include ms-respond(font-size, $size);
+}
+
+/* spacing */
+
+@mixin margin($ratio: 1, $pos: auto) {
+    @if $pos == auto {
+        margin: margin($ratio);
+    }
+
+    @else {
+        margin-#{$pos}: margin($ratio);
+    }
+}
+
+@mixin padding($ratio: 1, $pos: auto) {
+    @if $pos == auto {
+        padding: padding($ratio);
+    }
+
+    @else {
+        padding-#{$pos}: padding($ratio);
     }
 }
