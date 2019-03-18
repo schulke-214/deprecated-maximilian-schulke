@@ -2,16 +2,17 @@
     position: relative;
 }
 
-.sticky__trigger {
-    position: absolute;
-    border-radius: 100%;
-    cursor: pointer;
-}
-
 .sticky__content {
     text-transform: lowercase;
     display: block;
     transform-origin: center;
+    line-height: line-height(min);
     height: min-content;
     width: min-content;
+}
+
+.sticky__trigger {
+    position: absolute;
+    border-radius: 100%;
+    cursor: pointer;
 }
