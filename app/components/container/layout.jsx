@@ -8,13 +8,6 @@ import Sticky from 'app/components/ui/sticky';
 
 import 'app/styles/components/layout.scss';
 
-const styles = {};
-
-// import Logo from '../components/common/logo/logo';
-// import Arrows from '../components/common/arrows/arrows';
-// import Sticky from '../components/common/sticky/sticky';
-// import Cursor from '../components/common/cursor/cursor';
-
 class Layout extends React.Component {
 	page = React.createRef();
 	cursor = React.createRef();
@@ -67,13 +60,11 @@ class Layout extends React.Component {
 		return (
 			<>
 				<div
-					className='layout' //unclickable'
+					className='layout ev__none'
 					// style={{ mixBlendMode: this.props.blendMode ? 'exclusion' : '' }}
 				>
 					<div className='layout__gui'>
-						<div
-						//className='flex space-between;'>
-						>
+						<div className='d__flex d__flex--flags --between'>
 							<Sticky handleClick={() => Router.push('/')} cursor={this.cursor}>
 								<a>Maximilian Schulke</a>
 							</Sticky>
@@ -81,16 +72,13 @@ class Layout extends React.Component {
 								<a>Info</a>
 							</Sticky>
 						</div>
-						<div
-						//className='flex space-between;'>
-						>
+						<div className='d__flex d__flex--flags --between'>
 							{/* <p className={`${styles.scroll_advice}`}>Scroll to explore</p> */}
-							{/* {this.props.device.size.width} */}
 							{/* <Sticky
 								style={{ left: `${-25 + 7.5}px` }}
 								cursor={this.cursor}
 								newTab='https://github.com/schulke-214/'>
-								<a className='clickable git-link'>github</a>
+								<a className='ev__all git-link'>github</a>
 							</Sticky> */}
 							{/* <Arrows
 								prev={() => this.page.current.handleClick('prev')}
@@ -98,9 +86,7 @@ class Layout extends React.Component {
 								cursor={this.cursor}
 							/> */}
 						</div>
-						<div
-						//className='flex space-between;'>
-						>
+						<div className='d__flex d__flex--flags --between'>
 							{/* <p>Creative Developer</p> */}
 							{/* <Sticky
 								handleClick={() => this.changePage('/archive')}
@@ -114,12 +100,8 @@ class Layout extends React.Component {
 						</div>
 					</div>
 				</div>
-				<div
-					className='layout__cursor'
-					// unclickable
-					// className={`${styles.mouse_layer} unclickable`} />
-				/>
-				<main className={styles.main}>
+				<div className='layout__cursor ev__none' />
+				<main className='layout__main'>
 					{React.cloneElement(this.props.children, {
 						cursor: this.cursor,
 						ref: this.page
