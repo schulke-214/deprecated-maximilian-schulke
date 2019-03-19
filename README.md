@@ -4,18 +4,18 @@
 
 #### Installation
 
-```Shell
+```Bash
 git clone git@github.com:schulke-214/maximilian-schulke.git
 ```
 
-```Shell
+```Bash
 yarn install
 ```
 
-```Shell
+```Bash
 yarn build
 ```
 
-```Shell
+```Bash
 yarn start
 ```
