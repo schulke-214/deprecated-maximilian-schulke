@@ -18,7 +18,12 @@ class AppDocument extends Document {
 					<meta name='theme-color' content='#060606' />
 					<link rel='shortcut icon' type='image/jpg' href='/static/favicon.jpg' />
 					<link rel='manifest' href='/static/manifest.json' />
-					<link rel='stylesheet' href='/static/assets/fonts/fonts.css' />
+					{/* <link rel='stylesheet' href='/static/assets/fonts/fonts.css' /> */}
+					<link
+						rel='stylesheet'
+						href='https://use.typekit.net/zwq5ryn.css'
+						/* neue haas unica */
+					/>
 					<script src='https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.5.1/pixi.min.js' />
 					<noscript>
 						<meta

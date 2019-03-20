@@ -1,13 +1,14 @@
 $base: 16px;
+$page-padding: 6vw;
 
 $colors: (
-    primary: #f2f2f2,
+    primary: #ffffff, //f2f2f2,
     secondary: #060606,
 );
 
 $font: (
-    primary: (-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"),
-    secondary: "Spectral",
+    primary: ("neue-haas-unica", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji")
+    // secondary: ("Spectral"),
 );
 
 $font-weights: (
@@ -17,8 +18,9 @@ $font-weights: (
 );
 
 $line-heights: (
+    text: 1.45,
     headline: 1.25,
-    content: 2,
+    content: 1,
     min: 0.75
 );
 

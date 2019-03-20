@@ -26,11 +26,13 @@ $modularscale: (
 
 *, body, #__next {
     @include font-size(0);
+
+    line-height: line-height(text);
 }
 
 @for $i from 1 through 6 {
     h#{$i} {
-        @include font(secondary, 10 - $i, bold);
+        @include font(primary, 14 - $i, bold);
         line-height: line-height(headline);
         margin: 0;
     }
