@@ -12,14 +12,13 @@ class AbstractImage extends React.Component {
 	};
 
 	delta = {
-		scale: 50, // 20,
-		offset: 2 // 1
+		scale: 10,
+		offset: 1.5
+		// scale: 50, // 20,
+		// offset: 2 // 1
 	};
 
 	raf = null;
-
-	width = 1000;
-	height = 1500;
 
 	async componentDidMount() {
 		await this.init();
@@ -41,12 +40,14 @@ class AbstractImage extends React.Component {
 
 	init = async () => {
 		this.pixi = new PIXI.Application({
-			width: this.width,
-			height: this.height,
+			width: this.props.width,
+			height: this.props.height,
 			view: this.canvas.current,
 			transparent: true,
 			legacy: true
 		});
+
+		this.pixi.renderer.view.style['touch-action'] = 'auto';
 
 		this.displacement.sprite = new PIXI.Sprite.fromImage('static/map.jpg');
 		this.displacement.sprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
@@ -66,7 +67,7 @@ class AbstractImage extends React.Component {
 					width: sprite.texture.baseTexture.realWidth,
 					height: sprite.texture.baseTexture.realHeight
 				},
-				1
+				this.props.factor
 			);
 
 			sprite.width = size.width;
@@ -98,8 +99,8 @@ class AbstractImage extends React.Component {
 
 		// CALC THE SIZES IN WHICH THEY WOULD FIT IN
 		const factor = {
-			width: this.width / size.width,
-			height: this.height / size.height
+			width: this.props.width / size.width,
+			height: this.props.height / size.height
 		};
 
 		let width, height, offsetX, offsetY;
@@ -119,8 +120,8 @@ class AbstractImage extends React.Component {
 		height *= scale;
 		width *= scale;
 
-		offsetX = (this.width - width) / 2;
-		offsetY = (this.height - height) / 2;
+		offsetX = (this.props.width - width) / 2;
+		offsetY = (this.props.height - height) / 2;
 
 		return {
 			width: Math.floor(width),
@@ -131,34 +132,30 @@ class AbstractImage extends React.Component {
 	};
 
 	resize = () => {
-		console.log('on resize');
-		let { width, height } = this;
 		let rect = this.wrapper.current.getBoundingClientRect();
 		let factor = 1;
 
 		// SET THE FACTOR BY THE VALUE WHICH IS SMALLER
-		if (rect.width <= rect.height) factor = rect.width / width;
-		else if (rect.height <= rect.width) factor = rect.height / height;
+		if (rect.width <= rect.height) factor = rect.width / this.props.width;
+		else if (rect.height <= rect.width) factor = rect.height / this.props.height;
 
 		// USE THE FACTOR TO CALC A FITTING POSITION
-		if (width * factor <= rect.width && width >= height) factor = rect.width / width;
+		if (this.props.width * factor <= rect.width && this.props.width >= this.props.height)
+			factor = rect.width / this.props.width;
 
-		if (height * factor <= rect.height && width >= height) factor = rect.height / height;
+		if (this.props.height * factor <= rect.height && this.props.width >= this.props.height)
+			factor = rect.height / this.props.height;
 
-		if (height * factor <= rect.height && height >= width) factor = rect.height / height;
+		if (this.props.height * factor <= rect.height && this.props.height >= this.props.width)
+			factor = rect.height / this.props.height;
 
-		if (width * factor <= rect.width && height >= width) factor = rect.width / width;
-
-		console.log({
-			scale: factor,
-			left: (rect.width - width) / 2,
-			top: (rect.height - height) / 2
-		});
+		if (this.props.width * factor <= rect.width && this.props.height >= this.props.width)
+			factor = rect.width / this.props.width;
 
 		TweenLite.set(this.canvas.current, {
 			scale: factor,
-			left: (rect.width - width) / 2,
-			top: (rect.height - height) / 2
+			left: (rect.width - this.props.width) / 2,
+			top: (rect.height - this.props.height) / 2
 		});
 	};
 
