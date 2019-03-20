@@ -6,7 +6,12 @@
     top: 0;
     left: 0;
     z-index: z(gui);
-    padding: 5vw;
+    // replace by .page-padding
+    padding: $page-padding;
+    
+    @include down(tablet) {
+        padding: 35px;
+    }
 
     .layout__gui {
         width: 100%;

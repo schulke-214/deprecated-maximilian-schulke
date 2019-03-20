@@ -85,9 +85,7 @@ class Sticky extends PureComponent {
 		this.entered = true;
 
 		if (!this.props.device.meta.phone && !this.props.device.meta.mobile) {
-			console.log('STICKY Line 100 FIX');
-
-			// if (this.props.cursor) this.props.cursor.current.shrink();
+			if (this.props.cursor) this.props.cursor.current.shrink();
 			if (this.props.hoverClass) this.content.current.classList.add(this.props.hoverClass);
 		}
 
@@ -99,9 +97,7 @@ class Sticky extends PureComponent {
 		this.entered = false;
 
 		if (!this.props.device.meta.phone && !this.props.device.meta.mobile) {
-			console.log('STICKY Line 100 FIX');
-
-			// if (this.props.cursor) this.props.cursor.current.reset();
+			if (this.props.cursor) this.props.cursor.current.reset();
 			if (this.props.hoverClass) this.content.current.classList.remove(this.props.hoverClass);
 		}
 
