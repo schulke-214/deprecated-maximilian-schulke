@@ -1,169 +1,41 @@
-// import Router from 'next/router';
-
-// // COMPONENT IMPORTS
-// import Slider from '../frontend/components/pages/home/slider/slider';
-// import Circle from '../frontend/components/common/circle/circle';
-// import TextTransition from '../frontend/components/common/textTransition/textTransition';
-// import Hover from '../frontend/components/common/hover/hover';
-// import Title from '../frontend/components/common/title/title';
-
-// // JSON IMPORTS
-import cases from '../static/cases/meta.json';
-
-// // STYLE IMPORTS
-// import commonStyles from '../frontend/styles/pages/home/home-common';
-// import desktopStyles from '../frontend/styles/pages/home/home-desktop';
-// import tabletStyles from '../frontend/styles/pages/home/home-tablet';
-// import mobileStyles from '../frontend/styles/pages/home/home-mobile';
-
-// import styles from 'app/scss/styles/pages/index.scss';
-
-const styles = {};
-
-// 		// MAP JSON TO ARRAY
-// 		const projects = [];
-// 		Object.keys(data).map(key => projects.push(data[key]));
-// 		const projectTitles = [];
-// 		projects.map(project => projectTitles.push(project.meta.title));
-
 import AbstractImage from 'app/components/ui/abstract-image';
+import cases from '../static/cases/meta.json';
+import 'app/styles/pages/index.scss';
 
 class Home extends React.Component {
-	// slider = React.createRef();
-	// circle = React.createRef();
-	// title = React.createRef();
-	// counter = React.createRef();
-
-	// threshold = 50;
-	// animating = false;
-
-	// touchStart = {
-	// 	x: null,
-	// 	y: null
-	// };
-
-	// state = {
-	// 	cases,
-	// 	slider: {
-	// 		current: 0,
-	// 		length: cases.length
-	// 	}
-	// };
-
-	// // componentDidMount() {
-	// 	addEventListener('wheel', this.handleScroll, { passive: true });
-	// 	addEventListener('touchstart', this.handleTouch, { passive: true });
-	// 	addEventListener('keydown', this.handleKeyDown, { passive: true });
-	// 	addEventListener('touchstart', this.handleTouchStart, { passive: true });
-	// 	addEventListener('touchend', this.handleTouchEnd, { passive: true });
-	// }
-
-	// componentWillUnmount() {
-	// 	removeEventListener('wheel', this.handleScroll, { passive: true });
-	// 	removeEventListener('touchstart', this.handleTouch, { passive: true });
-	// 	removeEventListener('keydown', this.handleKeyDown, { passive: true });
-	// 	removeEventListener('touchstart', this.handleTouchStart, { passive: true });
-	// 	removeEventListener('touchend', this.handleTouchEnd, { passive: true });
-
-	// 	removeEventListener('wheel', this.resetRunningState);
-	// 	removeEventListener('mousemove', this.resetRunningState);
-	// }
-
-	// get case() {
-	// 	return this.state.cases[this.state.slider.current];
-	// }
-
-	// animate = () => {};
-
-	// next = () => {};
-
-	// prev = () => {};
-
-	// handleScroll = ev => {
-	// 	let delta = ev.deltaY;
-
-	// if (!this.animating && this.props.scroll.status !== false) {
-	// 	if (delta < 0) {
-	// 		this.prevProject('WHEEL');
-	// 	} else if (delta > 0) {
-	// 		this.nextProject('WHEEL');
-	// 	}
-	// }
-	// };
-
-	// 	handleClick = dir => {
-	// 		if (!this.running) {
-	// 			if (dir === 'prev') this.prevProject('CLICK');
-	// 			else if (dir === 'next') this.nextProject('CLICK');
-	// 		}
-	// 	};
-
-	// 	handleTouchStart = ev => {
-	// 		this.touchStartX = ev.touches[0].clientX;
-	// 		this.touchStartY = ev.touches[0].clientY;
-	// 	};
-
-	// 	handleTouchEnd = ev => {
-	// 		let deltaX, deltaY;
-
-	// 		deltaX = ev.changedTouches[0].clientX - this.touchStartX;
-	// 		deltaY = ev.changedTouches[0].clientY - this.touchStartY;
-
-	// 		// VERTICAL
-	// 		if (Math.abs(deltaY) > Math.abs(deltaX)) {
-	// 			if (Math.abs(deltaY) > this.threshold && !this.running) {
-	// 				if (deltaY > 0) this.prevProject('TOUCH');
-
-	// 				if (deltaY < 0) this.nextProject('TOUCH');
-	// 			}
-	// 		}
-
-	// 		// HORIZONTAL
-	// 		else {
-	// 			if (Math.abs(deltaX) > this.threshold && !this.running) {
-	// 				if (deltaX > 0) this.prevProject('TOUCH');
-
-	// 				if (deltaX < 0) this.nextProject('TOUCH');
-	// 			}
-	// 		}
-	// 	};
-
-	// 	handleKeyDown = ev => {
-	// 		if (!this.running) {
-	// 			if (ev.keyCode === 37 || ev.keyCode === 38)
-	// 				// PREV
-	// 				this.prevProject('KEY');
-	// 			else if (ev.keyCode === 39 || ev.keyCode === 40)
-	// 				// NEXT
-	// 				this.nextProject('KEY');
-	// 		}
-	// 	};
-
-	// 	handleDrag = () => {};
-
-	// 	// ADD KEY SUPPORT LATER
-	// 	// ADD DRAG SUPPORT LATER
-
-	// 	resetRunningState = () => {
-	// 		this.running = false;
-	// 		window.removeEventListener('wheel', this.resetRunningState);
-	// 		window.removeEventListener('mousemove', this.resetRunningState);
-	// 	};
-
 	render() {
 		return (
 			<>
-				<h1>ola pouta</h1>
-
-				<div
-					style={{
-						position: 'absolute',
-						width: '375px',
-						height: '750px',
-						top: 'calc(50% - 375px)',
-						left: 'calc(50% - 187.5px)'
-					}}>
-					{/* <AbstractImage src='/static/abstract-4.png' /> */}
+				{/* <div className='home__content'> */}
+				<div className='page-padding--left page-padding--right page-padding--top'>
+					<h1 className='home__head'>
+						<span>Creative</span>
+						<span>Developer</span>
+					</h1>
+					<div className='home__text'>
+						A graduate in design, it was from 1994 that Pierrick Brocart conceived and
+						realised his creations. His initial examples of sculpture allied to
+						furniture design were featured in art galleries ( Paris, Brussels ) where
+						they delighted both individuals and collectors. They prompted requests from
+						architects and interior designers for his innovative ideas for furniture.
+						However, following his contributions to the „MAISON & OBJET“ exhibition in
+						Paris in 2005, Pierrick Brocart decided to direct his activities towards the
+						creation of small to medium sized objects within the sphere of lamps and
+						lighting. The refined artistry of his current activities lean toward the
+						principles of movement and balance applied to simple functions which place
+						his creation in the anachronistic world of light mechanics. His creations
+						disclose a free inventor’s spirit.
+					</div>
+					<div className='home__image-stage'>
+						<div>
+							<AbstractImage
+								factor={0.5}
+								width={4000}
+								height={3000}
+								src='/static/abstract-7.jpg'
+							/>
+						</div>
+					</div>
 				</div>
 			</>
 		);
@@ -171,6 +43,132 @@ class Home extends React.Component {
 }
 
 export default Home;
+
+/*  already converted code
+
+
+	slider = React.createRef();
+	circle = React.createRef();
+	title = React.createRef();
+	counter = React.createRef();
+
+	threshold = 50;
+	animating = false;
+
+	touchStart = {
+		x: null,
+		y: null
+	};
+
+	state = {
+		cases,
+		slider: {
+			current: 0,
+			length: cases.length
+		}
+	};
+
+	componentDidMount() {
+		addEventListener('wheel', this.handleScroll, { passive: true });
+		addEventListener('touchstart', this.handleTouch, { passive: true });
+		addEventListener('keydown', this.handleKeyDown, { passive: true });
+		addEventListener('touchstart', this.handleTouchStart, { passive: true });
+		addEventListener('touchend', this.handleTouchEnd, { passive: true });
+	}
+
+	componentWillUnmount() {
+		removeEventListener('wheel', this.handleScroll, { passive: true });
+		removeEventListener('touchstart', this.handleTouch, { passive: true });
+		removeEventListener('keydown', this.handleKeyDown, { passive: true });
+		removeEventListener('touchstart', this.handleTouchStart, { passive: true });
+		removeEventListener('touchend', this.handleTouchEnd, { passive: true });
+
+		removeEventListener('wheel', this.resetRunningState);
+		removeEventListener('mousemove', this.resetRunningState);
+	}
+
+	get case() {
+		return this.state.cases[this.state.slider.current];
+	}
+
+	animate = () => {};
+
+	next = () => {};
+
+	prev = () => {};
+
+	handleScroll = ev => {
+		let delta = ev.deltaY;
+
+	if (!this.animating && this.props.scroll.status !== false) {
+		if (delta < 0) {
+			this.prevProject('WHEEL');
+		} else if (delta > 0) {
+			this.nextProject('WHEEL');
+		}
+	}
+	};
+
+		handleClick = dir => {
+			if (!this.running) {
+				if (dir === 'prev') this.prevProject('CLICK');
+				else if (dir === 'next') this.nextProject('CLICK');
+			}
+		};
+
+		handleTouchStart = ev => {
+			this.touchStartX = ev.touches[0].clientX;
+			this.touchStartY = ev.touches[0].clientY;
+		};
+
+		handleTouchEnd = ev => {
+			let deltaX, deltaY;
+
+			deltaX = ev.changedTouches[0].clientX - this.touchStartX;
+			deltaY = ev.changedTouches[0].clientY - this.touchStartY;
+
+			// VERTICAL
+			if (Math.abs(deltaY) > Math.abs(deltaX)) {
+				if (Math.abs(deltaY) > this.threshold && !this.running) {
+					if (deltaY > 0) this.prevProject('TOUCH');
+
+					if (deltaY < 0) this.nextProject('TOUCH');
+				}
+			}
+
+			// HORIZONTAL
+			else {
+				if (Math.abs(deltaX) > this.threshold && !this.running) {
+					if (deltaX > 0) this.prevProject('TOUCH');
+
+					if (deltaX < 0) this.nextProject('TOUCH');
+				}
+			}
+		};
+
+		handleKeyDown = ev => {
+			if (!this.running) {
+				if (ev.keyCode === 37 || ev.keyCode === 38)
+					// PREV
+					this.prevProject('KEY');
+				else if (ev.keyCode === 39 || ev.keyCode === 40)
+					// NEXT
+					this.nextProject('KEY');
+			}
+		};
+
+		handleDrag = () => {};
+
+		// ADD KEY SUPPORT LATER
+		// ADD DRAG SUPPORT LATER
+
+		resetRunningState = () => {
+			this.running = false;
+			window.removeEventListener('wheel', this.resetRunningState);
+			window.removeEventListener('mousemove', this.resetRunningState);
+		};
+
+*/
 
 // class Home extends Component {
 
@@ -407,7 +405,7 @@ export default Home;
 // 					<div className='inner'>
 // 						<style jsx>{mobileStyles}</style>
 // 						<Title ref={this.projectTitle} titles={this.state.projectTitles} isMobile />
-// 						{/* <div id='shadow' className="unclickable" /> */}
+// 						{/* <div id='shadow' className="ev__none" /> */}
 // 						<Slider
 // 							ref={this.slider}
 // 							current={this.state.slider.current}

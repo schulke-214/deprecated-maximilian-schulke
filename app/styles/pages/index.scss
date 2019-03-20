@@ -1,0 +1,45 @@
+.home__head {
+    font-size: 13.975vw;
+    line-height: line-height(min);
+    font-weight: font-weight(medium);
+
+    span {
+        padding-top: 7.5vw;
+
+        display: block;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
+
+        &:first-child {
+            margin-left: -0.5vw;
+        }
+
+        &:last-child {
+            text-align: right;
+        }
+    } 
+}
+
+.home__text {
+    @include margin(16, top);
+
+    font-size: 1.28vw;
+    width: 60%;
+} 
+
+.home__image-stage {
+    @include margin(16, top);
+
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    > div {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+}
