@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 // import Router from 'services/router';
 
 import Sticky from 'app/components/ui/sticky';
+import Cursor from 'app/components/ui/cursor';
 
 import 'app/styles/components/layout.scss';
 
@@ -100,7 +101,9 @@ class Layout extends React.Component {
 						</div>
 					</div>
 				</div>
-				<div className='layout__cursor ev__none' />
+				<div className='layout__cursor ev__none'>
+					<Cursor ref={this.cursor} />
+				</div>
 				<main className='layout__main'>
 					{React.cloneElement(this.props.children, {
 						cursor: this.cursor,
