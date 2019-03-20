@@ -1,7 +1,7 @@
 import App, { Container } from 'next/app';
 import Head from 'next/head';
 
-import { pageTitle } from 'app/utility/strings';
+import { pageTitle } from 'app/utils/strings';
 
 // refactor imports
 import initStore from 'store';
@@ -14,7 +14,7 @@ import DeviceController from 'app/components/data/device-controller';
 // import PageLoader from "components/common/pageLoader/pageLoader";
 
 import 'app/styles/reboot.scss';
-// import 'app/scss/_utilities.scss';
+import 'app/styles/utils.scss';
 
 const store = initStore();
 
