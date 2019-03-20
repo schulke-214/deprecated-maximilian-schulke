@@ -1,0 +1,17 @@
+.page-padding {
+    padding: $page-padding;
+
+    @include down(tablet) {
+        padding: 35px;
+    }
+}
+
+@each $pos in ( left, right, top, bottom ) {
+    .page-padding--#{$pos} {
+        padding-#{$pos}: $page-padding;
+
+        @include down(tablet) {
+            padding: 35px;
+        }
+    }
+}
