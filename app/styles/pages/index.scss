@@ -1,38 +1,76 @@
-.home__head {
-    font-size: 13.975vw;
-    line-height: line-height(min);
-    font-weight: font-weight(medium);
+.home {
+    display: flex;
 
-    span {
-        padding-top: 7.5vw;
+    .home__left {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        width: 50%;
+    }
 
-        display: block;
-        font-size: inherit;
-        font-weight: inherit;
-        line-height: inherit;
-
-        &:first-child {
-            margin-left: -0.5vw;
-        }
-
-        &:last-child {
-            text-align: right;
-        }
-    } 
+    .home__right {
+        // fix for mobile
+        margin-top: calc( 50vh - (#{ $page-padding } * 2 ));
+        width: 50%;
+    }
 }
 
-.home__text {
-    @include margin(16, top);
+.home__head {
+    position: relative;
+    width: min-content;
+    height: 100%;
 
-    font-size: 1.28vw;
-    width: 60%;
+    h1 {
+        position: absolute;
+        display: block;
+        line-height: line-height(min);
+        font-weight: font-weight(medium);
+        transform-origin: 0 0;
+        transform: rotate(90deg) translate3d(0,-100%,0);
+    
+        span {
+            display: block;
+            white-space: nowrap;
+            font-size: inherit;
+            font-weight: inherit;
+            line-height: inherit;
+    
+            &:first-child {
+                @include padding(4, bottom);
+            }
+    
+            &:last-child {
+                margin-left: calc( 50vh - (#{ $page-padding } * 2 ));
+            }
+        } 
+    }
+
+}
+
+.home__text, .home__contact, .home__social {
+    h6 {
+        @include margin(1, bottom);
+        font-weight: font-weight(medium);
+    } 
+    
+    p {
+        @include font-size(2);
+    }
 } 
 
-.home__image-stage {
-    @include margin(16, top);
+.home__contact {
+    @include margin(8, top);
+}
 
+.home__social {
+    @include margin(2, top);
+}
+
+.home__abstract {
+    @include margin(8, bottom);
     width: 100%;
-    height: 500px;
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -41,5 +79,9 @@
         position: relative;
         width: 100%;
         height: 100%;
+
+        @include down(tablet) {
+            width: 100%;
+        }
     }
 }
