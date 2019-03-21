@@ -11,7 +11,7 @@
         padding-#{$pos}: $page-padding;
 
         @include down(tablet) {
-            padding: 35px;
+            padding-#{$pos}: 35px;
         }
     }
 }
