@@ -67,10 +67,10 @@ class Layout extends React.Component {
 					<div className='layout__gui'>
 						<div className='d__flex d__flex--flags --between'>
 							<Sticky handleClick={() => Router.push('/')} cursor={this.cursor}>
-								<a>Maximilian Schulke</a>
+								<a>maximilian schulke</a>
 							</Sticky>
 							<Sticky handleClick={() => Router.push('/info')} cursor={this.cursor}>
-								<a>Info</a>
+								<a>github</a>
 							</Sticky>
 						</div>
 						<div className='d__flex d__flex--flags --between'>
