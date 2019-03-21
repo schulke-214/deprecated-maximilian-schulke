@@ -1,28 +1,9 @@
-@import '~modularscale-sass/stylesheets/modularscale';
-
 // -------------------------- //
 //       MODULAR SCALE        //
 
 html {
     font-size: $base;
 } 
-
-$modularscale: (
-    base: 0.875rem,
-    ratio: 1.25,
-    map-get($breakpoints, phone): (
-        // base: 0.75rem
-        ratio: 1.15
-    ),
-    map-get($breakpoints, tablet): (
-        // base: 0.875rem
-        ratio: 1.2
-    ),
-    map-get($breakpoints, desktop-wide): (
-        // base: 1rem
-        ratio: 1.25
-    )
-);
 
 *, body, #__next {
     @include font-size(0);
@@ -32,11 +13,17 @@ $modularscale: (
 
 @for $i from 1 through 6 {
     h#{$i} {
-        @include font(primary, 14 - $i, bold);
+        @include font(primary, 9 - $i, bold);
         line-height: line-height(headline);
         margin: 0;
     }
 }
+
+// @for $i from 0 through 10 {
+//     .typo--size-#{ $i } {
+//         // @include font-size($i);
+//     }
+// } 
 
 // -------------------------- //
 

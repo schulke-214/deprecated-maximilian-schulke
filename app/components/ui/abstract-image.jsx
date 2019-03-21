@@ -12,8 +12,8 @@ class AbstractImage extends React.Component {
 	};
 
 	delta = {
-		scale: 10,
-		offset: 1.5
+		scale: 100,
+		offset: 2.5
 		// scale: 50, // 20,
 		// offset: 2 // 1
 	};

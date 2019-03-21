@@ -30,6 +30,10 @@
     @return get($colors, $name);
 }
 
+@function font-size($size: text) {
+    @return get($font-sizes, $size);
+}
+
 @function font-family($name: primary) {
     @return get($font, $name);
 }

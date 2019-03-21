@@ -41,8 +41,26 @@
     font-weight: font-weight($weight);
 }
 
-@mixin font-size($size: 0) {
-    @include ms-respond(font-size, $size);
+@mixin font-size($size: text) {
+    $set: font-size($size);
+    $max: get($set, max);
+    $min: get($set, min);
+
+    $mid: ((( $max - $min ) / 2 ) + $min);
+
+    transition: font-size 0.5s $bezier;
+
+    @include up(desktop) {
+        font-size: $max;
+    }
+
+    @include between(tablet, desktop ) {
+        font-size: $mid;
+    }
+
+    @include down(tablet) {
+        font-size: $min;
+    }
 }
 
 /* spacing */
