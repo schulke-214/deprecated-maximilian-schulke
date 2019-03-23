@@ -2,51 +2,54 @@
     display: flex;
 
     .home__left {
-        position: relative;
         display: flex;
-        justify-content: center;
-        align-content: center;
+        justify-content: flex-end;
         width: 50%;
+
+        @include down(tablet) {
+            display: none;
+        }
     }
 
     .home__right {
         // fix for mobile
-        margin-top: calc( 50vh - (#{ $page-padding } * 2 ));
+        margin-top: 25vw;
         width: 50%;
+
+        @include down(tablet) {
+            @include margin(4, top);
+
+            width: 100%;
+        }
     }
 }
 
 .home__head {
-    position: relative;
-    width: min-content;
-    height: 100%;
+    display: block;
+    font-size: 16vw;
+    line-height: line-height(min);
+    font-weight: font-weight(medium);
+    text-orientation: sideways;
+    writing-mode: vertical-rl;
+    margin-right: 2.5vw;
 
-    h1 {
-        position: absolute;
+    span {
         display: block;
-        line-height: line-height(min);
-        font-weight: font-weight(medium);
-        transform-origin: 0 0;
-        transform: rotate(90deg) translate3d(0,-100%,0);
-    
-        span {
-            display: block;
-            white-space: nowrap;
-            font-size: inherit;
-            font-weight: inherit;
-            line-height: inherit;
-    
-            &:first-child {
-                @include padding(4, bottom);
-            }
-    
-            &:last-child {
-                margin-left: calc( 50vh - (#{ $page-padding } * 2 ));
-            }
-        } 
-    }
+        white-space: nowrap;
+        font-size: inherit;
+        font-weight: inherit;
+        line-height: inherit;
 
+        &:first-child {
+            padding-left: 2.5vw;
+        }
+
+        &:last-child {
+            margin-top: 25vw;
+        }
+    } 
 }
+
 
 .home__text, .home__contact, .home__social {
     h6 {
@@ -61,6 +64,10 @@
 
 .home__contact {
     @include margin(8, top);
+
+    @include down(tablet) {
+        @include margin(4, top);
+    }
 }
 
 .home__social {
@@ -69,11 +76,16 @@
 
 .home__abstract {
     @include margin(8, bottom);
+
     width: 100%;
     height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @include down(tablet) {
+        @include margin(4, bottom);
+    }
 
     > div {
         position: relative;
