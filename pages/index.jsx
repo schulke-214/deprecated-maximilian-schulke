@@ -2,65 +2,67 @@ import AbstractImage from 'app/components/ui/abstract-image';
 import cases from '../static/cases/meta.json';
 import 'app/styles/pages/index.scss';
 
+import SmoothScroll from 'app/components/container/smooth-scroll';
+
 class Home extends React.Component {
 	render() {
 		return (
-			<div className='home page-padding'>
-				<div className='home__left'>
-					<div className='home__head'>
-						<h1>
-							<span>the portfolio of a</span>
-							<span>software engineer</span>
+			<SmoothScroll>
+				<div className='home page-padding'>
+					<div className='home__left'>
+						<h1 className='home__head'>
+							<span>software</span>
+							<span>engineer</span>
 						</h1>
 					</div>
-				</div>
 
-				<div className='home__right'>
-					<div className='home__abstract'>
-						<div>
-							<AbstractImage
-								factor={1.75}
-								width={1600}
-								height={1200}
-								src='/static/abstract-2.png'
-							/>
+					<div className='home__right'>
+						<div className='home__abstract'>
+							<div>
+								<AbstractImage
+									factor={1.75}
+									width={1600}
+									height={1200}
+									src='/static/abstract-2.png'
+								/>
+							</div>
 						</div>
+
+						<section className='home__text'>
+							<h6>Profile</h6>
+							<p>
+								A graduate in design, it was from 1994 that Pierrick Brocart
+								conceived and realised his creations. His initial examples of
+								sculpture allied to furniture design were featured in art galleries
+								( Paris, Brussels ) where they delighted both individuals and
+								collectors. They prompted requests from architects and interior
+								designers for his innovative ideas for furniture. However, following
+								his contributions to the „MAISON & OBJET“ exhibition in Paris in
+								2005, Pierrick Brocart decided to direct his activities towards the
+								creation of small to medium sized objects within the sphere of lamps
+								and lighting. The refined artistry of his current activities lean
+								toward the principles of movement and balance applied to simple
+								functions which place his creation in the anachronistic world of
+								light mechanics. His creations disclose a free inventor’s spirit.
+							</p>
+						</section>
+
+						<section className='home__contact'>
+							<h6>Contact me</h6>
+							<p>info@maximilianschulke.com</p>
+							<p>+49 176 43 69 21 62 </p>
+						</section>
+
+						<section className='home__social'>
+							<h6>Follow me</h6>
+							<p>Github</p>
+							<p>Medium</p>
+						</section>
 					</div>
 
-					<section className='home__text'>
-						<h6>Profile</h6>
-						<p>
-							A graduate in design, it was from 1994 that Pierrick Brocart conceived
-							and realised his creations. His initial examples of sculpture allied to
-							furniture design were featured in art galleries ( Paris, Brussels )
-							where they delighted both individuals and collectors. They prompted
-							requests from architects and interior designers for his innovative ideas
-							for furniture. However, following his contributions to the „MAISON &
-							OBJET“ exhibition in Paris in 2005, Pierrick Brocart decided to direct
-							his activities towards the creation of small to medium sized objects
-							within the sphere of lamps and lighting. The refined artistry of his
-							current activities lean toward the principles of movement and balance
-							applied to simple functions which place his creation in the
-							anachronistic world of light mechanics. His creations disclose a free
-							inventor’s spirit.
-						</p>
-					</section>
-
-					<section className='home__contact'>
-						<h6>Contact me</h6>
-						<p>info@maximilianschulke.com</p>
-						<p>+49 176 43 69 21 62 </p>
-					</section>
-
-					<section className='home__social'>
-						<h6>Follow me</h6>
-						<p>Github</p>
-						<p>Medium</p>
-					</section>
+					{/* <div className='home__content'> */}
 				</div>
-
-				{/* <div className='home__content'> */}
-			</div>
+			</SmoothScroll>
 		);
 	}
 }
