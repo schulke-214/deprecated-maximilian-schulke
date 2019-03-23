@@ -48,8 +48,6 @@
 
     $mid: ((( $max - $min ) / 2 ) + $min);
 
-    transition: font-size 0.5s $bezier;
-
     @include up(desktop) {
         font-size: $max;
     }
