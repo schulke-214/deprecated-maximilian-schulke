@@ -1,4 +1,4 @@
-import { TimelineLite } from 'gsap';
+// import { TimelineLite } from 'gsap';
 
 import styles from 'app/scss/styles/ui/page-transition.scss';
 

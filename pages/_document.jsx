@@ -25,6 +25,11 @@ class AppDocument extends Document {
 						/* neue haas unica */
 					/>
 					<script src='https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.5.1/pixi.min.js' />
+					<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenLite.min.js' />
+					<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TimelineLite.min.js' />
+					<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/plugins/CSSPlugin.min.js' />
+					<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/plugins/ScrollToPlugin.min.js' />
+					<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/easing/EasePack.min.js' />
 					<noscript>
 						<meta
 							httpEquiv='Refresh'
@@ -45,10 +50,7 @@ export default AppDocument;
 /**
  * 
  * 					{/* 
-					<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenLite.min.js' />
-					<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TimelineLite.min.js' />
-					<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/plugins/CSSPlugin.min.js' />
-					<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/easing/EasePack.min.js' />
+
 					<script src='https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.1/pixi.min.js' /> }
 
  */

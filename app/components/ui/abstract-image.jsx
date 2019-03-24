@@ -33,7 +33,6 @@ class AbstractImage extends React.Component {
 
 	componentWillUnmount() {
 		cancelAnimationFrame(this.raf);
-
 		removeEventListener('load', this.resize, { passive: true });
 		removeEventListener('resize', this.resize, { passive: true });
 	}
