@@ -66,30 +66,30 @@ class Layout extends React.Component {
 				>
 					<div className='layout__gui'>
 						<div className='d__flex d__flex--flags --between'>
-							<Sticky handleClick={() => Router.push('/')} cursor={this.cursor}>
+							<Sticky cursor={this.cursor}>
 								<a>maximilian schulke</a>
 							</Sticky>
-							<Sticky handleClick={() => Router.push('/info')} cursor={this.cursor}>
+							<Sticky newTab='https://github.com/schulke-214/' cursor={this.cursor}>
 								<a>github</a>
 							</Sticky>
 						</div>
-						<div className='d__flex d__flex--flags --between'>
-							{/* <p className={`${styles.scroll_advice}`}>Scroll to explore</p> */}
-							{/* <Sticky
+						{/* <div className='d__flex d__flex--flags --between'> */}
+						{/* <p className={`${styles.scroll_advice}`}>Scroll to explore</p> */}
+						{/* <Sticky
 								style={{ left: `${-25 + 7.5}px` }}
 								cursor={this.cursor}
 								newTab='https://github.com/schulke-214/'>
 								<a className='ev__all git-link'>github</a>
 							</Sticky> */}
-							{/* <Arrows
+						{/* <Arrows
 								prev={() => this.page.current.handleClick('prev')}
 								next={() => this.page.current.handleClick('next')}
 								cursor={this.cursor}
 							/> */}
-						</div>
-						<div className='d__flex d__flex--flags --between'>
-							{/* <p>Creative Developer</p> */}
-							{/* <Sticky
+						{/* </div> */}
+						{/* <div className='d__flex d__flex--flags --between'> */}
+						{/* <p>Creative Developer</p> */}
+						{/* <Sticky
 								handleClick={() => this.changePage('/archive')}
 								cursor={this.cursor}>
 								<a>archive</a>
@@ -98,7 +98,7 @@ class Layout extends React.Component {
 							<Sticky cursor={this.cursor} newTab='https://github.com/schulke-214/'>
 								<a>github</a>
 							</Sticky> */}
-						</div>
+						{/* </div> */}
 					</div>
 				</div>
 				<div className='layout__cursor ev__none'>

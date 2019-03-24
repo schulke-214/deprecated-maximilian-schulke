@@ -3,6 +3,6 @@
 .DS_Store
 .temp
 *.log 
-build/
-.idea/
-out/
+/build/
+/.idea/
+/out/
