@@ -1,7 +1,7 @@
 .home {
     display: flex;
 
-    .home__left {
+    .home__title {
         display: flex;
         justify-content: flex-end;
         width: 50%;
@@ -11,7 +11,7 @@
         }
     }
 
-    .home__right {
+    .home__content {
         // fix for mobile
         margin-top: 25vw;
         width: 50%;

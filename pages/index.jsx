@@ -9,25 +9,23 @@ class Home extends React.Component {
 		return (
 			<SmoothScroll>
 				<div className='home page-padding'>
-					<div className='home__left'>
+					<div className='home__title'>
 						<h1 className='home__head'>
-							<span>software</span>
+							<span>frontend</span>
 							<span>engineer</span>
 						</h1>
 					</div>
-
-					<div className='home__right'>
+					<div className='home__content'>
 						<div className='home__abstract'>
 							<div>
 								<AbstractImage
-									factor={1.75}
+									factor={1.5}
 									width={1600}
 									height={1200}
 									src='/static/abstract-2.png'
 								/>
 							</div>
 						</div>
-
 						<section className='home__text'>
 							<h6>Profile</h6>
 							<p>
@@ -46,21 +44,17 @@ class Home extends React.Component {
 								light mechanics. His creations disclose a free inventor’s spirit.
 							</p>
 						</section>
-
 						<section className='home__contact'>
 							<h6>Contact me</h6>
 							<p>info@maximilianschulke.com</p>
 							<p>+49 176 43 69 21 62 </p>
 						</section>
-
 						<section className='home__social'>
 							<h6>Follow me</h6>
 							<p>Github</p>
 							<p>Medium</p>
 						</section>
 					</div>
-
-					{/* <div className='home__content'> */}
 				</div>
 			</SmoothScroll>
 		);
