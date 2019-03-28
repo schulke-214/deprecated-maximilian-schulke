@@ -30,6 +30,7 @@ class AppDocument extends Document {
 					<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/plugins/CSSPlugin.min.js' />
 					<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/plugins/ScrollToPlugin.min.js' />
 					<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/easing/EasePack.min.js' />
+					<script>PIXI.utils.skipHello();</script>
 					<noscript>
 						<meta
 							httpEquiv='Refresh'
