@@ -80,18 +80,18 @@ class SmoothScroll extends React.Component {
 		// }
 	};
 
-	// handleResize = ev => {
-	// 	if (this.rect.height < window.innerHeight) {
-	// 		return;
-	// 	}
+	handleResize = ev => {
+		if (this.rect.height < window.innerHeight) {
+			return;
+		}
 
-	// 	if (this.offset + window.innerHeight >= this.rect.height) {
-	// 		this.offset = this.rect.height - window.innerHeight;
-	// 		console.log('over bot bc resize');
-	// 	}
+		if (this.offset + window.innerHeight >= this.rect.height) {
+			this.offset = this.rect.height - window.innerHeight;
+			console.log('over bot bc resize');
+		}
 
-	// 	this.animate(this.offset);
-	// };
+		this.animate(this.offset);
+	};
 
 	// setDuration = dur => {
 	// 	this.duration = dur;
