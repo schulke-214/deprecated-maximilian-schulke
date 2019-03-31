@@ -3,38 +3,53 @@ class SmoothScroll extends React.Component {
 
 	offset = 0;
 	progress = 0;
-	speed = 0.25;
+	speed = 0.5;
+	keystep = 40;
 
 	componentDidMount() {
 		this.offset = this.rect.y;
 
+		addEventListener('resize', this.handleResize, { passive: false });
 		addEventListener('keydown', this.handleKeyDown, { passive: false });
 		addEventListener('wheel', this.handleWheel, { passive: false });
 	}
 
 	componentWillUnmount() {
+		removeEventListener('resize', this.handleResize, { passive: false });
 		removeEventListener('keydown', this.handleKeyDown, { passive: false });
 		removeEventListener('wheel', this.handleWheel, { passive: false });
 	}
 
 	scroll = force => {
-		this.offset += force * this.speed;
+		if (this.rect.height < window.innerHeight) {
+			return;
+		}
 
-		this.progress = this.rect.height / this.offset;
+		if (this.offset <= 0 && force < 0) {
+			this.offset = 0;
+		} else if (this.offset + window.innerHeight + force * this.speed > this.rect.height) {
+			this.offset = this.rect.height - window.innerHeight;
+		} else {
+			this.offset += force * this.speed;
+		}
 
-		console.log(this.rect.height, this.offset, window.innerHeight);
+		// LIMIT OFFSET TO MAX XYZ
 
-		// top
-		// this.offset < 0
+		// console.log(this.rect.height, this.offset, window.innerHeight);
 
-		// bottom
-		// this.offset + window.innerHeight > this.rect.height
+		this.animate();
+	};
 
-		TweenLite.to(this.container.current, 0.5, {
+	animate = () => {
+		TweenLite.to(this.container.current, this.speed * 4, {
 			y: -this.offset,
 			ease: Expo.easeOut
 		});
 	};
+
+	// setProgress() {
+	// 	this.progress = this.rect.height / this.offset;
+	// }
 
 	handleWheel = ev => {
 		ev.preventDefault();
@@ -64,6 +79,19 @@ class SmoothScroll extends React.Component {
 		// 	TweenLite.to('main', 1, { y: 0 });
 		// }
 	};
+
+	// handleResize = ev => {
+	// 	if (this.rect.height < window.innerHeight) {
+	// 		return;
+	// 	}
+
+	// 	if (this.offset + window.innerHeight >= this.rect.height) {
+	// 		this.offset = this.rect.height - window.innerHeight;
+	// 		console.log('over bot bc resize');
+	// 	}
+
+	// 	this.animate(this.offset);
+	// };
 
 	// setDuration = dur => {
 	// 	this.duration = dur;
@@ -116,12 +144,32 @@ class SmoothScroll extends React.Component {
 
 	// prevent = ev => ev.preventDefault();
 
-	handleKeyDown = ev => {
-		// space and arrow keys
-		if ([32, 37, 38, 39, 40].indexOf(ev.keyCode) > -1) {
-			ev.preventDefault();
-		}
-	};
+	// handleKeyDown = ev => {
+	// 	// space and arrow keys
+	// 	if ([32, 37, 38, 39, 40].indexOf(ev.keyCode) > -1) {
+	// 		ev.preventDefault();
+
+	// 		switch (ev.keyCode) {
+	// 			case 32:
+	// 				this.scroll(this.keystep * 10);
+	// 				break;
+	// 			case 37:
+	// 				this.scroll(-this.keystep);
+	// 				break;
+	// 			case 38:
+	// 				this.scroll(-this.keystep);
+	// 				break;
+	// 			case 39:
+	// 				this.scroll(this.keystep);
+	// 				break;
+	// 			case 40:
+	// 				this.scroll(this.keystep);
+	// 				break;
+	// 			default:
+	// 				break;
+	// 		}
+	// 	}
+	// };
 
 	handleTouch = ev => {};
 
