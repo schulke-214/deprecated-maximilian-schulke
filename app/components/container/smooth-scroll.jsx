@@ -144,32 +144,32 @@ class SmoothScroll extends React.Component {
 
 	// prevent = ev => ev.preventDefault();
 
-	// handleKeyDown = ev => {
-	// 	// space and arrow keys
-	// 	if ([32, 37, 38, 39, 40].indexOf(ev.keyCode) > -1) {
-	// 		ev.preventDefault();
+	handleKeyDown = ev => {
+		// space and arrow keys
+		if ([32, 37, 38, 39, 40].indexOf(ev.keyCode) > -1) {
+			ev.preventDefault();
 
-	// 		switch (ev.keyCode) {
-	// 			case 32:
-	// 				this.scroll(this.keystep * 10);
-	// 				break;
-	// 			case 37:
-	// 				this.scroll(-this.keystep);
-	// 				break;
-	// 			case 38:
-	// 				this.scroll(-this.keystep);
-	// 				break;
-	// 			case 39:
-	// 				this.scroll(this.keystep);
-	// 				break;
-	// 			case 40:
-	// 				this.scroll(this.keystep);
-	// 				break;
-	// 			default:
-	// 				break;
-	// 		}
-	// 	}
-	// };
+			switch (ev.keyCode) {
+				case 32:
+					this.scroll(this.keystep * 10);
+					break;
+				case 37:
+					this.scroll(-this.keystep);
+					break;
+				case 38:
+					this.scroll(-this.keystep);
+					break;
+				case 39:
+					this.scroll(this.keystep);
+					break;
+				case 40:
+					this.scroll(this.keystep);
+					break;
+				default:
+					break;
+			}
+		}
+	};
 
 	handleTouch = ev => {};
 
