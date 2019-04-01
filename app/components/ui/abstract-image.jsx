@@ -160,7 +160,7 @@ class AbstractImage extends React.Component {
 
 	render() {
 		return (
-			<div ref={this.wrapper} className='abstract-image ev__all'>
+			<div ref={this.wrapper} className='abstract-image ev__none'>
 				<canvas ref={this.canvas} />
 			</div>
 		);
