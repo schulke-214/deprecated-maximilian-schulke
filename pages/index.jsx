@@ -1,8 +1,8 @@
+import SmoothScroll from 'app/components/container/smooth-scroll';
 import AbstractImage from 'app/components/ui/abstract-image';
-import cases from '../static/cases/meta.json';
 import 'app/styles/pages/index.scss';
 
-import SmoothScroll from 'app/components/container/smooth-scroll';
+// import cases from '../static/cases/meta.json';
 
 class Home extends React.Component {
 	render() {
@@ -10,9 +10,9 @@ class Home extends React.Component {
 			<SmoothScroll>
 				<div className='home page-padding'>
 					<div className='home__title'>
-						<h1 className='home__head'>
+						<h1 className='home__head ev__none' paralax='4'>
 							<span>frontend</span>
-							<span>engineer</span>
+							<span>— engineer</span>
 						</h1>
 					</div>
 					<div className='home__content'>
@@ -64,7 +64,6 @@ class Home extends React.Component {
 export default Home;
 
 /*  already converted code
-
 
 	slider = React.createRef();
 	circle = React.createRef();
