@@ -1,4 +1,4 @@
-import SmoothScroll from 'app/components/container/smooth-scroll';
+import ScrollContainer from 'app/components/container/scroll-container';
 import AbstractImage from 'app/components/ui/abstract-image';
 import 'app/styles/pages/index.scss';
 
@@ -7,10 +7,10 @@ import 'app/styles/pages/index.scss';
 class Home extends React.Component {
 	render() {
 		return (
-			<SmoothScroll>
+			<ScrollContainer>
 				<div className='home page-padding'>
 					<div className='home__title'>
-						<h1 className='home__head ev__none' paralax='4'>
+						<h1 className='home__head ev__none' paralax-layer='6'>
 							<span>frontend</span>
 							<span>— engineer</span>
 						</h1>
@@ -20,9 +20,9 @@ class Home extends React.Component {
 							<div>
 								<AbstractImage
 									factor={1.5}
-									width={1600}
-									height={1200}
-									src='/static/abstract-2.png'
+									width={1280}
+									height={1920}
+									src='/static/abstract.jpg'
 								/>
 							</div>
 						</div>
@@ -46,17 +46,36 @@ class Home extends React.Component {
 						</section>
 						<section className='home__contact'>
 							<h6>Contact me</h6>
-							<p>info@maximilianschulke.com</p>
-							<p>+49 176 43 69 21 62 </p>
+							<a
+								className='link'
+								href='mailto:info@maximilianschulke.com'
+								target='_blank'>
+								info@maximilianschulke.com
+							</a>
+							<br />
+							<a className='link' href='tel:+4917643692162'>
+								+49 176 43 69 21 62{' '}
+							</a>
 						</section>
 						<section className='home__social'>
 							<h6>Follow me</h6>
-							<p>Github</p>
-							<p>Medium</p>
+							<a
+								className='link'
+								href='https://www.github.com/schulke-214'
+								target='_blank'>
+								github
+							</a>
+							<br />
+							<a
+								className='link'
+								href='https://medium.com/@schulkemaximilian'
+								target='_blank'>
+								medium
+							</a>
 						</section>
 					</div>
 				</div>
-			</SmoothScroll>
+			</ScrollContainer>
 		);
 	}
 }
