@@ -41,3 +41,7 @@
 @function font-weight($weight) {
     @return get($font-weights, $weight);
 }
+
+@function animation($type) {
+    @return get(get($animations, $type), duration) get(get($animations, $type), ease);
+}

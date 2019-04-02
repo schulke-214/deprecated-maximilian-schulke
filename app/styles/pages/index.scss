@@ -12,8 +12,7 @@
     }
 
     .home__content {
-        // fix for mobile
-        margin-top: 25vw;
+        margin-top: calc(50vh - #{$page-padding});
         width: 50%;
 
         @include down(tablet) {
@@ -25,8 +24,9 @@
 }
 
 .home__head {
+    @include font-size(8);
+
     display: block;
-    font-size: 16vw;
     line-height: line-height(min);
     font-weight: font-weight(medium);
     text-orientation: sideways;
@@ -43,10 +43,6 @@
         &:first-child {
             padding-left: 2.5vw;
         }
-
-        // &:last-child {
-        //     margin-top: 25vw;
-        // }
     } 
 }
 
@@ -56,7 +52,7 @@
         @include margin(1, bottom);
         font-weight: font-weight(medium);
     } 
-    
+
     p {
         @include font-size(2);
     }
