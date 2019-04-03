@@ -30,7 +30,7 @@ class Cursor extends React.Component {
 	initCursor = () => {
 		this.setCursorRect();
 
-		if (this.props.device.meta.phone || this.props.device.meta.mobile) {
+		if (this.props.device.meta.mobile) {
 			TweenLite.set(this.cursor.current, { display: 'none' });
 		}
 	};
