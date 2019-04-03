@@ -131,7 +131,7 @@ class AbstractImage extends React.Component {
 	};
 
 	resize = () => {
-		let rect = this.wrapper.current.getBoundingClientRect();
+		let rect = this.wrapper.current ? this.wrapper.current.getBoundingClientRect() : {};
 		let factor = 1;
 
 		// SET THE FACTOR BY THE VALUE WHICH IS SMALLER
