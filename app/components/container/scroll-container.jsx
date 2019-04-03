@@ -79,10 +79,6 @@ class ScrollContainer extends React.Component {
 
 	animate = () => {
 		this.paralaxLayer.forEach((layer, i) => {
-			// if (paralaxLayerOffset(i, this.maxOffset) > MAX_PADDING) {
-			// 	MAX_PADDING = paralaxLayerOffset(i, this.maxOffset);
-			// }
-
 			TweenLite.to(layer, this.maxSpeed - this.speed, {
 				y: paralaxLayerOffset(i, this.offset),
 				ease: Expo.easeOut
@@ -112,7 +108,10 @@ class ScrollContainer extends React.Component {
 
 	handleResize = ev => {
 		if (this.rect.height < window.innerHeight) {
-			console.log('return early');
+			if (this.offset > 0) {
+				this.offset = 0;
+				this.animate();
+			}
 			return;
 		}
 
@@ -122,7 +121,7 @@ class ScrollContainer extends React.Component {
 
 		this.maxOffset = this.rect.height - window.innerHeight;
 
-		this.animate(this.offset);
+		this.animate();
 	};
 
 	handleKeyDown = ev => {
