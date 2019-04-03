@@ -69,7 +69,7 @@ class DeviceController extends React.PureComponent {
 	};
 
 	mobile = () => {
-		const { device } = DeviceService;
+		const { device, meta } = DeviceService;
 		const mobileDevices = ['iPhone', 'iPad', 'iPod'];
 
 		if (device.type === 'mobile') {
@@ -81,6 +81,10 @@ class DeviceController extends React.PureComponent {
 		}
 
 		if (this.touch()) {
+			return true;
+		}
+
+		if (window.innerWidth < 768) {
 			return true;
 		}
 
