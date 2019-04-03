@@ -29,19 +29,13 @@ class Home extends React.Component {
 						<section className='home__text'>
 							<h6>Profile</h6>
 							<p>
-								A graduate in design, it was from 1994 that Pierrick Brocart
-								conceived and realised his creations. His initial examples of
-								sculpture allied to furniture design were featured in art galleries
-								( Paris, Brussels ) where they delighted both individuals and
-								collectors. They prompted requests from architects and interior
-								designers for his innovative ideas for furniture. However, following
-								his contributions to the „MAISON & OBJET“ exhibition in Paris in
-								2005, Pierrick Brocart decided to direct his activities towards the
-								creation of small to medium sized objects within the sphere of lamps
-								and lighting. The refined artistry of his current activities lean
-								toward the principles of movement and balance applied to simple
-								functions which place his creation in the anachronistic world of
-								light mechanics. His creations disclose a free inventor’s spirit.
+								I am a self-taught developer specialized in motion and interaction -
+								graduated in design - and based in North Rhine-Westphalia, Germany.
+								Since my youth, my ambition towards computer science and computer
+								graphics was clear. Initially focused on graphic design, i started
+								striving for a career more focused on programming, by watching,
+								listening and reading about other people's experiences and work.
+								Since 2018 im working professionally for agencies and startups.
 							</p>
 						</section>
 						<section className='home__contact'>
@@ -54,7 +48,7 @@ class Home extends React.Component {
 							</a>
 							<br />
 							<a className='link' href='tel:+4917643692162'>
-								+49 176 43 69 21 62{' '}
+								+49 176 43 69 21 62
 							</a>
 						</section>
 						<section className='home__social'>
