@@ -29,13 +29,13 @@ class Home extends React.Component {
 						<section className='home__text'>
 							<h6>Profile</h6>
 							<p>
-								I am a self-taught developer specialized in motion and interaction -
-								graduated in design - and based in North Rhine-Westphalia, Germany.
-								Since my youth, my ambition towards computer science and computer
-								graphics was clear. Initially focused on graphic design, i started
-								striving for a career more focused on programming, by watching,
-								listening and reading about other people's experiences and work.
-								Since 2018 im working professionally for agencies and startups.
+								Hello, I am Max, a self-taught developer specialized in motion and
+								interaction - graduated in design - and based in North
+								Rhine-Westphalia, Germany. Since my early days, my ambition towards
+								computer science and computer graphics was clear. Initially focused
+								on graphic design, I started striving for a career more focused on
+								programming, by watching, listening and reading about other people's
+								experiences and work.
 							</p>
 						</section>
 						<section className='home__contact'>
