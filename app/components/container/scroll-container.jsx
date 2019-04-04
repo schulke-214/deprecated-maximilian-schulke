@@ -3,8 +3,11 @@
 import { connect } from 'react-redux';
 import { paralaxLayerOffset } from 'app/utils/paralax';
 
+import 'app/styles/components/scroll-container.scss';
+
 class ScrollContainer extends React.Component {
 	container = React.createRef();
+	bar = React.createRef();
 
 	offset = 0;
 	maxOffset = 0;
@@ -34,8 +37,8 @@ class ScrollContainer extends React.Component {
 			];
 		}
 
-		addEventListener('scroll', this.resetOffset, { passive: false });
-		addEventListener('touchstart', this.resetOffset, { passive: false });
+		addEventListener('touchstart', this.reset, { passive: false });
+		addEventListener('scroll', this.handleScroll, { passive: false });
 		addEventListener('resize', this.handleResize, { passive: false });
 		addEventListener('keydown', this.handleKeyDown, { passive: false });
 		addEventListener('wheel', this.handleWheel, { passive: false });
@@ -46,8 +49,8 @@ class ScrollContainer extends React.Component {
 			return;
 		}
 
-		removeEventListener('scroll', this.resetOffset, { passive: false });
-		removeEventListener('touchstart', this.resetOffset, { passive: false });
+		removeEventListener('touchstart', this.reset, { passive: false });
+		removeEventListener('scroll', this.handleScroll, { passive: false });
 		removeEventListener('resize', this.handleResize, { passive: false });
 		removeEventListener('keydown', this.handleKeyDown, { passive: false });
 		removeEventListener('wheel', this.handleWheel, { passive: false });
@@ -55,10 +58,8 @@ class ScrollContainer extends React.Component {
 
 	scroll = force => {
 		if (window.pageYOffset > 0) {
-			TweenLite.to(window, this.maxSpeed - this.speed, {
-				scrollTo: { y: 0 },
-				ease: Expo.easeOut
-			});
+			this.reset();
+			return;
 		}
 
 		if (this.rect.height < window.innerHeight) {
@@ -74,6 +75,7 @@ class ScrollContainer extends React.Component {
 			this.offset += force * this.speed;
 		}
 
+		this.setProgress();
 		this.animate();
 	};
 
@@ -85,15 +87,16 @@ class ScrollContainer extends React.Component {
 			});
 		});
 
+		TweenLite.to(this.bar.current, this.maxSpeed - this.speed, {
+			scaleY: this.progress,
+			ease: Expo.easeOut
+		});
+
 		TweenLite.to(this.container.current, this.maxSpeed - this.speed, {
 			y: -this.offset,
 			ease: Expo.easeOut
 		});
 	};
-
-	// setProgress() {
-	// 	this.progress = this.rect.height / this.offset;
-	// }
 
 	handleWheel = ev => {
 		ev.preventDefault();
@@ -106,10 +109,16 @@ class ScrollContainer extends React.Component {
 		this.scroll(ev.deltaY);
 	};
 
+	handleScroll = ev => {
+		this.setProgress(true);
+		this.animate();
+	};
+
 	handleResize = ev => {
 		if (this.rect.height < window.innerHeight) {
 			if (this.offset > 0) {
 				this.offset = 0;
+				this.setProgress();
 				this.animate();
 			}
 			return;
@@ -121,6 +130,7 @@ class ScrollContainer extends React.Component {
 
 		this.maxOffset = this.rect.height - window.innerHeight;
 
+		this.setProgress();
 		this.animate();
 	};
 
@@ -151,9 +161,21 @@ class ScrollContainer extends React.Component {
 		}
 	};
 
-	resetOffset = () => {
+	setProgress = mobile => {
+		if (mobile) {
+			this.progress = window.pageYOffset / (this.rect.height - window.innerHeight);
+			console.log('ola', this.progress);
+		} else {
+			this.progress = this.offset / (this.rect.height - window.innerHeight);
+		}
+
+		this.progress = this.progress.toFixed(4);
+	};
+
+	reset = () => {
 		if (this.offset > 0) {
 			this.offset = 0;
+			this.setProgress();
 			this.animate();
 		}
 	};
@@ -163,7 +185,14 @@ class ScrollContainer extends React.Component {
 	}
 
 	render() {
-		return <div ref={this.container}>{this.props.children}</div>;
+		return (
+			<>
+				<div className='scroll-container__bar' ref={this.bar} />
+				<div className='scroll-container' ref={this.container}>
+					{this.props.children}
+				</div>
+			</>
+		);
 	}
 }
 
