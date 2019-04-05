@@ -6,9 +6,13 @@
     text-transform: lowercase;
     display: block;
     transform-origin: center;
-    line-height: line-height(min);
     height: min-content;
     width: min-content;
+    line-height: line-height(min);
+
+    * {
+        line-height: inherit;
+    }
 }
 
 .sticky__trigger {
