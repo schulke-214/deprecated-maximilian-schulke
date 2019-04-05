@@ -75,6 +75,10 @@ class ScrollContainer extends React.Component {
 			this.offset += force * this.speed;
 		}
 
+		if (this.offset < 0) {
+			this.offset = 0;
+		}
+
 		this.setProgress();
 		this.animate();
 	};
@@ -116,11 +120,7 @@ class ScrollContainer extends React.Component {
 
 	handleResize = ev => {
 		if (this.rect.height < window.innerHeight) {
-			if (this.offset > 0) {
-				this.offset = 0;
-				this.setProgress();
-				this.animate();
-			}
+			this.reset();
 			return;
 		}
 
@@ -130,11 +130,17 @@ class ScrollContainer extends React.Component {
 
 		this.maxOffset = this.rect.height - window.innerHeight;
 
-		this.setProgress();
+		if (this.offset && !window.pageYOffset) {
+			this.setProgress();
+		} else if (!this.offset && window.pageYOffset) {
+			this.setProgress(true);
+		}
+
 		this.animate();
 	};
 
 	handleKeyDown = ev => {
+		console.log('eheheh');
 		// space and arrow keys
 		if ([32, 37, 38, 39, 40].indexOf(ev.keyCode) > -1) {
 			ev.preventDefault();
@@ -164,7 +170,6 @@ class ScrollContainer extends React.Component {
 	setProgress = mobile => {
 		if (mobile) {
 			this.progress = window.pageYOffset / (this.rect.height - window.innerHeight);
-			console.log('ola', this.progress);
 		} else {
 			this.progress = this.offset / (this.rect.height - window.innerHeight);
 		}
