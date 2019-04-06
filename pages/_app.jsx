@@ -1,20 +1,18 @@
 import App, { Container } from 'next/app';
 import Head from 'next/head';
-
-import { pageTitle } from 'app/utils/strings';
-
 // refactor imports
 import initStore from 'store';
 import LocalStorageService from 'services/local-storage';
 import { Provider } from 'react-redux';
 
-import Layout from 'app/components/container/layout';
-import DeviceController from 'app/components/data/device-controller';
+import Layout from 'components/container/layout';
+import DeviceController from 'components/data/device-controller';
+
+import { pageTitle } from 'helper/strings';
 
 // import PageLoader from "components/common/pageLoader/pageLoader";
 
-import 'app/styles/reboot.scss';
-import 'app/styles/utils.scss';
+import 'styles/common.scss';
 
 const store = initStore();
 

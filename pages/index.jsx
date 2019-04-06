@@ -1,6 +1,6 @@
-import ScrollContainer from 'app/components/container/scroll-container';
-import AbstractImage from 'app/components/ui/abstract-image';
-import 'app/styles/pages/index.scss';
+import ScrollContainer from 'components/container/scroll-container';
+import AbstractImage from 'components/ui/abstract-image';
+import 'styles/pages/index.scss';
 
 // import cases from '../static/cases/meta.json';
 
@@ -29,7 +29,7 @@ class Home extends React.Component {
 						<section className='home__text'>
 							<h6>Profile</h6>
 							<p>
-								Hello, I am Max, a self-taught developer specialized in motion and
+								Hi, I am Max, a self-taught developer specialized in motion and
 								interaction - graduated in design - and based in North
 								Rhine-Westphalia, Germany. Since my early days, my ambition towards
 								computer science and computer graphics was clear. Initially focused
