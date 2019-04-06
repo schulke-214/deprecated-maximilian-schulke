@@ -1,0 +1,93 @@
+$base: 16px;
+$page-padding: 6vw;
+
+$colors: (
+    primary: #ffffff, //f2f2f2,
+    secondary: #060606,
+);
+
+$font: (
+    primary: ("neue-haas-unica", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji")
+    // secondary: ("Spectral"),
+);
+
+$font-sizes: (
+    8: (
+        max: 13.5rem,
+        min: 8.5rem
+    ),
+    7: (
+        max: 7.5rem,
+        min: 5.75rem
+    ),
+    6: (
+        max: 5rem,
+        min: 3.875rem
+    ),
+    5: (
+        max: 3.375rem,
+        min: 2.9rem
+    ),
+    4: ( 
+        max: 2.75rem,
+        min: 2.25rem
+    ),
+    3: (
+        max: 2.25rem,
+        min: 1.75rem
+    ),
+    2: (
+        max: 1.25rem,
+        min: 1.125rem
+    ),
+    1: (
+        max: 1rem,
+        min: 1rem
+    ),
+    0: (
+        max: 0.875rem,
+        min: 0.875rem
+    )
+);
+
+$font-weights: (
+    bold: 700,
+    medium: 500,
+    regular: 400
+);
+
+$line-heights: (
+    text: 1.45,
+    headline: 1.25,
+    content: 1,
+    min: 0.75
+);
+
+$z-index: (
+    foreground: 100,
+    gui: 75,
+    cursor: 50,
+    links: 25,
+    content: 0,
+    background: -25,
+);
+
+$breakpoints: (
+    phone: 400px, 
+    phone-wide: 480px, 
+    phablet: 560px, 
+    tablet-small: 640px, 
+    tablet: 768px, 
+    tablet-wide: 1025px,
+    desktop: 1248px, 
+    desktop-wide: 1440px
+);
+
+$animations: (
+    primary: (
+        duration: 1s,
+        ease: cubic-bezier(.19,1,.22,1)
+    )
+);
+
+$cursor-size: 25px;
