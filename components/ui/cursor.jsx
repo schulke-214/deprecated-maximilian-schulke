@@ -5,16 +5,22 @@ import Debouncer from 'helper/debouncer';
 import './cursor.scss';
 
 class Cursor extends React.Component {
+	state = {
+		ssr: true
+	};
 	cursor = React.createRef();
+
 	cursorRect = null;
 	cursorPos = {
 		x: 0,
 		y: 0
 	};
 	opacity = 1;
+
 	mouseDebouncer = new Debouncer();
 
 	componentDidMount() {
+		this.setState({ ssr: false });
 		// this.initCursor();
 		// addEventListener('mousemove', this.handleMouseMove);
 		// addEventListener('mouseout', this.handleMouseOut);
@@ -147,7 +153,7 @@ class Cursor extends React.Component {
 	};
 
 	render() {
-		if (this.props.device.meta.phone || this.props.device.meta.mobile) {
+		if (!this.state.ssr && this.props.device.meta.mobile) {
 			return <></>;
 		}
 
