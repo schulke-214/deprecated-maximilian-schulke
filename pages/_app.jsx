@@ -51,7 +51,7 @@ class Application extends App {
 			<Provider store={store}>
 				<Container>
 					<Head>
-						<title>{pageTitle('Software Developer')}</title>
+						<title>{pageTitle('Frontend Engineer')}</title>
 					</Head>
 					{/* {this.state.pageLoader.isOpen ? (
                         <PageLoader finished={this.removePageLoader} />

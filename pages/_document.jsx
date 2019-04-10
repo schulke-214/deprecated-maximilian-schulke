@@ -13,7 +13,7 @@ class AppDocument extends Document {
 					/>
 					<meta
 						name='description'
-						content='Im a creative developer based in bielefeld, germany!' /* REMINDER FOR FUTURE ME: CHANGE THIS*/
+						content='Portfolio of a frontend engineer with focus on motion and interaction, currently based in North Rhine-Westphalia, Germany.' /* REMINDER FOR FUTURE ME: CHANGE THIS*/
 					/>
 					<meta name='theme-color' content='#060606' />
 					<link rel='shortcut icon' type='image/jpg' href='/static/favicon.jpg' />
