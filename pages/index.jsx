@@ -42,9 +42,9 @@ class Home extends React.Component {
 							<h6>Contact me</h6>
 							<a
 								className='link'
-								href='mailto:info@maximilianschulke.com'
+								href='mailto:hello@maximilianschulke.com'
 								target='_blank'>
-								info@maximilianschulke.com
+								hello@maximilianschulke.com
 							</a>
 							<br />
 							<a className='link' href='tel:+4917643692162'>
