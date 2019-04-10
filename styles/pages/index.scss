@@ -32,6 +32,7 @@
     text-orientation: sideways;
     writing-mode: vertical-rl;
     margin-right: 2.5vw;
+    height: min-content;
 
     span {
         display: block;
@@ -39,6 +40,7 @@
         font-size: inherit;
         font-weight: inherit;
         line-height: inherit;
+        height: min-content;
 
         &:first-child {
             padding-left: 2.5vw;
