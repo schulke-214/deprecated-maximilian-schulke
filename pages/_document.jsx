@@ -25,7 +25,7 @@ class AppDocument extends Document {
 						name='audience'
 						content='Erwachsene, Experten, Frauen, Profis, Studenten'
 					/>
-					<meta http-equiv='content-language' content='en' />
+					<meta httpEquiv='content-language' content='en' />
 					<meta name='robots' content='index, follow' />
 
 					<meta
@@ -41,7 +41,7 @@ class AppDocument extends Document {
 						href='https://use.typekit.net/zwq5ryn.css'
 						/* neue haas unica */
 					/>
-					<script src='https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.5.1/pixi.min.js' />
+					<script src='https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.1/pixi.min.js' />
 					<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenLite.min.js' />
 					<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TimelineLite.min.js' />
 					<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/plugins/CSSPlugin.min.js' />
@@ -65,10 +65,3 @@ class AppDocument extends Document {
 }
 
 export default AppDocument;
-/**
- * 
- * 					{/* 
-
-					<script src='https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.1/pixi.min.js' /> }
-
- */
