@@ -33,7 +33,7 @@ class ScrollContainer extends React.Component {
 
 		for (let i = 0; i < 10; i++) {
 			this.paralaxLayer[i] = [
-				...this.container.current.querySelectorAll(`[paralax-layer="${i}"]`)
+				...this.container.current.querySelectorAll(`[scroll-paralax="${i}"]`)
 			];
 		}
 
@@ -107,6 +107,7 @@ class ScrollContainer extends React.Component {
 	handleWheel = ev => {
 		ev.preventDefault();
 
+		// TODO check if the input device is a mouse
 		if (this.props.device.browser.type.firefox && this.props.device.os.type.windows) {
 			// firefox windows specific fix - wheeldata was far to low there to use it as offset inndicator
 			return this.scroll(ev.deltaY * 35);

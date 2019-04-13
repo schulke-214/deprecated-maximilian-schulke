@@ -10,7 +10,7 @@ class Home extends React.Component {
 			<ScrollContainer>
 				<div className='home page-padding'>
 					<div className='home__title'>
-						<h1 className='home__head ev__none' paralax-layer='6'>
+						<h1 className='home__head ev__none' scroll-paralax='6'>
 							<span>frontend</span>
 							<span>— engineer</span>
 						</h1>
@@ -38,7 +38,7 @@ class Home extends React.Component {
 								experiences and work.
 							</p>
 						</section>
-						<section className='home__contact'>
+						<section className='home__link-block'>
 							<h6>Contact me</h6>
 							<a
 								className='link'
@@ -51,7 +51,7 @@ class Home extends React.Component {
 								+49 176 43 69 21 62
 							</a>
 						</section>
-						<section className='home__social'>
+						<section className='home__link-block'>
 							<h6>Follow me</h6>
 							<a
 								className='link'
@@ -65,6 +65,23 @@ class Home extends React.Component {
 								href='https://medium.com/@schulkemaximilian'
 								target='_blank'>
 								medium
+							</a>
+						</section>
+
+						<section className='home__link-block home__legal'>
+							<h6>Legal</h6>
+							<a
+								className='link'
+								href='https://www.github.com/schulke-214'
+								target='_blank'>
+								legal notice
+							</a>
+							<br />
+							<a
+								className='link'
+								href='https://medium.com/@schulkemaximilian'
+								target='_blank'>
+								dataprivacy
 							</a>
 						</section>
 					</div>
