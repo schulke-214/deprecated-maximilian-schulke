@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
+import Router from 'next/router';
+
 import './sticky.scss';
 
 class Sticky extends PureComponent {
@@ -111,9 +113,10 @@ class Sticky extends PureComponent {
 
 	handleClick = () => {
 		if (this.props.to) {
+			// only temporarily
+			Router.push(this.props.to);
 			// PROGRAMATICALLY ROUTING ( USING A INTERFACE OR THE LAYOUT COMPONENT )
 		} else if (this.props.newTab) {
-			console.log('EH');
 			window.open(this.props.newTab, '_blank');
 		} else if (this.props.mailto) {
 			location.href = 'mailto:' + this.props.mailto;
