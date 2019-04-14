@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import ScrollContainer from 'components/container/scroll-container';
 import AbstractImage from 'components/ui/abstract-image';
 import 'styles/pages/index.scss';
@@ -68,21 +70,19 @@ class Home extends React.Component {
 							</a>
 						</section>
 
-						<section className='home__link-block home__legal'>
+						<section className='home__link-block'>
 							<h6>Legal</h6>
-							<a
-								className='link'
-								href='https://www.github.com/schulke-214'
-								target='_blank'>
-								legal notice
-							</a>
+							<Link>
+								<a className='link' href='/legal-notice'>
+									legal notice
+								</a>
+							</Link>
 							<br />
-							<a
-								className='link'
-								href='https://medium.com/@schulkemaximilian'
-								target='_blank'>
-								dataprivacy
-							</a>
+							<Link>
+								<a className='link' href='/dataprivacy'>
+									dataprivacy
+								</a>
+							</Link>
 						</section>
 					</div>
 				</div>
