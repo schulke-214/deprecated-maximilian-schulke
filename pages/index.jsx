@@ -4,8 +4,6 @@ import ScrollContainer from 'components/container/scroll-container';
 import AbstractImage from 'components/ui/abstract-image';
 import 'styles/pages/index.scss';
 
-// import cases from '../static/cases/meta.json';
-
 class Home extends React.Component {
 	render() {
 		return (
@@ -72,16 +70,12 @@ class Home extends React.Component {
 
 						<section className='home__link-block'>
 							<h6>Legal</h6>
-							<Link>
-								<a className='link' href='/legal-notice'>
-									legal notice
-								</a>
+							<Link href='/legal-notice'>
+								<a className='link'>legal notice</a>
 							</Link>
 							<br />
-							<Link>
-								<a className='link' href='/dataprivacy'>
-									dataprivacy
-								</a>
+							<Link href='/dataprivacy'>
+								<a className='link'>dataprivacy</a>
 							</Link>
 						</section>
 					</div>
