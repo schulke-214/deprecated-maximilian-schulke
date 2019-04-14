@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import Sticky from 'components/ui/sticky';
 import Cursor from 'components/ui/cursor';
+import CookieNotice from '../ui/cookie-notice';
 
 import './layout.scss';
 
@@ -15,6 +16,7 @@ class Layout extends React.Component {
 	render() {
 		return (
 			<>
+				<CookieNotice />
 				<div className='layout ev__none'>
 					<div className='layout__gui'>
 						<div className='d__flex d__flex--flags --between'>

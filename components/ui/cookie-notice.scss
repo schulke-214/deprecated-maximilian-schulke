@@ -1,0 +1,23 @@
+.cookie-notice {
+    @include padding(2);
+
+    position: fixed;
+    width: 100vw;
+    min-width: 280px;
+    right: auto;
+    bottom: 0;
+    font-family: monospace;
+    overflow-y: scroll;
+    background-color: color(secondary);
+    z-index: z(foreground);
+
+    p, a, span {
+        text-decoration-color: color(primary);
+        color: color(primary);
+    }
+
+    @include up(phablet) {
+        right: 0;
+        width: 400px;
+    }
+}
