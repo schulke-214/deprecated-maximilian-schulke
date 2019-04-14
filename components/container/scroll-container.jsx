@@ -14,6 +14,7 @@ class ScrollContainer extends React.Component {
 	progress = 0;
 	speed = 0.5;
 	maxSpeed = 2.5;
+	duration = this.maxSpeed - this.speed;
 	keystep = 75;
 
 	paralaxLayer = [];
@@ -36,6 +37,9 @@ class ScrollContainer extends React.Component {
 				...this.container.current.querySelectorAll(`[scroll-paralax="${i}"]`)
 			];
 		}
+
+		// reset window scroll position
+		this.resetWindow();
 
 		addEventListener('touchstart', this.reset, { passive: false });
 		addEventListener('scroll', this.handleScroll, { passive: false });
@@ -85,7 +89,7 @@ class ScrollContainer extends React.Component {
 
 	animate = () => {
 		this.paralaxLayer.forEach((layer, i) => {
-			TweenLite.to(layer, this.maxSpeed - this.speed, {
+			TweenLite.to(layer, this.duration, {
 				y: paralaxLayerOffset(i, this.offset),
 				ease: Expo.easeOut
 			});
@@ -93,12 +97,12 @@ class ScrollContainer extends React.Component {
 			// maybe add support for paralax without wheel aswell
 		});
 
-		TweenLite.to(this.bar.current, this.maxSpeed - this.speed, {
+		TweenLite.to(this.bar.current, this.duration, {
 			scaleY: this.progress,
 			ease: Expo.easeOut
 		});
 
-		TweenLite.to(this.container.current, this.maxSpeed - this.speed, {
+		TweenLite.to(this.container.current, this.duration, {
 			y: -this.offset,
 			ease: Expo.easeOut
 		});
@@ -106,6 +110,10 @@ class ScrollContainer extends React.Component {
 
 	handleWheel = ev => {
 		ev.preventDefault();
+
+		console.log('onwheel');
+
+		this.resetWindow();
 
 		// TODO check if the input device is a mouse
 		if (this.props.device.browser.type.firefox && this.props.device.os.type.windows) {
@@ -180,10 +188,22 @@ class ScrollContainer extends React.Component {
 	};
 
 	reset = () => {
-		if (this.offset > 0) {
+		if (Math.abs(this.offset) > 0) {
 			this.offset = 0;
 			this.setProgress();
 			this.animate();
+		}
+	};
+
+	resetWindow = () => {
+		if (window.pageYOffset) {
+			TweenLite.to(window, this.duration / 4, {
+				scrollTo: {
+					y: 0,
+					x: 0
+				},
+				ease: Expo.easeOut
+			});
 		}
 	};
 
