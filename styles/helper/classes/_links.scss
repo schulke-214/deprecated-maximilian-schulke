@@ -30,6 +30,8 @@
     &:hover::after {
         transform: translateX(125%);
     }
+}
 
-
+.link--secondary {
+    text-decoration: underline;
 }
