@@ -21,3 +21,46 @@
         width: 400px;
     }
 }
+
+.cookie-notice__cmd {
+    @include padding(1, left);
+    position: relative;
+    color: color(primary);
+
+    &::after {
+        content: "";
+        display: block;
+        width: 8px;
+        height: 14px;
+        position: absolute;
+        top: 0;
+        right: -8px;
+        background-color: color(primary);
+    }
+}
+
+.cookie-notice__cmd--active::after {
+    animation: blink 1s linear 0s infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    
+    50% {
+        opacity: 1;
+    }
+
+    51% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.cookie-notice__input {
+    display: none;
+}

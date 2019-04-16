@@ -34,4 +34,9 @@
 
 .link--secondary {
     text-decoration: underline;
+
+    &:hover {
+        color: #28a745;
+        text-decoration-color: #28a745;
+    }
 }
