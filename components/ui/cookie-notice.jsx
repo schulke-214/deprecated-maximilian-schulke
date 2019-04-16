@@ -21,15 +21,30 @@ const CMD_NOT_FOUND = name => {
 };
 
 class CookieNotice extends React.Component {
-	history = [];
+	state = {
+		active: false,
+		cmd: '',
+		history: []
+	};
+
+	input = React.createRef();
+
+	componentDidMount() {
+		addEventListener('click', this.deactivate);
+	}
+
+	componentWillUnmount() {
+		removeEventListener('click', this.deactivate);
+	}
 
 	exec = cmd => {
 		switch (cmd) {
 			case 'clear':
-				this.history = [];
+				this.setState({ history: [] });
 				break;
 			case 'help':
-				this.history.push('kek');
+				this.setState({ history: [...this.state.history, 'help'] });
+
 				break;
 			default:
 				this.history.push();
@@ -37,9 +52,24 @@ class CookieNotice extends React.Component {
 		}
 	};
 
+	activate = ev => {
+		ev.stopPropagation();
+		this.input.focus();
+		this.setState({ active: true });
+	};
+
+	deactivate = () => {
+		this.input.blur();
+		this.setState({ active: false });
+	};
+
 	render() {
+		/*
+            stop rendering if already accepted
+        */
+
 		return (
-			<div className='cookie-notice'>
+			<div className='cookie-notice' onClick={this.activate}>
 				<div className='cookie-notice__content'>
 					<p>
 						Cookies and IP addresses allow this page to improve your experience. This
@@ -65,8 +95,14 @@ class CookieNotice extends React.Component {
 				<div className='cookie-notice__console'>
 					<span>
 						~ root$
-						<span />
+						<span
+							className={`cookie-notice__cmd ${
+								this.state.active ? 'cookie-notice__cmd--active' : ''
+							}`}>
+							{this.state.cmd}
+						</span>
 					</span>
+					<input className='cookie-notice__input' ref={this.input} />
 				</div>
 			</div>
 		);
