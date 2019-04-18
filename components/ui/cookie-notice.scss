@@ -1,3 +1,8 @@
+$cookie-notice-background: #000;
+$cookie-notice-base: #dddddd;
+$cookie-notice-highlight: #fff;
+
+
 .cookie-notice {
     @include padding(2);
 
@@ -8,12 +13,20 @@
     bottom: 0;
     font-family: monospace;
     overflow-y: scroll;
-    background-color: color(secondary);
+    background-color: $cookie-notice-background;
     z-index: z(foreground);
 
     p, a, span {
-        text-decoration-color: color(primary);
-        color: color(primary);
+        text-decoration-color: $cookie-notice-base !important;
+        color: $cookie-notice-base !important;
+    }
+
+    a {
+        text-decoration: underline;
+
+        &:hover {
+            color: $cookie-notice-highlight !important;
+        }
     }
 
     @include up(phablet) {
@@ -22,10 +35,39 @@
     }
 }
 
+.cookie-notice__content {
+
+    @include up(tablet) {
+        @include margin(1, bottom);
+    }
+}
+
+.cookie-notice__console {
+    @include down(tablet) {
+        display: none;
+    }
+}
+
+.cookie-notice__choice-links {
+    display: flex;
+
+    > a {
+        color: $cookie-notice-base;
+
+        &:first-child {
+            @include margin(1, right);
+        }
+
+        &:hover > span {
+            text-decoration: underline;
+        }
+    }
+}
+
 .cookie-notice__cmd {
-    @include padding(1, left);
     position: relative;
-    color: color(primary);
+    left: 8px;
+    color: $cookie-notice-base;
 
     &::after {
         content: "";
@@ -35,7 +77,7 @@
         position: absolute;
         top: 0;
         right: -8px;
-        background-color: color(primary);
+        background-color: $cookie-notice-highlight;
     }
 }
 
@@ -62,5 +104,8 @@
 }
 
 .cookie-notice__input {
-    display: none;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    position: absolute;
 }

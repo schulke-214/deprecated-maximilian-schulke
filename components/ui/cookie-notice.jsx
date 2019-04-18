@@ -54,13 +54,18 @@ class CookieNotice extends React.Component {
 
 	activate = ev => {
 		ev.stopPropagation();
-		this.input.focus();
+		this.input.current.focus();
 		this.setState({ active: true });
 	};
 
 	deactivate = () => {
-		this.input.blur();
+		this.input.current.blur();
 		this.setState({ active: false });
+	};
+
+	handleChange = ev => {
+		console.log(ev.target.value);
+		this.setState({ cmd: ev.target.value });
 	};
 
 	render() {
@@ -82,15 +87,21 @@ class CookieNotice extends React.Component {
 						<Link href='/dataprivacy'>
 							<a className='link--secondary'>dataprivacy</a>
 						</Link>{' '}
-						page or send an email to{' '}
+						page or{' '}
 						<a className='link--secondary' href='mailto:legal@maximilianschulke.com'>
-							legal@maximilianschulke.com
+							write an email
 						</a>
 						.
 					</p>
 					<br />
-					<span>yes</span>
-					<span>nein danke</span>
+					<div className='cookie-notice__choice-links'>
+						<a>
+							[<span>N</span>]o, thanks
+						</a>
+						<a>
+							[<span>Y</span>]es, I agree.
+						</a>
+					</div>
 				</div>
 				<div className='cookie-notice__console'>
 					<span>
@@ -102,7 +113,12 @@ class CookieNotice extends React.Component {
 							{this.state.cmd}
 						</span>
 					</span>
-					<input className='cookie-notice__input' ref={this.input} />
+					<input
+						className='cookie-notice__input'
+						onChange={this.handleChange}
+						maxLength='10'
+						ref={this.input}
+					/>
 				</div>
 			</div>
 		);
