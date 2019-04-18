@@ -1,13 +1,8 @@
 import Link from 'next/link';
 
+import LocalStorageService from 'services/local-storage';
+
 import './cookie-notice.scss';
-
-// const CookieNotice = () => {
-// 	const accepted = false;
-
-// 	if (accepted) return <></>;
-
-// };
 
 const CMD_HELP = () => (
 	<>
@@ -22,6 +17,7 @@ const CMD_NOT_FOUND = name => {
 
 class CookieNotice extends React.Component {
 	state = {
+		accepted: true,
 		active: false,
 		cmd: '',
 		history: []
@@ -30,6 +26,10 @@ class CookieNotice extends React.Component {
 	input = React.createRef();
 
 	componentDidMount() {
+		if (LocalStorageService.get('cookie-notice') !== true) {
+			this.setState({ accepted: false });
+		}
+
 		addEventListener('click', this.deactivate);
 	}
 
@@ -63,15 +63,25 @@ class CookieNotice extends React.Component {
 		this.setState({ active: false });
 	};
 
+	agree = () => {
+		LocalStorageService.set('cookie-notice', true);
+		this.setState({ accepted: true });
+	};
+
+	decline = () => {
+		this.setState({ accepted: false });
+		localStorage.clear();
+		window.location.href = 'https://lightweight.maximilianschulke.com/';
+	};
+
 	handleChange = ev => {
-		console.log(ev.target.value);
 		this.setState({ cmd: ev.target.value });
 	};
 
 	render() {
-		/*
-            stop rendering if already accepted
-        */
+		if (this.state.accepted) {
+			return <></>;
+		}
 
 		return (
 			<div className='cookie-notice' onClick={this.activate}>
@@ -95,31 +105,34 @@ class CookieNotice extends React.Component {
 					</p>
 					<br />
 					<div className='cookie-notice__choice-links'>
-						<a>
-							[<span>N</span>]o, thanks
-						</a>
-						<a>
+						<a onClick={this.agree}>
 							[<span>Y</span>]es, I agree.
+						</a>
+						<a onClick={this.decline}>
+							[<span>N</span>]o, thanks
 						</a>
 					</div>
 				</div>
 				<div className='cookie-notice__console'>
 					<span>
 						~ root$
+						<span className='cookie-notice__cmd'>{this.state.cmd}</span>
 						<span
-							className={`cookie-notice__cmd ${
-								this.state.active ? 'cookie-notice__cmd--active' : ''
-							}`}>
-							{this.state.cmd}
-						</span>
+							className={`cookie-notice__cursor ${
+								this.state.active ? 'cookie-notice__cursor--active' : ''
+							}`}
+							style={{
+								left: 60 + this.state.cmd.length * 7.5 + 'px'
+							}}
+						/>
 					</span>
-					<input
-						className='cookie-notice__input'
-						onChange={this.handleChange}
-						maxLength='10'
-						ref={this.input}
-					/>
 				</div>
+				<input
+					className='cookie-notice__input'
+					onChange={this.handleChange}
+					maxLength='10'
+					ref={this.input}
+				/>
 			</div>
 		);
 	}

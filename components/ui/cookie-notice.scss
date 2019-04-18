@@ -36,13 +36,14 @@ $cookie-notice-highlight: #fff;
 }
 
 .cookie-notice__content {
-
     @include up(tablet) {
         @include margin(1, bottom);
     }
 }
 
 .cookie-notice__console {
+    position: relative;
+
     @include down(tablet) {
         display: none;
     }
@@ -65,23 +66,21 @@ $cookie-notice-highlight: #fff;
 }
 
 .cookie-notice__cmd {
-    position: relative;
-    left: 8px;
+    position: absolute;
+    left: 60px;
     color: $cookie-notice-base;
-
-    &::after {
-        content: "";
-        display: block;
-        width: 8px;
-        height: 14px;
-        position: absolute;
-        top: 0;
-        right: -8px;
-        background-color: $cookie-notice-highlight;
-    }
 }
 
-.cookie-notice__cmd--active::after {
+.cookie-notice__cursor {
+    display: block;
+    width: 8px;
+    height: 17px;
+    position: absolute;
+    top: 0;
+    background-color: $cookie-notice-highlight;
+}
+
+.cookie-notice__cursor--active::after {
     animation: blink 1s linear 0s infinite;
 }
 
