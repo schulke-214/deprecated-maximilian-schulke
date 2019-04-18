@@ -151,6 +151,11 @@ class ScrollContainer extends React.Component {
 	};
 
 	handleKeyDown = ev => {
+		// check if any inputs are focused
+		if (document.querySelectorAll('input:focus').length) {
+			return;
+		}
+
 		// space and arrow keys
 		if ([32, 37, 38, 39, 40].indexOf(ev.keyCode) > -1) {
 			ev.preventDefault();
