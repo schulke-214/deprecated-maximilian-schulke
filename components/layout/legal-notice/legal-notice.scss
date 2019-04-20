@@ -1,0 +1,110 @@
+$legal-notice-background: #000;
+$legal-notice-base: #dddddd;
+$legal-notice-highlight: #fff;
+
+
+.legal-notice {
+    @include padding(2);
+
+    position: fixed;
+    width: 100vw;
+    min-width: 280px;
+    right: auto;
+    bottom: 0;
+    font-family: monospace;
+    overflow-y: scroll;
+    background-color: $legal-notice-background;
+    z-index: z(foreground);
+
+    p, a, span {
+        text-decoration-color: $legal-notice-base !important;
+        color: $legal-notice-base !important;
+    }
+
+    a {
+        text-decoration: underline;
+
+        &:hover {
+            color: $legal-notice-highlight !important;
+        }
+    }
+
+    @include up(phablet) {
+        right: 0;
+        width: 400px;
+    }
+}
+
+.legal-notice__content {
+    @include up(tablet) {
+        @include margin(1, bottom);
+    }
+}
+
+.legal-notice__console {
+    position: relative;
+
+    @include down(tablet) {
+        display: none;
+    }
+}
+
+.legal-notice__choice-links {
+    display: flex;
+
+    > a {
+        color: $legal-notice-base;
+
+        &:first-child {
+            @include margin(1, right);
+        }
+
+        &:hover > span {
+            text-decoration: underline;
+        }
+    }
+}
+
+.legal-notice__cmd {
+    position: absolute;
+    left: 60px;
+    color: $legal-notice-base;
+}
+
+.legal-notice__cursor {
+    display: block;
+    width: 8px;
+    height: 17px;
+    position: absolute;
+    top: 0;
+    background-color: $legal-notice-highlight;
+}
+
+.legal-notice__cursor--active::after {
+    animation: blink 1s linear 0s infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    
+    50% {
+        opacity: 1;
+    }
+
+    51% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.legal-notice__input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    position: absolute;
+}
