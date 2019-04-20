@@ -1,0 +1,10 @@
+.scroll-controller__bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 5px;
+    background-color: color(secondary);
+    transform-origin: top center;
+    transform: scaleY(0);
+    height: 100vh;
+}
