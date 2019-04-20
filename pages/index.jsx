@@ -1,13 +1,12 @@
 import Link from 'next/link';
 
-import ScrollContainer from 'components/container/scroll-container';
-import AbstractImage from 'components/ui/abstract-image';
+import AbstractImage from 'components/ui/abstract-image/abstract-image';
 import 'styles/pages/index.scss';
 
 class Home extends React.Component {
 	render() {
 		return (
-			<ScrollContainer>
+			<>
 				<div className='home page-padding'>
 					<div className='home__title'>
 						<h1 className='home__head ev__none' scroll-paralax='6'>
@@ -80,7 +79,7 @@ class Home extends React.Component {
 						</section>
 					</div>
 				</div>
-			</ScrollContainer>
+			</>
 		);
 	}
 }

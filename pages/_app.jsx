@@ -1,11 +1,12 @@
 import App, { Container } from 'next/app';
 import Head from 'next/head';
+
 // refactor imports
 import initStore from 'store';
 import LocalStorageService from 'services/local-storage';
 import { Provider } from 'react-redux';
 
-import Layout from 'components/container/layout';
+import Layout from 'components/layout/layout';
 import DeviceController from 'components/data/device-controller';
 
 import { pageTitle } from 'helper/strings';
