@@ -12,4 +12,10 @@ export default class LocalStorageService {
 			localStorage.setItem(key, JSON.stringify(data));
 		} catch (e) {}
 	}
+
+	static clear() {
+		try {
+			localStorage.clear();
+		} catch (e) {}
+	}
 }
