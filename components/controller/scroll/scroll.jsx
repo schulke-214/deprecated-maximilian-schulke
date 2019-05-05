@@ -3,7 +3,7 @@
 import { connect } from 'react-redux';
 import { paralaxLayerOffset } from 'helper/paralax';
 
-import './scroll-controller.scss';
+import 'components/controller/scroll/scroll.scss';
 
 class ScrollController extends React.Component {
 	container = React.createRef();
