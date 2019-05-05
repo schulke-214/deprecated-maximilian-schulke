@@ -12,29 +12,29 @@ $font: (
 );
 
 $font-sizes: (
-    8: (
+    page-title: (
         max: 12rem,
         min: 8.5rem
     ),
     7: (
-        max: 7.5rem,
-        min: 5.75rem
+        max: 3.5rem,
+        min: 2.75rem
     ),
     6: (
-        max: 5rem,
-        min: 3.875rem
-    ),
-    5: (
-        max: 3.375rem,
-        min: 2.9rem
-    ),
-    4: ( 
-        max: 2.75rem,
-        min: 2.25rem
-    ),
-    3: (
         max: 2.25rem,
         min: 1.75rem
+    ),
+    5: (
+        max: 2rem,
+        min: 1.5rem
+    ),
+    4: ( 
+        max: 1.75rem,
+        min: 1.5rem
+    ),
+    3: (
+        max: 1.5rem,
+        min: 1.25rem
     ),
     2: (
         max: 1.25rem,

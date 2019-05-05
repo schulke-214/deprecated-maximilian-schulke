@@ -15,7 +15,7 @@ html {
 
 @for $i from 1 through 6 {
     h#{$i} {
-        @include font(primary, 9 - $i, bold);
+        @include font(primary, 8 - $i, bold);
         transition: font-size animation(primary);
         line-height: line-height(headline);
         margin: 0;
