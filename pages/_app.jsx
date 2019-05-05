@@ -7,7 +7,7 @@ import LocalStorageService from 'services/local-storage';
 import { Provider } from 'react-redux';
 
 import Layout from 'components/layout/layout';
-import DeviceController from 'components/data/device-controller';
+import DeviceController from 'components/controller/device';
 
 import { pageTitle } from 'helper/strings';
 

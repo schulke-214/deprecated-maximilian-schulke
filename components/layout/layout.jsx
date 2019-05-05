@@ -2,9 +2,7 @@ import { connect } from 'react-redux';
 // import Link from 'next/link';
 
 // import Router from 'services/router';
-import ScrollController from 'components/layout/scroll-controller/scroll-controller';
 import LegalNotice from 'components/layout/legal-notice/legal-notice';
-
 import StickyLink from 'components/ui/sticky-link/sticky-link';
 import VirtualCursor from 'components/ui/virtual-cursor/virtual-cursor';
 
@@ -36,12 +34,10 @@ class Layout extends React.Component {
 					<VirtualCursor ref={this.virtualCursor} />
 				</div>
 				<main className='layout__main'>
-					<ScrollController>
-						{React.cloneElement(this.props.children, {
-							cursor: this.cursor,
-							ref: this.page
-						})}
-					</ScrollController>
+					{React.cloneElement(this.props.children, {
+						cursor: this.cursor,
+						ref: this.page
+					})}
 				</main>
 			</>
 		);
