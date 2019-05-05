@@ -24,7 +24,7 @@
 }
 
 .home__head {
-    @include font-size(8);
+    @include font-size(page-title);
 
     display: block;
     line-height: line-height(min);
@@ -52,7 +52,7 @@
 .home__text, .home__link-block {
     @include margin(2, top);
 
-    h6 {
+    h2 {
         @include margin(1, bottom);
         font-weight: font-weight(medium);
     } 

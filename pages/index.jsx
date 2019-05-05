@@ -8,7 +8,7 @@ class Home extends React.Component {
 	render() {
 		return (
 			<ScrollController>
-				<div className='home page-padding'>
+				<div className='home'>
 					<div className='home__title'>
 						<h1 className='home__head ev__none' scroll-paralax='6'>
 							<span>frontend</span>
@@ -27,7 +27,7 @@ class Home extends React.Component {
 							</div>
 						</div>
 						<section className='home__text'>
-							<h6>Profile</h6>
+							<h2>Profile</h2>
 							<p>
 								Hi, I am Max, a self-taught developer specialized in motion and
 								interaction - graduated in design - and based in North
@@ -39,7 +39,7 @@ class Home extends React.Component {
 							</p>
 						</section>
 						<section className='home__link-block'>
-							<h6>Contact me</h6>
+							<h2>Contact me</h2>
 							<a
 								className='link'
 								href='mailto:hello@maximilianschulke.com'
@@ -52,7 +52,7 @@ class Home extends React.Component {
 							</a>
 						</section>
 						<section className='home__link-block'>
-							<h6>Follow me</h6>
+							<h2>Follow me</h2>
 							<a
 								className='link'
 								href='https://www.github.com/schulke-214'
@@ -69,13 +69,13 @@ class Home extends React.Component {
 						</section>
 
 						<section className='home__link-block'>
-							<h6>Legal</h6>
+							<h2>Legal</h2>
 							<Link href='/legal-notice'>
 								<a className='link'>legal notice</a>
 							</Link>
 							<br />
-							<Link href='/dataprivacy'>
-								<a className='link'>dataprivacy</a>
+							<Link href='/data-privacy'>
+								<a className='link'>data privacy</a>
 							</Link>
 						</section>
 					</div>
