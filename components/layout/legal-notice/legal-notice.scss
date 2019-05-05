@@ -35,20 +35,6 @@ $legal-notice-highlight: #fff;
     }
 }
 
-.legal-notice__content {
-    @include up(tablet) {
-        @include margin(1, bottom);
-    }
-}
-
-.legal-notice__console {
-    position: relative;
-
-    @include down(tablet) {
-        display: none;
-    }
-}
-
 .legal-notice__choice-links {
     display: flex;
 
@@ -63,48 +49,4 @@ $legal-notice-highlight: #fff;
             text-decoration: underline;
         }
     }
-}
-
-.legal-notice__cmd {
-    position: absolute;
-    left: 60px;
-    color: $legal-notice-base;
-}
-
-.legal-notice__cursor {
-    display: block;
-    width: 8px;
-    height: 17px;
-    position: absolute;
-    top: 0;
-    background-color: $legal-notice-highlight;
-}
-
-.legal-notice__cursor--active::after {
-    animation: blink 1s linear 0s infinite;
-}
-
-@keyframes blink {
-    0% {
-        opacity: 1;
-    }
-    
-    50% {
-        opacity: 1;
-    }
-
-    51% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
-
-.legal-notice__input {
-    width: 0;
-    height: 0;
-    opacity: 0;
-    position: absolute;
 }
