@@ -111,8 +111,6 @@ class ScrollController extends React.Component {
 	handleWheel = ev => {
 		ev.preventDefault();
 
-		console.log('onwheel');
-
 		this.resetWindow();
 
 		// TODO check if the input device is a mouse
