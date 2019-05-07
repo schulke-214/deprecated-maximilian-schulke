@@ -1,0 +1,22 @@
+.sticky-link {
+    position: relative;
+}
+
+.sticky-link__content {
+    text-transform: lowercase;
+    display: block;
+    transform-origin: center;
+    height: min-content;
+    width: min-content;
+    line-height: line-height(min);
+
+    * {
+        line-height: inherit;
+    }
+}
+
+.sticky-link__trigger {
+    position: absolute;
+    border-radius: 100%;
+    cursor: pointer;
+}
