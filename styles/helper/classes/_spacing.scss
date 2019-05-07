@@ -4,6 +4,7 @@
 
     @include down(tablet) {
         padding: 35px;
+        padding-top: 35px * 1.5;
     }
 }
 
