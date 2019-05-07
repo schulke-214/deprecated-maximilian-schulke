@@ -4,10 +4,19 @@ import ScrollController from 'components/Controller/ScrollController/ScrollContr
 
 import { pageTitle } from 'helper/strings';
 
-export default () => (
-	<div className='page-content'>
-		<pre>
-			{`# data privacy statement 
+export default class DataPrivacy extends React.Component {
+	render() {
+		return (
+			<ScrollController>
+				<div className='page-content'>
+					<pre>{content}</pre>
+				</div>
+			</ScrollController>
+		);
+	}
+}
+
+const content = `DATA PRIVACY STATEMENT
 
 ## Person in charge
 
@@ -202,6 +211,7 @@ all functions of this online offer can be used.
 
 
 ## Deletion of data
+
 The data processed by us will be deleted in accordance with the statutory provisions or their processing will be restricted.
 Unless expressly stated in this data protection declaration, the data stored by us will be deleted as soon as they are no longer 
 required for their intended purpose and there are no legal obligations to retain them.
@@ -210,12 +220,16 @@ If the data are not deleted because they are required for other and legally perm
 This means that the data will be blocked and not processed for other purposes. This applies, for example, to data that must be stored for
 commercial or tax reasons.
 
+
 ## Changes and Updates to the Privacy Policy
+
 We ask you to inform yourself regularly about the content of our data protection declaration. We will adapt the data protection declaration
 as soon as changes in the data processing we carry out make this necessary. We will inform you as soon as the changes require your cooperation
 (e.g. consent) or other individual notification.
 
+
 ## agency services
+
 We process the data of our customers within the scope of our contractual services, which include conceptual and strategic consulting, 
 campaign planning, software and design development / consulting or maintenance, implementation of campaigns and processes / handling, 
 server administration, data analysis / consulting services and training services.
@@ -237,7 +251,9 @@ in the case of legal archiving obligations the deletion takes place after their 
 In the case of data disclosed to us by the client within the scope of an order, we delete the data in accordance with the specifications of the order,
 in principle after the end of the order.
 
+
 ## Administration, financial accounting, office organisation, contact management
+
 We process data in the context of administrative tasks as well as the organisation of our business, financial accounting and compliance with 
 legal obligations, such as archiving. Here we process the same data that we process within the framework of the provision of our contractual 
 services. The processing bases are Art. 6 para. 1 lit. c. DSGVO, Art. 6 para. 1 lit. f. DSGVO. Customers, interested parties, business partners
@@ -251,7 +267,9 @@ We disclose or transmit data to the tax authorities, consultants, such as tax co
 Furthermore, on the basis of our business interests, we store information on suppliers, organisers and other business partners, e.g. for the purpose of establishing
 contact at a later date. This data, which is mainly company-related, is stored permanently.
 
+
 ## Economic analyses and market research
+
 In order to run our business economically, to be able to recognise market trends, wishes of our contractual partners and users, we analyse the data available to us
 on business transactions, contracts, enquiries, etc., in order to identify the most suitable and appropriate solutions for your needs. We process inventory data,
 communication data, contract data, payment data, usage data, metadata on the basis of Art. 6 para. 1 lit. f. DSGVO, whereby the persons concerned include
@@ -264,7 +282,9 @@ business efficiency. The analyses serve us alone and are not disclosed externall
 If these analyses or profiles are person-related, they will be deleted or anonymised upon termination by the user, otherwise after two years from the conclusion of
 the contract. In addition, macroeconomic analyses and general trends are prepared anonymously wherever possible.
 
+
 ## Hosting and e-mailing
+
 The hosting services used by us serve the provision of the following services: Infrastructure and platform services, computing capacity, storage space and database
 services, e-mail dispatch, security services and technical maintenance services which we use for the purpose of operating this online service.
 
@@ -272,7 +292,9 @@ Here we, or our hosting provider, process inventory data, contact data, content 
 interested parties and visitors to this online service on the basis of our legitimate interests in the efficient and secure provision of this online service in 
 accordance with Art. 6 Para. 1 lit. f DSGVO in conjunction with Art. 28 DSGVO (conclusion of contract processing agreement).
 
+
 ## Collection of access data and log files
+
 We, and/or our Hostinganbieter, raise on basis of our entitled interests in the sense of the art. 6 Abs. 1 lit. f. DSGVO Data about each access to the server on which
 this service is located (so-called server log files). The access data includes the name of the website accessed, file, date and time of access, amount of data transferred,
 notification of successful access, browser type and version, the user's operating system, referrer URL (the previously visited page), IP address and the requesting provider.
@@ -280,7 +302,9 @@ notification of successful access, browser type and version, the user's operatin
 Log file information is stored for security reasons (e.g. for the clarification of abuse or fraud actions) for the duration of maximally 7 days and deleted afterwards.
 Data, the further storage of which is necessary for evidence purposes, are excluded from deletion until the respective incident has been finally clarified.
 
+
 ## Online presences in social media
+
 We maintain online presences within social networks and platforms in order to be able to communicate with customers, interested parties and users active there and
 to inform them about our services.
 
@@ -308,6 +332,7 @@ Only the providers have access to the data of the users and can directly take ap
 
 
 ## Integration of third-party services and content
+
 Within the scope of our online offer, we act on the basis of our legitimate interests (i.e. interest in the analysis, optimisation and economic operation of our 
 online offer within the meaning of Art. 6 Para. 1 lit. f. of the German Civil Code). DSGVO) content or service offers from third parties in order to integrate their
 content and services, such as videos or fonts (hereinafter uniformly referred to as "content").
@@ -319,341 +344,17 @@ The "pixel tags" can be used to evaluate information such as visitor traffic on 
 and may include technical information about the browser and operating system, referring websites, visit times and other information about the use of our website, as well as may be
 linked to such information from other sources.
 
+
 ## Google Fonts
+
 We incorporate the fonts ("Google Fonts") of the provider Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland. According to Google, user data is used
 solely for the purpose of displaying fonts in the user's browser. The integration takes place on the basis of our legitimate interests in a technically secure, maintenance-free
 and efficient use of fonts, their uniform presentation and consideration of possible licensing restrictions for their integration. Privacy policy: https://www.google.com/policies/privacy/.
 
+
 ## Typekit fonts from Adobe
+
 On the basis of our legitimate interests (i.e. interest in the analysis, optimisation and economic operation of our online offer in the sense of Art. 6 Para. 1 lit. f. of the German Civil Code),
 we act in accordance with the following principles DSGVO) external "Typekit" fonts from Adobe Systems Software Ireland Limited, 4-6 Riverwalk, Citywest Business Campus, Dublin 24, Republic of Ireland.
 Adobe is certified under the Privacy Shield Agreement, which guarantees compliance with European data protection laws.
-`}
-		</pre>
-	</div>
-);
-/*export default () => (
-	<>
-		<Head>
-			<title>{pageTitle('Data Privacy Statement')}</title>
-		</Head>
-		<ScrollController>
-			<div className='data-privacy page-content'>
-				<div className='data-privacy__image'>
-					<img
-						src='https://images.unsplash.com/photo-1533279443086-d1c19a186416?ixlib=rb-1.2.1&auto=format&fit=crop&w=3289&q=80'
-						alt='floppy-disk'
-					/>
-				</div>
-				<div className='data-privacy__content'>
-					<TextSection headline='Data Privacy Statement'>
-						#### Person in charge'>
-							Maximilian Leander Schulke
-							<br />
-							Lemgoer Street 9<br />
-							33604 Bielefeld, Germany
-							<br />
-							legal@maximilianschulke.com
-						
-						<ListBlock headline='Types of data processed'>
-							<ListItem>
-								stock data (for example, personal master data, names or addresses).
-							</ListItem>
-							<ListItem>contact data (e.g. e-mail, telephone numbers).</ListItem>
-							<ListItem>
-								content data (e.g., text input, photographs, videos).
-							</ListItem>
-							<ListItem>
-								usage data (e.g., websites visited, interest in content, access
-								times).
-							</ListItem>
-							<ListItem>
-								meta/communication data (e.g., device information, IP addresses).
-							</ListItem>
-						</ListBlock>
-
-						#### Categories of data subjects'>
-							Visitors and users of the online offer (hereinafter referred to
-							collectively as "users").
-						
-						<ListBlock headline='Purpose of processing'>
-							<ListItem>
-								The provision of the online offer, its functions and contents.
-							</ListItem>
-							<ListItem>Answer contact requests and communicate with users.</ListItem>
-							<ListItem>Security measures.</ListItem>
-							<ListItem>Reach measurement/Marketing.</ListItem>
-						</ListBlock>
-
-						<TextSpacer />
-
-						<section>
-							<h2>Terms used</h2>
-
-							#### Personal data
-								means any information relating to an identified or identifiable
-								natural person (hereinafter "data subject"); a natural person who
-								can be identified, directly or indirectly, in particular by
-								reference to an identifier such as a name, an identification number,
-								location data, online identifier (e.g. a cookie) or to one or more
-								specific characteristics which express the physical, physiological,
-								genetic, mental, economic, cultural or social identity of that
-								natural person, is regarded as identifiable.
-							
-							#### Processing
-								means any operation or set of operations which is carried out with
-								or without the aid of automated processes and which involves
-								personal data. The term reaches far and covers practically every
-								handling of data.
-							
-							#### Pseudonymisation
-								means the processing of personal data in such a way that the
-								personal data can no longer be attributed to a specific data subject
-								without the provision of additional information, provided that such
-								additional information is kept separately and is subject to
-								technical and organisational measures ensuring that the personal
-								data are not attributed to an identified or identifiable natural
-								person.
-							
-							#### Profiling
-								means any automated processing of personal data consisting of the
-								use of such personal data to evaluate certain personal aspects
-								relating to a natural person, in particular to analyse or predict
-								aspects relating to the work performance, economic situation,
-								health, personal preferences, interests, reliability, conduct,
-								whereabouts or movements of that natural person.
-							
-							#### Controller
-								means any natural or legal person, public authority, agency or body
-								which alone or jointly with others determines the purposes and means
-								of the processing of personal data.
-							
-							#### Processor
-								means a natural or legal person, public authority, agency or other
-								body which processes personal data on behalf of the controller.
-													</section>
-
-						<TextSpacer />
-
-						<div className='data-privacy__block'>
-							<h2>Applicable legal bases</h2>
-
-							<p>
-								In accordance with Art. 13 DSGVO we inform you about the legal basis
-								of our data processing. The following applies to users from the
-								scope of the Basic Data Protection Regulation (DSGVO), i.e. the EU
-								and the EEC, unless the legal basis is mentioned in the data
-								protection declaration: The legal basis for obtaining consent is
-								Art. 6 para. 1 lit. a and Art. 7 DSGVO; The legal basis for the
-								processing for the fulfilment of our services and the implementation
-								of contractual measures as well as the answering of inquiries is
-								Art. 6 para. 1 lit. b DSGVO; The legal basis for the processing for
-								the fulfilment of our legal obligations is Art. 6 para. 1 lit. c
-								DSGVO;
-							</p>
-							<p>
-								In the event that vital interests of the data subject or another
-								natural person necessitate the processing of personal data, Art. 6
-								para. 1 lit. d DSGVO serves as the legal basis.
-							</p>
-							<p>
-								The legal basis for the processing necessary for the performance of
-								a task carried out in the public interest or in the exercise of
-								official authority entrusted to the controller is Art. 6 para. 1
-								lit. e DSGVO. The legal basis for the processing to safeguard our
-								legitimate interests is Art. 6 para. 1 lit. f DSGVO. The processing
-								of data for purposes other than those for which they were collected
-								is governed by the provisions of Art. 6 (4) DSGVO. The processing of
-								special categories of data (pursuant to Art. 9 para. 1 DSGVO) is
-								governed by the provisions of Art. 9 para. 2 DSGVO.
-							</p>
-						</div>
-
-						<div className='data-privacy__block'>
-							<h2>Safety precautions</h2>
-							<p>
-								We take appropriate technical and organisational measures in
-								accordance with the legal requirements, taking into account the
-								state of the art, the implementation costs and the type, extent,
-								circumstances and purposes of the processing, as well as the
-								different probability of occurrence and severity of the risk to the
-								rights and freedoms of natural persons, in order to ensure a level
-								of protection appropriate to the risk.
-							</p>
-							<p>
-								Measures shall include, in particular, ensuring the confidentiality,
-								integrity and availability of data by controlling physical access
-								to, access to, inputting, disclosure, securing and separation of
-								data. In addition, we have established procedures to ensure that
-								data subjects' rights are exercised, that data is deleted and that
-								we react to data threats. Furthermore, we take the protection of
-								personal data into account as early as the development or selection
-								of hardware, software and processes, in accordance with the
-								principle of data protection through technology design and through
-								data protection-friendly default settings. Cooperation with contract
-								processors, joint managers and third parties
-							</p>
-							<p>
-								Insofar as we disclose data to other persons and companies (contract
-								processors, jointly responsible persons or third parties) within the
-								scope of our processing, transfer them to them or otherwise grant
-								them access to the data, this shall only take place on the basis of
-								legal permission (e.g. if a transfer of the data to third parties,
-								such as payment service providers, is necessary for the fulfilment
-								of the contract), users have consented, a legal obligation provides
-								for this or on the basis of our legitimate interests (e.g. when
-								using agents, web hosts, etc.).
-							</p>
-							<p>
-								Insofar as we disclose, transmit or otherwise grant access to data
-								to other companies of our group of companies, this is done in
-								particular for administrative purposes as a legitimate interest and
-								beyond that on a basis corresponding to the legal requirements.
-							</p>
-						</div>
-
-						<div className='data-privacy__block'>
-							<h2>Transfers to third countries</h2>
-							<p>
-								If we process data in a third country (i.e. outside the European
-								Union (EU), the European Economic Area (EEA) or the Swiss
-								Confederation) or if this is done in the context of the use of third
-								party services or disclosure or transfer of data to other persons or
-								companies, this only occurs if it is done to fulfil our
-								(pre)contractual obligations, on the basis of your consent, a legal
-								obligation or on the basis of our legitimate interests. Subject to
-								express consent or contractually required transfer, we process or
-								allow the data to be processed only in third countries with a
-								recognised level of data protection, which includes US processors
-								certified under the "Privacy Shield" or on the basis of special
-								guarantees, such as a contractual obligation through so-called
-								standard protection clauses of the EU Commission, the existence of
-								certifications or binding internal data protection regulations (Art.
-								44 to 49 DSGVO, information page of the EU Commission).
-							</p>
-						</div>
-
-						<div className='data-privacy__block'>
-							<h2>Rights of data subjects</h2>
-							<p>
-								Right of access: You have the right to obtain confirmation as to
-								whether the data in question will be processed and to obtain access
-								to such data, as well as further information and a copy of the data
-								in accordance with the provisions of the law.
-							</p>
-							<p>
-								Right of rectification: You have the right, in accordance with the
-								law, to request the completion of the data concerning you or the
-								rectification of the inaccurate data concerning you.
-							</p>
-							<p>
-								Right to deletion and limitation of processing: You have the right,
-								in accordance with the statutory provisions, to demand that the
-								relevant data be deleted immediately or, alternatively, to demand
-								that the processing of the data be restricted in accordance with the
-								statutory provisions.
-							</p>
-							<p>
-								Right to data transfer: You have the right to receive data
-								concerning you which you have provided to us in a structured, common
-								and machine-readable format in accordance with the legal
-								requirements, or to demand that it be transferred to another
-								responsible party.
-							</p>
-							<p>
-								Complaints to the supervisory authority: You also have the right to
-								submit a complaint to the competent supervisory authority in
-								accordance with the statutory provisions.
-							</p>
-						</div>
-
-						<div className='data-privacy__block'>
-							<h2>Right of withdrawal</h2>
-							<p>
-								You have the right to revoke any consent you have given with effect
-								for the future.
-							</p>
-						</div>
-
-						<div className='data-privacy__block'>
-							<h2>Right of objection</h2>
-							<p>
-								Right of objection: You have the right, for reasons arising from
-								your particular situation, to object at any time to the processing
-								of personal data concerning you on the basis of Art. 6 para. 1 lit.
-								e or f DSGVO; this also applies to profiling based on these
-								provisions. If the personal data concerning you are processed for
-								the purpose of direct advertising, you have the right to object at
-								any time to the processing of the personal data concerning you for
-								the purpose of such advertising; this also applies to profiling to
-								the extent that it is connected with such direct advertising.
-							</p>
-						</div>
-
-						<div className='data-privacy__block'>
-							<h2>Cookies and right to object to direct advertising</h2>
-							<p>
-								"Cookies" are small files that are stored on the user's computer.
-								Different data can be stored within the cookies. A cookie is
-								primarily used to store information about a user (or the device on
-								which the cookie is stored) during or after the user's visit to an
-								online service. Temporary cookies, or "session cookies" or
-								"transient cookies", are cookies that are deleted after a user
-								leaves an online offer and closes his browser. The content of a
-								shopping cart in an online shop or a login status, for example, can
-								be stored in such a cookie. Cookies are referred to as "permanent"
-								or "persistent" and remain stored even after the browser is closed.
-								For example, the login status can be saved if users visit it after
-								several days. The interests of the users can also be stored in such
-								a cookie, which are used for range measurement or marketing
-								purposes. Third-Party-Cookie" are cookies that are offered by other
-								providers than the responsible person who operates the online
-								service (otherwise, if they are only their cookies, one speaks of
-								"First-Party Cookies").
-							</p>
-							<p>
-								We may use temporary and permanent cookies and explain this in our
-								privacy policy.
-							</p>
-							<p>
-								If we ask the user to consent to the use of cookies (e.g. in the
-								context of a cookie consent), the legal basis for this processing is
-								Art. 6 Para. 1 lit. a. DSGVO. Otherwise, the personal cookies of the
-								user will be stored according to the following explanations within
-								the framework of this data protection declaration on the basis of
-								our legitimate interests (i.e. interest in the analysis,
-								optimisation and economic operation of our online offer in the sense
-								of Art. 6 Para. 1 lit. f.). DSGVO) or insofar as the use of cookies
-								is necessary for the provision of our contract-related services,
-								pursuant to Art. 6 Para. 1 letter b. DSGVO, or if the use of cookies
-								is necessary for the performance of a task in the public interest or
-								in the exercise of official authority, pursuant to Art. 6 para. 1
-								lit. e. DSGVO, processed.
-							</p>
-							<p>
-								If users do not wish cookies to be stored on their computer, they
-								are asked to deactivate the corresponding option in the system
-								settings of their browser. Stored cookies can be deleted in the
-								system settings of the browser. The exclusion of cookies can lead to
-								functional restrictions of this online offer.
-							</p>
-							<p>
-								A general objection to the use of cookies for online marketing
-								purposes can be raised for a large number of services, especially in
-								the case of tracking, via the US website
-								http://www.aboutads.info/choices/ or the EU website
-								http://www.youronlinechoices.com/.
-							</p>
-							<p>
-								Furthermore, the storage of cookies can be achieved by switching
-								them off in the browser settings. Please note that in this case not
-								all functions of this online offer can be used.
-							</p>
-						</div>
-					</TextSection>
-				</div>
-			</div>
-		</ScrollController>
-	</>
-);
-*/
+`;
