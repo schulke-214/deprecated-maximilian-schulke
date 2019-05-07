@@ -15,21 +15,6 @@ class LegalNotice extends React.Component {
 		}
 	}
 
-	exec = cmd => {
-		switch (cmd) {
-			case 'clear':
-				this.setState({ history: [] });
-				break;
-			case 'help':
-				this.setState({ history: [...this.state.history, 'help'] });
-
-				break;
-			default:
-				this.history.push();
-				break;
-		}
-	};
-
 	agree = () => {
 		LocalStorageService.set('legal-notice', true);
 		this.setState({ accepted: true });
@@ -47,7 +32,7 @@ class LegalNotice extends React.Component {
 		}
 
 		return (
-			<div className='legal-notice' onClick={this.activate}>
+			<div className='legal-notice'>
 				<p>
 					Cookies and IP addresses allow this page to improve your experience. This
 					website uses cookies and collects your IP address for these purposes.
@@ -56,8 +41,8 @@ class LegalNotice extends React.Component {
 				<p>
 					Maximilian Schulke may use cookies and my IP address to collect individual
 					statistics. For more information visit the{' '}
-					<Link href='/dataprivacy'>
-						<a className='link--secondary'>dataprivacy</a>
+					<Link href='/data-privacy'>
+						<a className='link--secondary'>data privacy</a>
 					</Link>{' '}
 					page or{' '}
 					<a className='link--secondary' href='mailto:legal@maximilianschulke.com'>
