@@ -39,8 +39,7 @@ legal@maximilianschulke.com
 
 Visitors and users of the online offer (hereinafter referred to collectively as "users").
 
-
-## Purpose of processing
+#### Purpose of processing
 
 - The provision of the online offer, its functions and contents.
 - Answer contact requests and communicate with users.
