@@ -1,5 +1,6 @@
-.page-padding {
+.page-content {
     padding: $page-padding;
+    padding-top: $page-padding * 1.25;
 
     @include down(tablet) {
         padding: 35px;

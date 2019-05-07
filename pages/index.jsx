@@ -8,7 +8,7 @@ class Home extends React.Component {
 	render() {
 		return (
 			<ScrollController>
-				<div className='home'>
+				<div className='home page-content'>
 					<div className='home__title'>
 						<h1 className='home__head ev__none' scroll-paralax='6'>
 							<span>frontend</span>
