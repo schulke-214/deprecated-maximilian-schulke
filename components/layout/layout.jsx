@@ -2,11 +2,11 @@ import { connect } from 'react-redux';
 // import Link from 'next/link';
 
 // import Router from 'services/router';
-import LegalNotice from 'components/layout/legal-notice/legal-notice';
-import StickyLink from 'components/ui/sticky-link/sticky-link';
-import VirtualCursor from 'components/ui/virtual-cursor/virtual-cursor';
+import LegalNotice from 'components/LegalNotice/LegalNotice';
+import StickyLink from 'components/StickyLink/StickyLink';
+import VirtualCursor from 'components/VirtualCursor/VirtualCursor';
 
-import './layout.scss';
+import './Layout.scss';
 
 class Layout extends React.Component {
 	page = React.createRef();

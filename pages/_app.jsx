@@ -1,18 +1,21 @@
 import App, { Container } from 'next/app';
 import Head from 'next/head';
 
-// refactor imports
+// packages
 import initStore from 'store';
-import LocalStorageService from 'services/local-storage';
 import { Provider } from 'react-redux';
 
-import Layout from 'components/layout/layout';
-import DeviceController from 'components/controller/device';
+// services
+import LocalStorageService from 'services/LocalStorage';
 
+// components
+import Layout from 'components/Layout/Layout';
+import DeviceController from 'components/Controller/DeviceController/DeviceController';
+
+// helper
 import { pageTitle } from 'helper/strings';
 
-// import PageLoader from "components/common/pageLoader/pageLoader";
-
+// styles
 import 'styles/common.scss';
 
 const store = initStore();
@@ -23,6 +26,7 @@ store.subscribe(() => {
 
 // import { device_size_change } from 'store/actions';
 // import { utility } from 'styles/common/utility';
+
 // store.dispatch(
 // 	device_size_change({
 // 		width: 1020,

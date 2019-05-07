@@ -1,7 +1,8 @@
 import Link from 'next/link';
 
-import ScrollController from 'components/controller/scroll/scroll';
-import AbstractImage from 'components/ui/abstract-image/abstract-image';
+import ScrollController from 'components/Controller/ScrollController/ScrollController';
+import AbstractImage from 'components/AbstractImage/AbstractImage';
+
 import 'styles/pages/index.scss';
 
 class Home extends React.Component {

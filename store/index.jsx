@@ -1,5 +1,5 @@
 import * as Redux from 'redux';
-import LocalStorageService from 'services/local-storage';
+import LocalStorageService from 'services/LocalStorage';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import device from './device';
