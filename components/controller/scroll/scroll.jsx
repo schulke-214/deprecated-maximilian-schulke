@@ -12,7 +12,7 @@ class ScrollController extends React.Component {
 	offset = 0;
 	maxOffset = 0;
 	progress = 0;
-	speed = 0.5;
+	speed = 0.75;
 	maxSpeed = 2.5;
 	duration = this.maxSpeed - this.speed;
 	keystep = 75;
