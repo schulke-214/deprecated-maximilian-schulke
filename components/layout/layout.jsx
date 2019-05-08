@@ -2,9 +2,9 @@ import { connect } from 'react-redux';
 // import Link from 'next/link';
 
 // import Router from 'services/router';
-import LegalNotice from 'components/LegalNotice/LegalNotice';
-import StickyLink from 'components/StickyLink/StickyLink';
-import VirtualCursor from 'components/VirtualCursor/VirtualCursor';
+import LegalNotice from 'components/legal-notice/LegalNotice';
+import StickyLink from 'components/sticky-link/StickyLink';
+import VirtualCursor from 'components/virtual-cursor/VirtualCursor';
 
 import './Layout.scss';
 
