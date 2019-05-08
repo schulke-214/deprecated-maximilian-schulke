@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import ScrollController from 'components/Controller/ScrollController/ScrollController';
+import ScrollController from 'components/controller/scroll-controller/ScrollController';
 
 import { pageTitle } from 'helper/strings';
 
@@ -16,7 +16,8 @@ export default class DataPrivacy extends React.Component {
 	}
 }
 
-const content = `DATA PRIVACY STATEMENT
+const content = `
+DATA PRIVACY STATEMENT
 
 ## Person in charge
 
