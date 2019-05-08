@@ -39,6 +39,7 @@ class ScrollController extends React.Component {
 		}
 
 		// reset window scroll position
+		this.reset();
 		this.resetWindow();
 
 		addEventListener('touchstart', this.reset, { passive: false });
@@ -52,6 +53,9 @@ class ScrollController extends React.Component {
 		if (this.props.device.browser.type.edge) {
 			return;
 		}
+
+		this.offset = 0;
+		window.scrollTo(0, 0);
 
 		removeEventListener('touchstart', this.reset, { passive: false });
 		removeEventListener('scroll', this.handleScroll, { passive: false });
