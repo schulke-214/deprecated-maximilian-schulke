@@ -1,7 +1,11 @@
-import rtr from 'next/router';
+import Router from 'next/router';
 
-class Router {
+class RouterService {
 	static push(to) {}
 }
 
-export default Router;
+// Router.events.on('routeChangeComplete', (err, url) => {
+// 	window.scrollTo(0, 0);
+// });
+
+export default RouterService;

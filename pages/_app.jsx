@@ -9,8 +9,8 @@ import { Provider } from 'react-redux';
 import LocalStorageService from 'services/LocalStorage';
 
 // components
-import Layout from 'components/Layout/Layout';
-import DeviceController from 'components/Controller/DeviceController/DeviceController';
+import Layout from 'components/layout/Layout';
+import DeviceController from 'components/controller/device-controller/DeviceController';
 
 // helper
 import { pageTitle } from 'helper/strings';

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import ScrollController from 'components/Controller/ScrollController/ScrollController';
-import AbstractImage from 'components/AbstractImage/AbstractImage';
+import ScrollController from 'components/controller/scroll-controller/ScrollController';
+import AbstractImage from 'components/abstract-image/AbstractImage';
 
 import 'styles/pages/index.scss';
 
