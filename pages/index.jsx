@@ -40,7 +40,7 @@ class Home extends React.Component {
 							</p>
 						</section>
 						<section className='home__link-block'>
-							<h2>Contact me</h2>
+							<h2>Contact</h2>
 							<a
 								className='link'
 								href='mailto:hello@maximilianschulke.com'
@@ -53,7 +53,7 @@ class Home extends React.Component {
 							</a>
 						</section>
 						<section className='home__link-block'>
-							<h2>Follow me</h2>
+							<h2>Social</h2>
 							<a
 								className='link'
 								href='https://www.github.com/schulke-214'
