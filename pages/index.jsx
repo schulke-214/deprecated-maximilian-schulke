@@ -43,12 +43,16 @@ class Home extends React.Component {
 							<h2>Contact</h2>
 							<a
 								className='link'
+								style={{ userSelect: 'all' }}
 								href='mailto:hello@maximilianschulke.com'
 								target='_blank'>
 								hello@maximilianschulke.com
 							</a>
 							<br />
-							<a className='link' href='tel:+4917643692162'>
+							<a
+								className='link'
+								style={{ userSelect: 'all' }}
+								href='tel:+4917643692162'>
 								+49 176 43 69 21 62
 							</a>
 						</section>

@@ -19,7 +19,6 @@ html {
         transition: font-size animation(primary);
         line-height: line-height(headline);
         margin: 0;
-        user-select: none;
     }
 }
 
@@ -32,6 +31,7 @@ html {
     padding: 0;
     box-sizing: border-box;
     outline: none;
+    user-select: none;
     color: color(secondary);
     -webkit-font-smoothing: antialiased;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
