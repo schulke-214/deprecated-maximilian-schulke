@@ -1,5 +1,5 @@
 $legal-notice-background: #000;
-$legal-notice-base: #dddddd;
+$legal-notice-base: #cccccc;
 $legal-notice-highlight: #fff;
 
 
@@ -37,6 +37,7 @@ $legal-notice-highlight: #fff;
 
 .legal-notice__choice-links {
     display: flex;
+    cursor: pointer;
 
     > a {
         color: $legal-notice-base;
