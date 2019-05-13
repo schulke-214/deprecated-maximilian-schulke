@@ -19,6 +19,7 @@ html {
         transition: font-size animation(primary);
         line-height: line-height(headline);
         margin: 0;
+        user-select: none;
     }
 }
 
