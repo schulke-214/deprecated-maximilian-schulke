@@ -6,28 +6,28 @@ import './LegalNotice.scss';
 
 class LegalNotice extends React.Component {
 	state = {
-		accepted: true
+		noticed: true
 	};
 
 	componentDidMount() {
 		if (LocalStorageService.get('legal-notice') !== true) {
-			this.setState({ accepted: false });
+			this.setState({ noticed: false });
 		}
 	}
 
 	agree = () => {
 		LocalStorageService.set('legal-notice', true);
-		this.setState({ accepted: true });
+		this.setState({ noticed: true });
 	};
 
 	decline = () => {
-		this.setState({ accepted: false });
 		LocalStorageService.clear();
-		window.location.href = 'https://lightweight.maximilianschulke.com/';
+		this.setState({ noticed: true });
+		// window.location.href = 'https://lightweight.maximilianschulke.com/';
 	};
 
 	render() {
-		if (this.state.accepted) {
+		if (this.state.noticed) {
 			return <></>;
 		}
 
