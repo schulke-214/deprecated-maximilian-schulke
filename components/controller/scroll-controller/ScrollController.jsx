@@ -3,6 +3,8 @@
 import { connect } from 'react-redux';
 import { paralaxLayerOffset } from 'helper/paralax';
 
+import { setPos } from 'store/scroll';
+
 import './ScrollController.scss';
 
 class ScrollController extends React.Component {
@@ -191,6 +193,7 @@ class ScrollController extends React.Component {
 			this.progress = this.offset / (this.rect.height - window.innerHeight);
 		}
 
+		this.props.setPos(this.offset);
 		this.progress = this.progress.toFixed(4);
 	};
 
@@ -230,6 +233,12 @@ class ScrollController extends React.Component {
 	}
 }
 
-const mapStateToProps = ({ device }) => ({ device });
+const mapStateToProps = ({ device, scroll }) => ({ device, scroll });
+const mapDispatchToProps = dispatch => ({
+	setPos: data => dispatch(setPos(data))
+});
 
-export default connect(mapStateToProps)(ScrollController);
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(ScrollController);
