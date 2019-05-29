@@ -3,9 +3,11 @@ import LocalStorageService from 'services/LocalStorage';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import device from './device';
+import scroll from './scroll';
 
 const rootReducer = Redux.combineReducers({
-	device
+	device,
+	scroll
 });
 
 export default () =>
