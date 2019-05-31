@@ -10,6 +10,8 @@ import LocalStorageService from 'services/LocalStorage';
 
 // components
 import Layout from 'components/layout/Layout';
+import PageLoader from 'components/page-loader/PageLoader';
+import PageTransition from 'components/page-transition/PageTransition';
 import DeviceController from 'components/controller/device-controller/DeviceController';
 
 // helper
@@ -35,11 +37,9 @@ store.subscribe(() => {
 // );
 
 class Application extends App {
-	// state = {
-	// 	// pageLoader: {
-	// 	// 	isOpen: false
-	// 	// }
-	// };
+	state = {
+		loading: true
+	};
 
 	// removePageLoader = () => {
 	// 	this.setState({
@@ -58,9 +58,8 @@ class Application extends App {
 					<Head>
 						<title>{pageTitle('Frontend Engineer')}</title>
 					</Head>
-					{/* {this.state.pageLoader.isOpen ? (
-                        <PageLoader finished={this.removePageLoader} />
-                    ) : null} */}
+					{/* <PageLoader /> */}
+					{/* <PageTransition /> */}
 					<DeviceController />
 					<Layout>
 						<Component {...pageProps} />
