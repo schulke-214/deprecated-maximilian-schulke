@@ -7,11 +7,16 @@ import { pageTitle } from 'helper/strings';
 export default class DataPrivacy extends React.Component {
 	render() {
 		return (
-			<ScrollController>
-				<div className='page-content'>
-					<pre>{content}</pre>
-				</div>
-			</ScrollController>
+			<>
+				<Head>
+					<title>{pageTitle('Data Privacy')}</title>
+				</Head>
+				<ScrollController>
+					<div className='page-content'>
+						<pre>{content}</pre>
+					</div>
+				</ScrollController>
+			</>
 		);
 	}
 }

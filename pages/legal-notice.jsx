@@ -7,11 +7,16 @@ import { pageTitle } from 'helper/strings';
 export default class LegalNotice extends React.Component {
 	render() {
 		return (
-			<ScrollController>
-				<div className='page-content'>
-					<pre>{content}</pre>
-				</div>
-			</ScrollController>
+			<>
+				<Head>
+					<title>{pageTitle('Legal Notice')}</title>
+				</Head>
+				<ScrollController>
+					<div className='page-content'>
+						<pre>{content}</pre>
+					</div>
+				</ScrollController>
+			</>
 		);
 	}
 }
