@@ -49,7 +49,7 @@ class Home extends React.Component {
 							</a>
 							<br />
 							<a className='link' href='tel:+4917643692162'>
-								+49 176 43 69 21 62
+								+49 151 44 57 30 27
 							</a>
 						</section>
 						<section className='home__link-block'>
