@@ -6,11 +6,7 @@ class AppDocument extends Document {
 			<html lang='en'>
 				<Head>
 					<meta charSet='UTF-8' />
-					<meta
-						name='viewport'
-						content='initial-scale=1.0, width=device-width'
-						key='viewport'
-					/>
+					<meta name='viewport' content='initial-scale=1.0, width=device-width' key='viewport' />
 
 					<meta name='author' content='Maximilian Schulke' />
 					<meta name='publisher' content='Maximilian Schulke' />
@@ -21,10 +17,7 @@ class AppDocument extends Document {
 					/>
 					<meta name='page-topic' content='Dienstleistung' />
 					<meta name='page-type' content='Private Homepage' />
-					<meta
-						name='audience'
-						content='Erwachsene, Experten, Frauen, Profis, Studenten'
-					/>
+					<meta name='audience' content='Erwachsene, Experten, Frauen, Profis, Studenten' />
 					<meta httpEquiv='content-language' content='en' />
 					<meta name='robots' content='index, follow' />
 
@@ -35,12 +28,12 @@ class AppDocument extends Document {
 					<meta name='theme-color' content='#060606' />
 					<link rel='shortcut icon' type='image/jpg' href='/static/favicon.jpg' />
 					<link rel='manifest' href='/static/manifest.json' />
-					{/* <link rel='stylesheet' href='/static/assets/fonts/fonts.css' /> */}
-					<link
+					<link rel='stylesheet' href='/static/fonts/fonts.css' />
+					{/* <link
 						rel='stylesheet'
 						href='https://use.typekit.net/zwq5ryn.css'
-						/* neue haas unica */
-					/>
+						// neue haas unica 
+					/> */}
 					<script src='https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.1/pixi.min.js' />
 					<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenLite.min.js' />
 					<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TimelineLite.min.js' />
