@@ -35,9 +35,7 @@ class ScrollController extends React.Component {
 		}
 
 		for (let i = 0; i < 10; i++) {
-			this.paralaxLayer[i] = [
-				...this.container.current.querySelectorAll(`[scroll-paralax="${i}"]`)
-			];
+			this.paralaxLayer[i] = [...this.container.current.querySelectorAll(`[scroll-paralax="${i}"]`)];
 		}
 
 		// reset window scroll position
@@ -120,7 +118,10 @@ class ScrollController extends React.Component {
 		this.resetWindow();
 
 		// TODO check if the input device is a mouse
-		if (this.props.device.browser.type.firefox && this.props.device.os.type.windows) {
+		if (
+			this.props.device.browser.type.firefox &&
+			(this.props.device.os.type.windows || this.props.device.os.type.linux)
+		) {
 			// firefox windows specific fix - wheeldata was far to low there to use it as offset inndicator
 			return this.scroll(ev.deltaY * 35);
 		}
@@ -238,7 +239,4 @@ const mapDispatchToProps = dispatch => ({
 	setPos: data => dispatch(setPos(data))
 });
 
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(ScrollController);
+export default connect(mapStateToProps, mapDispatchToProps)(ScrollController);

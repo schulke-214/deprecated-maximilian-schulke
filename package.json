@@ -7,7 +7,8 @@
         "dev": "next",
         "build": "next build",
         "start": "next start",
-        "export": "next export"
+        "export": "next export",
+        "serve": "serve -p 8000 ./out"
     },
     "engines": {
         "node": "10.9.0",
@@ -43,12 +44,13 @@
         "babel-preset-es2017": "^6.24.1",
         "babel-preset-react": "^6.24.1",
         "braces": "^2.3.2",
+        "fstream": ">=1.0.12",
         "modularscale-sass": "^3.0.8",
         "node-sass": "^4.12.0",
         "redux-devtools-extension": "^2.13.8",
         "sass-resources-loader": "^2.0.0",
-        "tar": ">=4.4.2",
-        "fstream": ">=1.0.12"
+        "serve": "^11.3.0",
+        "tar": ">=4.4.2"
     },
     "babel": {
         "presets": [
