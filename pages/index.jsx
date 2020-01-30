@@ -19,52 +19,36 @@ class Home extends React.Component {
 					<div className='home__content'>
 						<div className='home__abstract'>
 							<div>
-								<AbstractImage
-									factor={1.5}
-									width={1280}
-									height={1920}
-									src='/static/abstract.jpg'
-								/>
+								<AbstractImage factor={1.5} width={1280} height={1920} src='/static/abstract.jpg' />
 							</div>
 						</div>
 						<section className='home__text'>
 							<h2>Profile</h2>
 							<p>
-								Hi, I am Max, a self-taught developer specialized in motion and
-								interaction - graduated in design - and based in North
-								Rhine-Westphalia, Germany. Since my early days, my ambition towards
-								computer science and computer graphics was clear. Initially focused
-								on graphic design, I started striving for a career more focused on
-								programming, by watching, listening and reading about other people's
-								experiences and work.
+								Hi, I am Max, a self-taught developer specialized in motion and interaction - graduated
+								in design - and based in North Rhine-Westphalia, Germany. Since my early days, my
+								ambition towards computer science and computer graphics was clear. Initially focused on
+								graphic design, I started striving for a career more focused on programming, by
+								watching, listening and reading about other people's experiences and work.
 							</p>
 						</section>
 						<section className='home__link-block'>
 							<h2>Contact</h2>
-							<a
-								className='link'
-								href='mailto:hello@maximilianschulke.com'
-								target='_blank'>
+							<a className='link' href='mailto:hello@maximilianschulke.com' target='_blank'>
 								hello@maximilianschulke.com
 							</a>
 							<br />
-							<a className='link' href='tel:+4917643692162'>
+							<a className='link' href='tel:+4915144573027'>
 								+49 151 44 57 30 27
 							</a>
 						</section>
 						<section className='home__link-block'>
 							<h2>Social</h2>
-							<a
-								className='link'
-								href='https://www.github.com/schulke-214'
-								target='_blank'>
+							<a className='link' href='https://www.github.com/schulke-214' target='_blank'>
 								github
 							</a>
 							<br />
-							<a
-								className='link'
-								href='https://medium.com/@schulkemaximilian'
-								target='_blank'>
+							<a className='link' href='https://medium.com/@schulkemaximilian' target='_blank'>
 								medium
 							</a>
 						</section>
