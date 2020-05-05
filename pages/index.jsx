@@ -25,11 +25,12 @@ class Home extends React.Component {
 						<section className='home__text'>
 							<h2>Profile</h2>
 							<p>
-								Hi, I am Max, a self-taught developer specialized in motion and interaction - graduated
-								in design - and based in North Rhine-Westphalia, Germany. Since my early days, my
-								ambition towards computer science and computer graphics was clear. Initially focused on
-								graphic design, I started striving for a career more focused on programming, by
-								watching, listening and reading about other people's experiences and work.
+								Hi, I am Max, a german developer specialized in motion and interaction based
+								in Berlin, Germany. Since my early days, my ambition towards computer science and 
+								computer graphics was clear. Initially focused on graphic design, I started striving
+								for a career more focused on programming, by watching, listening and reading about other
+								people's experiences and work. Im currently working at <a className='link' href="https://www.moccu.com" target='_blank'>moccu</a> and
+								studying media informatics at <a className='link' href="https://www.moccu.com" target='_blank'>th brandenburg</a> in the spare time.
 							</p>
 						</section>
 						<section className='home__link-block'>
