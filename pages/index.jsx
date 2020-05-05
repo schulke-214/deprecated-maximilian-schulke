@@ -29,8 +29,8 @@ class Home extends React.Component {
 								in Berlin, Germany. Since my early days, my ambition towards computer science and 
 								computer graphics was clear. Initially focused on graphic design, I started striving
 								for a career more focused on programming, by watching, listening and reading about other
-								people's experiences and work. Im currently working at <a className='link' href="https://www.moccu.com" target='_blank'>moccu</a> and
-								studying media informatics at <a className='link' href="https://www.moccu.com" target='_blank'>th brandenburg</a> in the spare time.
+								people's experiences and work. Im currently working at <a style={{ textDecoration: 'underline' }} href="https://www.moccu.com" target='_blank'>moccu</a> and
+								studying media informatics at <a style={{ textDecoration: 'underline' }} href="https://www.moccu.com" target='_blank'>th brandenburg</a> in the spare time.
 							</p>
 						</section>
 						<section className='home__link-block'>
