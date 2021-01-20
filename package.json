@@ -26,7 +26,7 @@
     "homepage": "https://github.com/schulke-214/maximilian-schulke#readme",
     "dependencies": {
         "autoprefixer": "^9.5.0",
-        "gsap": "^2.1.2",
+        "gsap": "^3.6.0",
         "lethargy": "^1.0.4",
         "lodash": "^4.17.19",
         "next": "^9.3.2",
